@@ -6,6 +6,7 @@
 package com.esquelas.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,9 +15,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -40,6 +43,8 @@ public class TipoMatricula implements Serializable {
     @Size(max = 6)
     @Column(name = "codigo_matricula")
     private String codigoMatricula;
+    @OneToMany(mappedBy = "tipoPlaca")
+    private List<Vehiculo> vehiculoList;
 
     public TipoMatricula() {
     }
@@ -62,6 +67,15 @@ public class TipoMatricula implements Serializable {
 
     public void setCodigoMatricula(String codigoMatricula) {
         this.codigoMatricula = codigoMatricula;
+    }
+
+    @XmlTransient
+    public List<Vehiculo> getVehiculoList() {
+        return vehiculoList;
+    }
+
+    public void setVehiculoList(List<Vehiculo> vehiculoList) {
+        this.vehiculoList = vehiculoList;
     }
 
     @Override

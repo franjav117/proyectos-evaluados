@@ -79,6 +79,9 @@ public class Esquela implements Serializable {
     @JoinColumn(name = "tipo_gravedad", referencedColumnName = "id_gravedad")
     @ManyToOne
     private TipoGravedad tipoGravedad;
+    @JoinColumn(name = "estado", referencedColumnName = "id_estado")
+    @ManyToOne(optional = false)
+    private Estado estado;
     @JoinColumn(name = "id_departamento", referencedColumnName = "id_departamento")
     @ManyToOne(optional = false)
     private Departamento idDepartamento;
@@ -181,6 +184,14 @@ public class Esquela implements Serializable {
 
     public void setTipoGravedad(TipoGravedad tipoGravedad) {
         this.tipoGravedad = tipoGravedad;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
     public Departamento getIdDepartamento() {
