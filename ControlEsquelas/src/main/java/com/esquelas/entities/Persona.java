@@ -42,6 +42,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Persona.findByA1Apellido", query = "SELECT p FROM Persona p WHERE p.a1Apellido = :a1Apellido")
     , @NamedQuery(name = "Persona.findByA2Apellido", query = "SELECT p FROM Persona p WHERE p.a2Apellido = :a2Apellido")
     , @NamedQuery(name = "Persona.findByA3Apellido", query = "SELECT p FROM Persona p WHERE p.a3Apellido = :a3Apellido")
+    , @NamedQuery(name = "Persona.findByDireccion", query = "SELECT p FROM Persona p WHERE p.direccion = :direccion")
     , @NamedQuery(name = "Persona.findByDui", query = "SELECT p FROM Persona p WHERE p.dui = :dui")
     , @NamedQuery(name = "Persona.findByEdad", query = "SELECT p FROM Persona p WHERE p.edad = :edad")
     , @NamedQuery(name = "Persona.findByFechaNacimiento", query = "SELECT p FROM Persona p WHERE p.fechaNacimiento = :fechaNacimiento")})
@@ -75,6 +76,9 @@ public class Persona implements Serializable {
     @Size(max = 20)
     @Column(name = "a3_apellido")
     private String a3Apellido;
+    @Size(max = 100)
+    @Column(name = "direccion")
+    private String direccion;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 15)
@@ -167,6 +171,14 @@ public class Persona implements Serializable {
 
     public void setA3Apellido(String a3Apellido) {
         this.a3Apellido = a3Apellido;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getDui() {
