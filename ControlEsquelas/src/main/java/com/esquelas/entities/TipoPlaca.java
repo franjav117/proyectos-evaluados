@@ -45,8 +45,6 @@ public class TipoPlaca implements Serializable {
     private String tipoPlaca;
     @OneToMany(mappedBy = "tipoPlaca")
     private List<AgenteTransito> agenteTransitoList;
-    @OneToMany(mappedBy = "tipoPlaca")
-    private List<Vehiculo> vehiculoList;
 
     public TipoPlaca() {
     }
@@ -78,15 +76,6 @@ public class TipoPlaca implements Serializable {
 
     public void setAgenteTransitoList(List<AgenteTransito> agenteTransitoList) {
         this.agenteTransitoList = agenteTransitoList;
-    }
-
-    @XmlTransient
-    public List<Vehiculo> getVehiculoList() {
-        return vehiculoList;
-    }
-
-    public void setVehiculoList(List<Vehiculo> vehiculoList) {
-        this.vehiculoList = vehiculoList;
     }
 
     @Override
