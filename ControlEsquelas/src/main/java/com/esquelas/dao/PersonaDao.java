@@ -16,7 +16,7 @@ import javax.persistence.Persistence;
  */
 @Stateless
 public class PersonaDao {
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("EntornoDAOPU");
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
     private EntityManager em = emf.createEntityManager();
     
     

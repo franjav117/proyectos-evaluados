@@ -34,6 +34,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Esquela.findAll", query = "SELECT e FROM Esquela e")
     , @NamedQuery(name = "Esquela.findByIdEsquela", query = "SELECT e FROM Esquela e WHERE e.idEsquela = :idEsquela")
+    ,  @NamedQuery(name = "Esquela.findByLicencia", query = "SELECT e FROM Esquela e WHERE e.idConductor.licencia = :licencia")
+    , @NamedQuery(name = "Esquela.findByDUI", query = "SELECT e FROM Esquela e WHERE e.idConductor.idPersona.dui = :dui")
+    , @NamedQuery(name = "Esquela.findByDUILicencia", query = "SELECT e FROM Esquela e WHERE e.idConductor.idPersona.dui = :dui and e.idConductor.licencia = :licencia")
     , @NamedQuery(name = "Esquela.findByCodigoFalta", query = "SELECT e FROM Esquela e WHERE e.codigoFalta = :codigoFalta")
     , @NamedQuery(name = "Esquela.findByFechaEsquela", query = "SELECT e FROM Esquela e WHERE e.fechaEsquela = :fechaEsquela")
     , @NamedQuery(name = "Esquela.findByLugarInfraccion", query = "SELECT e FROM Esquela e WHERE e.lugarInfraccion = :lugarInfraccion")
@@ -70,6 +73,9 @@ public class Esquela implements Serializable {
     @JoinColumn(name = "id_conductor", referencedColumnName = "id_conductor")
     @ManyToOne(optional = false)
     private Conductor idConductor;
+    @JoinColumn(name = "placa", referencedColumnName = "id_vehiculo")
+    @ManyToOne(optional = false)
+    private Vehiculo placa;
     @JoinColumn(name = "id_agente", referencedColumnName = "id_agente")
     @ManyToOne(optional = false)
     private AgenteTransito idAgente;
@@ -79,6 +85,9 @@ public class Esquela implements Serializable {
     @JoinColumn(name = "tipo_gravedad", referencedColumnName = "id_gravedad")
     @ManyToOne
     private TipoGravedad tipoGravedad;
+    @JoinColumn(name = "estado", referencedColumnName = "id_estado")
+    @ManyToOne(optional = false)
+    private Estado estado;
     @JoinColumn(name = "id_departamento", referencedColumnName = "id_departamento")
     @ManyToOne(optional = false)
     private Departamento idDepartamento;
@@ -159,6 +168,14 @@ public class Esquela implements Serializable {
         this.idConductor = idConductor;
     }
 
+    public Vehiculo getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(Vehiculo placa) {
+        this.placa = placa;
+    }
+
     public AgenteTransito getIdAgente() {
         return idAgente;
     }
@@ -181,6 +198,14 @@ public class Esquela implements Serializable {
 
     public void setTipoGravedad(TipoGravedad tipoGravedad) {
         this.tipoGravedad = tipoGravedad;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
     public Departamento getIdDepartamento() {
