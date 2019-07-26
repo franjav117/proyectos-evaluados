@@ -19,7 +19,7 @@ import javax.persistence.Persistence;
  */
 @Stateless
 public class EsquelasDao {
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("EntornoDAOPU");
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
     private EntityManager em = emf.createEntityManager();
     
     private List<Esquela> listEsquelaNit;
@@ -27,7 +27,15 @@ public class EsquelasDao {
     public List<Esquela> listadoEsquelasNit(){
         listEsquelaNit = new ArrayList<>();
         
-        listEsquelaNit = em.createNativeQuery("", Esquela.class).getResultList();
+        listEsquelaNit = em.createNamedQuery("Esquela.findByLicencia", Esquela.class).getResultList();
+        
+        return listEsquelaNit;
+    }
+    
+    public List<Esquela> listadoEsquelasDUI(){
+        listEsquelaNit = new ArrayList<>();
+        
+        listEsquelaNit = em.createNamedQuery("Esquela.findByLicencia", Esquela.class).getResultList();
         
         return listEsquelaNit;
     }
