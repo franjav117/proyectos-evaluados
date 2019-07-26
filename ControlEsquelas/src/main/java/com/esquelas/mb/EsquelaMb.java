@@ -11,6 +11,7 @@ import com.esquelas.entities.Conductor;
 import com.esquelas.entities.Esquela;
 import com.esquelas.entities.Persona;
 import com.esquelas.entities.Vehiculo;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -21,7 +22,7 @@ import javax.faces.bean.ManagedBean;
  * @author rogelio.mejiausam
  */
 @ManagedBean
-public class EsquelaMb {
+public class EsquelaMb implements Serializable{
     private EsquelasDao esquDAO;
     private GenericDao gd;
     private List<Esquela> listEsquela;
