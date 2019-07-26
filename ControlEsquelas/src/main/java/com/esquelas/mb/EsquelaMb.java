@@ -97,18 +97,18 @@ public class EsquelaMb implements Serializable{
            
            esquela.setIdConductor(rgDao.idConductor(idEsquela));
            esquela.setPlaca(rgDao.idVehiculo(idEsquela));
-           esquela.setIdAgente(rgDao.esquelaDatosPuros().getIdAgente());
-           esquela.setCodigoFalta(esquela.getCodigoFalta()); //String
+           esquela.setIdAgente(rgDao.esquelaDatosPuros(idEsquela).getIdAgente());
+           esquela.setCodigoFalta(rgDao.esquelaDatosPuros(idEsquela).getCodigoFalta()); //String
            esquela.setClasificacion(rgDao.idClasificacion(idEsquela));
-           esquela.setFechaEsquela(esquela.getFechaEsquela()); //Date
-           esquela.setLugarInfraccion(esquela.getLugarInfraccion()); //String
-           esquela.setObservaciones(esquela.getObservaciones()); //String
-           esquela.setTipoGravedad(esquela.getTipoGravedad());
-           esquela.setMontoPagar(esquela.getMontoPagar()); //Double
-           esquela.setEstado(esquela.getEstado());
-           esquela.setIdDepartamento(esquela.getIdDepartamento());
-           esquela.setIdDecomiso(esquela.getIdDecomiso());
-           esquela.setIdOtros(esquela.getIdOtros());
+           esquela.setFechaEsquela(rgDao.esquelaDatosPuros(idEsquela).getFechaEsquela()); //Date
+           esquela.setLugarInfraccion(rgDao.esquelaDatosPuros(idEsquela).getLugarInfraccion()); //String
+           esquela.setObservaciones(rgDao.esquelaDatosPuros(idEsquela).getObservaciones()); //String
+           esquela.setTipoGravedad(rgDao.idTipoGravedad(idEsquela));
+           esquela.setMontoPagar(rgDao.esquelaDatosPuros(idEsquela).getMontoPagar()); //Double
+           esquela.setEstado(rgDao.idEstado(idEsquela));
+           esquela.setIdDepartamento(rgDao.idDepartamento(idEsquela));
+           esquela.setIdDecomiso(rgDao.idDecomiso(idEsquela));
+           esquela.setIdOtros(rgDao.idOtros(idEsquela));
            esquela.setIdEsquela(idEsquela);
            
            gd.actualizarEntidad(esquela);
