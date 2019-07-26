@@ -5,6 +5,7 @@ import com.esquelas.entities.Clasificacion;
 import com.esquelas.entities.Conductor;
 import com.esquelas.entities.Decomiso;
 import com.esquelas.entities.Departamento;
+import com.esquelas.entities.Estado;
 import com.esquelas.entities.Otros;
 import com.esquelas.entities.TipoGravedad;
 import java.util.Date;
@@ -13,13 +14,18 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 @Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2019-07-26T08:23:18")
 =======
 @Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2019-07-26T08:17:05")
 >>>>>>> develop
+=======
+@Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2019-07-26T10:20:43")
+>>>>>>> feature_rogelio
 @StaticMetamodel(Esquela.class)
 public class Esquela_ { 
 
+    public static volatile SingularAttribute<Esquela, Estado> estado;
     public static volatile SingularAttribute<Esquela, Double> montoPagar;
     public static volatile SingularAttribute<Esquela, Date> fechaEsquela;
     public static volatile SingularAttribute<Esquela, AgenteTransito> idAgente;
