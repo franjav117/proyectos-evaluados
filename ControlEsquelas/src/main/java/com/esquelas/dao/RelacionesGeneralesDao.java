@@ -34,8 +34,8 @@ import javax.persistence.Persistence;
 @Stateless
 public class RelacionesGeneralesDao {
 
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
-    private EntityManager em = emf.createEntityManager();
+    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
+    private final EntityManager em = emf.createEntityManager();
 
     private List<Rol> rolList;//1
     private List<ClaseLicencia> ClaseLisenciaList;//2
@@ -48,7 +48,7 @@ public class RelacionesGeneralesDao {
     private List<Clasificacion> ClasificacionList;//9
     private List<TipoPlaca> TipoPlacaList;//10
 
-    public List<Rol> obtenerRol() {
+    public List<Rol> obtenerRol() { //relacionada a usuarios
         try {
             rolList = new ArrayList<Rol>();
             rolList = em.createNamedQuery("Rol.findAll").getResultList();
@@ -58,7 +58,7 @@ public class RelacionesGeneralesDao {
         return rolList;
     }
 
-    public List<ClaseLicencia> obtenerClaseLicencia() {
+    public List<ClaseLicencia> obtenerClaseLicencia() {// relacionada a conductor
         try {
             ClaseLisenciaList = new ArrayList<ClaseLicencia>();
             ClaseLisenciaList = em.createNamedQuery("ClaseLicencia.findAll").getResultList();
@@ -68,7 +68,7 @@ public class RelacionesGeneralesDao {
         return ClaseLisenciaList;
     }
 
-    public List<TipoMatricula> obtenerTipoMatricula() {
+    public List<TipoMatricula> obtenerTipoMatricula() { //relacionada a vehiculo
         try {
             TipoMatriculaList = new ArrayList<TipoMatricula>();
             TipoMatriculaList = em.createNamedQuery("TipoMatricula.findAll").getResultList();
@@ -78,7 +78,7 @@ public class RelacionesGeneralesDao {
         return TipoMatriculaList;
     }
 
-    public List<Departamento> obtenerDepartamento() {
+    public List<Departamento> obtenerDepartamento() {//relacionada a esquela
         try {
             DepartamentoList = new ArrayList<Departamento>();
             DepartamentoList = em.createNamedQuery("Departamento.findAll").getResultList();
@@ -88,7 +88,7 @@ public class RelacionesGeneralesDao {
         return DepartamentoList;
     }
 
-    public List<Estado> obtenerEstado() {
+    public List<Estado> obtenerEstado() { //relacionada a esquela
         try {
             EstadoList = new ArrayList<Estado>();
             EstadoList = em.createNamedQuery("Estado.findAll").getResultList();
@@ -98,7 +98,7 @@ public class RelacionesGeneralesDao {
         return EstadoList;
     }
 
-    public List<TipoGravedad> obtenerTipoGravedad() {
+    public List<TipoGravedad> obtenerTipoGravedad() {// relacionada a esquela
         try {
             TipoGravedadList = new ArrayList<TipoGravedad>();
             TipoGravedadList = em.createNamedQuery("TipoGravedad.findAll").getResultList();
@@ -108,7 +108,7 @@ public class RelacionesGeneralesDao {
         return TipoGravedadList;
     }
 
-    public List<Decomiso> obtenerDecomiso() {
+    public List<Decomiso> obtenerDecomiso() {// relacionada a esquela
         try {
             DecomisoList = new ArrayList<Decomiso>();
             DecomisoList = em.createNamedQuery("Decomiso.findAll").getResultList();
@@ -118,7 +118,7 @@ public class RelacionesGeneralesDao {
         return DecomisoList;
     }
 
-    public List<Otros> obtenerOtros() {
+    public List<Otros> obtenerOtros() {//relacionada a esquela
         try {
             OtrosList = new ArrayList<Otros>();
             OtrosList = em.createNamedQuery("Otros.findAll").getResultList();
@@ -128,7 +128,7 @@ public class RelacionesGeneralesDao {
         return OtrosList;
     }
 
-    public List<Clasificacion> obtenerClasificacion() {
+    public List<Clasificacion> obtenerClasificacion() {//relacionada a esquela
         try {
             ClasificacionList = new ArrayList<Clasificacion>();
             ClasificacionList = em.createNamedQuery("Clasificacion.findAll").getResultList();
@@ -138,7 +138,7 @@ public class RelacionesGeneralesDao {
         return ClasificacionList;
     }
 
-    public List<TipoPlaca> obtenerTipoPlaca() {
+    public List<TipoPlaca> obtenerTipoPlaca() {//relacionada a agente_transito
         try {
             TipoPlacaList = new ArrayList<TipoPlaca>();
             TipoPlacaList = em.createNamedQuery("TipoPlaca.findAll").getResultList();
@@ -147,6 +147,7 @@ public class RelacionesGeneralesDao {
         }
         return TipoPlacaList;
     }
+
     
     ///****************************Llenado de campos esquela **************************
     

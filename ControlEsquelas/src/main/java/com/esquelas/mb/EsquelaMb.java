@@ -97,14 +97,14 @@ public class EsquelaMb implements Serializable{
            
            esquela.setIdConductor(rgDao.idConductor(idEsquela));
            esquela.setPlaca(rgDao.idVehiculo(idEsquela));
-           esquela.setIdAgente(esquela.getIdAgente());
+           esquela.setIdAgente(rgDao.esquelaDatosPuros().getIdAgente());
            esquela.setCodigoFalta(esquela.getCodigoFalta()); //String
            esquela.setClasificacion(rgDao.idClasificacion(idEsquela));
            esquela.setFechaEsquela(esquela.getFechaEsquela()); //Date
            esquela.setLugarInfraccion(esquela.getLugarInfraccion()); //String
            esquela.setObservaciones(esquela.getObservaciones()); //String
            esquela.setTipoGravedad(esquela.getTipoGravedad());
-           esquela.setMontoPagar(esquela.getMontoPagar());
+           esquela.setMontoPagar(esquela.getMontoPagar()); //Double
            esquela.setEstado(esquela.getEstado());
            esquela.setIdDepartamento(esquela.getIdDepartamento());
            esquela.setIdDecomiso(esquela.getIdDecomiso());
