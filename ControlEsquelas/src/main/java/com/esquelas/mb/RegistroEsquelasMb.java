@@ -5,7 +5,13 @@
  */
 package com.esquelas.mb;
 
+import com.esquelas.entities.Clasificacion;
+import com.esquelas.entities.Decomiso;
+import com.esquelas.entities.Departamento;
 import com.esquelas.entities.Esquela;
+import com.esquelas.entities.Estado;
+import com.esquelas.entities.Otros;
+import com.esquelas.entities.TipoGravedad;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -19,6 +25,13 @@ import javax.faces.bean.ViewScoped;
 public class RegistroEsquelasMb {
     
     private Esquela esquela;
-    private List<Esquela> esquelaList; 
+    private List<Esquela> esquelaList; //mostrar de esquelas
+    
+    private List<Estado> estadoList;
+    private List<Departamento> departamentoList;
+    private List<TipoGravedad> tipoGravedadList;
+    private List<Decomiso> DecomisoList;
+    private List<Otros> OtrosList;
+    private List<Clasificacion> clasificacionList;
     
 }
