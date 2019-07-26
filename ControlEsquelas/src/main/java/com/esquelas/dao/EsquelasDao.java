@@ -27,7 +27,15 @@ public class EsquelasDao {
     public List<Esquela> listadoEsquelasNit(){
         listEsquelaNit = new ArrayList<>();
         
-        listEsquelaNit = em.createNativeQuery("", Esquela.class).getResultList();
+        listEsquelaNit = em.createNamedQuery("Esquela.findByLicencia", Esquela.class).getResultList();
+        
+        return listEsquelaNit;
+    }
+    
+    public List<Esquela> listadoEsquelasDUI(){
+        listEsquelaNit = new ArrayList<>();
+        
+        listEsquelaNit = em.createNamedQuery("Esquela.findByLicencia", Esquela.class).getResultList();
         
         return listEsquelaNit;
     }
