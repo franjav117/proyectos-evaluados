@@ -126,5 +126,48 @@ public class EsquelaMb implements Serializable{
     }
     //Ni siquiera lo volteen a ver ****************************************************
     //Continuan los metodos de actualizar *********************************************
+
+    public List<Esquela> getListEsquela() {
+        return listEsquela;
+    }
+
+    public void setListEsquela(List<Esquela> listEsquela) {
+        this.listEsquela = listEsquela;
+    }
+
+    public Esquela getEsquela() {
+        return esquela;
+    }
+
+    public void setEsquela(Esquela esquela) {
+        this.esquela = esquela;
+    }
+
+    public Integer getIdEsquela() {
+        return idEsquela;
+    }
+
+    public void setIdEsquela(Integer idEsquela) {
+        this.idEsquela = idEsquela;
+    }
+
+    public Integer getIdConductor() {
+        return idConductor;
+    }
+
+    public void setIdConductor(Integer idConductor) {
+        this.idConductor = idConductor;
+    }
+
+    public Conductor getConductor() {
+        return conductor;
+    }
+
+    public void setConductor(Conductor conductor) {
+        this.conductor = conductor;
+    }
+    
+    
+    
     
 }
