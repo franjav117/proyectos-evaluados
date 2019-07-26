@@ -34,6 +34,8 @@ public class EsquelaMb implements Serializable{
        listEsquela = new ArrayList<>();
     }
     
+    //*********************************Metodos para Leer *************************
+    
     public void listadoEsquelaNit(String licencia){
         Conductor c = new Conductor();
         c.setLicencia(licencia);
@@ -75,4 +77,7 @@ public class EsquelaMb implements Serializable{
             e.printStackTrace();
         }
     }
+    
+    
+    //*********************************Metodos para Actualizar *************************
 }
