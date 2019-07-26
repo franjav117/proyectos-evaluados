@@ -195,4 +195,15 @@ public class RelacionesGeneralesDao {
         return obj;
     }
     
+    public TipoGravedad idTipoGravedad(Integer esq){
+        TipoGravedad obj = new TipoGravedad();
+        try {
+            obj =  (TipoGravedad) em.createNativeQuery("Select placa from esquela where id_esquela = "+esq+"").getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("DAO id Gravedad "+obj.getIdGravedad());
+        return obj;
+    }
+    
 }
