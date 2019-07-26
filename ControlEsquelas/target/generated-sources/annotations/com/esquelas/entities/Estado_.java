@@ -7,11 +7,11 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2019-07-26T10:20:43")
-@StaticMetamodel(Otros.class)
-public class Otros_ { 
+@StaticMetamodel(Estado.class)
+public class Estado_ { 
 
-    public static volatile ListAttribute<Otros, Esquela> esquelaList;
-    public static volatile SingularAttribute<Otros, String> especificacion;
-    public static volatile SingularAttribute<Otros, Integer> idOtro;
+    public static volatile SingularAttribute<Estado, Integer> idEstado;
+    public static volatile SingularAttribute<Estado, String> estadoMulta;
+    public static volatile ListAttribute<Estado, Esquela> esquelaList;
 
 }
