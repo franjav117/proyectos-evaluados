@@ -84,9 +84,9 @@ public class Vehiculo implements Serializable {
     @JoinColumn(name = "id_persona", referencedColumnName = "id_persona")
     @ManyToOne(optional = false)
     private Persona idPersona;
-    @JoinColumn(name = "tipo_placa", referencedColumnName = "id_tipo_placa")
+    @JoinColumn(name = "tipo_placa", referencedColumnName = "id_tipo_matricula")
     @ManyToOne
-    private TipoPlaca tipoPlaca;
+    private TipoMatricula tipoPlaca;
 
     public Vehiculo() {
     }
@@ -191,11 +191,11 @@ public class Vehiculo implements Serializable {
         this.idPersona = idPersona;
     }
 
-    public TipoPlaca getTipoPlaca() {
+    public TipoMatricula getTipoPlaca() {
         return tipoPlaca;
     }
 
-    public void setTipoPlaca(TipoPlaca tipoPlaca) {
+    public void setTipoPlaca(TipoMatricula tipoPlaca) {
         this.tipoPlaca = tipoPlaca;
     }
 
