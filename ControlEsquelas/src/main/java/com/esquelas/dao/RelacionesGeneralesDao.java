@@ -150,7 +150,6 @@ public class RelacionesGeneralesDao {
 
     
     ///****************************Llenado de campos esquela **************************
-    
     public Conductor idConductor(Integer esq){ //Integer dentro de obj 
         Conductor obj = new Conductor();
         try {
@@ -158,11 +157,10 @@ public class RelacionesGeneralesDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("DAO id Conductor "+obj.getIdConductor());
+        System.out.println("DAO id Conductor "+obj.getIdConductor() +" "+obj.getIdPersona().getN1Nombre() +" "+ obj.getIdPersona().getA1Apellido());
         return obj;
     }
-    
-    
+
     public Vehiculo idVehiculo(Integer esq){ //Integer dentro de obj 
         Vehiculo obj = new Vehiculo();
         try {
@@ -170,41 +168,96 @@ public class RelacionesGeneralesDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("DAO id Vehiculo "+obj.getIdVehiculo());
+        System.out.println("DAO id Vehiculo "+obj.getIdVehiculo() +" número de placa "+ obj.getNumeroPlaca());
         return obj;
     }
     
     public AgenteTransito idAgente(Integer esq){
         AgenteTransito obj = new AgenteTransito();
         try {
-            obj =  (AgenteTransito) em.createNativeQuery("Select placa from esquela where id_esquela = "+esq+"").getSingleResult();
+            obj =  (AgenteTransito) em.createNativeQuery("Select id_agente from esquela where id_esquela = "+esq+"").getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("DAO id Agente "+obj.getIdAgente());
+        System.out.println("DAO id Agente "+obj.getIdAgente() + obj.getIdPersona().getN1Nombre()+" "+ obj.getIdPersona().getA1Apellido());
         return obj;
     }
     
     public Clasificacion idClasificacion(Integer esq){
         Clasificacion obj = new Clasificacion();
         try {
-            obj =  (Clasificacion) em.createNativeQuery("Select placa from esquela where id_esquela = "+esq+"").getSingleResult();
+            obj =  (Clasificacion) em.createNativeQuery("Select clasificacion from esquela where id_esquela = "+esq+"").getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("DAO id Clasificacion "+obj.getIdClasificacion());
+        System.out.println("DAO id Clasificacion "+obj.getIdClasificacion() + " " +obj.getClasificacion());
         return obj;
     }
     
     public TipoGravedad idTipoGravedad(Integer esq){
         TipoGravedad obj = new TipoGravedad();
         try {
-            obj =  (TipoGravedad) em.createNativeQuery("Select placa from esquela where id_esquela = "+esq+"").getSingleResult();
+            obj =  (TipoGravedad) em.createNativeQuery("Select tipo_gravedad from esquela where id_esquela = "+esq+"").getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("DAO id Gravedad "+obj.getIdGravedad());
+        System.out.println("DAO id Gravedad "+obj.getIdGravedad() + " " + obj.getGravedad());
         return obj;
     }
     
+    public Esquela esquelaDatosPuros(Integer esq){
+        Esquela datos = new Esquela();
+        try{
+        datos = (Esquela) em.createNamedQuery("Select * from esquela where id_esquela = "+esq+"").getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return datos;
+    }
+    
+    public Estado idEstado(Integer esq){
+        Estado obj = new Estado();
+        try {
+            obj =  (Estado) em.createNativeQuery("Select estado from esquela where id_esquela = "+esq+"").getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("DAO id Estado "+obj.getIdEstado() + " " +obj.getEstadoMulta());
+        return obj;
+    }
+    
+    public Departamento idDepartamento(Integer esq){
+        Departamento obj = new Departamento();
+        try {
+            obj =  (Departamento) em.createNativeQuery("Select id_departamento from esquela where id_esquela = "+esq+"").getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("DAO id Departamento "+obj.getDepartamento() + " " + obj.getDepartamento());
+        return obj;
+    }
+    
+    public Decomiso idDecomiso(Integer esq){
+        Decomiso obj = new Decomiso();
+        try {
+            obj =  (Decomiso) em.createNativeQuery("Select id_departamento from esquela where id_esquela = "+esq+"").getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("DAO id Decomiso "+obj.getIdDecomiso() + " " + obj.getDecomiso());
+        return obj;
+    }
+    
+    public Otros idOtros(Integer esq){
+        Otros obj = new Otros();
+        try {
+            obj =  (Otros) em.createNativeQuery("Select id_departamento from esquela where id_esquela = "+esq+"").getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("DAO id Otros "+obj.getIdOtro() + " " + obj.getEspecificacion());
+        return obj;
+    }
+    
+    //**********************************Final de Llenado de campos esquela **************************
 }
