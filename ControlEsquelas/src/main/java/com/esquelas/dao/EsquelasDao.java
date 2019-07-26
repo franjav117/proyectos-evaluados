@@ -27,6 +27,7 @@ public class EsquelasDao {
     
     private List<Esquela> listEsquelaNit;
     
+    
     public List<Esquela> listadoEsquelasNit(Conductor c){
         listEsquelaNit = new ArrayList<>();
         try {
@@ -68,5 +69,6 @@ public class EsquelasDao {
         }
         return listEsquelaNit;
     }
+    
     
 }
