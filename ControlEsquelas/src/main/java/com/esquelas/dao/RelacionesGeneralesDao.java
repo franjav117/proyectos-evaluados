@@ -150,7 +150,6 @@ public class RelacionesGeneralesDao {
 
     
     ///****************************Llenado de campos esquela **************************
-    
     public Conductor idConductor(Integer esq){ //Integer dentro de obj 
         Conductor obj = new Conductor();
         try {
@@ -161,8 +160,7 @@ public class RelacionesGeneralesDao {
         System.out.println("DAO id Conductor "+obj.getIdConductor() +" "+obj.getIdPersona().getN1Nombre() +" "+ obj.getIdPersona().getA1Apellido());
         return obj;
     }
-    
-    
+
     public Vehiculo idVehiculo(Integer esq){ //Integer dentro de obj 
         Vehiculo obj = new Vehiculo();
         try {
@@ -260,4 +258,6 @@ public class RelacionesGeneralesDao {
         System.out.println("DAO id Otros "+obj.getIdOtro() + " " + obj.getEspecificacion());
         return obj;
     }
+    
+    //**********************************Final de Llenado de campos esquela **************************
 }
