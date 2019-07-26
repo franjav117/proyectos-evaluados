@@ -5,7 +5,6 @@
  */
 package com.esquelas.dao;
 
-import com.esquelas.entities.Cajero;
 import com.esquelas.entities.ClaseLicencia;
 import com.esquelas.entities.Clasificacion;
 import com.esquelas.entities.Decomiso;
@@ -30,8 +29,8 @@ import javax.persistence.Persistence;
 @Stateless
 public class RelacionesGeneralesDao {
 
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
-    private EntityManager em = emf.createEntityManager();
+    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
+    private final EntityManager em = emf.createEntityManager();
 
     private List<Rol> rolList;//1
     private List<ClaseLicencia> ClaseLisenciaList;//2

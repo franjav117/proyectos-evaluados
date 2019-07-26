@@ -20,8 +20,8 @@ import javax.persistence.Persistence;
 @Stateless
 public class EsquelaDao {
 
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
-    private EntityManager em = emf.createEntityManager();
+    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
+    private final EntityManager em = emf.createEntityManager();
 
     private List<Esquela> esquelasList;
     private Esquela esquelaDao;
