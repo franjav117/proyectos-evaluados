@@ -103,6 +103,10 @@ public class RegistroEsquelasMb {
         rgd1 = new TemporalDao();
     }
     
+        public void guardarEsquela() {
+            
+        }
+    
     public void obtenerEstado() {//1
         estadoList = rgd.obtenerEstado();
         for (Estado e : estadoList) {
@@ -145,11 +149,290 @@ public class RegistroEsquelasMb {
         }
     }
     
-    public void obtenerConductor(){
+    public void obtenerConductor(){//7
         ConductorList = rgd1.obtenerConductor();
         for(Conductor con : ConductorList){
             ConductorSelect.put(String.valueOf(con.getIdPersona()), String.valueOf(con.getIdConductor()));
         }
     }
+    
+    public void obtenerAgenteTransito(){//8
+        AgenteTransitoList = rgd1.obtenerAgenteTransito();
+        for(AgenteTransito at : AgenteTransitoList){
+            AgenteTransitoSelect.put(String.valueOf(at.getNumPlaca()), String.valueOf(at.getIdAgente()));
+        }
+    }
+    
+    public void obtenerVehiculo(){//9
+        vehiculoList = rgd1.obtenerVehiculo();
+        for(Vehiculo v : vehiculoList){
+            AgenteTransitoSelect.put(v.getNumeroPlaca(), String.valueOf(v.getIdVehiculo()));
+        }
+    }
+
+    public Esquela getEsquela() {
+        return esquela;
+    }
+
+    public void setEsquela(Esquela esquela) {
+        this.esquela = esquela;
+    }
+
+    public List<Esquela> getEsquelaList() {
+        return esquelaList;
+    }
+
+    public void setEsquelaList(List<Esquela> esquelaList) {
+        this.esquelaList = esquelaList;
+    }
+
+    public List<Estado> getEstadoList() {
+        return estadoList;
+    }
+
+    public void setEstadoList(List<Estado> estadoList) {
+        this.estadoList = estadoList;
+    }
+
+    public List<Departamento> getDepartamentoList() {
+        return departamentoList;
+    }
+
+    public void setDepartamentoList(List<Departamento> departamentoList) {
+        this.departamentoList = departamentoList;
+    }
+
+    public List<TipoGravedad> getTipoGravedadList() {
+        return tipoGravedadList;
+    }
+
+    public void setTipoGravedadList(List<TipoGravedad> tipoGravedadList) {
+        this.tipoGravedadList = tipoGravedadList;
+    }
+
+    public List<Decomiso> getDecomisoList() {
+        return DecomisoList;
+    }
+
+    public void setDecomisoList(List<Decomiso> DecomisoList) {
+        this.DecomisoList = DecomisoList;
+    }
+
+    public List<Otros> getOtrosList() {
+        return OtrosList;
+    }
+
+    public void setOtrosList(List<Otros> OtrosList) {
+        this.OtrosList = OtrosList;
+    }
+
+    public List<Clasificacion> getClasificacionList() {
+        return clasificacionList;
+    }
+
+    public void setClasificacionList(List<Clasificacion> clasificacionList) {
+        this.clasificacionList = clasificacionList;
+    }
+
+    public List<Conductor> getConductorList() {
+        return ConductorList;
+    }
+
+    public void setConductorList(List<Conductor> ConductorList) {
+        this.ConductorList = ConductorList;
+    }
+
+    public List<AgenteTransito> getAgenteTransitoList() {
+        return AgenteTransitoList;
+    }
+
+    public void setAgenteTransitoList(List<AgenteTransito> AgenteTransitoList) {
+        this.AgenteTransitoList = AgenteTransitoList;
+    }
+
+    public List<Vehiculo> getVehiculoList() {
+        return vehiculoList;
+    }
+
+    public void setVehiculoList(List<Vehiculo> vehiculoList) {
+        this.vehiculoList = vehiculoList;
+    }
+
+    public Map<String, String> getEstadoSelect() {
+        return EstadoSelect;
+    }
+
+    public void setEstadoSelect(Map<String, String> EstadoSelect) {
+        this.EstadoSelect = EstadoSelect;
+    }
+
+    public Map<String, String> getDepartamentoSelect() {
+        return DepartamentoSelect;
+    }
+
+    public void setDepartamentoSelect(Map<String, String> DepartamentoSelect) {
+        this.DepartamentoSelect = DepartamentoSelect;
+    }
+
+    public Map<String, String> getTipoGravedadSelect() {
+        return TipoGravedadSelect;
+    }
+
+    public void setTipoGravedadSelect(Map<String, String> TipoGravedadSelect) {
+        this.TipoGravedadSelect = TipoGravedadSelect;
+    }
+
+    public Map<String, String> getDecomisoSelect() {
+        return DecomisoSelect;
+    }
+
+    public void setDecomisoSelect(Map<String, String> DecomisoSelect) {
+        this.DecomisoSelect = DecomisoSelect;
+    }
+
+    public Map<String, String> getOtrosSelect() {
+        return OtrosSelect;
+    }
+
+    public void setOtrosSelect(Map<String, String> OtrosSelect) {
+        this.OtrosSelect = OtrosSelect;
+    }
+
+    public Map<String, String> getClasificacionSelect() {
+        return ClasificacionSelect;
+    }
+
+    public void setClasificacionSelect(Map<String, String> ClasificacionSelect) {
+        this.ClasificacionSelect = ClasificacionSelect;
+    }
+
+    public Map<String, String> getConductorSelect() {
+        return ConductorSelect;
+    }
+
+    public void setConductorSelect(Map<String, String> ConductorSelect) {
+        this.ConductorSelect = ConductorSelect;
+    }
+
+    public Map<String, String> getAgenteTransitoSelect() {
+        return AgenteTransitoSelect;
+    }
+
+    public void setAgenteTransitoSelect(Map<String, String> AgenteTransitoSelect) {
+        this.AgenteTransitoSelect = AgenteTransitoSelect;
+    }
+
+    public Map<String, String> getVehiculoSelect() {
+        return VehiculoSelect;
+    }
+
+    public void setVehiculoSelect(Map<String, String> VehiculoSelect) {
+        this.VehiculoSelect = VehiculoSelect;
+    }
+
+    public Integer getEstadoview() {
+        return Estadoview;
+    }
+
+    public void setEstadoview(Integer Estadoview) {
+        this.Estadoview = Estadoview;
+    }
+
+    public Integer getDepartamentoview() {
+        return Departamentoview;
+    }
+
+    public void setDepartamentoview(Integer Departamentoview) {
+        this.Departamentoview = Departamentoview;
+    }
+
+    public Integer getTipoGravedadview() {
+        return TipoGravedadview;
+    }
+
+    public void setTipoGravedadview(Integer TipoGravedadview) {
+        this.TipoGravedadview = TipoGravedadview;
+    }
+
+    public Integer getDecomisoview() {
+        return Decomisoview;
+    }
+
+    public void setDecomisoview(Integer Decomisoview) {
+        this.Decomisoview = Decomisoview;
+    }
+
+    public Integer getOtrosview() {
+        return Otrosview;
+    }
+
+    public void setOtrosview(Integer Otrosview) {
+        this.Otrosview = Otrosview;
+    }
+
+    public Integer getClasificacionview() {
+        return Clasificacionview;
+    }
+
+    public void setClasificacionview(Integer Clasificacionview) {
+        this.Clasificacionview = Clasificacionview;
+    }
+
+    public Integer getConductorview() {
+        return Conductorview;
+    }
+
+    public void setConductorview(Integer Conductorview) {
+        this.Conductorview = Conductorview;
+    }
+
+    public Integer getAgenteTransitoview() {
+        return AgenteTransitoview;
+    }
+
+    public void setAgenteTransitoview(Integer AgenteTransitoview) {
+        this.AgenteTransitoview = AgenteTransitoview;
+    }
+
+    public Integer getVehiculoview() {
+        return Vehiculoview;
+    }
+
+    public void setVehiculoview(Integer Vehiculoview) {
+        this.Vehiculoview = Vehiculoview;
+    }
+
+    public GenericDao getGd() {
+        return gd;
+    }
+
+    public void setGd(GenericDao gd) {
+        this.gd = gd;
+    }
+
+    public EsquelaDao getEd() {
+        return ed;
+    }
+
+    public void setEd(EsquelaDao ed) {
+        this.ed = ed;
+    }
+
+    public RelacionesGeneralesDao getRgd() {
+        return rgd;
+    }
+
+    public void setRgd(RelacionesGeneralesDao rgd) {
+        this.rgd = rgd;
+    }
+
+    public TemporalDao getRgd1() {
+        return rgd1;
+    }
+
+    public void setRgd1(TemporalDao rgd1) {
+        this.rgd1 = rgd1;
+    }
+    
     
 }
