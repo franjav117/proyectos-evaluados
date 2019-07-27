@@ -63,7 +63,7 @@ public class EsquelasDao {
     public List<Esquela> listadoEsquelasPlaca(Vehiculo v){
         listEsquelaNit = new ArrayList<>();
         try{
-        listEsquelaNit = em.createNamedQuery("Esquela.findByDUILicencia", Esquela.class).setParameter("placa", v.getNumeroPlaca()).getResultList();
+        listEsquelaNit = em.createNamedQuery("Esquela.findByPlaca", Esquela.class).setParameter("placa", v.getNumeroPlaca()).getResultList();
         } catch (Exception e) {
             e.printStackTrace();
         }

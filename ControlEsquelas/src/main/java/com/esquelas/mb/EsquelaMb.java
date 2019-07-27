@@ -13,7 +13,6 @@ import com.esquelas.entities.Esquela;
 import com.esquelas.entities.Estado;
 import com.esquelas.entities.Persona;
 import com.esquelas.entities.Vehiculo;
-import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +30,7 @@ public class EsquelaMb implements Serializable{
     private RelacionesGeneralesDao rgDao;
     private List<Esquela> listEsquela;
     private Esquela esquela;
+    private String licencia;
     
     @PostConstruct
     public void init(){
@@ -40,9 +40,19 @@ public class EsquelaMb implements Serializable{
        esquela = new Esquela();
        conductor = new Conductor();
        rgDao = new RelacionesGeneralesDao();
+       Test();
     }
     
     //*********************************Metodos para Leer *************************
+    
+    public void Test(){
+       Integer i= rgDao.Test();
+        if (i != 0) {
+            System.out.println("*********************Conexion Exitosa*********************");
+        } else {
+            System.out.println("*********************NO HAY CONEXION :( *********************");
+        }
+    }
     
     public void listadoEsquelaNit(String licencia){
         Conductor c = new Conductor();
@@ -165,6 +175,14 @@ public class EsquelaMb implements Serializable{
 
     public void setConductor(Conductor conductor) {
         this.conductor = conductor;
+    }
+
+    public String getLicencia() {
+        return licencia;
+    }
+
+    public void setLicencia(String licencia) {
+        this.licencia = licencia;
     }
     
     

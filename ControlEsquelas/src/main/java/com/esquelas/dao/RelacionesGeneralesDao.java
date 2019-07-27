@@ -35,6 +35,7 @@ import javax.persistence.Persistence;
 public class RelacionesGeneralesDao {
 
     private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
+    //esquelasPU com.esquelas_ControlEsquelas_war_1.0_AlphaPU
     private final EntityManager em = emf.createEntityManager();
 
     private List<Rol> rolList;//1
@@ -150,6 +151,19 @@ public class RelacionesGeneralesDao {
 
     
     ///****************************Llenado de campos esquela **************************
+    public Integer Test(){
+        Integer i = 0;
+        List<Esquela> es = new ArrayList<>();
+        try {
+            es = em.createNamedQuery("Esquela.findAll", Esquela.class).getResultList();
+            i = es.size();
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        }
+        return i;
+    }
+    
     public Conductor idConductor(Integer esq){ //Integer dentro de obj 
         Conductor obj = new Conductor();
         try {
