@@ -13,7 +13,6 @@ import com.esquelas.entities.Esquela;
 import com.esquelas.entities.Estado;
 import com.esquelas.entities.Persona;
 import com.esquelas.entities.Vehiculo;
-import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +30,7 @@ public class EsquelaMb implements Serializable{
     private RelacionesGeneralesDao rgDao;
     private List<Esquela> listEsquela;
     private Esquela esquela;
+    private String licencia;
     
     @PostConstruct
     public void init(){
@@ -40,15 +40,28 @@ public class EsquelaMb implements Serializable{
        esquela = new Esquela();
        conductor = new Conductor();
        rgDao = new RelacionesGeneralesDao();
+       Test();
     }
     
     //*********************************Metodos para Leer *************************
     
-    public void listadoEsquelaNit(String licencia){
+    public void Test(){
+       Integer i= rgDao.Test();
+        if (i != 0) {
+            System.out.println("*********************Conexion Exitosa NPI del por qué*********************");
+        } else {
+            System.out.println("*********************NO HAY CONEXION :( *********************");
+        }
+    }
+    
+    public void listadoEsquelaNit(){
         Conductor c = new Conductor();
         c.setLicencia(licencia);
         try {
             listEsquela = esquDAO.listadoEsquelasNit(c);
+            System.out.println("Licencia de la vista "+c.getLicencia());
+            System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " +listEsquela.size());
+            System.out.println("**********Ya no lo toqués********");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -59,6 +72,8 @@ public class EsquelaMb implements Serializable{
         p.setDui(dui);
         try {
             listEsquela = esquDAO.listadoEsquelasDUI(p);
+            System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " +listEsquela.size());
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -71,6 +86,8 @@ public class EsquelaMb implements Serializable{
         c.setLicencia(licencia);
         try {
             listEsquela = esquDAO.listadoEsquelasDUILicencia(p, c);
+            System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " +listEsquela.size());
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -81,6 +98,8 @@ public class EsquelaMb implements Serializable{
         v.setNumeroPlaca(placa);
         try {
             listEsquela = esquDAO.listadoEsquelasPlaca(v);
+            System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " +listEsquela.size());
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -165,6 +184,14 @@ public class EsquelaMb implements Serializable{
 
     public void setConductor(Conductor conductor) {
         this.conductor = conductor;
+    }
+
+    public String getLicencia() {
+        return licencia;
+    }
+
+    public void setLicencia(String licencia) {
+        this.licencia = licencia;
     }
     
     

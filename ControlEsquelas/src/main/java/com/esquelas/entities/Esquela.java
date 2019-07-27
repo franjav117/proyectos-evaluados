@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author rogelio.mejiausam
+ * @author melvin.madridusam
  */
 @Entity
 @Table(name = "esquela")
@@ -34,10 +34,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Esquela.findAll", query = "SELECT e FROM Esquela e")
     , @NamedQuery(name = "Esquela.findByIdEsquela", query = "SELECT e FROM Esquela e WHERE e.idEsquela = :idEsquela")
-    ,  @NamedQuery(name = "Esquela.findByLicencia", query = "SELECT e FROM Esquela e WHERE e.idConductor.licencia = :licencia")
+    ,  @NamedQuery(name = "Esquela.findByLicencia", query = "SELECT e FROM Esquela e WHERE e.idConductor.idConductor = :licencia")
     , @NamedQuery(name = "Esquela.findByDUI", query = "SELECT e FROM Esquela e WHERE e.idConductor.idPersona.dui = :dui")
     , @NamedQuery(name = "Esquela.findByDUILicencia", query = "SELECT e FROM Esquela e WHERE e.idConductor.idPersona.dui = :dui and e.idConductor.licencia = :licencia")
-    , @NamedQuery(name = "Esquela.findByDUILicencia", query = "SELECT e FROM Esquela e WHERE e.placa.numeroPlaca = :placa")
+    , @NamedQuery(name = "Esquela.findByPlaca", query = "SELECT e FROM Esquela e WHERE e.placa.numeroPlaca = :placa")
+=======
+>>>>>>> develop
     , @NamedQuery(name = "Esquela.findByCodigoFalta", query = "SELECT e FROM Esquela e WHERE e.codigoFalta = :codigoFalta")
     , @NamedQuery(name = "Esquela.findByFechaEsquela", query = "SELECT e FROM Esquela e WHERE e.fechaEsquela = :fechaEsquela")
     , @NamedQuery(name = "Esquela.findByLugarInfraccion", query = "SELECT e FROM Esquela e WHERE e.lugarInfraccion = :lugarInfraccion")

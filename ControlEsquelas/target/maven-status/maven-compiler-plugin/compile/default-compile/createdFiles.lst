@@ -13,7 +13,10 @@ com\esquelas\dao\GenericDao.class
 com\esquelas\entities\ClaseLicencia.class
 com\esquelas\entities\ClaseLicencia_.class
 com\esquelas\entities\Otros.class
+<<<<<<< HEAD
 com\esquelas\mb\RegistroEsquelasMb.class
+=======
+>>>>>>> develop
 com\esquelas\entities\Esquela_.class
 com\esquelas\entities\Vehiculo_.class
 com\esquelas\entities\TipoMatricula.class
@@ -29,7 +32,10 @@ com\esquelas\dao\EsquelaDao.class
 com\esquelas\dao\RelacionesGeneralesDao.class
 com\esquelas\entities\Clasificacion.class
 com\esquelas\entities\Cajero_.class
+<<<<<<< HEAD
 com\esquelas\dao\TemporalDao.class
+=======
+>>>>>>> develop
 com\esquelas\entities\Departamento.class
 com\esquelas\entities\Cajero.class
 com\esquelas\entities\Estado_.class

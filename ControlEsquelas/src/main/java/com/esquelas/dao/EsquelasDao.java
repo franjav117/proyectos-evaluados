@@ -30,11 +30,16 @@ public class EsquelasDao {
     
     public List<Esquela> listadoEsquelasNit(Conductor c){
         listEsquelaNit = new ArrayList<>();
+        String lic = c.getLicencia();
         try {
-          listEsquelaNit = em.createNamedQuery("Esquela.findByLicencia", Esquela.class).setParameter("licencia", c.getLicencia()).getResultList();
+            listEsquelaNit = em.createNativeQuery("select * from esquela e inner join conductor c on c.id_conductor = e.id_conductor where licencia = '"+c.getLicencia()+"'").getResultList();
+            System.out.println("**** Lista size " + listEsquelaNit.size());
+            System.out.println("**** select * from esquela e inner join conductor c on c.id_conductor = e.id_conductor where licencia = '"+lic+"'");
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
+        listEsquelaNit = em.createNamedQuery("Esquela.findByLicencia", Esquela.class).setParameter("licencia", con.getLicencia()).getResultList();
         
         return listEsquelaNit;
     }
@@ -63,7 +68,7 @@ public class EsquelasDao {
     public List<Esquela> listadoEsquelasPlaca(Vehiculo v){
         listEsquelaNit = new ArrayList<>();
         try{
-        listEsquelaNit = em.createNamedQuery("Esquela.findByDUILicencia", Esquela.class).setParameter("placa", v.getNumeroPlaca()).getResultList();
+        listEsquelaNit = em.createNamedQuery("Esquela.findByPlaca", Esquela.class).setParameter("placa", v.getNumeroPlaca()).getResultList();
         } catch (Exception e) {
             e.printStackTrace();
         }
