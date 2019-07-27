@@ -27,7 +27,8 @@ public class EsquelasDao {
     
     private List<Esquela> listEsquelaNit;
     
-    public List<Esquela> listadoEsquelasNit(Conductor con ){
+    
+    public List<Esquela> listadoEsquelasNit(Conductor c){
         listEsquelaNit = new ArrayList<>();
         try {
           listEsquelaNit = em.createNamedQuery("Esquela.findByLicencia", Esquela.class).setParameter("licencia", c.getLicencia()).getResultList();
@@ -70,5 +71,6 @@ public class EsquelasDao {
         }
         return listEsquelaNit;
     }
+    
     
 }
