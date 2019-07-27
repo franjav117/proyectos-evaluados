@@ -10,6 +10,7 @@ import com.esquelas.dao.GenericDao;
 import com.esquelas.dao.RelacionesGeneralesDao;
 import com.esquelas.entities.Conductor;
 import com.esquelas.entities.Esquela;
+import com.esquelas.entities.Estado;
 import com.esquelas.entities.Persona;
 import com.esquelas.entities.Vehiculo;
 import com.sun.org.apache.bcel.internal.generic.AALOAD;
@@ -91,10 +92,16 @@ public class EsquelaMb implements Serializable{
     private Integer idConductor;
     private Conductor conductor;
     
+    //Este método ni me lo vayan a tocar  **********************************************
     public void CambiarEstadoPago(){
-        
+        Estado estado = new Estado();
+        if(rgDao.idEstado(idEsquela).getIdEstado() == 1){
+           estado.setIdEstado(2); 
+        }else{
+            estado.setIdEstado(1);
+        }
+
         try {
-           
            esquela.setIdConductor(rgDao.idConductor(idEsquela));
            esquela.setPlaca(rgDao.idVehiculo(idEsquela));
            esquela.setIdAgente(rgDao.esquelaDatosPuros(idEsquela).getIdAgente());
@@ -105,16 +112,62 @@ public class EsquelaMb implements Serializable{
            esquela.setObservaciones(rgDao.esquelaDatosPuros(idEsquela).getObservaciones()); //String
            esquela.setTipoGravedad(rgDao.idTipoGravedad(idEsquela));
            esquela.setMontoPagar(rgDao.esquelaDatosPuros(idEsquela).getMontoPagar()); //Double
-           esquela.setEstado(rgDao.idEstado(idEsquela));
+           esquela.setEstado(estado);
            esquela.setIdDepartamento(rgDao.idDepartamento(idEsquela));
            esquela.setIdDecomiso(rgDao.idDecomiso(idEsquela));
            esquela.setIdOtros(rgDao.idOtros(idEsquela));
            esquela.setIdEsquela(idEsquela);
-           
-           gd.actualizarEntidad(esquela);
+           //Datos seteados
+           gd.actualizarEntidad(esquela); //Envio a actualizar
            esquela = new Esquela();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    //Ni siquiera lo volteen a ver ****************************************************
+    //Continuan los metodos de actualizar *********************************************
+
+    public List<Esquela> getListEsquela() {
+        return listEsquela;
+    }
+
+    public void setListEsquela(List<Esquela> listEsquela) {
+        this.listEsquela = listEsquela;
+    }
+
+    public Esquela getEsquela() {
+        return esquela;
+    }
+
+    public void setEsquela(Esquela esquela) {
+        this.esquela = esquela;
+    }
+
+    public Integer getIdEsquela() {
+        return idEsquela;
+    }
+
+    public void setIdEsquela(Integer idEsquela) {
+        this.idEsquela = idEsquela;
+    }
+
+    public Integer getIdConductor() {
+        return idConductor;
+    }
+
+    public void setIdConductor(Integer idConductor) {
+        this.idConductor = idConductor;
+    }
+
+    public Conductor getConductor() {
+        return conductor;
+    }
+
+    public void setConductor(Conductor conductor) {
+        this.conductor = conductor;
+    }
+    
+    
+    
+    
 }

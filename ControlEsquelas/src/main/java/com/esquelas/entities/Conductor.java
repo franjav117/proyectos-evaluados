@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author rogelio.mejiausam
+ * @author melvin.madridusam
  */
 @Entity
 @Table(name = "conductor")
