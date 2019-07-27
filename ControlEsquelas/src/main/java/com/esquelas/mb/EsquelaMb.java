@@ -48,17 +48,20 @@ public class EsquelaMb implements Serializable{
     public void Test(){
        Integer i= rgDao.Test();
         if (i != 0) {
-            System.out.println("*********************Conexion Exitosa*********************");
+            System.out.println("*********************Conexion Exitosa NPI del por qué*********************");
         } else {
             System.out.println("*********************NO HAY CONEXION :( *********************");
         }
     }
     
-    public void listadoEsquelaNit(String licencia){
+    public void listadoEsquelaNit(){
         Conductor c = new Conductor();
         c.setLicencia(licencia);
         try {
             listEsquela = esquDAO.listadoEsquelasNit(c);
+            System.out.println("Licencia de la vista "+c.getLicencia());
+            System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " +listEsquela.size());
+            System.out.println("**********Ya no lo toqués********");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -69,6 +72,8 @@ public class EsquelaMb implements Serializable{
         p.setDui(dui);
         try {
             listEsquela = esquDAO.listadoEsquelasDUI(p);
+            System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " +listEsquela.size());
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -81,6 +86,8 @@ public class EsquelaMb implements Serializable{
         c.setLicencia(licencia);
         try {
             listEsquela = esquDAO.listadoEsquelasDUILicencia(p, c);
+            System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " +listEsquela.size());
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -91,6 +98,8 @@ public class EsquelaMb implements Serializable{
         v.setNumeroPlaca(placa);
         try {
             listEsquela = esquDAO.listadoEsquelasPlaca(v);
+            System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " +listEsquela.size());
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
