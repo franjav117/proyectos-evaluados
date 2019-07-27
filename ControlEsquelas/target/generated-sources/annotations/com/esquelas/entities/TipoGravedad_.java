@@ -6,15 +6,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-@Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2019-07-26T08:23:18")
-=======
-@Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2019-07-26T08:17:05")
->>>>>>> develop
-=======
-@Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2019-07-26T10:20:43")
->>>>>>> feature_rogelio
+@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2019-07-26T16:58:49")
 @StaticMetamodel(TipoGravedad.class)
 public class TipoGravedad_ { 
 

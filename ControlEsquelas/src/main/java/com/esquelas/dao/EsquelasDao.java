@@ -27,13 +27,15 @@ public class EsquelasDao {
     
     private List<Esquela> listEsquelaNit;
     
-    public List<Esquela> listadoEsquelasNit(Conductor c){
+    public List<Esquela> listadoEsquelasNit(Conductor con ){
         listEsquelaNit = new ArrayList<>();
         try {
           listEsquelaNit = em.createNamedQuery("Esquela.findByLicencia", Esquela.class).setParameter("licencia", c.getLicencia()).getResultList();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
+        listEsquelaNit = em.createNamedQuery("Esquela.findByLicencia", Esquela.class).setParameter("licencia", con.getLicencia()).getResultList();
         
         return listEsquelaNit;
     }

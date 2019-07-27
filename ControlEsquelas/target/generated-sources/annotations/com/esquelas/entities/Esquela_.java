@@ -8,20 +8,13 @@ import com.esquelas.entities.Departamento;
 import com.esquelas.entities.Estado;
 import com.esquelas.entities.Otros;
 import com.esquelas.entities.TipoGravedad;
+import com.esquelas.entities.Vehiculo;
 import java.util.Date;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-@Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2019-07-26T08:23:18")
-=======
-@Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2019-07-26T08:17:05")
->>>>>>> develop
-=======
-@Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2019-07-26T10:20:43")
->>>>>>> feature_rogelio
+@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2019-07-26T16:58:49")
 @StaticMetamodel(Esquela.class)
 public class Esquela_ { 
 
@@ -38,6 +31,7 @@ public class Esquela_ {
     public static volatile SingularAttribute<Esquela, String> observaciones;
     public static volatile SingularAttribute<Esquela, Clasificacion> clasificacion;
     public static volatile SingularAttribute<Esquela, TipoGravedad> tipoGravedad;
+    public static volatile SingularAttribute<Esquela, Vehiculo> placa;
     public static volatile SingularAttribute<Esquela, Decomiso> idDecomiso;
 
 }
