@@ -8,6 +8,7 @@
     <class>com.esquelas.entities.TipoGravedad</class>
     <class>com.esquelas.entities.ClaseLicencia</class>
     <class>com.esquelas.entities.Usuario</class>
+    <class>com.esquelas.entities.Esquela</class>
     <class>com.esquelas.entities.Otros</class>
     <class>com.esquelas.entities.Decomiso</class>
     <class>com.esquelas.entities.AgenteTransito</class>
@@ -18,7 +19,6 @@
     <class>com.esquelas.entities.Rol</class>
     <class>com.esquelas.entities.TipoPlaca</class>
     <class>com.esquelas.entities.Estado</class>
-    <class>com.esquelas.entities.Esquela</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/control_esquelas?zeroDateTimeBehavior=convertToNull"/>
