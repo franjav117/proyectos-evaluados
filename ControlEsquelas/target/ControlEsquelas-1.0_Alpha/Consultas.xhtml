@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:panelGrid columns="2">
+                <p:outputLabel value="Busqueda por Licencia"/>
+                <p:inputText value="#{consultaMb.licencia}"/>
+            </p:panelGrid>
+            <p:commandButton value="Consultar" action="#{consultaMb.esquelasXlicencia()}" update="form:p"/>
+            
+            <p:dataTable id="p" var="p" value="#{consultaMb.listConductor}" >
+                <p:column headerText="Id">
+                    <p:outputLabel value="#{p.idConductor}"/>
+                </p:column>
+                <p:column headerText="persona">
+                    <p:outputLabel value="#{p.idPersona.n1Nombre}"/>
+                </p:column>
+                <p:column headerText="licencia">
+                    <p:outputLabel value="#{p.licencia}"/>
+                </p:column>
+            </p:dataTable>
+            
+            
+            
+            <p:dataTable id="table" var="es" value="#{consultaMb.listEsId}" rows="6" paginator="true">
+                <p:column headerText="Id">
+                    <p:outputLabel value="#{es.idEsquela}"/>
+                </p:column>
+                <p:column headerText="Conductor">
+                    <p:outputLabel value="#{es.idConductor}"/>
+                </p:column>
+                <p:column headerText="Placa">
+                    <p:outputLabel value="#{es.placa}"/>
+                </p:column>
+                <p:column headerText="Agente">
+                    <p:outputLabel value="#{es.idAgente}"/>
+                </p:column>
+                <p:column headerText="Falta">
+                    <p:outputLabel value="#{es.codigoFalta}"/>
+                </p:column>
+                <p:column headerText="Clasificacion">
+                    <p:outputLabel value="#{es.clasificacion}"/>
+                </p:column>
+                <p:column headerText="Fecha">
+                    <p:outputLabel value="#{es.fechaEsquela}"/>
+                </p:column>
+                <p:column headerText="Lugar">
+                    <p:outputLabel value="#{es.lugarInfraccion}"/>
+                </p:column>
+                <p:column headerText="Observaciones">
+                    <p:outputLabel value="#{es.observaciones}"/>
+                </p:column>
+                <p:column headerText="Gravedad">
+                    <p:outputLabel value="#{es.tipoGravedad}"/>
+                </p:column>
+                <p:column headerText="Monto">
+                    <p:outputLabel value="#{es.montoPagar}"/>
+                </p:column>
+                <p:column headerText="Estado">
+                    <p:outputLabel value="#{es.estado}"/>
+                </p:column>
+                <p:column headerText="Departamento">
+                    <p:outputLabel value="#{es.idDepartamento}"/>
+                </p:column>
+                <p:column headerText="Decomiso">
+                    <p:outputLabel value="#{es.idDecomiso}"/>
+                </p:column>
+                <p:column headerText="Otros">
+                    <p:outputLabel value="#{es.idOtros}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
+
