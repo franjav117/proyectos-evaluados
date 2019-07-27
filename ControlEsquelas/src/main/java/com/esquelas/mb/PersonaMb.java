@@ -17,10 +17,10 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class PersonaMb {
     
-    @PostConstruct
-    public void init(){
-        
-    };
+//    @PostConstruct
+//    public void init(){
+//        
+//    };
     
     
     

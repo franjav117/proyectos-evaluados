@@ -16,9 +16,9 @@ and open the template in the editor.
     <h:body>
         <div>TODO write content</div>
         
-        <h:form>
-            <p:inputText />
-            <p:commandButton value="Check" />
-        </h:form>
+    <h:form>
+        <p:inputText value="#{esquelaMb.licencia}"/>
+        <p:commandButton value="Check" action="#{esquelaMb.listadoEsquelaNit()}"/>
+    </h:form>
     </h:body>
 </html>
