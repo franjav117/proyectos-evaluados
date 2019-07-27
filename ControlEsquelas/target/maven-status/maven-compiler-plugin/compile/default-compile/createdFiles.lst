@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com\esquelas\entities\Rol_.class
 com\esquelas\entities\TipoMatricula_.class
 com\esquelas\entities\TipoGravedad_.class
@@ -15,3 +16,5 @@ com\esquelas\entities\Usuario_.class
 com\esquelas\entities\AgenteTransito_.class
 com\esquelas\entities\Clasificacion_.class
 com\esquelas\entities\Conductor_.class
+=======
+>>>>>>> develop

@@ -36,6 +36,8 @@ public class EsquelasDao {
             e.printStackTrace();
         }
         
+        listEsquelaNit = em.createNamedQuery("Esquela.findByLicencia", Esquela.class).setParameter("licencia", con.getLicencia()).getResultList();
+        
         return listEsquelaNit;
     }
     
