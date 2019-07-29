@@ -20,66 +20,51 @@ import javax.persistence.Persistence;
 @Stateless
 public class ConsultaDao {
 
-    
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
-    private EntityManager em = emf.createEntityManager();
+    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
+    private final EntityManager em = emf.createEntityManager();
 
     private List<Conductor> listConductor;
     private Conductor conductor;
     private Vehiculo vehiculo;
     private List<Esquela> listEsquela;
     private Esquela esquela;
-    
 
-    public List<Conductor> consultaConductores() {
+    public List<Esquela> listadoEsquelasNit(Conductor c) {
+        listEsquela = new ArrayList<>();
+        String lic = c.getLicencia();
         try {
-            listConductor = new ArrayList<>();
-            listConductor = em.createNamedQuery("Conductor.findAll", Conductor.class).getResultList();
+            Integer i = (Integer) em.createNativeQuery("SELECT id_conductor FROM Conductor  WHERE licencia = '" + lic + "'").getSingleResult();
+            listEsquela = em.createNamedQuery("Esquela.findByConductor", Esquela.class).setParameter("idConductor", i).getResultList();
+            System.out.println("**** Lista size " + listEsquela.size());
+            System.out.println("**** select * from esquela e inner join conductor c on c.id_conductor = e.id_conductor where licencia = '" + lic + "'");
         } catch (Exception e) {
             e.printStackTrace();
+            em.getTransaction().rollback();
         }
-        return listConductor;
+        return listEsquela;
     }
-    
-    public Conductor consultarIdConductor(Conductor id){
+
+    public List<Esquela> listadoEsquelasPlaca(Vehiculo v) {
+        listEsquela = new ArrayList<>();
+        String placa = v.getNumeroPlaca();
         try {
-            conductor = new Conductor();
-            conductor = (Conductor) em.createNamedQuery("Conductor.findByIdConductor").setParameter("idConductor", id.getIdConductor()).getSingleResult();
+            Integer ve = (Integer) em.createNativeQuery("SELECT id_vehiculo  FROM vehiculo WHERE numero_placa = '" + placa + "'").getSingleResult();
+            listEsquela = em.createNamedQuery("Esquela.findByVehiculo", Esquela.class).setParameter("idVehiculo", ve).getResultList();
         } catch (Exception e) {
             e.printStackTrace();
+            em.getTransaction().rollback();
         }
-        return conductor;
+        return listEsquela;
     }
-    
-    public Conductor consultarXLicencia(Conductor lic){
+
+    public List<Esquela> consultaEsquelas() {
         try {
-            conductor = (Conductor)em.createNativeQuery("Select * from conductor where licencia = "+lic.getLicencia()+"").getResultList();
-            System.out.println(" ************************ Dao licencia "+lic.getLicencia());
-            System.out.println(" ************************ Dao Get id condutor "+conductor.getIdConductor());
+            listEsquela = new ArrayList<>();
+            listEsquela = em.createNamedQuery("Esquela.findAll").getResultList();
         } catch (Exception e) {
             e.printStackTrace();
+            em.getTransaction().rollback();
         }
-        return conductor;
+        return listEsquela;
     }
-    
-    public Vehiculo consultarXPlaca(Vehiculo placa){
-        try {
-            vehiculo = (Vehiculo)em.createNamedQuery("Vehiculo.findByNumeroPlaca", Vehiculo.class).setParameter("numeroPlaca", placa.getNumeroPlaca());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return vehiculo;
-    }
-    
-    public List<Esquela> EsquelaXLicencia(Esquela id){
-            try {
-                listEsquela = new ArrayList<>();
-                listEsquela = em.createNamedQuery("Esquela.findByIdConductor").setParameter("idConductor", id.getIdConductor()).getResultList();
-                System.out.println(" ************************ Dao Get id condutor "+id + "Lista esquela por licencia " + listEsquela.size());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return listEsquela;
-    }
-    
 }

@@ -14,63 +14,70 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 
-
-
 /**
  *
  * @author melvin.madridusam
  */
 @ManagedBean
 @ViewScoped
-public class ConsultaMb implements Serializable{
-    
+public class ConsultaMb implements Serializable {
+
     private Vehiculo vehiculo;
     private List<Vehiculo> listVehiculo;
     private Conductor conductor;
     private List<Conductor> listConductor;
     private String licencia;
     private Integer idconductor;
-    private List<Esquela> listEsId;
+    private List<Esquela> listEsId, listEsquela;
     private ConsultaDao cdao;
-    
-    
+
     @PostConstruct
-    public void ini(){
+    public void ini() {
         vehiculo = new Vehiculo();
         conductor = new Conductor();
         listVehiculo = new ArrayList<Vehiculo>();
         listConductor = new ArrayList<Conductor>();
         listEsId = new ArrayList<Esquela>();
+        listEsquela = new ArrayList<Esquela>();
         cdao = new ConsultaDao();
-       
+        consultarEsquelas();    
     }
-    
-    public void esquelasXlicencia(){
-        conductor = new Conductor();
-        Conductor cond = new Conductor();
-        cond.setLicencia(licencia);
-        System.out.println("licencia+++++ variable de la vista "+licencia);
-        System.out.println("licencia ++++++ desde objeto cond "+cond.getLicencia());
-        conductor = cdao.consultarXLicencia(cond);
-        System.out.println("*************** Conductor ID "+conductor.getIdConductor());
-        idconductor = conductor.getIdConductor();
-        System.out.println("IdConductor *******"+idconductor);
-        Esquela es = new Esquela();
-        Conductor c = new Conductor();
-        c.setIdConductor(idconductor);
-        es.setIdConductor(c);
-        listEsId = cdao.EsquelaXLicencia(es);
-        
-    }
-    
 
-    
-    
-    public List<Conductor> prueba(){
-        listConductor = cdao.consultaConductores();
-        return listConductor;
+    public void consultarXEsquela() {
+        try {
+            conductor = new Conductor();
+            Conductor cond = new Conductor();
+            cond.setLicencia(licencia);
+            listEsId = cdao.listadoEsquelasNit(cond);
+        } catch (Exception e) {
+        }
     }
     
+    public void consultarXPlaca(){
+        try {
+            listEsId = cdao.listadoEsquelasPlaca(vehiculo);
+        } catch (Exception e) {
+        }
+    }
+
+    public void consultarEsquelas() {
+        listEsquela = cdao.consultaEsquelas();
+        Integer i = listEsquela.size();
+        if(i != 0){
+            System.out.println("***************CONECION EXITOSA***************");
+        }else{
+            System.out.println("***************LACA***************");
+        }
+    }
+
+    public List<Esquela> getListEsquela() {
+        return listEsquela;
+    }
+
+    public void setListEsquela(List<Esquela> listEsquela) {
+        this.listEsquela = listEsquela;
+    }
+
     public Vehiculo getVehiculo() {
         return vehiculo;
     }
@@ -126,8 +133,5 @@ public class ConsultaMb implements Serializable{
     public void setListEsId(List<Esquela> listEsId) {
         this.listEsId = listEsId;
     }
-    
-    
-    
-   
+
 }

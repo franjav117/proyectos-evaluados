@@ -1,30 +1,28 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
         <h:form id="form">
             <p:panelGrid columns="2">
-                <p:panelGrid columns="2">
-                    <p:outputLabel value="Busqueda por Licencia"/>
-                    <p:inputText value="#{consultaMb.licencia}"/>
-                </p:panelGrid>
-                <p:panelGrid columns="2">
-                    <p:outputLabel value="Busqueda por Placa"/>
-                    <p:inputText value="#{consultaMb.vehiculo.numeroPlaca}"/>    
-                </p:panelGrid>
-                <p:commandButton value="Consultar por Licencia" action="#{consultaMb.consultarXEsquela()}" update="esquela:table"/>
-                <p:commandButton value="Consultar por Placa" action="#{consultaMb.consultarXPlaca()}" update="esquela:table"/>
+                <p:outputLabel value="Busqueda por Licencia"/>
+                <p:inputText value="#{esquelaMb.licencia}"/>
             </p:panelGrid>
+            <p:commandButton value="Consultar" action="#{esquelaMb.listadoEsquelaNit()}" update="table"/>
 
-        </h:form>
-        <h:form id="esquela">
-            <p:dataTable id="table" var="es" value="#{consultaMb.listEsId}" rows="6" paginator="true">
+            
+            <p:dataTable id="table" var="es" value="#{esquelaMb.listEsquela}" rows="15" paginator="true">
                 <p:column headerText="Id">
                     <p:outputLabel value="#{es.idEsquela}"/>
                 </p:column>
@@ -59,7 +57,7 @@
                     <p:outputLabel value="#{es.montoPagar}"/>
                 </p:column>
                 <p:column headerText="Estado">
-                    <p:outputLabel value="#{es.estado.estadoMulta}"/>
+                    <p:commandButton id="boton" value="#{es.estado.estadoMulta}" action="#{esquelaMb.cambiarEstadoPago(es)}"/>
                 </p:column>
                 <p:column headerText="Departamento">
                     <p:outputLabel value="#{es.idDepartamento.departamento}"/>
@@ -74,8 +72,3 @@
         </h:form>
     </h:body>
 </html>
-
-<<<<<<< HEAD
-=======
-
->>>>>>> feature_rogelio
