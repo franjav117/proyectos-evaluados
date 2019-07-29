@@ -25,8 +25,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -118,6 +120,54 @@ public class RegistroEsquelasMb implements Serializable{
     }
 
     public void guardarEsquela() {
+        FacesMessage msg = null;
+        Conductor idcon = new Conductor();
+        Vehiculo idveh = new Vehiculo();
+        AgenteTransito idag = new AgenteTransito();
+        Clasificacion idcla = new Clasificacion();
+        TipoGravedad idgra = new TipoGravedad();
+        Estado ides = new Estado();
+        Departamento iddep = new Departamento();
+        Decomiso iddec = new Decomiso();
+        Otros idot = new Otros();
+        
+        idcon.setIdConductor(Conductorview);
+        esquela.setIdConductor(idcon);
+        
+        idveh.setIdVehiculo(Vehiculoview);
+        esquela.setPlaca(idveh);
+        
+        idag.setIdAgente(AgenteTransitoview);
+        esquela.setIdAgente(idag);
+        
+        idcla.setIdClasificacion(Clasificacionview);
+        esquela.setClasificacion(idcla);
+        
+        idgra.setIdGravedad(TipoGravedadview);
+        esquela.setTipoGravedad(idgra);
+        
+        ides.setIdEstado(Estadoview);
+        esquela.setEstado(ides);
+        
+        iddep.setIdDepartamento(Departamentoview);
+        esquela.setIdDepartamento(iddep);
+        
+        iddec.setIdDecomiso(Decomisoview);
+        esquela.setIdDecomiso(iddec);
+        
+        idot.setIdOtro(Otrosview);
+        esquela.setIdOtros(idot);
+        
+        esquela = (Esquela) gd.insertarEntidad(esquela);
+        if (null !=esquela){
+            msg = new FacesMessage("Esquela registrada "+esquela.getIdEsquela());
+            mostrarEsquelas();
+
+        }else{
+            msg = new FacesMessage("Error registrando esquela");
+        }
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        mostrarEsquelas();
 
     }
 
@@ -185,11 +235,11 @@ public class RegistroEsquelasMb implements Serializable{
     public void obtenerVehiculo() {//9
         vehiculoList = rgd1.obtenerVehiculo();
         for (Vehiculo v : vehiculoList) {
-            AgenteTransitoSelect.put(v.getNumeroPlaca(), String.valueOf(v.getIdVehiculo()));
+            VehiculoSelect.put(v.getNumeroPlaca(), String.valueOf(v.getIdVehiculo()));
         }
     }
 
-    public void mostrarEsquelas() {
+    public void mostrarEsquelas() {//cargar tabla
         esquelaList = ed.consultarEsquela();
     }
 
