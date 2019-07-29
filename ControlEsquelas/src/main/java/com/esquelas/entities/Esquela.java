@@ -40,6 +40,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Esquela.findByDUILicencia", query = "SELECT e FROM Esquela e WHERE e.idConductor.idPersona.dui = :dui and e.idConductor.licencia = :licencia")
     , @NamedQuery(name = "Esquela.findByPlaca", query = "SELECT e FROM Esquela e WHERE e.placa.numeroPlaca = :placa")
     , @NamedQuery(name = "Esquela.findByCodigoFalta", query = "SELECT e FROM Esquela e WHERE e.codigoFalta = :codigoFalta")
+    , @NamedQuery(name = "Esquela.findByConductor", query = "SELECT e FROM Esquela e WHERE e.idConductor.idConductor = :idConductor")
+    , @NamedQuery(name = "Esquela.findByVehiculo", query = "SELECT e FROM Esquela e WHERE e.placa.idVehiculo = :idVehiculo")
     , @NamedQuery(name = "Esquela.findByFechaEsquela", query = "SELECT e FROM Esquela e WHERE e.fechaEsquela = :fechaEsquela")
     , @NamedQuery(name = "Esquela.findByLugarInfraccion", query = "SELECT e FROM Esquela e WHERE e.lugarInfraccion = :lugarInfraccion")
     , @NamedQuery(name = "Esquela.findByObservaciones", query = "SELECT e FROM Esquela e WHERE e.observaciones = :observaciones")
