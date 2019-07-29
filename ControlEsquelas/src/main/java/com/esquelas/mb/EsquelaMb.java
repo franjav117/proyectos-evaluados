@@ -112,13 +112,13 @@ public class EsquelaMb implements Serializable{
     
     
     //Este método ni me lo vayan a tocar  **********************************************
-    public void asignarID(Esquela idEsq){
+    
+    public void cambiarEstadoPago(Esquela idEsq){
+        
         idEsquela = idEsq.getIdEsquela();
         System.out.println("++++++++ ID ESQUELA ENVIADO " + idEsquela);
-        CambiarEstadoPago();
-    }
-    
-    public void CambiarEstadoPago(){
+        
+        
         Estado estado = new Estado();
         if(rgDao.idEstado(idEsquela).getIdEstado() == 1){
            estado.setIdEstado(2); 
