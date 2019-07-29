@@ -57,7 +57,7 @@ and open the template in the editor.
                     <p:outputLabel value="#{es.montoPagar}"/>
                 </p:column>
                 <p:column headerText="Estado">
-                    <p:commandButton value="#{es.estado.estadoMulta}" action="#{esquelaMb.cambiarEstadoPago(es.idEsquela)}"/>
+                    <p:commandButton id="boton" value="#{es.estado.estadoMulta}" action="#{esquelaMb.asignarID(es)}"/>
                 </p:column>
                 <p:column headerText="Departamento">
                     <p:outputLabel value="#{es.idDepartamento.departamento}"/>
