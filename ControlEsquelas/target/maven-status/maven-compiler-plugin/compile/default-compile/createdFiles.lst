@@ -11,8 +11,10 @@ com\esquelas\entities\Usuario.class
 com\esquelas\entities\Departamento_.class
 com\esquelas\dao\GenericDao.class
 com\esquelas\entities\ClaseLicencia.class
+com\esquelas\mb\ConsultaMb.class
 com\esquelas\entities\ClaseLicencia_.class
 com\esquelas\entities\Otros.class
+com\esquelas\mb\RegistroEsquelasMb.class
 com\esquelas\entities\Esquela_.class
 com\esquelas\entities\Vehiculo_.class
 com\esquelas\entities\TipoMatricula.class
@@ -23,11 +25,13 @@ com\esquelas\dao\EsquelasDao.class
 com\esquelas\entities\Persona_.class
 com\esquelas\entities\Rol.class
 com\esquelas\entities\TipoGravedad.class
+com\esquelas\dao\ConsultaDao.class
 com\esquelas\entities\Otros_.class
 com\esquelas\dao\EsquelaDao.class
 com\esquelas\dao\RelacionesGeneralesDao.class
 com\esquelas\entities\Clasificacion.class
 com\esquelas\entities\Cajero_.class
+com\esquelas\dao\TemporalDao.class
 com\esquelas\entities\Departamento.class
 com\esquelas\entities\Cajero.class
 com\esquelas\entities\Estado_.class
