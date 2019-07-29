@@ -54,14 +54,13 @@ public class EsquelaMb implements Serializable{
         }
     }
     
+    
     public void listadoEsquelaNit(){
         Conductor c = new Conductor();
         c.setLicencia(licencia);
         try {
             listEsquela = esquDAO.listadoEsquelasNit(c);
-            System.out.println("Licencia de la vista "+c.getLicencia());
-            System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " +listEsquela.size());
-            System.out.println("**********Ya no lo toqués********");
+            System.out.println(" MB List size " + listEsquela.size());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -112,12 +111,14 @@ public class EsquelaMb implements Serializable{
     private Conductor conductor;
     
     //Este método ni me lo vayan a tocar  **********************************************
-    public void CambiarEstadoPago(){
+    public void CambiarEstadoPago(Integer idEsquela){
         Estado estado = new Estado();
         if(rgDao.idEstado(idEsquela).getIdEstado() == 1){
            estado.setIdEstado(2); 
+           System.out.println("++++++++ Estado sin pago " + estado.getIdEstado());
         }else{
             estado.setIdEstado(1);
+            System.out.println("++++++++ Estado pagado " + estado.getIdEstado());
         }
 
         try {

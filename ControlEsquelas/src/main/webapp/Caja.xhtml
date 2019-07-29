@@ -1,52 +1,45 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
         <h:form id="form">
             <p:panelGrid columns="2">
                 <p:outputLabel value="Busqueda por Licencia"/>
-                <p:inputText value="#{consultaMb.licencia}"/>
+                <p:inputText value="#{esquelaMb.licencia}"/>
             </p:panelGrid>
-            <p:commandButton value="Consultar" action="#{consultaMb.esquelasXlicencia()}" update="form:p"/>
+            <p:commandButton value="Consultar" action="#{esquelaMb.listadoEsquelaNit()}" update="table"/>
+
             
-            <p:dataTable id="p" var="p" value="#{consultaMb.listConductor}" >
-                <p:column headerText="Id">
-                    <p:outputLabel value="#{p.idConductor}"/>
-                </p:column>
-                <p:column headerText="persona">
-                    <p:outputLabel value="#{p.idPersona.n1Nombre}"/>
-                </p:column>
-                <p:column headerText="licencia">
-                    <p:outputLabel value="#{p.licencia}"/>
-                </p:column>
-            </p:dataTable>
-            
-            
-            
-            <p:dataTable id="table" var="es" value="#{consultaMb.listEsId}" rows="6" paginator="true">
+            <p:dataTable id="table" var="es" value="#{esquelaMb.listEsquela}" rows="15" paginator="true">
                 <p:column headerText="Id">
                     <p:outputLabel value="#{es.idEsquela}"/>
                 </p:column>
                 <p:column headerText="Conductor">
-                    <p:outputLabel value="#{es.idConductor}"/>
+                    <p:outputLabel value="#{es.idConductor.idPersona.n1Nombre} #{es.idConductor.idPersona.a1Apellido}"/>
                 </p:column>
                 <p:column headerText="Placa">
-                    <p:outputLabel value="#{es.placa}"/>
+                    <p:outputLabel value="#{es.placa.numeroPlaca}"/>
                 </p:column>
                 <p:column headerText="Agente">
-                    <p:outputLabel value="#{es.idAgente}"/>
+                    <p:outputLabel value="#{es.idAgente.numPlaca}"/>
                 </p:column>
                 <p:column headerText="Falta">
                     <p:outputLabel value="#{es.codigoFalta}"/>
                 </p:column>
                 <p:column headerText="Clasificacion">
-                    <p:outputLabel value="#{es.clasificacion}"/>
+                    <p:outputLabel value="#{es.clasificacion.clasificacion}"/>
                 </p:column>
                 <p:column headerText="Fecha">
                     <p:outputLabel value="#{es.fechaEsquela}"/>
@@ -58,29 +51,24 @@
                     <p:outputLabel value="#{es.observaciones}"/>
                 </p:column>
                 <p:column headerText="Gravedad">
-                    <p:outputLabel value="#{es.tipoGravedad}"/>
+                    <p:outputLabel value="#{es.tipoGravedad.gravedad}"/>
                 </p:column>
                 <p:column headerText="Monto">
                     <p:outputLabel value="#{es.montoPagar}"/>
                 </p:column>
                 <p:column headerText="Estado">
-                    <p:outputLabel value="#{es.estado}"/>
+                    <p:commandButton value="#{es.estado.estadoMulta}" action="#{esquelaMb.cambiarEstadoPago(es.idEsquela)}"/>
                 </p:column>
                 <p:column headerText="Departamento">
-                    <p:outputLabel value="#{es.idDepartamento}"/>
+                    <p:outputLabel value="#{es.idDepartamento.departamento}"/>
                 </p:column>
                 <p:column headerText="Decomiso">
-                    <p:outputLabel value="#{es.idDecomiso}"/>
+                    <p:outputLabel value="#{es.idDecomiso.decomiso}"/>
                 </p:column>
                 <p:column headerText="Otros">
-                    <p:outputLabel value="#{es.idOtros}"/>
+                    <p:outputLabel value="#{es.idOtros.especificacion}"/>
                 </p:column>
             </p:dataTable>
         </h:form>
     </h:body>
 </html>
-
-<<<<<<< HEAD
-=======
-
->>>>>>> feature_rogelio
