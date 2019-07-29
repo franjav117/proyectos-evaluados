@@ -26,6 +26,7 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+
 /**
  *
  * @author francisco.amayausam
@@ -33,10 +34,10 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class RegistroEsquelasMb {
-    
+
     private Esquela esquela;
     private List<Esquela> esquelaList; //mostrar de esquelas
-    
+
     private List<Estado> estadoList; //1
     private List<Departamento> departamentoList; //2
     private List<TipoGravedad> tipoGravedadList; //3
@@ -46,7 +47,7 @@ public class RegistroEsquelasMb {
     private List<Conductor> ConductorList;//7
     private List<AgenteTransito> AgenteTransitoList;//8
     private List<Vehiculo> vehiculoList;//9
-    
+
     private Map<String, String> EstadoSelect;//1
     private Map<String, String> DepartamentoSelect;//2
     private Map<String, String> TipoGravedadSelect;//3
@@ -56,7 +57,7 @@ public class RegistroEsquelasMb {
     private Map<String, String> ConductorSelect;//7
     private Map<String, String> AgenteTransitoSelect;//8
     private Map<String, String> VehiculoSelect;//9
-    
+
     private Integer Estadoview;//1
     private Integer Departamentoview;//2
     private Integer TipoGravedadview;//3
@@ -66,17 +67,17 @@ public class RegistroEsquelasMb {
     private Integer Conductorview;//7
     private Integer AgenteTransitoview;//8
     private Integer Vehiculoview;//9
-    
+
     private GenericDao gd;
     private EsquelaDao ed;
     private RelacionesGeneralesDao rgd;
     private TemporalDao rgd1;
-    
+
     @PostConstruct
-    public void  init(){
+    public void init() {
         esquela = new Esquela();
         esquelaList = new ArrayList<Esquela>();
-                
+
         estadoList = new ArrayList<Estado>();//1
         departamentoList = new ArrayList<Departamento>();//2
         tipoGravedadList = new ArrayList<TipoGravedad>();//3
@@ -86,91 +87,106 @@ public class RegistroEsquelasMb {
         ConductorList = new ArrayList<Conductor>();//7
         AgenteTransitoList = new ArrayList<AgenteTransito>();//8
         vehiculoList = new ArrayList<Vehiculo>();//9
-                
-        EstadoSelect = new HashMap<String,String>();//1
-        DepartamentoSelect = new HashMap<String,String>();//2    
-        TipoGravedadSelect = new HashMap<String,String>();//3       
-        DecomisoSelect = new HashMap<String,String>();//4       
-        OtrosSelect = new HashMap<String,String>();//5       
-        ClasificacionSelect = new HashMap<String,String>();//6 
-        ConductorSelect = new HashMap<String,String>();//7  
-        AgenteTransitoSelect = new HashMap<String,String>();//8       
-        VehiculoSelect = new HashMap<String,String>();//9       
-        
+
+        EstadoSelect = new HashMap<String, String>();//1
+        DepartamentoSelect = new HashMap<String, String>();//2    
+        TipoGravedadSelect = new HashMap<String, String>();//3       
+        DecomisoSelect = new HashMap<String, String>();//4       
+        OtrosSelect = new HashMap<String, String>();//5       
+        ClasificacionSelect = new HashMap<String, String>();//6 
+        ConductorSelect = new HashMap<String, String>();//7  
+        AgenteTransitoSelect = new HashMap<String, String>();//8       
+        VehiculoSelect = new HashMap<String, String>();//9       
+
         gd = new GenericDao();
         ed = new EsquelaDao();
         rgd = new RelacionesGeneralesDao();
         rgd1 = new TemporalDao();
+        
+        mostrarEsquelas();
+        
+        obtenerEstado();
+        obtenerDepartamento();
+        obtenerTipoGravedad();
+        obtenerDecomiso();
+        obtenerOtros();
+        obtenerClasificacion();
+        obtenerConductor();
+        obtenerAgenteTransito();
+        obtenerVehiculo();
     }
-    
-        public void guardarEsquela() {
-            
-        }
-    
+
+    public void guardarEsquela() {
+
+    }
+
     public void obtenerEstado() {//1
         estadoList = rgd.obtenerEstado();
         for (Estado e : estadoList) {
             EstadoSelect.put(e.getEstadoMulta(), String.valueOf(e.getIdEstado()));
         }
     }
-    
+
     public void obtenerDepartamento() {//2
         departamentoList = rgd.obtenerDepartamento();
         for (Departamento d : departamentoList) {
             DepartamentoSelect.put(d.getDepartamento(), String.valueOf(d.getIdDepartamento()));
         }
     }
-    
+
     public void obtenerTipoGravedad() {//3
         tipoGravedadList = rgd.obtenerTipoGravedad();
         for (TipoGravedad td : tipoGravedadList) {
             TipoGravedadSelect.put(td.getGravedad(), String.valueOf(td.getIdGravedad()));
         }
     }
-    
+
     public void obtenerDecomiso() {//4
         DecomisoList = rgd.obtenerDecomiso();
         for (Decomiso dec : DecomisoList) {
             DecomisoSelect.put(dec.getDecomiso(), String.valueOf(dec.getIdDecomiso()));
         }
     }
-    
+
     public void obtenerOtros() {//5
         OtrosList = rgd.obtenerOtros();
         for (Otros o : OtrosList) {
             OtrosSelect.put(o.getEspecificacion(), String.valueOf(o.getIdOtro()));
         }
     }
-    
+
     public void obtenerClasificacion() {//6
         clasificacionList = rgd.obtenerClasificacion();
         for (Clasificacion cl : clasificacionList) {
             ClasificacionSelect.put(cl.getClasificacion(), String.valueOf(cl.getIdClasificacion()));
         }
     }
-    
-    public void obtenerConductor(){//7
+
+    public void obtenerConductor() {//7
         ConductorList = rgd1.obtenerConductor();
-        for(Conductor con : ConductorList){
+        for (Conductor con : ConductorList) {
             ConductorSelect.put(String.valueOf(con.getIdPersona()), String.valueOf(con.getIdConductor()));
         }
     }
-    
-    public void obtenerAgenteTransito(){//8
+
+    public void obtenerAgenteTransito() {//8
         AgenteTransitoList = rgd1.obtenerAgenteTransito();
-        for(AgenteTransito at : AgenteTransitoList){
+        for (AgenteTransito at : AgenteTransitoList) {
             AgenteTransitoSelect.put(String.valueOf(at.getNumPlaca()), String.valueOf(at.getIdAgente()));
         }
     }
-    
-    public void obtenerVehiculo(){//9
+
+    public void obtenerVehiculo() {//9
         vehiculoList = rgd1.obtenerVehiculo();
-        for(Vehiculo v : vehiculoList){
+        for (Vehiculo v : vehiculoList) {
             AgenteTransitoSelect.put(v.getNumeroPlaca(), String.valueOf(v.getIdVehiculo()));
         }
     }
+    public void mostrarEsquelas(){
+        esquelaList = ed.consultarEsquela();
+}
 
-    public Esquela getEsquela() {
+public Esquela getEsquela() {
         return esquela;
     }
 
@@ -433,6 +449,5 @@ public class RegistroEsquelasMb {
     public void setRgd1(TemporalDao rgd1) {
         this.rgd1 = rgd1;
     }
-    
     
 }

@@ -7,15 +7,119 @@
     <h:head>
         <title>Facelet Title</title>
     </h:head>
-  
+
     <h:body>
-        <h:form>
-            <p:growl/>
+
+
+
+        <h:form id="formesq">
+            <p:dataGrid var="esq" value="#{registroEsquelasMb.esquelaList}" columns="4" layout="grid">
+                <f:facet name="header">
+                    Registro de esquelas
+                </f:facet>
+                <p:panel header="#{esq.idConductor.licencia}" style="text-align: center;">
+                    <center>
+                        <p:panelGrid columns="1" >
+                            <p:panelGrid columns="2">
+                                <h:outputText value="Fecha Esquela :"/>
+                                <h:outputText value="#{esq.fechaEsquela}">
+                                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                </h:outputText>
+                                <h:outputText value="Estado :"/>
+                                <h:outputText value="#{esq.estado.estadoMulta}"/>
+                                <h:outputText value="Clasificacion :"/>
+                                <h:outputText value="#{esq.clasificacion.clasificacion}"/>
+                                <h:outputText value="Tipo :"/>
+                                <h:outputText value="#{esq.tipoGravedad.gravedad}"/>
+                                <p:commandLink update="formesq:detallesEsquela" oncomplete="PF('esquelaDialog').show()" title="ver detalle" value="ver detalles" style="text-align: center;">
+                                    <f:setPropertyActionListener value="#{esq}" target="#{registroEsquelasMb.esquelaList}"/>
+                                </p:commandLink>
+                            </p:panelGrid>
+                           
+
+                        </p:panelGrid>
+                    </center>
+                </p:panel>
+            </p:dataGrid>
+
+            <p:dialog header="Detalle esquelas" widgetVar="esquelaDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true">
+                <p:outputPanel id="detallesEsquela" style="text-align:center;">
+                    <p:panelGrid columns="2" columnClasses="label,value">
+                        <f:facet name="header">
+                            Info de la esquela
+                        </f:facet>
+                        <h:outputText value="id esquela"/>
+                        <h:outputText value="#{registroEsquelasMb.esquela.idEsquela}" />
+
+                    </p:panelGrid>
+                </p:outputPanel>
+
+            </p:dialog>
+
             <p:dataTable var="es" value="#{registroEsquelasMb.esquelaList}">
-                <p:column headerText="">
-                    <p:outputLabel value="#{es.lugarInfraccion}" />
+
+                <p:column headerText="id esquela">
+                    <p:outputLabel value="#{es.idEsquela}" />
                 </p:column>
-                
+
+                <p:column headerText="id_conductor">
+                    <p:outputLabel value="#{es.idConductor.licencia}"/>
+                </p:column>
+
+                <p:column headerText="placa">
+                    <p:outputLabel value="#{es.placa.numeroPlaca}"/>
+                </p:column>
+
+                <p:column headerText="id_agente">
+                    <p:outputLabel value="#{es.idAgente.numPlaca}"/>
+                </p:column>
+
+                <p:column headerText="codigo_falta">
+                    <p:outputLabel value="#{es.codigoFalta}"/>
+                </p:column>
+
+                <p:column headerText="clasificacion">
+                    <p:outputLabel value="#{es.clasificacion.clasificacion}"/>
+                </p:column>
+
+                <p:column headerText="fecha_esquela">
+                    <p:outputLabel value="#{es.fechaEsquela}">
+                        <f:convertDateTime pattern="yyyy-MM-dd"/>
+                    </p:outputLabel>
+                </p:column>
+
+                <p:column headerText="lugar_infraccion">
+                    <p:outputLabel value="#{es.lugarInfraccion}"/>
+                </p:column>
+
+                <p:column headerText="observaciones">
+                    <p:outputLabel value="#{es.observaciones}"/>
+                </p:column>
+
+                <p:column headerText="tipo_gravedad">
+                    <p:outputLabel value="#{es.tipoGravedad.gravedad}"/>
+                </p:column>
+
+                <p:column headerText="monto_pagar">
+                    <p:outputLabel value="#{es.montoPagar}"/>
+                </p:column>
+
+                <p:column headerText="estado">
+                    <p:outputLabel value="#{es.estado.estadoMulta}"/>
+                </p:column>
+
+                <p:column headerText="id_departamento">
+                    <p:outputLabel value="#{es.idDepartamento.departamento}"/>
+                </p:column>
+
+                <p:column headerText="id_decomiso">
+                    <p:outputLabel value="#{es.idDecomiso.decomiso}"/>
+                </p:column>
+
+                <p:column headerText="id_otros">
+                    <p:outputLabel value="#{es.idOtros.especificacion}"/>
+                </p:column>
+
             </p:dataTable>
         </h:form>
     </h:body>
