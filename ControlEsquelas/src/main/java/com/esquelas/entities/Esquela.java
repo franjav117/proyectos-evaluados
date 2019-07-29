@@ -35,6 +35,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Esquela.findAll", query = "SELECT e FROM Esquela e")
     , @NamedQuery(name = "Esquela.findByIdEsquela", query = "SELECT e FROM Esquela e WHERE e.idEsquela = :idEsquela")
     , @NamedQuery(name = "Esquela.findByCodigoFalta", query = "SELECT e FROM Esquela e WHERE e.codigoFalta = :codigoFalta")
+    , @NamedQuery(name = "Esquela.findByConductor", query = "SELECT e FROM Esquela e WHERE e.idConductor.idConductor = :idConductor")
+    , @NamedQuery(name = "Esquela.findByVehiculo", query = "SELECT e FROM Esquela e WHERE e.placa.idVehiculo = :idVehiculo")
     , @NamedQuery(name = "Esquela.findByFechaEsquela", query = "SELECT e FROM Esquela e WHERE e.fechaEsquela = :fechaEsquela")
     , @NamedQuery(name = "Esquela.findByLugarInfraccion", query = "SELECT e FROM Esquela e WHERE e.lugarInfraccion = :lugarInfraccion")
     , @NamedQuery(name = "Esquela.findByObservaciones", query = "SELECT e FROM Esquela e WHERE e.observaciones = :observaciones")

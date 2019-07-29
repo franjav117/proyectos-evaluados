@@ -10,10 +10,18 @@
     <h:body>
         <h:form id="form">
             <p:panelGrid columns="2">
-                <p:outputLabel value="Busqueda por Licencia"/>
-                <p:inputText value="#{consultaMb.licencia}"/>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Busqueda por Licencia"/>
+                    <p:inputText value="#{consultaMb.licencia}"/>
+                </p:panelGrid>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Busqueda por Placa"/>
+                    <p:inputText value="#{consultaMb.vehiculo.numeroPlaca}"/>    
+                </p:panelGrid>
+                <p:commandButton value="Consultar por Licencia" action="#{consultaMb.consultarXEsquela()}" update="esquela:table"/>
+                <p:commandButton value="Consultar por Placa" action="#{consultaMb.consultarXPlaca()}" update="esquela:table"/>
             </p:panelGrid>
-            <p:commandButton value="Consultar" action="#{consultaMb.consultarXEsquela()}" update="esquela:table"/>
+
         </h:form>
         <h:form id="esquela">
             <p:dataTable id="table" var="es" value="#{consultaMb.listEsId}" rows="6" paginator="true">
