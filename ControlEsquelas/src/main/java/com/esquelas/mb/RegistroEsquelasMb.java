@@ -19,6 +19,7 @@ import com.esquelas.entities.Estado;
 import com.esquelas.entities.Otros;
 import com.esquelas.entities.TipoGravedad;
 import com.esquelas.entities.Vehiculo;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,7 +34,7 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class RegistroEsquelasMb {
+public class RegistroEsquelasMb implements Serializable{
 
     private Esquela esquela;
     private List<Esquela> esquelaList; //mostrar de esquelas
@@ -102,9 +103,9 @@ public class RegistroEsquelasMb {
         ed = new EsquelaDao();
         rgd = new RelacionesGeneralesDao();
         rgd1 = new TemporalDao();
-        
+
         mostrarEsquelas();
-        
+
         obtenerEstado();
         obtenerDepartamento();
         obtenerTipoGravedad();
@@ -118,6 +119,11 @@ public class RegistroEsquelasMb {
 
     public void guardarEsquela() {
 
+    }
+
+    public void consultById(Esquela ide) {
+        esquela =  ed.findEsquelaById(ide);
+        //this.esquela = ide;
     }
 
     public void obtenerEstado() {//1
@@ -165,7 +171,7 @@ public class RegistroEsquelasMb {
     public void obtenerConductor() {//7
         ConductorList = rgd1.obtenerConductor();
         for (Conductor con : ConductorList) {
-            ConductorSelect.put(String.valueOf(con.getIdPersona()), String.valueOf(con.getIdConductor()));
+            ConductorSelect.put(String.valueOf(con.getLicencia()), String.valueOf(con.getIdConductor()));
         }
     }
 
@@ -182,11 +188,12 @@ public class RegistroEsquelasMb {
             AgenteTransitoSelect.put(v.getNumeroPlaca(), String.valueOf(v.getIdVehiculo()));
         }
     }
-    public void mostrarEsquelas(){
-        esquelaList = ed.consultarEsquela();
-}
 
-public Esquela getEsquela() {
+    public void mostrarEsquelas() {
+        esquelaList = ed.consultarEsquela();
+    }
+
+    public Esquela getEsquela() {
         return esquela;
     }
 
@@ -449,5 +456,5 @@ public Esquela getEsquela() {
     public void setRgd1(TemporalDao rgd1) {
         this.rgd1 = rgd1;
     }
-    
+
 }
