@@ -60,10 +60,8 @@
                 <p:inputText value="#{registroEsquelasMb.esquela.montoPagar}" required="true" requiredMessage="No dejar el campo vacio"/>
 
                 <p:outputLabel value="Estado"/>
-                <p:selectOneMenu id="selectEstado" value="#{registroEsquelasMb.estadoview}" required="true" requiredMessage="No dejar el campo vacio">
-                    <f:selectItem itemLabel="Estado" itemValue="0"/>
-                    <f:selectItems value="#{registroEsquelasMb.estadoSelect}"/>
-                </p:selectOneMenu>
+                <p:outputLabel value="Pendiente"/>
+                
 
                 <p:outputLabel value="Departamento"/>
                 <p:selectOneMenu id="selectDep" value="#{registroEsquelasMb.departamentoview}" filter="true" required="true" requiredMessage="No dejar el campo vacio">
@@ -84,36 +82,36 @@
                 </p:selectOneMenu>
 
             </p:panelGrid>
-            <p:commandButton value="Guardar esquela" action="#{registroEsquelasMb.guardarEsquela()}" update="formesq"/>
+            <p:commandButton value="Guardar esquela" action="#{registroEsquelasMb.guardarEsquela()}" update="form1,formesq"/>
         </h:form>
         
         
         <h:form id="formesq">
-            <p:dataGrid id="data" var="esq" value="#{registroEsquelasMb.esquelaList}" columns="4" layout="grid" paginator="true" rows="8">
+            <p:dataGrid  var="esq" value="#{registroEsquelasMb.esquelaList}" columns="4" layout="grid" paginator="true" rows="12">
                 <f:facet name="header">
                     Registro de esquelas
                 </f:facet>
-                <p:panel header="Licencia: #{esq.idConductor.licencia}" style="text-align: center;">
+                <p:panel id="data" header="Licencia: #{esq.idConductor.licencia}" style="text-align: center;">
                     <center>
                         <p:panelGrid columns="2">
-                            <h:outputText value="Fecha Esquela :"/>
+                            <h:outputText value="Fecha Esquela:"/>
                             <h:outputText value="#{esq.fechaEsquela}">
-                                <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                <f:convertDateTime pattern="yyyy/MM/dd"/>
                             </h:outputText>
-                            <h:outputText value="Estado :"/>
+                            <h:outputText value="Estado:"/>
                             <h:outputText value="#{esq.estado.estadoMulta}"/>
-                            <h:outputText value="Clasificacion :"/>
+                            <h:outputText value="Clasificacion:"/>
                             <h:outputText value="#{esq.clasificacion.clasificacion}"/>
-                            <h:outputText value="Tipo :"/>
+                            <h:outputText value="Tipo:"/>
                             <h:outputText value="#{esq.tipoGravedad.gravedad}"/>
-                            <h:outputText value="Detalles :"/>
-                            <p:commandButton action="#{registroEsquelasMb.consultById(esq)}" update="formesq:detallesEsquela" oncomplete="PF('esquelaDialog').show()" title="ver detalle" value="Mostrar" style="text-align: center;"/>                                
+                            <h:outputText value="Detalles:"/>
+                            <p:commandButton action="#{registroEsquelasMb.consultById(esq)}" update="formesq" oncomplete="PF('esquelaDialog').show()" title="ver detalle" value="Mostrar" style="text-align: center;"/>                                
                         </p:panelGrid>                           
                     </center>
                 </p:panel>
             </p:dataGrid>
 
-            <p:dialog header="Detalle esquelas" widgetVar="esquelaDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true">
+            <p:dialog header="Detalle esquelas" widgetVar="esquelaDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="detallesEsquela" style="text-align:center;">
                     <p:panelGrid columns="2" columnClasses="label,value">
                         <f:facet name="header">
