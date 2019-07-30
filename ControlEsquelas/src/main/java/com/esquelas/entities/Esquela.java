@@ -93,6 +93,9 @@ public class Esquela implements Serializable {
     @ManyToOne(optional = false)
     private Estado estado;
     @JoinColumn(name = "id_departamento", referencedColumnName = "id_departamento")
+    @Column(name = "fecha_pago")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaPago;
     @ManyToOne(optional = false)
     private Departamento idDepartamento;
     @JoinColumn(name = "id_decomiso", referencedColumnName = "id_decomiso")
@@ -212,6 +215,14 @@ public class Esquela implements Serializable {
         this.estado = estado;
     }
 
+    public Date getFechaPago() {
+        return fechaPago;
+    }
+
+    public void setFechaPago(Date fechaPago) {
+        this.fechaPago = fechaPago;
+    }
+    
     public Departamento getIdDepartamento() {
         return idDepartamento;
     }
