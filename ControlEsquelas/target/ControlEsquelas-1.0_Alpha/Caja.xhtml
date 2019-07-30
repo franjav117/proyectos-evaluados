@@ -19,8 +19,9 @@ and open the template in the editor.
                 <p:outputLabel value="Busqueda por Licencia"/>
                 <p:inputText value="#{esquelaMb.licencia}"/>
             </p:panelGrid>
-            <p:commandButton value="Consultar" action="#{esquelaMb.listadoEsquelaNit()}" update="table"/>
-
+            <p:commandButton value="Consultar por Licencia" action="#{esquelaMb.listadoEsquelaNit()}" update="table"/>
+            <p:commandButton value="Consultar por DUI" action="#{esquelaMb.listadoEsquelaDui()}" update="table"/>
+            <p:commandButton value="Consultar por Placa" action="#{esquelaMb.listadoEsquelaPlaca()}" update="table"/>
 
             <p:dataTable id="table" var="es" value="#{esquelaMb.listEsquela}" rows="15" paginator="true">
                 <p:column headerText="Id">

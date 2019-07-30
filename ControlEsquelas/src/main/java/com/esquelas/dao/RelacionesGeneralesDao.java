@@ -164,14 +164,15 @@ public class RelacionesGeneralesDao {
         return i;
     }
     
-    public Conductor idConductor(Integer esq){ //Integer dentro de obj 
-        Conductor obj = new Conductor();
+    public Integer idConductor(Integer esq){ //Integer dentro de obj 
+        Integer obj = 0;
         try {
-            obj = (Conductor) em.createNativeQuery("Select id_conductor from esquela where id_esquela = "+esq+"", Conductor.class).getSingleResult();
+            System.out.println("DAO id Esquela recibido "+esq);
+            obj = (Integer) em.createNativeQuery("Select id_conductor from esquela where id_esquela = "+esq+"", Conductor.class).getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("DAO id Conductor "+obj.getIdConductor() +" "+obj.getIdPersona().getN1Nombre() +" "+ obj.getIdPersona().getA1Apellido());
+        System.out.println("DAO id Conductor "+obj);
         return obj;
     }
 

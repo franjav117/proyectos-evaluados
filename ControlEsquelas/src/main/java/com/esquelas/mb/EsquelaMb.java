@@ -23,7 +23,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 
 /**
  *
@@ -37,8 +36,12 @@ public class EsquelaMb implements Serializable{
     private RelacionesGeneralesDao rgDao;
     private List<Esquela> listEsquela;
     private Esquela esquela;
+    private Esquela multa;
     private String licencia;
     private Integer idEsquela;
+    private Integer idMulta;
+    private List<Esquela> idE;
+    private Integer[] idEs;
     private Integer idConductor;
     private Conductor conductor;
     private Integer est;
@@ -51,6 +54,8 @@ public class EsquelaMb implements Serializable{
        esquela = new Esquela();
        conductor = new Conductor();
        rgDao = new RelacionesGeneralesDao();
+       idE = new ArrayList<>();
+       idEs = new Integer[listEsquela.size()];
 //       Test();
     }
     
@@ -65,25 +70,32 @@ public class EsquelaMb implements Serializable{
         }
     }
     
+    public void listaMultasAPagar(){
+        for(Esquela e: idE){
+            e.setIdEsquela(idMulta);
+            idE.add(e);
+        }
+        int j=idE.size();
+        for(Integer i=0; i<j; i++){
+           
+        }
+    }
     
     public void listadoEsquelaNit(){
         Conductor c = new Conductor();
         c.setLicencia(licencia);
         try {
             listEsquela = esquDAO.listadoEsquelasNit(c);
-            System.out.println(" MB List por licencia size  " + listEsquela.size());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
     
-    public void listadoEsquelaDui(String dui){
+    public void listadoEsquelaDui(){
         Persona p = new Persona();
-        p.setDui(dui);
+        p.setDui(licencia);
         try {
             listEsquela = esquDAO.listadoEsquelasDUI(p);
-            System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " +listEsquela.size());
-            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -97,19 +109,16 @@ public class EsquelaMb implements Serializable{
         try {
             listEsquela = esquDAO.listadoEsquelasDUILicencia(p, c);
             System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " +listEsquela.size());
-            
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
     
-    public void listadoEsquelaPlaca(String placa){
+    public void listadoEsquelaPlaca(){
         Vehiculo v = new Vehiculo();
-        v.setNumeroPlaca(placa);
+        v.setNumeroPlaca(licencia);
         try {
             listEsquela = esquDAO.listadoEsquelasPlaca(v);
-            System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " +listEsquela.size());
-            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -138,7 +147,9 @@ public class EsquelaMb implements Serializable{
             estado.setIdEstado(1);
         }  
             try {
-           esquela.setIdConductor(rgDao.idConductor(idEsquela));
+                Conductor con = new Conductor();
+                con.setIdConductor(rgDao.idConductor(idEsquela));
+           esquela.setIdConductor(con);
            Vehiculo vehiculo = new Vehiculo();
            vehiculo.setIdVehiculo(rgDao.idVehiculo(idEsquela));
            esquela.setPlaca(vehiculo);
@@ -237,6 +248,31 @@ public class EsquelaMb implements Serializable{
     public void setEst(Integer est) {
         this.est = est;
     }
+
+    public List<Esquela> getIdE() {
+        return idE;
+    }
+
+    public void setIdE(List<Esquela> idE) {
+        this.idE = idE;
+    }
+
+    public Integer[] getIdEs() {
+        return idEs;
+    }
+
+    public void setIdEs(Integer[] idEs) {
+        this.idEs = idEs;
+    }
+
+    public Integer getIdMulta() {
+        return idMulta;
+    }
+
+    public void setIdMulta(Integer idMulta) {
+        this.idMulta = idMulta;
+    }
+    
     
     
     
