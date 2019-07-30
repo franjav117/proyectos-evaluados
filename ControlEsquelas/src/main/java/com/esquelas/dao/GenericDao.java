@@ -16,11 +16,10 @@ import javax.persistence.Persistence;
  */
 @Stateless
 public class GenericDao {
-    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
-    private final EntityManager em = emf.createEntityManager();
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
+    private EntityManager em = emf.createEntityManager();
     
      public Object insertarEntidad(Object obj) {
-
         try {
             em.getTransaction().begin();
             em.persist(obj);
