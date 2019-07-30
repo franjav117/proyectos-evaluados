@@ -30,6 +30,7 @@ public class TipoMatriculaDao {
         try {
             listmatricula = new ArrayList<TipoMatricula>();
             listmatricula = em.createNamedQuery("TipoMatricula.findAll").getResultList();
+            System.out.println("/*/*/*/*/ DAO Lista "+listmatricula.size());
         } catch (Exception e) {
             e.printStackTrace();
         }
