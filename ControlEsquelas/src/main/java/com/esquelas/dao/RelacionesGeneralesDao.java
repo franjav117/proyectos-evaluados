@@ -20,7 +20,9 @@ import com.esquelas.entities.TipoGravedad;
 import com.esquelas.entities.TipoMatricula;
 import com.esquelas.entities.TipoPlaca;
 import com.esquelas.entities.Vehiculo;
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -164,15 +166,14 @@ public class RelacionesGeneralesDao {
         return i;
     }
     
-    public Integer idConductor(Integer esq){ //Integer dentro de obj 
-        Integer obj = 0;
+    public Conductor idConductor(Integer esq){ //Integer dentro de obj 
+        Conductor obj = new Conductor();
         try {
-            System.out.println("DAO id Esquela recibido "+esq);
-            obj = (Integer) em.createNativeQuery("Select id_conductor from esquela where id_esquela = "+esq+"", Conductor.class).getSingleResult();
+            obj = (Conductor) em.createNativeQuery("Select id_conductor from esquela where id_esquela = "+esq+"", Conductor.class).getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("DAO id Conductor "+obj);
+        System.out.println("DAO id Conductor "+obj.getIdConductor() +" "+obj.getIdPersona().getN1Nombre() +" "+ obj.getIdPersona().getA1Apellido());
         return obj;
     }
 
@@ -185,6 +186,16 @@ public class RelacionesGeneralesDao {
         }
         System.out.println("DAO id Vehiculo "+obj);
         return obj;
+    }
+    
+    public Date fechaPago(Integer i){
+        Date pago = new Date();
+        try {
+            pago = (Date) em.createNativeQuery("Select fecha_pago from esquela where id_esquela = "+i+"").getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return pago; 
     }
     
     public AgenteTransito idAgente(Integer esq){

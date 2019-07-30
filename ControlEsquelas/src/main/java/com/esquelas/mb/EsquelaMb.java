@@ -19,6 +19,7 @@ import com.esquelas.entities.TipoGravedad;
 import com.esquelas.entities.Vehiculo;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -147,9 +148,9 @@ public class EsquelaMb implements Serializable{
             estado.setIdEstado(1);
         }  
             try {
-                Conductor con = new Conductor();
-                con.setIdConductor(rgDao.idConductor(idEsquela));
-           esquela.setIdConductor(con);
+//                Conductor con = new Conductor();
+//                con.setIdConductor(rgDao.idConductor(idEsquela));
+           esquela.setIdConductor(rgDao.idConductor(idEsquela));
            Vehiculo vehiculo = new Vehiculo();
            vehiculo.setIdVehiculo(rgDao.idVehiculo(idEsquela));
            esquela.setPlaca(vehiculo);
@@ -166,6 +167,8 @@ public class EsquelaMb implements Serializable{
            esquela.setTipoGravedad(tg);
            esquela.setMontoPagar(rgDao.esquelaDatosPuros(idEsquela).getMontoPagar()); //Double
            esquela.setEstado(estado);
+           Date fecha = new Date();
+           esquela.setFechaPago(fecha);
            esquela.setIdDepartamento(rgDao.idDepartamento(idEsquela));
                 Decomiso de = new Decomiso();
                 de.setIdDecomiso(rgDao.idDecomiso(idEsquela));
@@ -176,10 +179,15 @@ public class EsquelaMb implements Serializable{
            esquela.setIdOtros(o);
            esquela.setIdEsquela(idEsquela);
            //Datos seteados
+           Date check = new Date();
+           check = rgDao.fechaPago(idEsquela);
+           if(check == null){
            gd.actualizarEntidad(esquela); //Envio a actualizar
+           }else{
+               System.out.println("************ Pago ya actualizado " +esquela.getFechaPago());
+           }
            listadoEsquelaNit();
-           System.out.println("++++++++++++++" +esquela.getEstado().getEstadoMulta());
-//           esquela = new Esquela();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
