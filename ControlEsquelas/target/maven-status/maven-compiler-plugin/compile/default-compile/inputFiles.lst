@@ -1,33 +1,3 @@
-<<<<<<< HEAD
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Cajero.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\PersonaMb.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\EsquelaDao.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\TipoMatricula.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\AgenteTransito.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\EsquelasDao.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Esquela.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\PersonaDao.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Conductor.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\GenericDao.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Vehiculo.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\RelacionesGeneralesDao.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Rol.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\ConsultaDao.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Departamento.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\RegistroEsquelasMb.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Clasificacion.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Decomiso.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Otros.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\ConsultaMb.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\TipoPlaca.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Persona.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\TipoGravedad.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Estado.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\EsquelaMb.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\TemporalDao.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Usuario.java
-C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\ClaseLicencia.java
-=======
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Usuario.java
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Otros.java
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\TipoMatricula.java
@@ -56,4 +26,3 @@ C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-eva
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Rol.java
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\AgenteTransito.java
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\TipoPlaca.java
->>>>>>> feature_francisco

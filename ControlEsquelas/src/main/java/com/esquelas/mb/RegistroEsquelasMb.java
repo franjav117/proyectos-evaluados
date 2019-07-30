@@ -39,10 +39,9 @@ import javax.faces.context.FacesContext;
 public class RegistroEsquelasMb implements Serializable {
 
     private Esquela esquela;
-    private Conductor conductor;
     private List<Esquela> esquelaList; //mostrar de esquelas
 
-    private List<Estado> estadoList; //1
+//    private List<Estado> estadoList; //1
     private List<Departamento> departamentoList; //2
     private List<TipoGravedad> tipoGravedadList; //3
     private List<Decomiso> DecomisoList;//4
@@ -52,7 +51,7 @@ public class RegistroEsquelasMb implements Serializable {
     private List<AgenteTransito> AgenteTransitoList;//8
     private List<Vehiculo> vehiculoList;//9
 
-    private Map<String, String> EstadoSelect;//1
+//    private Map<String, String> EstadoSelect;//1
     private Map<String, String> DepartamentoSelect;//2
     private Map<String, String> TipoGravedadSelect;//3
     private Map<String, String> DecomisoSelect;//4
@@ -62,7 +61,7 @@ public class RegistroEsquelasMb implements Serializable {
     private Map<String, String> AgenteTransitoSelect;//8
     private Map<String, String> VehiculoSelect;//9
 
-    private Integer Estadoview;//1
+//    private Integer Estadoview;//1
     private Integer Departamentoview;//2
     private Integer TipoGravedadview;//3
     private Integer Decomisoview;//4
@@ -80,10 +79,9 @@ public class RegistroEsquelasMb implements Serializable {
     @PostConstruct
     public void init() {
         esquela = new Esquela();
-        conductor = new Conductor();
         esquelaList = new ArrayList<Esquela>();
 
-        estadoList = new ArrayList<Estado>();//1
+//        estadoList = new ArrayList<Estado>();//1
         departamentoList = new ArrayList<Departamento>();//2
         tipoGravedadList = new ArrayList<TipoGravedad>();//3
         DecomisoList = new ArrayList<Decomiso>();//4
@@ -93,7 +91,7 @@ public class RegistroEsquelasMb implements Serializable {
         AgenteTransitoList = new ArrayList<AgenteTransito>();//8
         vehiculoList = new ArrayList<Vehiculo>();//9
 
-        EstadoSelect = new HashMap<String, String>();//1
+//        EstadoSelect = new HashMap<String, String>();//1
         DepartamentoSelect = new HashMap<String, String>();//2    
         TipoGravedadSelect = new HashMap<String, String>();//3       
         DecomisoSelect = new HashMap<String, String>();//4       
@@ -110,7 +108,7 @@ public class RegistroEsquelasMb implements Serializable {
 
         mostrarEsquelas();
 
-        obtenerEstado();
+//        obtenerEstado();
         obtenerDepartamento();
         obtenerTipoGravedad();
         obtenerDecomiso();
@@ -129,7 +127,7 @@ public class RegistroEsquelasMb implements Serializable {
         AgenteTransito idag = new AgenteTransito();
         Clasificacion idcla = new Clasificacion();
         TipoGravedad idgra = new TipoGravedad();
-        Estado ides = new Estado();
+//        Estado ides = new Estado();
         Departamento iddep = new Departamento();
         Decomiso iddec = new Decomiso();
         Otros idot = new Otros();
@@ -149,8 +147,8 @@ public class RegistroEsquelasMb implements Serializable {
         idgra.setIdGravedad(TipoGravedadview);
         esquela.setTipoGravedad(idgra);
 
-        ides.setIdEstado(Estadoview);
-        esquela.setEstado(ides);
+//        ides.setIdEstado(Estadoview);
+//        esquela.setEstado(ides);
 
         iddep.setIdDepartamento(Departamentoview);
         esquela.setIdDepartamento(iddep);
@@ -167,7 +165,7 @@ public class RegistroEsquelasMb implements Serializable {
         if (null != esquela) {
             msg = new FacesMessage("Esquela registrada " + esquela.getIdEsquela());
             esquela = new Esquela();
-            EstadoSelect = new HashMap<String, String>();//1
+//            EstadoSelect = new HashMap<String, String>();//1
             DepartamentoSelect = new HashMap<String, String>();//2    
             TipoGravedadSelect = new HashMap<String, String>();//3       
             DecomisoSelect = new HashMap<String, String>();//4       
@@ -188,17 +186,15 @@ public class RegistroEsquelasMb implements Serializable {
 
     public void consultById(Esquela ide) {
         esquela = ed.findEsquelaById(ide);
-        
-
         //this.esquela = ide;
     }
 
-    public void obtenerEstado() {//1
-        estadoList = rgd.obtenerEstado();
-        for (Estado e : estadoList) {
-            EstadoSelect.put(e.getEstadoMulta(), String.valueOf(e.getIdEstado()));
-        }
-    }
+//    public void obtenerEstado() {//1
+//        estadoList = rgd.obtenerEstado();
+//        for (Estado e : estadoList) {
+//            EstadoSelect.put(e.getEstadoMulta(), String.valueOf(e.getIdEstado()));
+//        }
+//    }
 
     public void obtenerDepartamento() {//2
         departamentoList = rgd.obtenerDepartamento();
@@ -268,14 +264,6 @@ public class RegistroEsquelasMb implements Serializable {
         this.esquela = esquela;
     }
 
-    public Conductor getConductor() {
-        return conductor;
-    }
-
-    public void setConductor(Conductor conductor) {
-        this.conductor = conductor;
-    }
-
     public List<Esquela> getEsquelaList() {
         return esquelaList;
     }
@@ -284,13 +272,13 @@ public class RegistroEsquelasMb implements Serializable {
         this.esquelaList = esquelaList;
     }
 
-    public List<Estado> getEstadoList() {
-        return estadoList;
-    }
-
-    public void setEstadoList(List<Estado> estadoList) {
-        this.estadoList = estadoList;
-    }
+//    public List<Estado> getEstadoList() {
+//        return estadoList;
+//    }
+//
+//    public void setEstadoList(List<Estado> estadoList) {
+//        this.estadoList = estadoList;
+//    }
 
     public List<Departamento> getDepartamentoList() {
         return departamentoList;
@@ -356,13 +344,13 @@ public class RegistroEsquelasMb implements Serializable {
         this.vehiculoList = vehiculoList;
     }
 
-    public Map<String, String> getEstadoSelect() {
-        return EstadoSelect;
-    }
-
-    public void setEstadoSelect(Map<String, String> EstadoSelect) {
-        this.EstadoSelect = EstadoSelect;
-    }
+//    public Map<String, String> getEstadoSelect() {
+//        return EstadoSelect;
+//    }
+//
+//    public void setEstadoSelect(Map<String, String> EstadoSelect) {
+//        this.EstadoSelect = EstadoSelect;
+//    }
 
     public Map<String, String> getDepartamentoSelect() {
         return DepartamentoSelect;
@@ -428,13 +416,13 @@ public class RegistroEsquelasMb implements Serializable {
         this.VehiculoSelect = VehiculoSelect;
     }
 
-    public Integer getEstadoview() {
-        return Estadoview;
-    }
-
-    public void setEstadoview(Integer Estadoview) {
-        this.Estadoview = Estadoview;
-    }
+//    public Integer getEstadoview() {
+//        return Estadoview;
+//    }
+//
+//    public void setEstadoview(Integer Estadoview) {
+//        this.Estadoview = Estadoview;
+//    }
 
     public Integer getDepartamentoview() {
         return Departamentoview;
