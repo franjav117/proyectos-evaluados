@@ -36,9 +36,10 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @ViewScoped
-public class RegistroEsquelasMb implements Serializable{
+public class RegistroEsquelasMb implements Serializable {
 
     private Esquela esquela;
+    private Conductor conductor;
     private List<Esquela> esquelaList; //mostrar de esquelas
 
     private List<Estado> estadoList; //1
@@ -79,6 +80,7 @@ public class RegistroEsquelasMb implements Serializable{
     @PostConstruct
     public void init() {
         esquela = new Esquela();
+        conductor = new Conductor();
         esquelaList = new ArrayList<Esquela>();
 
         estadoList = new ArrayList<Estado>();//1
@@ -121,6 +123,7 @@ public class RegistroEsquelasMb implements Serializable{
 
     public void guardarEsquela() {
         FacesMessage msg = null;
+
         Conductor idcon = new Conductor();
         Vehiculo idveh = new Vehiculo();
         AgenteTransito idag = new AgenteTransito();
@@ -130,49 +133,63 @@ public class RegistroEsquelasMb implements Serializable{
         Departamento iddep = new Departamento();
         Decomiso iddec = new Decomiso();
         Otros idot = new Otros();
-        
+
         idcon.setIdConductor(Conductorview);
         esquela.setIdConductor(idcon);
-        
+
         idveh.setIdVehiculo(Vehiculoview);
         esquela.setPlaca(idveh);
-        
+
         idag.setIdAgente(AgenteTransitoview);
         esquela.setIdAgente(idag);
-        
+
         idcla.setIdClasificacion(Clasificacionview);
         esquela.setClasificacion(idcla);
-        
+
         idgra.setIdGravedad(TipoGravedadview);
         esquela.setTipoGravedad(idgra);
-        
+
         ides.setIdEstado(Estadoview);
         esquela.setEstado(ides);
-        
+
         iddep.setIdDepartamento(Departamentoview);
         esquela.setIdDepartamento(iddep);
-        
+
         iddec.setIdDecomiso(Decomisoview);
         esquela.setIdDecomiso(iddec);
-        
+
         idot.setIdOtro(Otrosview);
         esquela.setIdOtros(idot);
         
-        esquela = (Esquela) gd.insertarEntidad(esquela);
-        if (null !=esquela){
-            msg = new FacesMessage("Esquela registrada "+esquela.getIdEsquela());
-//            mostrarEsquelas();
+        esquela.getEstado().setIdEstado(1);
 
-        }else{
+        esquela = (Esquela) gd.insertarEntidad(esquela);
+        if (null != esquela) {
+            msg = new FacesMessage("Esquela registrada " + esquela.getIdEsquela());
+            esquela = new Esquela();
+            EstadoSelect = new HashMap<String, String>();//1
+            DepartamentoSelect = new HashMap<String, String>();//2    
+            TipoGravedadSelect = new HashMap<String, String>();//3       
+            DecomisoSelect = new HashMap<String, String>();//4       
+            OtrosSelect = new HashMap<String, String>();//5       
+            ClasificacionSelect = new HashMap<String, String>();//6 
+            ConductorSelect = new HashMap<String, String>();//7  
+            AgenteTransitoSelect = new HashMap<String, String>();//8       
+            VehiculoSelect = new HashMap<String, String>();//9  
+            mostrarEsquelas();
+
+        } else {
             msg = new FacesMessage("Error registrando esquela");
         }
         FacesContext.getCurrentInstance().addMessage(null, msg);
-    //    mostrarEsquelas();
+        mostrarEsquelas();
 
     }
 
     public void consultById(Esquela ide) {
-        esquela =  ed.findEsquelaById(ide);
+        esquela = ed.findEsquelaById(ide);
+        
+
         //this.esquela = ide;
     }
 
@@ -249,6 +266,14 @@ public class RegistroEsquelasMb implements Serializable{
 
     public void setEsquela(Esquela esquela) {
         this.esquela = esquela;
+    }
+
+    public Conductor getConductor() {
+        return conductor;
+    }
+
+    public void setConductor(Conductor conductor) {
+        this.conductor = conductor;
     }
 
     public List<Esquela> getEsquelaList() {
@@ -506,5 +531,4 @@ public class RegistroEsquelasMb implements Serializable{
     public void setRgd1(TemporalDao rgd1) {
         this.rgd1 = rgd1;
     }
-
 }
