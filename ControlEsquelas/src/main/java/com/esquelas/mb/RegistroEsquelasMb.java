@@ -15,7 +15,7 @@ import com.esquelas.entities.Conductor;
 import com.esquelas.entities.Decomiso;
 import com.esquelas.entities.Departamento;
 import com.esquelas.entities.Esquela;
-import com.esquelas.entities.Estado;
+//import com.esquelas.entities.Estado;
 import com.esquelas.entities.Otros;
 import com.esquelas.entities.TipoGravedad;
 import com.esquelas.entities.Vehiculo;
@@ -159,6 +159,7 @@ public class RegistroEsquelasMb implements Serializable {
         idot.setIdOtro(Otrosview);
         esquela.setIdOtros(idot);
         
+        esquela.setFechaPago(null);
         esquela.getEstado().setIdEstado(1);
 
         esquela = (Esquela) gd.insertarEntidad(esquela);
