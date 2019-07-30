@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author melvin.madridusam
+ * @author rogelio.mejiausam
  */
 @Entity
 @Table(name = "esquela")
@@ -40,8 +40,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Esquela.findByDUILicencia", query = "SELECT e FROM Esquela e WHERE e.idConductor.idPersona.dui = :dui and e.idConductor.licencia = :licencia")
     , @NamedQuery(name = "Esquela.findByPlaca", query = "SELECT e FROM Esquela e WHERE e.placa.idVehiculo = :placa")
     , @NamedQuery(name = "Esquela.findByCodigoFalta", query = "SELECT e FROM Esquela e WHERE e.codigoFalta = :codigoFalta")
-    , @NamedQuery(name = "Esquela.findByConductor", query = "SELECT e FROM Esquela e WHERE e.idConductor.idConductor = :idConductor")
-    , @NamedQuery(name = "Esquela.findByVehiculo", query = "SELECT e FROM Esquela e WHERE e.placa.idVehiculo = :idVehiculo")
     , @NamedQuery(name = "Esquela.findByFechaEsquela", query = "SELECT e FROM Esquela e WHERE e.fechaEsquela = :fechaEsquela")
     , @NamedQuery(name = "Esquela.findByLugarInfraccion", query = "SELECT e FROM Esquela e WHERE e.lugarInfraccion = :lugarInfraccion")
     , @NamedQuery(name = "Esquela.findByObservaciones", query = "SELECT e FROM Esquela e WHERE e.observaciones = :observaciones")
@@ -74,6 +72,9 @@ public class Esquela implements Serializable {
     @NotNull
     @Column(name = "monto_pagar")
     private double montoPagar;
+    @Column(name = "fecha_pago")
+    @Temporal(TemporalType.DATE)
+    private Date fechaPago;
     @JoinColumn(name = "id_conductor", referencedColumnName = "id_conductor")
     @ManyToOne(optional = false)
     private Conductor idConductor;
@@ -93,9 +94,6 @@ public class Esquela implements Serializable {
     @ManyToOne(optional = false)
     private Estado estado;
     @JoinColumn(name = "id_departamento", referencedColumnName = "id_departamento")
-    @Column(name = "fecha_pago")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaPago;
     @ManyToOne(optional = false)
     private Departamento idDepartamento;
     @JoinColumn(name = "id_decomiso", referencedColumnName = "id_decomiso")
@@ -167,6 +165,14 @@ public class Esquela implements Serializable {
         this.montoPagar = montoPagar;
     }
 
+    public Date getFechaPago() {
+        return fechaPago;
+    }
+
+    public void setFechaPago(Date fechaPago) {
+        this.fechaPago = fechaPago;
+    }
+
     public Conductor getIdConductor() {
         return idConductor;
     }
@@ -215,14 +221,6 @@ public class Esquela implements Serializable {
         this.estado = estado;
     }
 
-    public Date getFechaPago() {
-        return fechaPago;
-    }
-
-    public void setFechaPago(Date fechaPago) {
-        this.fechaPago = fechaPago;
-    }
-    
     public Departamento getIdDepartamento() {
         return idDepartamento;
     }
