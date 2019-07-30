@@ -19,11 +19,11 @@ import com.esquelas.entities.TipoGravedad;
 import com.esquelas.entities.Vehiculo;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 
 /**
  *
@@ -37,8 +37,12 @@ public class EsquelaMb implements Serializable{
     private RelacionesGeneralesDao rgDao;
     private List<Esquela> listEsquela;
     private Esquela esquela;
+    private Esquela multa;
     private String licencia;
     private Integer idEsquela;
+    private Integer idMulta;
+    private List<Esquela> idE;
+    private Integer[] idEs;
     private Integer idConductor;
     private Conductor conductor;
     private Integer est;
@@ -51,6 +55,8 @@ public class EsquelaMb implements Serializable{
        esquela = new Esquela();
        conductor = new Conductor();
        rgDao = new RelacionesGeneralesDao();
+       idE = new ArrayList<>();
+       idEs = new Integer[listEsquela.size()];
 //       Test();
     }
     
@@ -65,25 +71,32 @@ public class EsquelaMb implements Serializable{
         }
     }
     
+    public void listaMultasAPagar(){
+        for(Esquela e: idE){
+            e.setIdEsquela(idMulta);
+            idE.add(e);
+        }
+        int j=idE.size();
+        for(Integer i=0; i<j; i++){
+           
+        }
+    }
     
     public void listadoEsquelaNit(){
         Conductor c = new Conductor();
         c.setLicencia(licencia);
         try {
             listEsquela = esquDAO.listadoEsquelasNit(c);
-            System.out.println(" MB List por licencia size  " + listEsquela.size());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
     
-    public void listadoEsquelaDui(String dui){
+    public void listadoEsquelaDui(){
         Persona p = new Persona();
-        p.setDui(dui);
+        p.setDui(licencia);
         try {
             listEsquela = esquDAO.listadoEsquelasDUI(p);
-            System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " +listEsquela.size());
-            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -97,19 +110,16 @@ public class EsquelaMb implements Serializable{
         try {
             listEsquela = esquDAO.listadoEsquelasDUILicencia(p, c);
             System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " +listEsquela.size());
-            
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
     
-    public void listadoEsquelaPlaca(String placa){
+    public void listadoEsquelaPlaca(){
         Vehiculo v = new Vehiculo();
-        v.setNumeroPlaca(placa);
+        v.setNumeroPlaca(licencia);
         try {
             listEsquela = esquDAO.listadoEsquelasPlaca(v);
-            System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " +listEsquela.size());
-            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -138,6 +148,8 @@ public class EsquelaMb implements Serializable{
             estado.setIdEstado(1);
         }  
             try {
+//                Conductor con = new Conductor();
+//                con.setIdConductor(rgDao.idConductor(idEsquela));
            esquela.setIdConductor(rgDao.idConductor(idEsquela));
            Vehiculo vehiculo = new Vehiculo();
            vehiculo.setIdVehiculo(rgDao.idVehiculo(idEsquela));
@@ -155,6 +167,8 @@ public class EsquelaMb implements Serializable{
            esquela.setTipoGravedad(tg);
            esquela.setMontoPagar(rgDao.esquelaDatosPuros(idEsquela).getMontoPagar()); //Double
            esquela.setEstado(estado);
+           Date fecha = new Date();
+           esquela.setFechaPago(fecha);
            esquela.setIdDepartamento(rgDao.idDepartamento(idEsquela));
                 Decomiso de = new Decomiso();
                 de.setIdDecomiso(rgDao.idDecomiso(idEsquela));
@@ -165,10 +179,15 @@ public class EsquelaMb implements Serializable{
            esquela.setIdOtros(o);
            esquela.setIdEsquela(idEsquela);
            //Datos seteados
+           Date check = new Date();
+           check = rgDao.fechaPago(idEsquela);
+           if(check == null){
            gd.actualizarEntidad(esquela); //Envio a actualizar
+           }else{
+               System.out.println("************ Pago ya actualizado " +esquela.getFechaPago());
+           }
            listadoEsquelaNit();
-           System.out.println("++++++++++++++" +esquela.getEstado().getEstadoMulta());
-//           esquela = new Esquela();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -237,6 +256,31 @@ public class EsquelaMb implements Serializable{
     public void setEst(Integer est) {
         this.est = est;
     }
+
+    public List<Esquela> getIdE() {
+        return idE;
+    }
+
+    public void setIdE(List<Esquela> idE) {
+        this.idE = idE;
+    }
+
+    public Integer[] getIdEs() {
+        return idEs;
+    }
+
+    public void setIdEs(Integer[] idEs) {
+        this.idEs = idEs;
+    }
+
+    public Integer getIdMulta() {
+        return idMulta;
+    }
+
+    public void setIdMulta(Integer idMulta) {
+        this.idMulta = idMulta;
+    }
+    
     
     
     

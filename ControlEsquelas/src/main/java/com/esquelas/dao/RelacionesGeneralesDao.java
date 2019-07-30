@@ -20,7 +20,9 @@ import com.esquelas.entities.TipoGravedad;
 import com.esquelas.entities.TipoMatricula;
 import com.esquelas.entities.TipoPlaca;
 import com.esquelas.entities.Vehiculo;
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -184,6 +186,16 @@ public class RelacionesGeneralesDao {
         }
         System.out.println("DAO id Vehiculo "+obj);
         return obj;
+    }
+    
+    public Date fechaPago(Integer i){
+        Date pago = new Date();
+        try {
+            pago = (Date) em.createNativeQuery("Select fecha_pago from esquela where id_esquela = "+i+"").getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return pago; 
     }
     
     public AgenteTransito idAgente(Integer esq){
