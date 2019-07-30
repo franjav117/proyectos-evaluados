@@ -72,6 +72,9 @@ public class Esquela implements Serializable {
     @NotNull
     @Column(name = "monto_pagar")
     private double montoPagar;
+    @Column(name = "fecha_pago")
+    @Temporal(TemporalType.DATE)
+    private Date fechaPago;
     @JoinColumn(name = "id_conductor", referencedColumnName = "id_conductor")
     @ManyToOne(optional = false)
     private Conductor idConductor;
@@ -160,6 +163,14 @@ public class Esquela implements Serializable {
 
     public void setMontoPagar(double montoPagar) {
         this.montoPagar = montoPagar;
+    }
+
+    public Date getFechaPago() {
+        return fechaPago;
+    }
+
+    public void setFechaPago(Date fechaPago) {
+        this.fechaPago = fechaPago;
     }
 
     public Conductor getIdConductor() {
