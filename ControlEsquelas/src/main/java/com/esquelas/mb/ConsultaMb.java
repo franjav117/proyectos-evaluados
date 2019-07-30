@@ -50,7 +50,9 @@ public class ConsultaMb implements Serializable {
             cond.setLicencia(licencia);
             listEsId = cdao.listadoEsquelasNit(cond);
         } catch (Exception e) {
+            e.printStackTrace();
         }
+        
     }
     
     public void consultarXPlaca(){

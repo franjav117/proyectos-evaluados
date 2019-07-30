@@ -24,27 +24,22 @@
 
         </h:form>
         <h:form id="esquela">
-            <p:dataTable id="table" var="es" value="#{consultaMb.listEsId}" rows="6" paginator="true">
-                <p:column headerText="Id">
-                    <p:outputLabel value="#{es.idEsquela}"/>
-                </p:column>
+            <p:dataTable id="table" var="es" value="#{consultaMb.listEsId}" rows="6" paginator="true" rendered="true" >
+               
                 <p:column headerText="Conductor">
                     <p:outputLabel value="#{es.idConductor.idPersona.n1Nombre} #{es.idConductor.idPersona.a1Apellido}"/>
                 </p:column>
-                <p:column headerText="Placa">
-                    <p:outputLabel value="#{es.placa.numeroPlaca}"/>
-                </p:column>
-                <p:column headerText="Agente">
-                    <p:outputLabel value="#{es.idAgente.numPlaca}"/>
-                </p:column>
+                
                 <p:column headerText="Falta">
                     <p:outputLabel value="#{es.codigoFalta}"/>
                 </p:column>
                 <p:column headerText="Clasificacion">
                     <p:outputLabel value="#{es.clasificacion.clasificacion}"/>
                 </p:column>
-                <p:column headerText="Fecha">
-                    <p:outputLabel value="#{es.fechaEsquela}"/>
+                <p:column headerText="Fecha" >
+                    <p:outputLabel value="#{es.fechaEsquela}">
+                        <f:convertDateTime pattern="yyyy/MM/dd"/>
+                    </p:outputLabel>
                 </p:column>
                 <p:column headerText="Lugar">
                     <p:outputLabel value="#{es.lugarInfraccion}"/>
@@ -56,11 +51,9 @@
                     <p:outputLabel value="#{es.tipoGravedad.gravedad}"/>
                 </p:column>
                 <p:column headerText="Monto">
-                    <p:outputLabel value="#{es.montoPagar}"/>
+                    <p:outputLabel value="$#{es.montoPagar}"/>
                 </p:column>
-                <p:column headerText="Estado">
-                    <p:outputLabel value="#{es.estado.estadoMulta}"/>
-                </p:column>
+                
                 <p:column headerText="Departamento">
                     <p:outputLabel value="#{es.idDepartamento.departamento}"/>
                 </p:column>
@@ -69,6 +62,9 @@
                 </p:column>
                 <p:column headerText="Otros">
                     <p:outputLabel value="#{es.idOtros.especificacion}"/>
+                </p:column>
+                <p:column headerText="Estado">
+                    <p:outputLabel value="#{es.estado.estadoMulta}"/>
                 </p:column>
             </p:dataTable>
         </h:form>
