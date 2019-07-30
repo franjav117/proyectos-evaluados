@@ -40,9 +40,11 @@ public class EsquelaDao {
             esquelaDao = new Esquela();
             esquelaDao = (Esquela) em.createNamedQuery("Esquela.findByIdEsquela").setParameter("idEsquela", esqvist.getIdEsquela()).getSingleResult();
             System.out.println("ID SELECCIONADO EN LA VISTA ::::::::::::::::::::::::::   <<"+esquelaDao.getIdEsquela()+">>");
+            new Esquela();
             
         } catch (Exception e) {
             e.printStackTrace();
+            em.getTransaction().rollback();
         }
         return esquelaDao;
     }

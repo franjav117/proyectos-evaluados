@@ -84,12 +84,12 @@
                 </p:selectOneMenu>
 
             </p:panelGrid>
-            <p:commandButton value="Guardar esquela" action="#{registroEsquelasMb.guardarEsquela()}" update="form1,formesq"/>
+            <p:commandButton value="Guardar esquela" action="#{registroEsquelasMb.guardarEsquela()}" update="formesq"/>
         </h:form>
         
         
         <h:form id="formesq">
-            <p:dataGrid var="esq" value="#{registroEsquelasMb.esquelaList}" columns="4" layout="grid" paginator="true" rows="8">
+            <p:dataGrid id="data" var="esq" value="#{registroEsquelasMb.esquelaList}" columns="4" layout="grid" paginator="true" rows="8">
                 <f:facet name="header">
                     Registro de esquelas
                 </f:facet>
@@ -107,7 +107,7 @@
                             <h:outputText value="Tipo :"/>
                             <h:outputText value="#{esq.tipoGravedad.gravedad}"/>
                             <h:outputText value="Detalles :"/>
-                            <p:commandButton action="#{registroEsquelasMb.consultById(esq)}" update=":formesq:detallesEsquela" oncomplete="PF('esquelaDialog').show()" title="ver detalle" value="Mostrar" style="text-align: center;"/>                                
+                            <p:commandButton action="#{registroEsquelasMb.consultById(esq)}" update="formesq:detallesEsquela" oncomplete="PF('esquelaDialog').show()" title="ver detalle" value="Mostrar" style="text-align: center;"/>                                
                         </p:panelGrid>                           
                     </center>
                 </p:panel>

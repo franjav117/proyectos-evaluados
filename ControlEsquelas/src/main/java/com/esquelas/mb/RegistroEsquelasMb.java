@@ -161,13 +161,13 @@ public class RegistroEsquelasMb implements Serializable{
         esquela = (Esquela) gd.insertarEntidad(esquela);
         if (null !=esquela){
             msg = new FacesMessage("Esquela registrada "+esquela.getIdEsquela());
-            mostrarEsquelas();
+//            mostrarEsquelas();
 
         }else{
             msg = new FacesMessage("Error registrando esquela");
         }
         FacesContext.getCurrentInstance().addMessage(null, msg);
-        mostrarEsquelas();
+    //    mostrarEsquelas();
 
     }
 

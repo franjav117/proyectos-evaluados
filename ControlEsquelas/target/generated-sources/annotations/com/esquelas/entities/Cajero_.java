@@ -5,7 +5,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2019-07-29T15:59:23")
+@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2019-07-30T08:37:28")
 @StaticMetamodel(Cajero.class)
 public class Cajero_ { 
 
