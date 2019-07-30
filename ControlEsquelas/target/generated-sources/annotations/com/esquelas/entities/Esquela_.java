@@ -14,7 +14,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2019-07-30T13:35:16")
+@Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2019-07-30T16:16:07")
 @StaticMetamodel(Esquela.class)
 public class Esquela_ { 
 
@@ -24,6 +24,7 @@ public class Esquela_ {
     public static volatile SingularAttribute<Esquela, AgenteTransito> idAgente;
     public static volatile SingularAttribute<Esquela, Integer> idEsquela;
     public static volatile SingularAttribute<Esquela, String> lugarInfraccion;
+    public static volatile SingularAttribute<Esquela, Date> fechaPago;
     public static volatile SingularAttribute<Esquela, Departamento> idDepartamento;
     public static volatile SingularAttribute<Esquela, Otros> idOtros;
     public static volatile SingularAttribute<Esquela, String> codigoFalta;
