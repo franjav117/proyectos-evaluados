@@ -34,18 +34,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Esquela.findAll", query = "SELECT e FROM Esquela e")
     , @NamedQuery(name = "Esquela.findByIdEsquela", query = "SELECT e FROM Esquela e WHERE e.idEsquela = :idEsquela")
-    , @NamedQuery(name = "Esquela.findByConductor", query = "SELECT e FROM Esquela e WHERE e.idConductor.idConductor = :idConductor")
-    ,  @NamedQuery(name = "Esquela.findByLicencia", query = "SELECT e FROM Esquela e WHERE e.idConductor.idConductor = :licencia")
-    , @NamedQuery(name = "Esquela.findByDUI", query = "SELECT e FROM Esquela e WHERE e.idConductor.idPersona.dui = :dui")
-    , @NamedQuery(name = "Esquela.findByDUILicencia", query = "SELECT e FROM Esquela e WHERE e.idConductor.idPersona.dui = :dui and e.idConductor.licencia = :licencia")
-    , @NamedQuery(name = "Esquela.findByPlaca", query = "SELECT e FROM Esquela e WHERE e.placa.numeroPlaca = :placa")
     , @NamedQuery(name = "Esquela.findByCodigoFalta", query = "SELECT e FROM Esquela e WHERE e.codigoFalta = :codigoFalta")
-    , @NamedQuery(name = "Esquela.findByConductor", query = "SELECT e FROM Esquela e WHERE e.idConductor.idConductor = :idConductor")
-    , @NamedQuery(name = "Esquela.findByVehiculo", query = "SELECT e FROM Esquela e WHERE e.placa.idVehiculo = :idVehiculo")
     , @NamedQuery(name = "Esquela.findByFechaEsquela", query = "SELECT e FROM Esquela e WHERE e.fechaEsquela = :fechaEsquela")
     , @NamedQuery(name = "Esquela.findByLugarInfraccion", query = "SELECT e FROM Esquela e WHERE e.lugarInfraccion = :lugarInfraccion")
     , @NamedQuery(name = "Esquela.findByObservaciones", query = "SELECT e FROM Esquela e WHERE e.observaciones = :observaciones")
-    , @NamedQuery(name = "Esquela.findByMontoPagar", query = "SELECT e FROM Esquela e WHERE e.montoPagar = :montoPagar")})
+    , @NamedQuery(name = "Esquela.findByMontoPagar", query = "SELECT e FROM Esquela e WHERE e.montoPagar = :montoPagar")
+    , @NamedQuery(name = "Esquela.findByFechaPago", query = "SELECT e FROM Esquela e WHERE e.fechaPago = :fechaPago")})
 public class Esquela implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -74,6 +68,9 @@ public class Esquela implements Serializable {
     @NotNull
     @Column(name = "monto_pagar")
     private double montoPagar;
+    @Column(name = "fecha_pago")
+    @Temporal(TemporalType.DATE)
+    private Date fechaPago;
     @JoinColumn(name = "id_conductor", referencedColumnName = "id_conductor")
     @ManyToOne(optional = false)
     private Conductor idConductor;
@@ -162,6 +159,14 @@ public class Esquela implements Serializable {
 
     public void setMontoPagar(double montoPagar) {
         this.montoPagar = montoPagar;
+    }
+
+    public Date getFechaPago() {
+        return fechaPago;
+    }
+
+    public void setFechaPago(Date fechaPago) {
+        this.fechaPago = fechaPago;
     }
 
     public Conductor getIdConductor() {

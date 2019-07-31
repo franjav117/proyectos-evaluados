@@ -17,7 +17,7 @@ import javax.persistence.Persistence;
  *
  * @author melvin.madridusam
  */
-@Stateless
+
 public class VehiculoDao {
     
     private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");

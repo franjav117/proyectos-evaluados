@@ -8,21 +8,22 @@
         <title>Facelet Title</title>
         <style>
             body{
-                background-color: #33DAFF;
+                background-color: #86A5ED;
             }
         </style>
     </h:head>
     <h:body>
         <center>
             <h:form id="principal">
-                <p:fieldset legend="Ingreso de Vehiculos" style="width: 500px; border-radius: 15px;" >
+                <p:fieldset legend="Ingreso de Vehiculos" style="width: 450px; border-radius: 15px;" > 
                     <p:panelGrid columns="2">
                         <p:outputLabel value="Persona"/>
-                        <p:selectOneMenu value="#{vehiculoMb.idPersonaView}" filter="true" required="true" requiredMessage="Seleciones Persona">
+                        <p:selectOneMenu value="#{vehiculoMb.idPersonaView}" filter="true" required="true"
+                                         requiredMessage="Seleciones Persona" autoWidth="true" style="size: 15px">
                             <f:selectItems value="#{vehiculoMb.selectPersona}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="Tipo de Placa"/>
-                        <p:selectOneMenu value="#{vehiculoMb.idTipoMaView}"  required="true" requiredMessage="Selecione Tipo de Placa">
+                        <p:selectOneMenu value="#{vehiculoMb.idTipoMaView}"  required="true" requiredMessage="Selecione Tipo de Placa" >
                             <f:selectItem itemLabel="Seleciones Tipo de Placa" itemValue="0"/>
                             <f:selectItems value="#{vehiculoMb.selectTipoMa}"/>
                         </p:selectOneMenu>
@@ -31,16 +32,13 @@
                         <p:outputLabel value="Ruta"/>
                         <p:inputText value="#{vehiculoMb.vehiculo.codigoRuta}"/>
                         <p:outputLabel value="Extranjera/Nacional"/>
-                        <p:selectOneMenu value="#{vehiculoMb.extrView}" rendered="true" requiredMessage="Selecione Nacionalidad">
-                            <f:selectItem itemValue="0" itemLabel="Nacional"/>
-                            <f:selectItem itemValue="1" itemLabel="Extranjero"/>
-                        </p:selectOneMenu>
+                        <p:selectBooleanButton offLabel="Nacional" onLabel="Extranjero" value="#{vehiculoMb.vehiculo.extrangera}"/>
                         <p:outputLabel value="Pais"/>
-                        <p:inputText value="#{vehiculoMb.vehiculo.pais}"/>
+                        <p:inputText value="#{vehiculoMb.vehiculo.pais}" />
                         <p:outputLabel value="Clase"/>
-                        <p:inputText value="#{vehiculoMb.vehiculo.claseVehiculo}" placeholder="Sedan, pick-up, MicroBus"/>
+                        <p:inputText value="#{vehiculoMb.vehiculo.claseVehiculo}" />
                         <p:outputLabel value="Marca"/>
-                        <p:inputText value="#{vehiculoMb.vehiculo.marca}"/>
+                        <p:inputText value="#{vehiculoMb.marca}"/>
                         <p:outputLabel value="Modelo"/>
                         <p:inputText value="#{vehiculoMb.vehiculo.modelo}"/>
                         <p:outputLabel value="color"/>
@@ -48,21 +46,53 @@
                         <p:outputLabel value="Anio"/>
                         <p:inputText value="#{vehiculoMb.vehiculo.anio}"/>
                     </p:panelGrid>
-                    <p:commandButton value="Guardar" icon="fa fa-save" value="#{vehiculoMb.insertarVehiculo()}" style="margin-top: 15px; margin-bottom: 5px; border-radius: 10px;"/>
+                    <p:commandButton value="Guardar" icon="fa fa-save" action="#{vehiculoMb.insertarVehiculo()}" style="margin-top: 15px; margin-bottom: 5px; border-radius: 10px;"
+                                     update="f2:tablev"/>
                 </p:fieldset>
             </h:form>
         </center>
         <center>
             <h:form id="f2">
-                <p:dialog id="vehiculo" header="Vehiculos" modal="true" widgetVar="ve" showEffect="fade" hideEffect="fade" resizable="false" responsive="true" >
-                    <p:dataTable id="tablev" var="v" value="#{vehiculoMb.listvehiculo}" rows="6" paginator="true">
-                        <p:column headerText="Id">
-                            
-                        </p:column>
-                    </p:dataTable>
-            </p:dialog>
-        </h:form>
-    </center>
-</h:body>
+                <!--   <p:dialog id="vehiculo" header="Vehiculos" modal="true" widgetVar="ve" showEffect="fade" hideEffect="fade" resizable="false" responsive="true" > -->
+                <p:dataTable id="tablev" var="v" value="#{vehiculoMb.listvehiculo}" rows="2" paginator="true"
+                             style="margin-top: 15px;  border-radius: 70px"  >
+                    <p:column headerText="Dueño">
+                        <p:outputLabel value="#{v.idPersona.n1Nombre} #{v.idPersona.n2Nombre} #{v.idPersona.a1Apellido} #{v.idPersona.a2Apellido}"/>
+                    </p:column>
+                    <p:column headerText="Tipo Placa">
+                        <p:outputLabel value="#{v.tipoPlaca.codigoMatricula}"/>
+                    </p:column>
+                    <p:column headerText="Placa">
+                        <p:outputLabel value="#{v.numeroPlaca}"/>
+                    </p:column>
+                    <p:column headerText="Ruta">
+                        <p:outputLabel value="#{v.codigoRuta}"/>
+                    </p:column>
+                    <p:column headerText="Estranjero">
+                        <p:outputLabel value="#{v.extrangera}"/>
+                    </p:column>
+                    <p:column headerText="País">
+                        <p:outputLabel value="#{v.pais}"/>
+                    </p:column>
+                    <p:column headerText="Clase">
+                        <p:outputLabel value="#{v.claseVehiculo}"/>
+                    </p:column>
+                    <p:column headerText="Marca">
+                        <p:outputLabel value="#{v.marca}"/>
+                    </p:column>
+                    <p:column headerText="Modelo">
+                        <p:outputLabel value="#{v.modelo}"/>
+                    </p:column>
+                    <p:column headerText="Color">
+                        <p:outputLabel value="#{v.color}"/>
+                    </p:column>
+                    <p:column headerText="Anio">
+                        <p:outputLabel value="#{v.anio}"/>
+                    </p:column>
+                </p:dataTable>
+                <!--   </p:dialog> -->
+            </h:form>
+        </center>
+    </h:body>
 </html>
 

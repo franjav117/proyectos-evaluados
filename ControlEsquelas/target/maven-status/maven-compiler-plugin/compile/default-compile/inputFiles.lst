@@ -1,5 +1,6 @@
 C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Conductor.java
 C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Otros.java
+C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\UsuarioDao.java
 C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\TipoPlaca.java
 C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Clasificacion.java
 C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Usuario.java
@@ -18,6 +19,7 @@ C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquel
 C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Estado.java
 C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\TemporalDao.java
 C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\ClaseLicencia.java
+C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\LoginMb.java
 C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\RegistroEsquelasMb.java
 C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\EsquelaMb.java
 C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Departamento.java

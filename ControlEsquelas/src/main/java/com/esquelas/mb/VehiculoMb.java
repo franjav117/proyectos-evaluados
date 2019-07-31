@@ -34,10 +34,22 @@ public class VehiculoMb implements Serializable {
     private Map<String, String> selectTipoMa;
     private Integer idPersonaView, idTipoMaView;
     private boolean extrView = false;
+    private String marca;
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+    
+    
 
     private GenericDao gd;
     private VehiculoDao vdao;
     private TipoMatriculaDao tmdao;
+    private PersonaDao pdao;
 
     @PostConstruct
     public void init() {
@@ -45,30 +57,37 @@ public class VehiculoMb implements Serializable {
         gd = new GenericDao();
         vdao = new VehiculoDao();
         tmdao = new TipoMatriculaDao();
+        pdao = new PersonaDao();
         listvehiculo = new ArrayList<Vehiculo>();
         listTipoMa = new ArrayList<TipoMatricula>();
         listpersona = new ArrayList<Persona>();
         selectPersona = new HashMap<String, String>();
         selectTipoMa = new HashMap<String, String>();
         llenarSelectTipoMatricula();
-
+        llenarSelectPersona();
+        consultarVehiculos();
     }
 
 //***********************************************************Metodo para Guardar******************************************
     public void insertarVehiculo() {
         vehiculo = new Vehiculo();
+        
         Persona idP = new Persona();
         idP.setIdPersona(idPersonaView);
-
+        vehiculo.setIdPersona(idP);
+         
         TipoMatricula idTipo = new TipoMatricula();
         idTipo.setIdTipoMatricula(idTipoMaView);
+        vehiculo.setTipoPlaca(idTipo);
+        vehiculo.setMarca(marca);
 
         //Vehiculo idExtra = new Vehiculo();
         //idExtra.setExtrangera(extrView);
-        vehiculo.setIdPersona(idP);
-        vehiculo.setTipoPlaca(idTipo);
-        vehiculo.setExtrangera(extrView);
+        //vehiculo.setExtrangera(extrView);
+        
         vehiculo = (Vehiculo) gd.insertarEntidad(vehiculo);
+        System.out.println("++++++++++++++++++++++++++++PUTA MARCA++++++++++++++++++++++++++"+vehiculo.getMarca());
+        
         FacesMessage msg;
         if (null != vehiculo) {
             msg = new FacesMessage("Producto Guardado Satisfactoriamente");
@@ -80,9 +99,12 @@ public class VehiculoMb implements Serializable {
 
 //**************************************************************Llena el select de Personas******************************************
     public void llenarSelectPersona() {
-        //  listpersona = PersonaDao
+          listpersona = pdao.consultPersona();
+          for(Persona p : listpersona){
+              selectPersona.put(p.getDui()+" "+p.getN1Nombre() +" "+p.getN2Nombre()+" "+ p.getA1Apellido()+" "+p.getA2Apellido(), String.valueOf(p.getIdPersona()));
+          }
     }
-//System.out.println("+++++++++++++++lista MB"+listTipoMa.size());
+
 //**************************************************************Llena el select de Tipo Matricula*************************************    
     public void llenarSelectTipoMatricula() {
         
@@ -120,6 +142,9 @@ public class VehiculoMb implements Serializable {
     public void consultarVehiculos() {
         listvehiculo = vdao.consultarVehiculos();
     }
+    
+    
+    
 
 //**************************************************************Getter and Setter******************************************************    
     public List<Vehiculo> getListvehiculo() {

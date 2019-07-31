@@ -17,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -28,7 +30,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Cajero.findAll", query = "SELECT c FROM Cajero c")
-    , @NamedQuery(name = "Cajero.findByIdCajero", query = "SELECT c FROM Cajero c WHERE c.idCajero = :idCajero")})
+    , @NamedQuery(name = "Cajero.findByIdCajero", query = "SELECT c FROM Cajero c WHERE c.idCajero = :idCajero")
+    , @NamedQuery(name = "Cajero.findByCac", query = "SELECT c FROM Cajero c WHERE c.cac = :cac")
+    , @NamedQuery(name = "Cajero.findByCodCaja", query = "SELECT c FROM Cajero c WHERE c.codCaja = :codCaja")})
 public class Cajero implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,6 +41,16 @@ public class Cajero implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_cajero")
     private Integer idCajero;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "cac")
+    private String cac;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "cod_caja")
+    private String codCaja;
     @JoinColumn(name = "id_persona", referencedColumnName = "id_persona")
     @ManyToOne(optional = false)
     private Persona idPersona;
@@ -48,12 +62,34 @@ public class Cajero implements Serializable {
         this.idCajero = idCajero;
     }
 
+    public Cajero(Integer idCajero, String cac, String codCaja) {
+        this.idCajero = idCajero;
+        this.cac = cac;
+        this.codCaja = codCaja;
+    }
+
     public Integer getIdCajero() {
         return idCajero;
     }
 
     public void setIdCajero(Integer idCajero) {
         this.idCajero = idCajero;
+    }
+
+    public String getCac() {
+        return cac;
+    }
+
+    public void setCac(String cac) {
+        this.cac = cac;
+    }
+
+    public String getCodCaja() {
+        return codCaja;
+    }
+
+    public void setCodCaja(String codCaja) {
+        this.codCaja = codCaja;
     }
 
     public Persona getIdPersona() {
