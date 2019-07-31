@@ -16,8 +16,8 @@ and open the template in the editor.
     <h:body>
         <h:form id="form">
             <p:panelGrid columns="2">
-                <p:outputLabel value="Busqueda por Licencia"/>
-                <p:inputText value="#{esquelaMb.licencia}"/>
+                <p:outputLabel value="Busqueda por Licencia" />
+                <p:inputText value="#{esquelaMb.licencia}" label="#{loginMb.pagoCaja}"/>
             </p:panelGrid>
             <p:commandButton value="Consultar por Licencia" action="#{esquelaMb.listadoEsquelaNit()}" update="table" label="#{loginMb.pagoCaja}"/>
             <p:commandButton value="Consultar por DUI" action="#{esquelaMb.listadoEsquelaDui()}" update="table" label="#{loginMb.pagoCaja}"/>
@@ -64,7 +64,7 @@ and open the template in the editor.
                     <p:outputLabel value="#{es.idOtros.especificacion}"/>
                 </p:column>
                 <p:column headerText="Estado">
-                    <p:commandButton id="boton" value="#{es.estado.estadoMulta}" action="#{esquelaMb.selecIdEstado(es)}" oncomplete="PF('dialog').show()"/>
+                    <p:commandButton id="boton" value="#{es.estado.estadoMulta}" action="#{esquelaMb.selecIdEstado(es)}" oncomplete="PF('dialog').show()" label="#{loginMb.revertirPagoCaja}"/>
                 </p:column>
             </p:dataTable>
 
