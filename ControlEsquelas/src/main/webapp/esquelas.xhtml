@@ -82,6 +82,7 @@
 
             </p:panelGrid>
             <p:commandButton value="Guardar esquela" action="#{registroEsquelasMb.guardarEsquela()}" update="form1,formesq"/>
+            <p:commandButton value="Limpiar" action="#{registroEsquelasMb.limpiar()}" update="form1,formesq"/>
         </h:form>
         
         
@@ -104,7 +105,9 @@
                             <h:outputText value="Tipo:"/>
                             <h:outputText value="#{esq.tipoGravedad.gravedad}"/>
                             <h:outputText value="Detalles:"/>
-                            <p:commandButton action="#{registroEsquelasMb.consultById(esq)}" update="formesq" oncomplete="PF('esquelaDialog').show()" title="ver detalle" value="Mostrar" style="text-align: center;"/>                                
+                            <p:commandButton action="#{registroEsquelasMb.consultById(esq)}" update="formesq" oncomplete="PF('esquelaDialog').show()" title="ver detalle" value="Mostrar" style="text-align: center;"/>    
+                            <h:outputText value="acciones"/>
+                            <p:commandButton value="Seleccion" action="#{registroEsquelasMb.fullConsultById(esq)}" update="form1"/>
                         </p:panelGrid>                           
                     </center>
                 </p:panel>
