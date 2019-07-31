@@ -12,34 +12,8 @@ and open the template in the editor.
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
-                <h:form>
-            <p:menubar>
-                <p:menuitem value="Bitacora" icon="fa fa-book" url="bitacora.xhtml" style="margin-right: 15px;" rendered="#{loginMb.verBitacora}"/>
-                <p:submenu label="Cierrres" style="margin-right: 15px;" rendered="#{loginMb.verCierre}">
-                    <p:menuitem value="Cierre" icon="fa fa-copy" url="cierre.xhtml"  style="margin-right: 15px;"/>
-                    <p:menuitem value="Detalle de Cierre" icon="fa fa-copy" url="detalleCierre.xhtml"  style="margin-right: 15px;"/>
-                </p:submenu>
-                
-                <p:submenu label="Compras" style="margin-right: 15px;" rendered="#{loginMb.verCompras}">
-                    <p:menuitem value="Compra" icon="fa fa-archive" url="compra.xhtml"  style="margin-right: 15px;"/>
-                    <p:menuitem value="Detalle de Compra" icon="fa fa-cutlery" url="detalleCompra.xhtml"  style="margin-right: 15px;"/>    
-                </p:submenu>
-                <p:submenu label="Facturas" style="margin-right: 15px;" rendered="#{loginMb.verFacturas}">
-                    <p:menuitem value="Factura" icon="fa fa-archive" url="factura.xhtml"  style="margin-right: 15px;"/>
-                    <p:menuitem value="Detalle de Factura" icon="fa fa-inbox" url="detalle.xhtml"  style="margin-right: 15px;"/> 
-                </p:submenu>
-                <p:menuitem value="Usuarios" icon="fa fa-user" url="usuario.xhtml" style="margin-right: 15px;" rendered="#{loginMb.verUsuarios}"/>
-                <p:menuitem value="Proveedor" icon="fa fa-truck" url="proveedor.xhtml"  style="margin-right: 15px;" rendered="#{loginMb.verProveedor}"/>
-                <p:menuitem value="Sucursales" icon="fa fa-cutlery" url="sucursal.xhtml"  style="margin-right: 15px;" rendered="#{loginMb.verSucursales}"/>
-                <p:submenu label="#{loginMb.datosUsuarioLogueado.nombres}" style="float: right;">
-                    <p:menuitem action="#{loginMb.logOut()}" value="Cerrar sesion"/>
-                </p:submenu>
-            </p:menubar>
-        </h:form>
-        
         <h:form id="form">
             <p:panelGrid columns="2">
                 <p:outputLabel value="Busqueda por Licencia"/>

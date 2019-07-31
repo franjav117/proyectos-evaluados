@@ -8,7 +8,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2019-07-30T08:37:28")
+@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2019-07-31T15:16:55")
 @StaticMetamodel(AgenteTransito.class)
 public class AgenteTransito_ { 
 
