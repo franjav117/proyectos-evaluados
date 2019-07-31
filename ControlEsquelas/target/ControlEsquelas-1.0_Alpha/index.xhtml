@@ -12,9 +12,17 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Start Page</title>
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
-        <h1>Buongiorno Mondo!</h1>
-        <h1>hi wey!</h1>
+        <h:form style="float: right;">
+            <p:outputLabel>Usuario: </p:outputLabel>
+            <p:inputText #{loginMb.user}/>
+                &#160;
+                <p:outputLabel>Contraseña: </p:outputLabel>
+                <p:password #{loginMb.password}/>
+                &#160;
+                <p:commandButton value="Ingresar" action="#{loginMb.loguearUsuario()}"/>
+        </h:form>
     </h:body>
 </html>
