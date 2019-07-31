@@ -174,12 +174,12 @@ public class LoginMb {
 
             }
             datosUsuarioLogueado = usuarioLogeado;
-            return "menu.xhtml?faces-redirect=true";
+            return "Caja.xhtml?faces-redirect=true";
         }
         FacesMessage msg = null;
         msg = new FacesMessage("Error de usuario o contrasña");
         FacesContext.getCurrentInstance().addMessage(null, msg);
-        return "index.xhtml";
+        return "Caja.xhtml";
     }
 
     public String getUser() {
