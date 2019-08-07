@@ -15,7 +15,8 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 /**
@@ -23,7 +24,7 @@ import javax.faces.context.FacesContext;
  * @author melvin.madridusam
  */
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class VehiculoMb implements Serializable {
 
     private List<Vehiculo> listvehiculo;
@@ -34,7 +35,7 @@ public class VehiculoMb implements Serializable {
     private Map<String, String> selectTipoMa;
     private Integer idPersonaView, idTipoMaView;
     private boolean extrView = false;
-    private String marca;
+    private String marca, modelo;
 
     public String getMarca() {
         return marca;
@@ -43,8 +44,14 @@ public class VehiculoMb implements Serializable {
     public void setMarca(String marca) {
         this.marca = marca;
     }
-    
-    
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
 
     private GenericDao gd;
     private VehiculoDao vdao;
@@ -70,53 +77,60 @@ public class VehiculoMb implements Serializable {
 
 //***********************************************************Metodo para Guardar******************************************
     public void insertarVehiculo() {
-        vehiculo = new Vehiculo();
-        
         Persona idP = new Persona();
         idP.setIdPersona(idPersonaView);
         vehiculo.setIdPersona(idP);
-         
         TipoMatricula idTipo = new TipoMatricula();
         idTipo.setIdTipoMatricula(idTipoMaView);
         vehiculo.setTipoPlaca(idTipo);
         vehiculo.setMarca(marca);
-
+        vehiculo.setModelo(modelo);
+        vehiculo = (Vehiculo) gd.insertarEntidad(vehiculo);
         //Vehiculo idExtra = new Vehiculo();
         //idExtra.setExtrangera(extrView);
         //vehiculo.setExtrangera(extrView);
-        
-        vehiculo = (Vehiculo) gd.insertarEntidad(vehiculo);
-        System.out.println("++++++++++++++++++++++++++++PUTA MARCA++++++++++++++++++++++++++"+vehiculo.getMarca());
-        
+
+        //vehiculo = (Vehiculo)gd.insertarEntidad(vehiculo);
+        //System.out.println("++++++++++++++++++++++++++++MARCA++++++++++++++++++++++++++"+vehiculo.getMarca());
+//        System.out.println("++++++++++++++++++++++++++++NAcionalidad++++++++++++++++++++++++++"+vehiculo.getExtrangera());
+//        System.out.println("++++++++++++++++++++++++++++Clase++++++++++++++++++++++++++"+vehiculo.getClaseVehiculo());
+//        System.out.println("++++++++++++++++++++++++++++Ruta++++++++++++++++++++++++++"+vehiculo.getCodigoRuta());
+//        System.out.println("++++++++++++++++++++++++++++Modelo++++++++++++++++++++++++++"+vehiculo.getModelo());
+//        System.out.println("++++++++++++++++++++++++++++Color++++++++++++++++++++++++++"+vehiculo.getColor());
+//        System.out.println("++++++++++++++++++++++++++++anio++++++++++++++++++++++++++"+vehiculo.getAnio());
         FacesMessage msg;
         if (null != vehiculo) {
             msg = new FacesMessage("Producto Guardado Satisfactoriamente");
+            
         } else {
             msg = new FacesMessage("Error guardando producto");
         }
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        consultarVehiculos();
     }
 
 //**************************************************************Llena el select de Personas******************************************
     public void llenarSelectPersona() {
-          listpersona = pdao.consultPersona();
-          for(Persona p : listpersona){
-              selectPersona.put(p.getDui()+" "+p.getN1Nombre() +" "+p.getN2Nombre()+" "+ p.getA1Apellido()+" "+p.getA2Apellido(), String.valueOf(p.getIdPersona()));
-          }
+        listpersona = pdao.consultPersona();
+        for (Persona p : listpersona) {
+            selectPersona.put(p.getDui() + " " + p.getN1Nombre() + " " + p.getN2Nombre() + " " + p.getA1Apellido() + " " + p.getA2Apellido(), String.valueOf(p.getIdPersona()));
+        }
     }
 
 //**************************************************************Llena el select de Tipo Matricula*************************************    
     public void llenarSelectTipoMatricula() {
-        
-            listTipoMa = tmdao.consultarMatriculas();
-            for (TipoMatricula tm : listTipoMa) {
-                selectTipoMa.put(tm.getCodigoMatricula(), String.valueOf(tm.getIdTipoMatricula()));
-            }
+
+        listTipoMa = tmdao.consultarMatriculas();
+        for (TipoMatricula tm : listTipoMa) {
+            System.out.println("++++++++++++++++++++++id MAtricula+++++++++++++++++" + tm.getIdTipoMatricula());
+            System.out.println("++++++++++++++++++++++id MAtricula+++++++++++++++++" + tm.getCodigoMatricula());
+            selectTipoMa.put(tm.getCodigoMatricula(), String.valueOf(tm.getIdTipoMatricula()));
+        }
     }
 
 //**************************************************************Funcion Actualziar****************************************************  
     public void actualizarVehiculo() {
-        vehiculo = new Vehiculo();
+        gd = new GenericDao();
         Persona idP = new Persona();
         idP.setIdPersona(idPersonaView);
         TipoMatricula idTipo = new TipoMatricula();
@@ -125,6 +139,7 @@ public class VehiculoMb implements Serializable {
         vehiculo.setTipoPlaca(idTipo);
         String mensaje = gd.actualizarEntidad(vehiculo);
         consultarVehiculos();
+        vehiculo = new Vehiculo(); 
         FacesMessage msg = new FacesMessage(mensaje);
         FacesContext.getCurrentInstance().addMessage(null, msg);
 
@@ -142,8 +157,11 @@ public class VehiculoMb implements Serializable {
     public void consultarVehiculos() {
         listvehiculo = vdao.consultarVehiculos();
     }
-    
-    
+
+//**************************************************************Consulta un Vehiculo*****************************************************    
+    public void consultaVehiculo(Vehiculo v) {
+        vehiculo = vdao.vehiculoXid(v);
+    }    
     
 
 //**************************************************************Getter and Setter******************************************************    

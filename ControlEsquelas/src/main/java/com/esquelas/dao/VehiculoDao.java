@@ -61,5 +61,18 @@ public class VehiculoDao {
         return msj;
     }
     
+    public Vehiculo insertVehiculo(Vehiculo vehiculo) {
+        try {
+            em.getTransaction().begin();
+            em.persist(vehiculo);
+            em.flush();
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        }
+        return vehiculo;
+    }
+    
     
 }

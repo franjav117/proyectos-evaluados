@@ -15,8 +15,8 @@
     <h:body>
         <center>
             <h:form id="principal">
-                <p:fieldset legend="Ingreso de Vehiculos" style="width: 450px; border-radius: 15px;" > 
-                    <p:panelGrid columns="2">
+                <p:fieldset legend="Ingreso de Vehiculos" style="width: 450px; border-radius: 15px;  " > 
+                    <h:panelGrid columns="2">
                         <p:outputLabel value="Persona"/>
                         <p:selectOneMenu value="#{vehiculoMb.idPersonaView}" filter="true" required="true"
                                          requiredMessage="Seleciones Persona" autoWidth="true" style="size: 15px">
@@ -36,25 +36,24 @@
                         <p:outputLabel value="Pais"/>
                         <p:inputText value="#{vehiculoMb.vehiculo.pais}" />
                         <p:outputLabel value="Clase"/>
-                        <p:inputText value="#{vehiculoMb.vehiculo.claseVehiculo}" />
+                        <p:inputText value="#{vehiculoMb.vehiculo.claseVehiculo}" placeholder="Sedan, Pick-up"/>
                         <p:outputLabel value="Marca"/>
-                        <p:inputText value="#{vehiculoMb.marca}"/>
+                        <p:inputText value="#{vehiculoMb.vehiculo.marca}"/>
                         <p:outputLabel value="Modelo"/>
                         <p:inputText value="#{vehiculoMb.vehiculo.modelo}"/>
                         <p:outputLabel value="color"/>
                         <p:inputText value="#{vehiculoMb.vehiculo.color}"/>
                         <p:outputLabel value="Anio"/>
                         <p:inputText value="#{vehiculoMb.vehiculo.anio}"/>
-                    </p:panelGrid>
+                    </h:panelGrid>
                     <p:commandButton value="Guardar" icon="fa fa-save" action="#{vehiculoMb.insertarVehiculo()}" style="margin-top: 15px; margin-bottom: 5px; border-radius: 10px;"
-                                     update="f2:tablev"/>
+                                     update="datos:table"/>
                 </p:fieldset>
             </h:form>
         </center>
         <center>
-            <h:form id="f2">
-                <!--   <p:dialog id="vehiculo" header="Vehiculos" modal="true" widgetVar="ve" showEffect="fade" hideEffect="fade" resizable="false" responsive="true" > -->
-                <p:dataTable id="tablev" var="v" value="#{vehiculoMb.listvehiculo}" rows="2" paginator="true"
+            <h:form id="datos">
+                <p:dataTable id="table" var="v" value="#{vehiculoMb.listvehiculo}" rows="6" paginator="true"
                              style="margin-top: 15px;  border-radius: 70px"  >
                     <p:column headerText="Dueño">
                         <p:outputLabel value="#{v.idPersona.n1Nombre} #{v.idPersona.n2Nombre} #{v.idPersona.a1Apellido} #{v.idPersona.a2Apellido}"/>
@@ -89,9 +88,58 @@
                     <p:column headerText="Anio">
                         <p:outputLabel value="#{v.anio}"/>
                     </p:column>
+                    <p:column headerText="">
+                        <p:commandButton value="Editar" icon="pi pi-refresh" action="#{vehiculoMb.consultaVehiculo(v)}" style="margin-top: 5px; margin-bottom: 5px; border-radius: 5px;"
+                                         oncomplete="PF('editarV').show()" update="Editar" />
+                    </p:column>
                 </p:dataTable>
-                <!--   </p:dialog> -->
             </h:form>
+            <p:dialog id="Editar"  header="Editar Vehiculo" modal="true" widgetVar="editarV" showEffect="face" hideEffect="fade"
+                      resizable="false" style="width: 450px; border-radius: 15px;">
+                <h:form id="edit">
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Persona"/>
+                        <p:selectOneMenu value="#{vehiculoMb.idPersonaView}" filter="true" required="true"
+                                         requiredMessage="Seleciones Persona" autoWidth="true" style="size: 15px">
+                            <f:selectItems value="#{vehiculoMb.selectPersona}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Tipo de Placa"/>
+                        <p:selectOneMenu value="#{vehiculoMb.idTipoMaView}"  required="true" requiredMessage="Selecione Tipo de Placa" >
+                            <f:selectItem itemLabel="Seleciones Tipo de Placa" itemValue="0"/>
+                            <f:selectItems value="#{vehiculoMb.selectTipoMa}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Placa"/>
+                        <p:inputText value="#{vehiculoMb.vehiculo.numeroPlaca}"/>
+                        <p:outputLabel value="Ruta"/>
+                        <p:inputText value="#{vehiculoMb.vehiculo.codigoRuta}"/>
+                        <p:outputLabel value="Extranjera/Nacional"/>
+                        <p:selectBooleanButton offLabel="Nacional" onLabel="Extranjero" value="#{vehiculoMb.vehiculo.extrangera}"/>
+                        <p:outputLabel value="Pais"/>
+                        <p:inputText value="#{vehiculoMb.vehiculo.pais}" />
+                        <p:outputLabel value="Clase"/>
+                        <p:inputText value="#{vehiculoMb.vehiculo.claseVehiculo}" placeholder="Sedan, Pick-up"/>
+                        <p:outputLabel value="Marca"/>
+                        <p:inputText value="#{vehiculoMb.vehiculo.marca}"/>
+                        <p:outputLabel value="Modelo"/>
+                        <p:inputText value="#{vehiculoMb.vehiculo.modelo}"/>
+                        <p:outputLabel value="color"/>
+                        <p:inputText value="#{vehiculoMb.vehiculo.color}"/>
+                        <p:outputLabel value="Anio"/>
+                        <p:inputText value="#{vehiculoMb.vehiculo.anio}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Guardar Cambios" actionListener="#{vehiculoMb.actualizarVehiculo()}" 
+                                     oncomplete="PF('editarV').hide()" update="datos:table" style="margin-top: 15px; margin-bottom: 5px; border-radius: 10px;">
+                        <p:confirm header="Confirmar" message="¿Desea Actualizar?"/>
+                    </p:commandButton>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" style="width: 450px; border-radius: 15px;">
+                        <p:commandButton value="Si" icon="pi pi-check-circle" type="button" update="datos:table" oncomplete="PF('editarV').hide()" 
+                                         styleClass="ui-confirmdialog-yes" style="margin-top: 5px; margin-bottom: 5px; border-radius: 5px; background-color:#0DB613 "/>
+                        <p:commandButton value="No" icon="pi pi-times-circle" type="button" update="Editar" styleClass="ui-confirmdialog-no" 
+                                         style="margin-top: 5px; margin-bottom: 5px; border-radius: 5px; background-color:#E5140A"/>
+                    </p:confirmDialog>
+
+                </h:form>
+            </p:dialog>
         </center>
     </h:body>
 </html>
