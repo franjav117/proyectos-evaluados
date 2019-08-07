@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 /**
@@ -48,8 +49,10 @@ public class EsquelaMb implements Serializable{
     private Integer idConductor;
     private Conductor conductor;
     private Integer est;
-    private LoginMb login;
     private Usuario datosUsuario;
+    //@ManagedProperty(value = "#{loginMb}")
+    private LoginMb loginMb;
+    
     
     @PostConstruct
     public void init(){
@@ -61,8 +64,7 @@ public class EsquelaMb implements Serializable{
        rgDao = new RelacionesGeneralesDao();
        idE = new ArrayList<>();
        idEs = new Integer[listEsquela.size()];
-       login = new LoginMb();
-       datosUsuario = login.getDatosUsuarioLogueado();
+       loginMb = new LoginMb();
 //       Test();
     }
     
@@ -177,10 +179,10 @@ public class EsquelaMb implements Serializable{
            esquela.setFechaPago(fecha);
            Cajero caj = new Cajero();
            Usuario usu = new Usuario();
-           usu = datosUsuario;
-           caj.setIdCajero(rgDao.idCajero(usu));
-System.out.println("************PER idUsuario "+ caj.getIdCajero());
-System.out.println("************idUsuario "+ esquela.getIdCajero().getIdPersona().getA1Apellido());
+System.out.println("************Datos Usuario "+ datosUsuario.getIdPersona().getA1Apellido());
+           caj.setIdCajero(rgDao.idCajero(loginMb.getDatosUsuarioLogueado()));
+System.out.println("************CAJ idCajero "+ caj.getIdCajero());
+System.out.println("************idUsuario ESQUELA.ID "+ esquela.getIdCajero().getIdPersona().getA1Apellido());
            esquela.setIdCajero(caj);
            esquela.setIdDepartamento(rgDao.idDepartamento(idEsquela));
                 Decomiso de = new Decomiso();
