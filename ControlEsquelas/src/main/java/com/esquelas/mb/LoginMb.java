@@ -5,7 +5,7 @@
  */
 package com.esquelas.mb;
 
-<<<<<<< HEAD
+
 import com.esquelas.dao.LogingDao;
 import com.esquelas.entities.Usuario;
 import javax.annotation.PostConstruct;
@@ -13,11 +13,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-=======
 import com.esquelas.entities.Usuario;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
->>>>>>> feature_melvin
 
 /**
  *
@@ -26,7 +24,6 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class LoginMb {
-<<<<<<< HEAD
 
     private String user;
     private String password;
@@ -319,11 +316,4 @@ public class LoginMb {
         this.consultaConductorSinLoguear = consultaConductorSinLoguear;
     }
 
-=======
-    private String user;
-    private String password;
-    
-    private Usuario usuario;
-    
->>>>>>> feature_melvin
-}
+ }
