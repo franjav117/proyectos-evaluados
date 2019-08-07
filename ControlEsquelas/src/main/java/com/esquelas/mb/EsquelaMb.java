@@ -8,6 +8,7 @@ package com.esquelas.mb;
 import com.esquelas.dao.EsquelasDao;
 import com.esquelas.dao.GenericDao;
 import com.esquelas.dao.RelacionesGeneralesDao;
+import com.esquelas.entities.Cajero;
 import com.esquelas.entities.Clasificacion;
 import com.esquelas.entities.Conductor;
 import com.esquelas.entities.Decomiso;
@@ -16,6 +17,7 @@ import com.esquelas.entities.Estado;
 import com.esquelas.entities.Otros;
 import com.esquelas.entities.Persona;
 import com.esquelas.entities.TipoGravedad;
+import com.esquelas.entities.Usuario;
 import com.esquelas.entities.Vehiculo;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -46,6 +48,8 @@ public class EsquelaMb implements Serializable{
     private Integer idConductor;
     private Conductor conductor;
     private Integer est;
+    private LoginMb login;
+    private Usuario datosUsuario;
     
     @PostConstruct
     public void init(){
@@ -57,6 +61,8 @@ public class EsquelaMb implements Serializable{
        rgDao = new RelacionesGeneralesDao();
        idE = new ArrayList<>();
        idEs = new Integer[listEsquela.size()];
+       login = new LoginMb();
+       datosUsuario = login.getDatosUsuarioLogueado();
 //       Test();
     }
     
@@ -129,7 +135,7 @@ public class EsquelaMb implements Serializable{
     //*********************************Metodos para Actualizar *************************
     public void selecIdEstado(Esquela idEsq){
         idEsquela = idEsq.getIdEsquela();
-        System.out.println("++++++++ ID ESQUELA ENVIADO " + idEsquela);
+        //System.out.println("++++++++ ID ESQUELA ENVIADO " + idEsquela);
         cambiarEstadoPago();
     }
     
@@ -138,7 +144,7 @@ public class EsquelaMb implements Serializable{
     public void cambiarEstadoPago(){
         
        // idEsquela = idEsq.getIdEsquela();
-        System.out.println("++++++++ ID ESQUELA ENVIADO " + idEsquela);
+        //System.out.println("++++++++ ID ESQUELA ENVIADO " + idEsquela);
                 
         Estado estado = new Estado();
         estado.setIdEstado(rgDao.idEstado(idEsquela));
@@ -169,6 +175,13 @@ public class EsquelaMb implements Serializable{
            esquela.setEstado(estado);
            Date fecha = new Date();
            esquela.setFechaPago(fecha);
+           Cajero caj = new Cajero();
+           Usuario usu = new Usuario();
+           usu = datosUsuario;
+           caj.setIdCajero(rgDao.idCajero(usu));
+System.out.println("************PER idUsuario "+ caj.getIdCajero());
+System.out.println("************idUsuario "+ esquela.getIdCajero().getIdPersona().getA1Apellido());
+           esquela.setIdCajero(caj);
            esquela.setIdDepartamento(rgDao.idDepartamento(idEsquela));
                 Decomiso de = new Decomiso();
                 de.setIdDecomiso(rgDao.idDecomiso(idEsquela));
@@ -194,7 +207,7 @@ public class EsquelaMb implements Serializable{
         //licencia = esquela.getIdConductor().getLicencia();   //Posible formula para mantener la licencia en memoria
         //en caso que al refrescar la licencia retorne a 0 o a null
            
-           System.out.println("++++++++ Estado sin pago " + esquela.getEstado().getIdEstado());
+           //System.out.println("++++++++ Estado sin pago " + esquela.getEstado().getIdEstado());
        
         
     }

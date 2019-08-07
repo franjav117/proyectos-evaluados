@@ -28,7 +28,7 @@ public class LoginMb {
     private Usuario datosUsuarioLogueado;
     private LogingDao loginDao;
 
-    private boolean usuarioLogueado;
+    private boolean usuarioIsLogueado;
 
     private boolean verEsquelas;
     private boolean colocarEsquelas;
@@ -45,7 +45,7 @@ public class LoginMb {
     @PostConstruct
     public void init() {
         loginDao = new LogingDao();
-        usuarioLogueado = false;
+        usuarioIsLogueado = false;
 
         verEsquelas = false;
         colocarEsquelas = false;
@@ -65,10 +65,11 @@ public class LoginMb {
 
         Usuario usuarioLogeado = new Usuario();
         usuarioLogeado = loginDao.usuarioLogin(user, password);
+        System.out.println("/*/*/*/*/*/ Usuario Logueado: " + usuarioLogeado);
         if (null != usuarioLogeado) {
             rol = usuarioLogeado.getIdRol().getRol();
             if (usuarioLogeado.getIdRol().getIdRol() == 1) {
-                usuarioLogueado = true;
+                usuarioIsLogueado = true;
 
                 verEsquelas = true;
                 colocarEsquelas = true;
@@ -83,7 +84,7 @@ public class LoginMb {
                 consultaConductorLogeado = true;
 
             } else if (usuarioLogeado.getIdRol().getIdRol() == 2) {
-                usuarioLogueado = true;
+                usuarioIsLogueado = true;
 
                 verEsquelas = true;
                 colocarEsquelas = true;
@@ -98,7 +99,7 @@ public class LoginMb {
                 consultaConductorLogeado = true;
 
             } else if (usuarioLogeado.getIdRol().getIdRol() == 3) {
-                usuarioLogueado = true;
+                usuarioIsLogueado = true;
 
                 verEsquelas = true;
                 colocarEsquelas = true;
@@ -113,7 +114,7 @@ public class LoginMb {
                 consultaConductorLogeado = false;
 
             } else if (usuarioLogeado.getIdRol().getIdRol() == 4) {
-                usuarioLogueado = true;
+                usuarioIsLogueado = true;
 
                 verEsquelas = true;
                 colocarEsquelas = false;
@@ -128,7 +129,7 @@ public class LoginMb {
                 consultaConductorLogeado = false;
 
             } else if (usuarioLogeado.getIdRol().getIdRol() == 5) {
-                usuarioLogueado = true;
+                usuarioIsLogueado = true;
 
                 verEsquelas = true;
                 colocarEsquelas = false;
@@ -143,7 +144,7 @@ public class LoginMb {
                 consultaConductorLogeado = true;
 
             } else if (usuarioLogeado.getIdRol().getIdRol() == 6) {
-                usuarioLogueado = true;
+                usuarioIsLogueado = true;
 
                 verEsquelas = true;
                 colocarEsquelas = false;
@@ -158,7 +159,7 @@ public class LoginMb {
                 consultaConductorLogeado = true;
 
             } else if (usuarioLogeado.getIdRol().getIdRol() == 7) {
-                usuarioLogueado = true;
+                usuarioIsLogueado = true;
 
                 verEsquelas = true;
                 colocarEsquelas = true;
@@ -175,11 +176,20 @@ public class LoginMb {
             }
             datosUsuarioLogueado = usuarioLogeado;
             return "Caja.xhtml?faces-redirect=true";
+            //return "index.xhtml";
         }
         FacesMessage msg = null;
         msg = new FacesMessage("Error de usuario o contrasña");
         FacesContext.getCurrentInstance().addMessage(null, msg);
-        return "Caja.xhtml";
+        //return "Caja.xhtml?faces-redirect=true";
+        return "index.xhtml";
+
+    }
+
+    public String logOut() {
+        usuarioIsLogueado = false;
+        usuario = new Usuario();
+        return "index.xhtml?faces-redirect=true";
     }
 
     public String getUser() {
@@ -222,14 +232,14 @@ public class LoginMb {
         this.datosUsuarioLogueado = datosUsuarioLogueado;
     }
 
-    public boolean isUsuarioLogueado() {
-        return usuarioLogueado;
+    public boolean isUsuarioIsLogueado() {
+        return usuarioIsLogueado;
     }
 
-    public void setUsuarioLogueado(boolean usuarioLogueado) {
-        this.usuarioLogueado = usuarioLogueado;
+    public void setUsuarioIsLogueado(boolean usuarioIsLogueado) {
+        this.usuarioIsLogueado = usuarioIsLogueado;
     }
-
+    
     public boolean isVerEsquelas() {
         return verEsquelas;
     }
@@ -302,5 +312,4 @@ public class LoginMb {
         this.consultaConductorSinLoguear = consultaConductorSinLoguear;
     }
 
-    
 }
