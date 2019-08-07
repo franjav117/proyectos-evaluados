@@ -179,8 +179,8 @@ public class EsquelaMb implements Serializable{
            Usuario usu = new Usuario();
            usu = datosUsuario;
            caj.setIdCajero(rgDao.idCajero(usu));
-System.out.println("************PER idUsuario CAJ "+ caj.getIdCajero());
-System.out.println("************idUsuario ESQUELA.ID "+ esquela.getIdCajero().getIdPersona().getA1Apellido());
+System.out.println("************PER idUsuario "+ caj.getIdCajero());
+System.out.println("************idUsuario "+ esquela.getIdCajero().getIdPersona().getA1Apellido());
            esquela.setIdCajero(caj);
            esquela.setIdDepartamento(rgDao.idDepartamento(idEsquela));
                 Decomiso de = new Decomiso();

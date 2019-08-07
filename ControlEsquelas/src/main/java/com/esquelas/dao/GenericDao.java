@@ -20,7 +20,6 @@ public class GenericDao {
     private EntityManager em = emf.createEntityManager();
     
      public Object insertarEntidad(Object obj) {
-                      
         try {
             em.getTransaction().begin();
             em.persist(obj);
