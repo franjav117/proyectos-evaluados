@@ -14,6 +14,13 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
+        <h:form>
+            <p:menubar>
+                <p:submenu label="#{loginMb.datosUsuarioLogueado.idPersona.n1Nombre} #{loginMb.datosUsuarioLogueado.idPersona.a1Apellido}" style="float: right;">
+                    <p:menuitem action="#{loginMb.logOut()}" value="Cerrar sesion"/>
+                </p:submenu>
+            </p:menubar>
+        </h:form>
         <h:form id="form">
             <p:panelGrid columns="2">
                 <p:outputLabel value="Busqueda por Licencia" />
@@ -65,6 +72,12 @@ and open the template in the editor.
                 </p:column>
                 <p:column headerText="Estado">
                     <p:commandButton id="boton" value="#{es.estado.estadoMulta}" action="#{esquelaMb.selecIdEstado(es)}" oncomplete="PF('dialog').show()" label="#{loginMb.revertirPagoCaja}"/>
+                </p:column>
+                <p:column headerText="Colector">
+                    <p:outputLabel value="#{es.idCajero.idPersona.n1Nombre} #{es.idCajero.idPersona.a1Apellido}"/>
+                </p:column>
+                <p:column headerText="Fecha de pago">
+                    <p:outputLabel value="#{es.fechaPago}"/>
                 </p:column>
             </p:dataTable>
 

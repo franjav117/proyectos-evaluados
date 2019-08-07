@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Cajero.findAll", query = "SELECT c FROM Cajero c")
     , @NamedQuery(name = "Cajero.findByIdCajero", query = "SELECT c FROM Cajero c WHERE c.idCajero = :idCajero")
     , @NamedQuery(name = "Cajero.findByCac", query = "SELECT c FROM Cajero c WHERE c.cac = :cac")
+    , @NamedQuery(name = "Cajero.findByIdPersona", query = "SELECT c.idCajero FROM Cajero c WHERE c.idPersona = :idPersona")
     , @NamedQuery(name = "Cajero.findByCodCaja", query = "SELECT c FROM Cajero c WHERE c.codCaja = :codCaja")})
 public class Cajero implements Serializable {
 
