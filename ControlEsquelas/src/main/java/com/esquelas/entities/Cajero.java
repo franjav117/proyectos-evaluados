@@ -35,7 +35,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Cajero.findAll", query = "SELECT c FROM Cajero c")
     , @NamedQuery(name = "Cajero.findByIdCajero", query = "SELECT c FROM Cajero c WHERE c.idCajero = :idCajero")
     , @NamedQuery(name = "Cajero.findByCac", query = "SELECT c FROM Cajero c WHERE c.cac = :cac")
+<<<<<<< HEAD
     , @NamedQuery(name = "Cajero.findByIdPersona", query = "SELECT c.idCajero FROM Cajero c WHERE c.idPersona = :idPersona")
+=======
+>>>>>>> feature_melvin
     , @NamedQuery(name = "Cajero.findByCodCaja", query = "SELECT c FROM Cajero c WHERE c.codCaja = :codCaja")})
 public class Cajero implements Serializable {
 
@@ -55,8 +58,11 @@ public class Cajero implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "cod_caja")
     private String codCaja;
+<<<<<<< HEAD
     @OneToMany(mappedBy = "idCajero")
     private List<Esquela> esquelaList;
+=======
+>>>>>>> feature_melvin
     @JoinColumn(name = "id_persona", referencedColumnName = "id_persona")
     @ManyToOne(optional = false)
     private Persona idPersona;
@@ -98,6 +104,7 @@ public class Cajero implements Serializable {
         this.codCaja = codCaja;
     }
 
+<<<<<<< HEAD
     @XmlTransient
     public List<Esquela> getEsquelaList() {
         return esquelaList;
@@ -107,6 +114,8 @@ public class Cajero implements Serializable {
         this.esquelaList = esquelaList;
     }
 
+=======
+>>>>>>> feature_melvin
     public Persona getIdPersona() {
         return idPersona;
     }

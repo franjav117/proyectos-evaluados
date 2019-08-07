@@ -43,6 +43,7 @@ public class ConsultaMb implements Serializable {
         consultarEsquelas();    
     }
 
+//**************************************************************Realiza consultas por Licencia o Nit********************************************    
     public void consultarXEsquela() {
         try {
             conductor = new Conductor();
@@ -50,9 +51,12 @@ public class ConsultaMb implements Serializable {
             cond.setLicencia(licencia);
             listEsId = cdao.listadoEsquelasNit(cond);
         } catch (Exception e) {
+            e.printStackTrace();
         }
+        
     }
     
+//**************************************************************Busqueda por Placa de Vehiculo********************************************    
     public void consultarXPlaca(){
         try {
             listEsId = cdao.listadoEsquelasPlaca(vehiculo);
@@ -60,6 +64,7 @@ public class ConsultaMb implements Serializable {
         }
     }
 
+    //**************************************************************Llena todas las Esquelas********************************************
     public void consultarEsquelas() {
         listEsquela = cdao.consultaEsquelas();
         Integer i = listEsquela.size();
@@ -70,6 +75,8 @@ public class ConsultaMb implements Serializable {
         }
     }
 
+//**************************************************************Getter and Setter*******************************************************    
+    
     public List<Esquela> getListEsquela() {
         return listEsquela;
     }

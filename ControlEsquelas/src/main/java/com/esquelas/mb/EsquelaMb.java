@@ -64,7 +64,10 @@ public class EsquelaMb implements Serializable{
        rgDao = new RelacionesGeneralesDao();
        idE = new ArrayList<>();
        idEs = new Integer[listEsquela.size()];
+<<<<<<< HEAD
        loginMb = new LoginMb();
+=======
+>>>>>>> feature_melvin
 //       Test();
     }
     
@@ -177,6 +180,7 @@ public class EsquelaMb implements Serializable{
            esquela.setEstado(estado);
            Date fecha = new Date();
            esquela.setFechaPago(fecha);
+<<<<<<< HEAD
            Cajero caj = new Cajero();
            Usuario usu = new Usuario();
 System.out.println("************Datos Usuario "+ datosUsuario.getIdPersona().getA1Apellido());
@@ -184,6 +188,8 @@ System.out.println("************Datos Usuario "+ datosUsuario.getIdPersona().get
 System.out.println("************CAJ idCajero "+ caj.getIdCajero());
 System.out.println("************idUsuario ESQUELA.ID "+ esquela.getIdCajero().getIdPersona().getA1Apellido());
            esquela.setIdCajero(caj);
+=======
+>>>>>>> feature_melvin
            esquela.setIdDepartamento(rgDao.idDepartamento(idEsquela));
                 Decomiso de = new Decomiso();
                 de.setIdDecomiso(rgDao.idDecomiso(idEsquela));

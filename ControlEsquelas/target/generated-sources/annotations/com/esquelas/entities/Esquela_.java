@@ -15,7 +15,11 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
+<<<<<<< HEAD
 @Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2019-08-07T08:53:50")
+=======
+@Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2019-08-07T08:34:02")
+>>>>>>> feature_melvin
 @StaticMetamodel(Esquela.class)
 public class Esquela_ { 
 
