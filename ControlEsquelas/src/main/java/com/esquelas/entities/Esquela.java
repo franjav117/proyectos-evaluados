@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "esquela")
 @XmlRootElement
 @NamedQueries({
-@NamedQuery(name = "Esquela.findAll", query = "SELECT e FROM Esquela e")
+    @NamedQuery(name = "Esquela.findAll", query = "SELECT e FROM Esquela e")
     , @NamedQuery(name = "Esquela.findByIdEsquela", query = "SELECT e FROM Esquela e WHERE e.idEsquela = :idEsquela")
     , @NamedQuery(name = "Esquela.findByConductor", query = "SELECT e FROM Esquela e WHERE e.idConductor.idConductor = :idConductor")
     , @NamedQuery(name = "Esquela.findByLicencia", query = "SELECT e FROM Esquela e WHERE e.idConductor.idConductor = :licencia")
@@ -80,6 +80,9 @@ public class Esquela implements Serializable {
     @JoinColumn(name = "id_conductor", referencedColumnName = "id_conductor")
     @ManyToOne(optional = false)
     private Conductor idConductor;
+    @JoinColumn(name = "id_otros", referencedColumnName = "id_otro")
+    @ManyToOne
+    private Otros idOtros;
     @JoinColumn(name = "placa", referencedColumnName = "id_vehiculo")
     @ManyToOne(optional = false)
     private Vehiculo placa;
@@ -92,6 +95,9 @@ public class Esquela implements Serializable {
     @JoinColumn(name = "tipo_gravedad", referencedColumnName = "id_gravedad")
     @ManyToOne
     private TipoGravedad tipoGravedad;
+    @JoinColumn(name = "id_cajero", referencedColumnName = "id_cajero")
+    @ManyToOne
+    private Cajero idCajero;
     @JoinColumn(name = "estado", referencedColumnName = "id_estado")
     @ManyToOne(optional = false)
     private Estado estado;
@@ -101,9 +107,6 @@ public class Esquela implements Serializable {
     @JoinColumn(name = "id_decomiso", referencedColumnName = "id_decomiso")
     @ManyToOne
     private Decomiso idDecomiso;
-    @JoinColumn(name = "id_otros", referencedColumnName = "id_otro")
-    @ManyToOne
-    private Otros idOtros;
 
     public Esquela() {
     }
@@ -183,6 +186,14 @@ public class Esquela implements Serializable {
         this.idConductor = idConductor;
     }
 
+    public Otros getIdOtros() {
+        return idOtros;
+    }
+
+    public void setIdOtros(Otros idOtros) {
+        this.idOtros = idOtros;
+    }
+
     public Vehiculo getPlaca() {
         return placa;
     }
@@ -215,6 +226,14 @@ public class Esquela implements Serializable {
         this.tipoGravedad = tipoGravedad;
     }
 
+    public Cajero getIdCajero() {
+        return idCajero;
+    }
+
+    public void setIdCajero(Cajero idCajero) {
+        this.idCajero = idCajero;
+    }
+
     public Estado getEstado() {
         return estado;
     }
@@ -237,14 +256,6 @@ public class Esquela implements Serializable {
 
     public void setIdDecomiso(Decomiso idDecomiso) {
         this.idDecomiso = idDecomiso;
-    }
-
-    public Otros getIdOtros() {
-        return idOtros;
-    }
-
-    public void setIdOtros(Otros idOtros) {
-        this.idOtros = idOtros;
     }
 
     @Override
