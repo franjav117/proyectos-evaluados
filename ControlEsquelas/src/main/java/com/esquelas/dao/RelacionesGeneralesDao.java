@@ -258,8 +258,8 @@ public class RelacionesGeneralesDao {
      Integer obj = 0;
         try {
             obj = (Integer) em.createNativeQuery("Select id_cajero from cajero where id_persona ="+ u.getIdPersona().getIdPersona()+" ").getSingleResult();
-            System.out.println("*******DAO Id Persona "+obj);
-            System.out.println("*******DAO Id Persona "+obj);
+            System.out.println("*******DAO Id Persona "+u.getIdPersona().getIdPersona());
+            System.out.println("*******DAO Id Cajero OBJ "+obj);
         } catch (Exception e) {
             e.printStackTrace();
         }
