@@ -39,7 +39,6 @@ import javax.faces.context.FacesContext;
 public class RegistroEsquelasMb implements Serializable {
 
     private Esquela esquela;
-    private Conductor conductor;
     private List<Esquela> esquelaList; //mostrar de esquelas
 
     private List<Estado> estadoList; //1
@@ -80,7 +79,6 @@ public class RegistroEsquelasMb implements Serializable {
     @PostConstruct
     public void init() {
         esquela = new Esquela();
-        conductor = new Conductor();
         esquelaList = new ArrayList<Esquela>();
 
         estadoList = new ArrayList<Estado>();//1
@@ -160,24 +158,24 @@ public class RegistroEsquelasMb implements Serializable {
 
         idot.setIdOtro(Otrosview);
         esquela.setIdOtros(idot);
-        
+
+        esquela.setFechaPago(null);
+
         esquela.getEstado().setIdEstado(1);
 
         esquela = (Esquela) gd.insertarEntidad(esquela);
         if (null != esquela) {
             msg = new FacesMessage("Esquela registrada " + esquela.getIdEsquela());
             esquela = new Esquela();
-            EstadoSelect = new HashMap<String, String>();//1
-            DepartamentoSelect = new HashMap<String, String>();//2    
-            TipoGravedadSelect = new HashMap<String, String>();//3       
-            DecomisoSelect = new HashMap<String, String>();//4       
-            OtrosSelect = new HashMap<String, String>();//5       
-            ClasificacionSelect = new HashMap<String, String>();//6 
-            ConductorSelect = new HashMap<String, String>();//7  
-            AgenteTransitoSelect = new HashMap<String, String>();//8       
-            VehiculoSelect = new HashMap<String, String>();//9  
+            Conductorview = 0;
+            AgenteTransitoview = 0;
+            Clasificacionview = 0;
+            TipoGravedadview = 0;
+            Decomisoview = 0;
+            Vehiculoview = 0;
+            Departamentoview = 0;
+            Otrosview = 0;
             mostrarEsquelas();
-
         } else {
             msg = new FacesMessage("Error registrando esquela");
         }
@@ -188,9 +186,32 @@ public class RegistroEsquelasMb implements Serializable {
 
     public void consultById(Esquela ide) {
         esquela = ed.findEsquelaById(ide);
-        
-
         //this.esquela = ide;
+    }
+
+    public void limpiar() {
+        esquela = new Esquela();
+        Conductorview = 0;
+        AgenteTransitoview = 0;
+        Clasificacionview = 0;
+        TipoGravedadview = 0;
+        Decomisoview = 0;
+        Vehiculoview = 0;
+        Departamentoview = 0;
+        Otrosview = 0;
+    }
+
+    public void fullConsultById(Esquela esq) {
+        esquela = ed.findEsquelaById(esq);
+        Conductorview = esq.getIdConductor().getIdConductor();
+        AgenteTransitoview = esq.getIdAgente().getIdAgente();
+        Clasificacionview = esq.getClasificacion().getIdClasificacion();
+        TipoGravedadview = esq.getTipoGravedad().getIdGravedad();
+        Decomisoview = esq.getIdDecomiso().getIdDecomiso();
+        Vehiculoview = esq.getPlaca().getIdVehiculo();
+        Departamentoview = esq.getIdDepartamento().getIdDepartamento();
+        Otrosview = esq.getIdOtros().getIdOtro();
+
     }
 
     public void obtenerEstado() {//1
@@ -266,14 +287,6 @@ public class RegistroEsquelasMb implements Serializable {
 
     public void setEsquela(Esquela esquela) {
         this.esquela = esquela;
-    }
-
-    public Conductor getConductor() {
-        return conductor;
-    }
-
-    public void setConductor(Conductor conductor) {
-        this.conductor = conductor;
     }
 
     public List<Esquela> getEsquelaList() {
