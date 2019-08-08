@@ -34,7 +34,8 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class EsquelaMb implements Serializable{
+public class EsquelaMb implements Serializable {
+
     private EsquelasDao esquDAO;
     private GenericDao gd;
     private RelacionesGeneralesDao rgDao;
@@ -52,45 +53,44 @@ public class EsquelaMb implements Serializable{
     private Usuario datosUsuario;
     //@ManagedProperty(value = "#{loginMb}")
     private LoginMb loginMb;
-    
-    
+
     @PostConstruct
-    public void init(){
-       esquDAO = new EsquelasDao(); 
-       gd = new GenericDao();
-       listEsquela = new ArrayList<>();
-       esquela = new Esquela();
-       conductor = new Conductor();
-       rgDao = new RelacionesGeneralesDao();
-       idE = new ArrayList<>();
-       idEs = new Integer[listEsquela.size()];
-       loginMb = new LoginMb();
+    public void init() {
+        esquDAO = new EsquelasDao();
+        gd = new GenericDao();
+        listEsquela = new ArrayList<>();
+        esquela = new Esquela();
+        conductor = new Conductor();
+        rgDao = new RelacionesGeneralesDao();
+        idE = new ArrayList<>();
+        idEs = new Integer[listEsquela.size()];
+        loginMb = new LoginMb();
+        datosUsuario = LoginMb.getDatosUsuarioLogueado();
 //       Test();
     }
-    
+
     //*********************************Metodos para Leer *************************
-    
-    public void Test(){
-       Integer i= rgDao.Test();
+    public void Test() {
+        Integer i = rgDao.Test();
         if (i != 0) {
             System.out.println("*********************Conexion Exitosa NPI del por qué*********************");
         } else {
             System.out.println("*********************NO HAY CONEXION :( *********************");
         }
     }
-    
-    public void listaMultasAPagar(){
-        for(Esquela e: idE){
+
+    public void listaMultasAPagar() {
+        for (Esquela e : idE) {
             e.setIdEsquela(idMulta);
             idE.add(e);
         }
-        int j=idE.size();
-        for(Integer i=0; i<j; i++){
-           
+        int j = idE.size();
+        for (Integer i = 0; i < j; i++) {
+
         }
     }
-    
-    public void listadoEsquelaNit(){
+
+    public void listadoEsquelaNit() {
         Conductor c = new Conductor();
         c.setLicencia(licencia);
         try {
@@ -99,8 +99,8 @@ public class EsquelaMb implements Serializable{
             e.printStackTrace();
         }
     }
-    
-    public void listadoEsquelaDui(){
+
+    public void listadoEsquelaDui() {
         Persona p = new Persona();
         p.setDui(licencia);
         try {
@@ -109,21 +109,21 @@ public class EsquelaMb implements Serializable{
             e.printStackTrace();
         }
     }
-    
-    public void listadoEsquelaDuiLicencia(String dui, String licencia){
+
+    public void listadoEsquelaDuiLicencia(String dui, String licencia) {
         Persona p = new Persona();
         p.setDui(dui);
         Conductor c = new Conductor();
         c.setLicencia(licencia);
         try {
             listEsquela = esquDAO.listadoEsquelasDUILicencia(p, c);
-            System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " +listEsquela.size());
+            System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " + listEsquela.size());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    public void listadoEsquelaPlaca(){
+
+    public void listadoEsquelaPlaca() {
         Vehiculo v = new Vehiculo();
         v.setNumeroPlaca(licencia);
         try {
@@ -132,89 +132,95 @@ public class EsquelaMb implements Serializable{
             e.printStackTrace();
         }
     }
-    
-    
+
     //*********************************Metodos para Actualizar *************************
-    public void selecIdEstado(Esquela idEsq){
+    public void selecIdEstado(Esquela idEsq) {
         idEsquela = idEsq.getIdEsquela();
         //System.out.println("++++++++ ID ESQUELA ENVIADO " + idEsquela);
         cambiarEstadoPago();
     }
-    
+
     //Este método ni me lo vayan a tocar  **********************************************
-    
-    public void cambiarEstadoPago(){
-        
-       // idEsquela = idEsq.getIdEsquela();
+    public void cambiarEstadoPago() {
+
+        // idEsquela = idEsq.getIdEsquela();
         //System.out.println("++++++++ ID ESQUELA ENVIADO " + idEsquela);
-                
         Estado estado = new Estado();
         estado.setIdEstado(rgDao.idEstado(idEsquela));
-        if(estado.getIdEstado() == 1){
-           estado.setIdEstado(2); 
-        }else if(estado.getIdEstado() == 2) {
+        if (estado.getIdEstado() == 1) {
+            estado.setIdEstado(2);
+        } else if (estado.getIdEstado() == 2) {
             estado.setIdEstado(1);
-        }  
-            try {
+        }
+        try {
 //                Conductor con = new Conductor();
 //                con.setIdConductor(rgDao.idConductor(idEsquela));
-           esquela.setIdConductor(rgDao.idConductor(idEsquela));
-           Vehiculo vehiculo = new Vehiculo();
-           vehiculo.setIdVehiculo(rgDao.idVehiculo(idEsquela));
-           esquela.setPlaca(vehiculo);
-           esquela.setIdAgente(rgDao.esquelaDatosPuros(idEsquela).getIdAgente());
-           esquela.setCodigoFalta(rgDao.esquelaDatosPuros(idEsquela).getCodigoFalta()); //String
-           Clasificacion c = new Clasificacion();
-           c.setIdClasificacion(rgDao.idClasificacion(idEsquela));
-           esquela.setClasificacion(c);
-           esquela.setFechaEsquela(rgDao.esquelaDatosPuros(idEsquela).getFechaEsquela()); //Date
-           esquela.setLugarInfraccion(rgDao.esquelaDatosPuros(idEsquela).getLugarInfraccion()); //String
-           esquela.setObservaciones(rgDao.esquelaDatosPuros(idEsquela).getObservaciones()); //String
-                TipoGravedad tg = new TipoGravedad();
-                tg.setIdGravedad(rgDao.idTipoGravedad(idEsquela));
-           esquela.setTipoGravedad(tg);
-           esquela.setMontoPagar(rgDao.esquelaDatosPuros(idEsquela).getMontoPagar()); //Double
-           esquela.setEstado(estado);
-           Date fecha = new Date();
-           esquela.setFechaPago(fecha);
-           Cajero caj = new Cajero();
-           Usuario usu = new Usuario();
-System.out.println("************Datos Usuario "+ datosUsuario.getIdPersona().getA1Apellido());
-           caj.setIdCajero(rgDao.idCajero(loginMb.getDatosUsuarioLogueado()));
-System.out.println("************CAJ idCajero "+ caj.getIdCajero());
-System.out.println("************idUsuario ESQUELA.ID "+ esquela.getIdCajero().getIdPersona().getA1Apellido());
-           esquela.setIdCajero(caj);
-           esquela.setIdDepartamento(rgDao.idDepartamento(idEsquela));
-                Decomiso de = new Decomiso();
-                de.setIdDecomiso(rgDao.idDecomiso(idEsquela));
-                System.out.println("************DECOMISO "+ de.getDecomiso());
-           esquela.setIdDecomiso(de);
-                Otros o = new Otros();
-                o.setIdOtro(rgDao.idOtros(idEsquela));
-           esquela.setIdOtros(o);
-           esquela.setIdEsquela(idEsquela);
-           //Datos seteados
-           Date check = new Date();
-           check = rgDao.fechaPago(idEsquela);
-           if(check == null){
-           gd.actualizarEntidad(esquela); //Envio a actualizar
-           }else{
-               System.out.println("************ Pago ya actualizado " +esquela.getFechaPago());
-           }
-           listadoEsquelaNit();
+            esquela.setIdConductor(rgDao.idConductor(idEsquela));
+            Vehiculo vehiculo = new Vehiculo();
+            vehiculo.setIdVehiculo(rgDao.idVehiculo(idEsquela));
+            esquela.setPlaca(vehiculo);
+            esquela.setIdAgente(rgDao.esquelaDatosPuros(idEsquela).getIdAgente());
+            esquela.setCodigoFalta(rgDao.esquelaDatosPuros(idEsquela).getCodigoFalta()); //String
+            Clasificacion c = new Clasificacion();
+            c.setIdClasificacion(rgDao.idClasificacion(idEsquela));
+            esquela.setClasificacion(c);
+            esquela.setFechaEsquela(rgDao.esquelaDatosPuros(idEsquela).getFechaEsquela()); //Date
+            esquela.setLugarInfraccion(rgDao.esquelaDatosPuros(idEsquela).getLugarInfraccion()); //String
+            esquela.setObservaciones(rgDao.esquelaDatosPuros(idEsquela).getObservaciones()); //String
+            TipoGravedad tg = new TipoGravedad();
+            tg.setIdGravedad(rgDao.idTipoGravedad(idEsquela));
+            esquela.setTipoGravedad(tg);
+            esquela.setMontoPagar(rgDao.esquelaDatosPuros(idEsquela).getMontoPagar()); //Double
+            esquela.setEstado(estado);
+            Date fecha = new Date();
+            esquela.setFechaPago(fecha);
+            Cajero caj = new Cajero();
+            Usuario usu = new Usuario();
+
+            caj.setIdCajero(rgDao.idCajero(LoginMb.getDatosUsuarioLogueado()));
+            System.out.println("************CAJ idCajero " + caj.getIdCajero());
+            esquela.setIdCajero(caj);
+            esquela.setIdDepartamento(rgDao.idDepartamento(idEsquela));
+            Decomiso de = new Decomiso();
+            de.setIdDecomiso(rgDao.idDecomiso(idEsquela));
+            System.out.println("************DECOMISO " + de.getIdDecomiso());
+            esquela.setIdDecomiso(de);
+            Otros o = new Otros();
+            o.setIdOtro(rgDao.idOtros(idEsquela));
+            esquela.setIdOtros(o);
+            esquela.setIdEsquela(idEsquela);
+            //Datos seteados
+            Date check = new Date();
+            check = rgDao.fechaPago(idEsquela);
+            if (check == null) {
+                gd.actualizarEntidad(esquela); //Envio a actualizar
+            } else {
+                System.out.println("************ Pago ya actualizado " + esquela.getFechaPago());
+            }
+            listadoEsquelaNit();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
         //licencia = esquela.getIdConductor().getLicencia();   //Posible formula para mantener la licencia en memoria
         //en caso que al refrescar la licencia retorne a 0 o a null
-           
-           //System.out.println("++++++++ Estado sin pago " + esquela.getEstado().getIdEstado());
-       
-        
+
+        //System.out.println("++++++++ Estado sin pago " + esquela.getEstado().getIdEstado());
     }
     //Ni siquiera lo volteen a ver ****************************************************
     //Continuan los metodos de actualizar *********************************************
+
+    public void logOut(){
+        loginMb.logOut();
+    }
+    
+    public String setColor(Esquela es) {
+        if (es.getEstado().getEstadoMulta().equalsIgnoreCase("Pagado")) {
+            return "txSuccess";
+        } else {
+            return "txdanger";
+        }
+    }
 
     public List<Esquela> getListEsquela() {
         return listEsquela;
@@ -295,9 +301,23 @@ System.out.println("************idUsuario ESQUELA.ID "+ esquela.getIdCajero().ge
     public void setIdMulta(Integer idMulta) {
         this.idMulta = idMulta;
     }
+
+    public Esquela getMulta() {
+        return multa;
+    }
+
+    public void setMulta(Esquela multa) {
+        this.multa = multa;
+    }
+
+    public Usuario getDatosUsuario() {
+        return datosUsuario;
+    }
+
+    public void setDatosUsuario(Usuario datosUsuario) {
+        this.datosUsuario = datosUsuario;
+    }
     
     
-    
-    
-    
+
 }

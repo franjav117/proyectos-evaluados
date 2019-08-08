@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.esquelas.mb;
 
 import com.esquelas.dao.LogingDao;
@@ -25,9 +20,9 @@ public class LoginMb {
     private String password;
     private String rol;
     private Usuario usuario;
-    private Usuario datosUsuarioLogueado;
+    private static Usuario datosUsuarioLogueado;
     private LogingDao loginDao;
-
+     //permisos
     private boolean usuarioIsLogueado;
 
     private boolean verEsquelas;
@@ -41,7 +36,7 @@ public class LoginMb {
 
     private boolean consultaConductorLogeado;
     private boolean consultaConductorSinLoguear;
-
+    //permisos
     @PostConstruct
     public void init() {
         loginDao = new LogingDao();
@@ -65,6 +60,7 @@ public class LoginMb {
 
         Usuario usuarioLogeado = new Usuario();
         usuarioLogeado = loginDao.usuarioLogin(user, password);
+        usuario = loginDao.usuarioLogin(user, password);
         System.out.println("/*/*/*/*/*/ Usuario Logueado: " + usuarioLogeado);
         if (null != usuarioLogeado) {
             rol = usuarioLogeado.getIdRol().getRol();
@@ -189,7 +185,8 @@ public class LoginMb {
     public String logOut() {
         usuarioIsLogueado = false;
         usuario = new Usuario();
-        return "index.xhtml?faces-redirect=true";
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "/index.xhtml?faces-redirect=true";
     }
 
     public String getUser() {
@@ -224,12 +221,14 @@ public class LoginMb {
         this.usuario = usuario;
     }
 
-    public Usuario getDatosUsuarioLogueado() {
+
+
+    public static Usuario getDatosUsuarioLogueado() {
         return datosUsuarioLogueado;
     }
 
-    public void setDatosUsuarioLogueado(Usuario datosUsuarioLogueado) {
-        this.datosUsuarioLogueado = datosUsuarioLogueado;
+    public static void setDatosUsuarioLogueado(Usuario datosUsuarioLogueado) {
+        LoginMb.datosUsuarioLogueado = datosUsuarioLogueado;
     }
 
     public boolean isUsuarioIsLogueado() {
@@ -239,7 +238,7 @@ public class LoginMb {
     public void setUsuarioIsLogueado(boolean usuarioIsLogueado) {
         this.usuarioIsLogueado = usuarioIsLogueado;
     }
-    
+
     public boolean isVerEsquelas() {
         return verEsquelas;
     }
@@ -312,4 +311,7 @@ public class LoginMb {
         this.consultaConductorSinLoguear = consultaConductorSinLoguear;
     }
 
+   
+
+    
 }
