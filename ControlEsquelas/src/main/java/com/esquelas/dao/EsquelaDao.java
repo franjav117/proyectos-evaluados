@@ -39,8 +39,9 @@ public class EsquelaDao {
         try {
             esquelaDao = new Esquela();
             esquelaDao = (Esquela) em.createNamedQuery("Esquela.findByIdEsquela").setParameter("idEsquela", esqvist.getIdEsquela()).getSingleResult();
-            System.out.println("ID SELECCIONADO EN LA VISTA ::::::::::::::::::::::::::   <<"+esquelaDao.getIdEsquela()+">>");
-        }        
+            //System.out.println("ID SELECCIONADO EN LA VISTA ::::::::::::::::::::::::::   <<"+esquelaDao.getIdEsquela()+">>");
+            //em.flush();
+        }
         catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
@@ -49,7 +50,7 @@ public class EsquelaDao {
     }
     public void eliminarEsquela(Esquela esqdel) {
         try {
-            System.out.println("esquela eliminada " + esqdel.getIdEsquela());
+            //System.out.println("esquela eliminada " + esqdel.getIdEsquela());
             em.getTransaction().begin();
             em.remove(em.find(Esquela.class, esqdel.getIdEsquela()));
             em.getTransaction().commit();

@@ -6,6 +6,7 @@
 package com.esquelas.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,10 +17,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -32,6 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Cajero.findAll", query = "SELECT c FROM Cajero c")
     , @NamedQuery(name = "Cajero.findByIdCajero", query = "SELECT c FROM Cajero c WHERE c.idCajero = :idCajero")
     , @NamedQuery(name = "Cajero.findByCac", query = "SELECT c FROM Cajero c WHERE c.cac = :cac")
+    , @NamedQuery(name = "Cajero.findByIdPersona", query = "SELECT c.idCajero FROM Cajero c WHERE c.idPersona = :idPersona")
     , @NamedQuery(name = "Cajero.findByCodCaja", query = "SELECT c FROM Cajero c WHERE c.codCaja = :codCaja")})
 public class Cajero implements Serializable {
 
@@ -51,6 +55,8 @@ public class Cajero implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "cod_caja")
     private String codCaja;
+    @OneToMany(mappedBy = "idCajero")
+    private List<Esquela> esquelaList;
     @JoinColumn(name = "id_persona", referencedColumnName = "id_persona")
     @ManyToOne(optional = false)
     private Persona idPersona;
@@ -90,6 +96,16 @@ public class Cajero implements Serializable {
 
     public void setCodCaja(String codCaja) {
         this.codCaja = codCaja;
+    }
+
+
+    @XmlTransient
+    public List<Esquela> getEsquelaList() {
+        return esquelaList;
+    }
+
+    public void setEsquelaList(List<Esquela> esquelaList) {
+        this.esquelaList = esquelaList;
     }
 
     public Persona getIdPersona() {

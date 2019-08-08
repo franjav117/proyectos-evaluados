@@ -19,6 +19,7 @@ import com.esquelas.entities.Rol;
 import com.esquelas.entities.TipoGravedad;
 import com.esquelas.entities.TipoMatricula;
 import com.esquelas.entities.TipoPlaca;
+import com.esquelas.entities.Usuario;
 import com.esquelas.entities.Vehiculo;
 import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.util.ArrayList;
@@ -173,7 +174,7 @@ public class RelacionesGeneralesDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("DAO id Conductor "+obj.getIdConductor() +" "+obj.getIdPersona().getN1Nombre() +" "+ obj.getIdPersona().getA1Apellido());
+        //System.out.println("DAO id Conductor "+obj.getIdConductor() +" "+obj.getIdPersona().getN1Nombre() +" "+ obj.getIdPersona().getA1Apellido());
         return obj;
     }
 
@@ -184,7 +185,7 @@ public class RelacionesGeneralesDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("DAO id Vehiculo "+obj);
+        //System.out.println("DAO id Vehiculo "+obj);
         return obj;
     }
     
@@ -205,7 +206,7 @@ public class RelacionesGeneralesDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("DAO id Agente "+obj.getIdAgente() + obj.getIdPersona().getN1Nombre()+" "+ obj.getIdPersona().getA1Apellido());
+        //System.out.println("DAO id Agente "+obj.getIdAgente() + obj.getIdPersona().getN1Nombre()+" "+ obj.getIdPersona().getA1Apellido());
         return obj;
     }
     ///////////////
@@ -216,7 +217,7 @@ public class RelacionesGeneralesDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("DAO id Clasificacion "+obj);
+        //System.out.println("DAO id Clasificacion "+obj);
         return obj;
     }
     
@@ -227,7 +228,7 @@ public class RelacionesGeneralesDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("DAO id Gravedad "+obj);
+        //System.out.println("DAO id Gravedad "+obj);
         return obj;
     }
     
@@ -238,7 +239,7 @@ public class RelacionesGeneralesDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("*-*-*-*-*-*- DATOS PUROS "+ datos.getLugarInfraccion() + "Lugar Infraccion");
+        //System.out.println("*-*-*-*-*-*- DATOS PUROS "+ datos.getLugarInfraccion() + "Lugar Infraccion");
         return datos;
     }
     
@@ -249,7 +250,19 @@ public class RelacionesGeneralesDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("DAO id Estado "+obj);
+        //System.out.println("DAO id Estado "+obj);
+        return obj;
+    }
+    
+    public Integer idCajero(Usuario u){
+     Integer obj = 0;
+        try {
+            obj = (Integer) em.createNativeQuery("Select id_cajero from cajero where id_persona ="+ u.getIdPersona().getIdPersona()+" ").getSingleResult();
+            System.out.println("*******DAO Id Persona "+u.getIdPersona().getIdPersona());
+            System.out.println("*******DAO Id Cajero OBJ "+obj);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return obj;
     }
     
@@ -260,7 +273,7 @@ public class RelacionesGeneralesDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("DAO id Departamento "+obj.getDepartamento());
+        //System.out.println("DAO id Departamento "+obj.getDepartamento());
         return obj;
     }
     
@@ -271,6 +284,7 @@ public class RelacionesGeneralesDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("DAO id Decomiso "+esq);
         System.out.println("DAO id Decomiso "+obj);
         return obj;
     }
@@ -282,7 +296,7 @@ public class RelacionesGeneralesDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("DAO id Otros "+obj);
+        //System.out.println("DAO id Otros "+obj);
         return obj;
     }
     

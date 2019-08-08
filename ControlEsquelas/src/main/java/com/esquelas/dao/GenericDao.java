@@ -16,11 +16,11 @@ import javax.persistence.Persistence;
  */
 @Stateless
 public class GenericDao {
+
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
     private EntityManager em = emf.createEntityManager();
-    
-     public Object insertarEntidad(Object obj) {
-                      
+
+    public Object insertarEntidad(Object obj) {
         try {
             em.getTransaction().begin();
             em.persist(obj);
@@ -29,7 +29,7 @@ public class GenericDao {
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
-        } 
+        }
         return obj;
     }
 
