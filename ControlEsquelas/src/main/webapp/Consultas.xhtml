@@ -8,11 +8,28 @@
         <title>Facelet Title</title>
         <style>
             body{
-                background-color: #86A5ED;
+                background-color: #b1bace;
+            }
+
+            .txsuccess{
+                color: green;
+            }
+            .txdanger{
+                color: red;
             }
         </style>
     </h:head>
     <h:body>
+        <h:form>
+            <p:tabMenu activeIndex="#{param.i}" styleClass="colorFondo">
+                <p:menuitem value="Consultas" outcome="/ui/menu/tabMenu" icon="pi pi-search" style="font-size: 1em" url="Consultas.xhtml">
+                    <f:param name="i" value="0"/>
+                </p:menuitem>
+                <p:menuitem value="Vehículos" outcome="/ui/menu/tabMenu" icon="fa fa-automobile" url="Vehiculo.xhtml">
+                    <f:param name="i" value="1"/>
+                </p:menuitem>
+            </p:tabMenu>
+        </h:form>
         <h:form id="form">
             <h:panelGrid columns="2">
                 <h:panelGrid columns="2">
@@ -30,11 +47,11 @@
         </h:form>
         <h:form id="esquela">
             <p:dataTable id="table" var="es" value="#{consultaMb.listEsId}" rows="6" paginator="true" rendered="true" >
-               
+
                 <p:column headerText="Conductor">
                     <p:outputLabel value="#{es.idConductor.idPersona.n1Nombre} #{es.idConductor.idPersona.a1Apellido}"/>
                 </p:column>
-                
+
                 <p:column headerText="Falta">
                     <p:outputLabel value="#{es.codigoFalta}"/>
                 </p:column>
@@ -58,7 +75,7 @@
                 <p:column headerText="Monto">
                     <p:outputLabel value="$#{es.montoPagar}"/>
                 </p:column>
-                
+
                 <p:column headerText="Departamento">
                     <p:outputLabel value="#{es.idDepartamento.departamento}"/>
                 </p:column>
@@ -68,8 +85,8 @@
                 <p:column headerText="Otros">
                     <p:outputLabel value="#{es.idOtros.especificacion}"/>
                 </p:column>
-                <p:column headerText="Estado">
-                    <p:outputLabel value="#{es.estado.estadoMulta}"/>
+                <p:column headerText="Estado" >
+                    <p:outputLabel id="estadoCol" value="#{es.estado.estadoMulta}" styleClass="#{consultaMb.setColor(es)}" />
                 </p:column>
             </p:dataTable>
         </h:form>
