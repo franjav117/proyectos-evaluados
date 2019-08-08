@@ -74,6 +74,14 @@ public class ConsultaMb implements Serializable {
             System.out.println("***************LACA***************");
         }
     }
+    
+    public String setColor(Esquela es){
+        if (es.getEstado().getEstadoMulta().equalsIgnoreCase("Pagado")) {
+            return "txsuccess";
+        }else{
+        return "txdanger";
+        }
+    }
 
 //**************************************************************Getter and Setter*******************************************************    
     

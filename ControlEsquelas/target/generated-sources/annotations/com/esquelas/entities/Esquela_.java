@@ -1,6 +1,7 @@
 package com.esquelas.entities;
 
 import com.esquelas.entities.AgenteTransito;
+import com.esquelas.entities.Cajero;
 import com.esquelas.entities.Clasificacion;
 import com.esquelas.entities.Conductor;
 import com.esquelas.entities.Decomiso;
@@ -14,7 +15,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2019-08-07T08:34:02")
+@Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2019-08-07T13:14:09")
 @StaticMetamodel(Esquela.class)
 public class Esquela_ { 
 
@@ -29,6 +30,7 @@ public class Esquela_ {
     public static volatile SingularAttribute<Esquela, Otros> idOtros;
     public static volatile SingularAttribute<Esquela, String> codigoFalta;
     public static volatile SingularAttribute<Esquela, Conductor> idConductor;
+    public static volatile SingularAttribute<Esquela, Cajero> idCajero;
     public static volatile SingularAttribute<Esquela, String> observaciones;
     public static volatile SingularAttribute<Esquela, Clasificacion> clasificacion;
     public static volatile SingularAttribute<Esquela, TipoGravedad> tipoGravedad;

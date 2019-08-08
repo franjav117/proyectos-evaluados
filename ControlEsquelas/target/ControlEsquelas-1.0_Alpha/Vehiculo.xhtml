@@ -10,9 +10,23 @@
             body{
                 background-color: #86A5ED;
             }
+            .colorFondo{
+                background-color: #86A5ED;
+            }
+            
         </style>
     </h:head>
     <h:body>
+        <h:form>
+            <p:tabMenu activeIndex="#{param.i}" styleClass="colorFondo">
+                <p:menuitem value="Consultas" outcome="/ui/menu/tabMenu" icon="pi pi-search" style="font-size: 1em" url="Consultas.xhtml">
+                    <f:param name="i" value="0"/>
+                </p:menuitem>
+                <p:menuitem value="Vehículos" outcome="/ui/menu/tabMenu" icon="fa fa-automobile" url="Vehiculo.xhtml">
+                    <f:param name="i" value="1"/>
+                </p:menuitem>
+            </p:tabMenu>
+        </h:form>
         <center>
             <h:form id="principal">
                 <p:fieldset legend="Ingreso de Vehiculos" style="width: 450px; border-radius: 15px;  " > 
