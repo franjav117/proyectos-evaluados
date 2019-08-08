@@ -13,21 +13,25 @@
             .colorFondo{
                 background-color: #86A5ED;
             }
-            
+
         </style>
     </h:head>
     <h:body>
         <h:form>
-            <p:tabMenu activeIndex="#{param.i}" styleClass="colorFondo">
-                <p:menuitem value="Consultas" outcome="/ui/menu/tabMenu" icon="pi pi-search" style="font-size: 1em" url="Consultas.xhtml">
-                    <f:param name="i" value="0"/>
-                </p:menuitem>
-                <p:menuitem value="Vehículos" outcome="/ui/menu/tabMenu" icon="fa fa-automobile" url="Vehiculo.xhtml">
-                    <f:param name="i" value="1"/>
-                </p:menuitem>
-            </p:tabMenu>
+
         </h:form>
         <center>
+            <h:form>
+                <p:menubar>
+                    <p:menuitem value="Consultas" icon="fa fa-book" url="Consultas.xhtml" style="margin-right: 15px;" rendered="#{loginMb.consultaConductorSinLoguear}"/>
+                    <p:menuitem value="Esqulas" icon="fa fa-archive" url="esquelas.xhtml"  style="margin-right: 15px;" rendered="#{loginMb.colocarEsquelas}"/>
+                    <p:menuitem value="Caja" icon="fa fa-cart-plus" url="Caja.xhtml" style="margin-right: 15px;" rendered="#{loginMb.pagoCaja}"/>
+                    <p:submenu label="#{loginMb.usuario.idPersona.n1Nombre} #{loginMb.usuario.idPersona.a1Apellido}" style="float: right;">
+                        <p:menuitem action="#{loginMb.logOut()}" value="Cerrar sesion"/>
+                    </p:submenu>
+                </p:menubar>
+            </h:form>
+
             <h:form id="principal">
                 <p:fieldset legend="Ingreso de Vehiculos" style="width: 450px; border-radius: 15px;  " > 
                     <h:panelGrid columns="2">
