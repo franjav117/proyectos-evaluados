@@ -36,13 +36,13 @@
                 <p:inputText value="#{registroEsquelasMb.esquela.codigoFalta}" required="true" requiredMessage="No dejar el campo vacio" style="width: 235px"/>
 
                 <p:outputLabel value="Clasificacion"/>
-                <p:selectOneMenu id="selectCla" value="#{registroEsquelasMb.clasificacionview}" filter="true" required="true" requiredMessage="No dejar el campo vacio" style="width: 220px">
+                <p:selectOneMenu id="selectCla" value="#{registroEsquelasMb.clasificacionview}" filter="true" required="true" requiredMessage="No dejar el campo vacio" style="width: 235px">
                     <f:selectItem itemLabel="Seleccionar Clasificacion" itemValue="0"/>
                     <f:selectItems value="#{registroEsquelasMb.clasificacionSelect}"/>
                 </p:selectOneMenu>
 
                 <p:outputLabel value="Fecha de la esquela"/>
-                <p:calendar value="#{registroEsquelasMb.esquela.fechaEsquela}" pattern="yyyy-MM-dd  /  HH:mm" navigator="true" required="true" requiredMessage="No dejar el campo vacio" style="width: 220px;"/>
+                <p:calendar value="#{registroEsquelasMb.esquela.fechaEsquela}" pattern="yyyy-MM-dd  /  HH:mm" navigator="true" required="true" requiredMessage="No dejar el campo vacio" style="width: 210px;"/>
 
                 <p:outputLabel value="lugar de la infraccion"/>
                 <p:inputText value="#{registroEsquelasMb.esquela.lugarInfraccion}" required="true" requiredMessage="No dejar el campo vacio" style="width: 235px"/>
