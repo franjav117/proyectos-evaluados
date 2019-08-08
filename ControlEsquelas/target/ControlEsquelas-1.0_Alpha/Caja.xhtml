@@ -12,12 +12,32 @@ and open the template in the editor.
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<<<<<<< HEAD
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+=======
+        
+        <style>
+            body{
+                background-color: #b1bace
+            }
+            .txsuccess{
+               color: green;
+            }
+            
+            .txdanger{
+                color: red;
+            }
+            
+        </style>
+        
+        
+>>>>>>> feature_rogelio
     </h:head>
     <h:body>
 <<<<<<< HEAD
         <h:form>
             <p:menubar>
+<<<<<<< HEAD
                 <p:submenu label="#{loginMb.datosUsuarioLogueado.idPersona.n1Nombre} #{loginMb.datosUsuarioLogueado.idPersona.a1Apellido}" style="float: right;">
 =======
                 <h:form>
@@ -42,6 +62,10 @@ and open the template in the editor.
                 <p:submenu label="#{loginMb.datosUsuarioLogueado.nombres}" style="float: right;">
 >>>>>>> feature_melvin
                     <p:menuitem action="#{loginMb.logOut()}" value="Cerrar sesion"/>
+=======
+                <p:submenu label="#{loginMb.usuario.idPersona.n1Nombre} #{loginMb.usuario.idPersona.a1Apellido}" style="float: right;">
+                    <p:menuitem action="#{esquelaMb.logOut()}" value="Cerrar sesion"/>
+>>>>>>> feature_rogelio
                 </p:submenu>
             </p:menubar>
         </h:form>
@@ -71,9 +95,6 @@ and open the template in the editor.
                 <p:column headerText="Placa">
                     <p:outputLabel value="#{es.placa.numeroPlaca}"/>
                 </p:column>
-                <p:column headerText="Agente">
-                    <p:outputLabel value="#{es.idAgente.numPlaca}"/>
-                </p:column>
                 <p:column headerText="Falta">
                     <p:outputLabel value="#{es.codigoFalta}"/>
                 </p:column>
@@ -81,10 +102,9 @@ and open the template in the editor.
                     <p:outputLabel value="#{es.clasificacion.clasificacion}"/>
                 </p:column>
                 <p:column headerText="Fecha">
-                    <p:outputLabel value="#{es.fechaEsquela}"/>
-                </p:column>
-                <p:column headerText="Lugar">
-                    <p:outputLabel value="#{es.lugarInfraccion}"/>
+                    <p:outputLabel value="#{es.fechaEsquela}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </p:outputLabel>
                 </p:column>
                 <p:column headerText="Observaciones">
                     <p:outputLabel value="#{es.observaciones}"/>
@@ -95,9 +115,6 @@ and open the template in the editor.
                 <p:column headerText="Monto">
                     <p:outputLabel value="#{es.montoPagar}"/>
                 </p:column>
-                <p:column headerText="Departamento">
-                    <p:outputLabel value="#{es.idDepartamento.departamento}"/>
-                </p:column>
                 <p:column headerText="Decomiso">
                     <p:outputLabel value="#{es.idDecomiso.decomiso}"/>
                 </p:column>
@@ -106,23 +123,33 @@ and open the template in the editor.
                 </p:column>
                 <p:column headerText="Estado">
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <p:commandButton id="boton" value="#{es.estado.estadoMulta}" action="#{esquelaMb.selecIdEstado(es)}" oncomplete="PF('dialog').show()" label="#{loginMb.revertirPagoCaja}"/>
+=======
+                    <p:commandButton id="boton" value="#{es.estado.estadoMulta}" styleClass="#{esquelaMb.setColor(es)}" action="#{esquelaMb.selecIdEstado(es)}" oncomplete="PF('dialog').show()" label="#{loginMb.revertirPagoCaja}"/>
+>>>>>>> feature_rogelio
                 </p:column>
                 <p:column headerText="Colector">
                     <p:outputLabel value="#{es.idCajero.idPersona.n1Nombre} #{es.idCajero.idPersona.a1Apellido}"/>
                 </p:column>
                 <p:column headerText="Fecha de pago">
+<<<<<<< HEAD
                     <p:outputLabel value="#{es.fechaPago}"/>
 =======
                     <p:commandButton id="boton" value="#{es.estado.estadoMulta}" action="#{esquelaMb.selecIdEstado(es)}" oncomplete="PF('dialog').show()"/>
 >>>>>>> feature_melvin
+=======
+                    <p:outputLabel value="#{es.fechaPago}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </p:outputLabel>
+>>>>>>> feature_rogelio
                 </p:column>
             </p:dataTable>
 
             <p:dialog id="dialig" widgetVar="dialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" >
                 <h:form id="formd">
                     <p:outputLabel value="¿Desea cambiar ?"/>
-                    <p:commandButton value="OK" action="#{esquelaMb.cambiarEstadoPago()}" oncomplete="PF('dialog').hide()" update="form:table"/>
+                    <p:commandLink value="OK" action="#{esquelaMb.cambiarEstadoPago()}" oncomplete="PF('dialog').hide()" update="form:table"/>
                 </h:form>
             </p:dialog>
         </h:form>

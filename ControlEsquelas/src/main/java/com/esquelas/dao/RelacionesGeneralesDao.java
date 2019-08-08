@@ -284,7 +284,8 @@ public class RelacionesGeneralesDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //System.out.println("DAO id Decomiso "+obj);
+        System.out.println("DAO id Decomiso "+esq);
+        System.out.println("DAO id Decomiso "+obj);
         return obj;
     }
     
