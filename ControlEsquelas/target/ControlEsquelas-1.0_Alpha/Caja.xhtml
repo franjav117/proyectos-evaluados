@@ -12,28 +12,31 @@ and open the template in the editor.
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        
+
         <style>
             body{
                 background-color: #b1bace
             }
             .txsuccess{
-               color: green;
+                color: green;
             }
-            
+
             .txdanger{
                 color: red;
             }
-            
+
         </style>
-        
-        
+
+
     </h:head>
     <h:body>
         <h:form>
             <p:menubar>
+                <p:menuitem value="Consultas" icon="fa fa-book" url="Consultas.xhtml" style="margin-right: 15px;" rendered="#{loginMb.consultaConductorSinLoguear}"/>
+                <p:menuitem value="Esqulas" icon="fa fa-archive" url="esquelas.xhtml"  style="margin-right: 15px;" rendered="#{loginMb.colocarEsquelas}"/>
+                <p:menuitem value="Caja" icon="fa fa-cart-plus" url="Caja.xhtml" style="margin-right: 15px;" rendered="#{loginMb.pagoCaja}"/>
                 <p:submenu label="#{loginMb.usuario.idPersona.n1Nombre} #{loginMb.usuario.idPersona.a1Apellido}" style="float: right;">
-                    <p:menuitem action="#{esquelaMb.logOut()}" value="Cerrar sesion"/>
+                    <p:menuitem action="#{loginMb.logOut()}" value="Cerrar sesion" rendered="#{loginMb.usuarioIsLogueado}"/>
                 </p:submenu>
             </p:menubar>
         </h:form>
@@ -61,7 +64,7 @@ and open the template in the editor.
                 </p:column>
                 <p:column headerText="Fecha">
                     <p:outputLabel value="#{es.fechaEsquela}">
-                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
                     </p:outputLabel>
                 </p:column>
                 <p:column headerText="Observaciones">

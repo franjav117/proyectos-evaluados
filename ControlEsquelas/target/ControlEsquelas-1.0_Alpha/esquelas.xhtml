@@ -9,6 +9,16 @@
     </h:head>
 
     <h:body>
+        <h:form>
+            <p:menubar>
+                <p:menuitem value="Consultas" icon="fa fa-book" url="Consultas.xhtml" style="margin-right: 15px;" rendered="#{loginMb.consultaConductorSinLoguear}"/>
+                <p:menuitem value="Esqulas" icon="fa fa-archive" url="esquelas.xhtml"  style="margin-right: 15px;" rendered="#{loginMb.colocarEsquelas}"/>
+                <p:menuitem value="Caja" icon="fa fa-cart-plus" url="Caja.xhtml" style="margin-right: 15px;" rendered="#{loginMb.pagoCaja}"/>
+                <p:submenu label="#{loginMb.usuario.idPersona.n1Nombre} #{loginMb.usuario.idPersona.a1Apellido}" style="float: right;">
+                    <p:menuitem action="#{loginMb.logOut()}" value="Cerrar sesion" rendered="#{loginMb.usuarioIsLogueado}"/>
+                </p:submenu>
+            </p:menubar>
+        </h:form>
 
         <h:form id="form1">
             <p:growl/>

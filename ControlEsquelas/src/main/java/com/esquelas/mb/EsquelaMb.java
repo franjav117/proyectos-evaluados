@@ -51,6 +51,7 @@ public class EsquelaMb implements Serializable {
     private Conductor conductor;
     private Integer est;
     private Usuario datosUsuario;
+    private Integer rol;
     //@ManagedProperty(value = "#{loginMb}")
     private LoginMb loginMb;
 
@@ -316,6 +317,14 @@ public class EsquelaMb implements Serializable {
 
     public void setDatosUsuario(Usuario datosUsuario) {
         this.datosUsuario = datosUsuario;
+    }
+
+    public Integer getRol() {
+        return rol;
+    }
+
+    public void setRol(Integer rol) {
+        this.rol = rol;
     }
     
     
