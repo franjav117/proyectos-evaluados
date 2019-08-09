@@ -12,54 +12,32 @@ and open the template in the editor.
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-      
+
         <style>
             body{
                 background-color: #b1bace
             }
             .txsuccess{
-               color: green;
+                color: green;
             }
-            
+
             .txdanger{
                 color: red;
             }
-            
+
         </style>
-        
-        
+
+
     </h:head>
     <h:body>
         <h:form>
             <p:menubar>
-                <p:submenu label="#{loginMb.datosUsuarioLogueado.idPersona.n1Nombre} #{loginMb.datosUsuarioLogueado.idPersona.a1Apellido}" style="float: right;">
-                <h:form>
-            <p:menubar>
-                <p:menuitem value="Bitacora" icon="fa fa-book" url="bitacora.xhtml" style="margin-right: 15px;" rendered="#{loginMb.verBitacora}"/>
-                <p:submenu label="Cierrres" style="margin-right: 15px;" rendered="#{loginMb.verCierre}">
-                    <p:menuitem value="Cierre" icon="fa fa-copy" url="cierre.xhtml"  style="margin-right: 15px;"/>
-                    <p:menuitem value="Detalle de Cierre" icon="fa fa-copy" url="detalleCierre.xhtml"  style="margin-right: 15px;"/>
-                </p:submenu>
-                
-                <p:submenu label="Compras" style="margin-right: 15px;" rendered="#{loginMb.verCompras}">
-                    <p:menuitem value="Compra" icon="fa fa-archive" url="compra.xhtml"  style="margin-right: 15px;"/>
-                    <p:menuitem value="Detalle de Compra" icon="fa fa-cutlery" url="detalleCompra.xhtml"  style="margin-right: 15px;"/>    
-                </p:submenu>
-                <p:submenu label="Facturas" style="margin-right: 15px;" rendered="#{loginMb.verFacturas}">
-                    <p:menuitem value="Factura" icon="fa fa-archive" url="factura.xhtml"  style="margin-right: 15px;"/>
-                    <p:menuitem value="Detalle de Factura" icon="fa fa-inbox" url="detalle.xhtml"  style="margin-right: 15px;"/> 
-                </p:submenu>
-                <p:menuitem value="Usuarios" icon="fa fa-user" url="usuario.xhtml" style="margin-right: 15px;" rendered="#{loginMb.verUsuarios}"/>
-                <p:menuitem value="Proveedor" icon="fa fa-truck" url="proveedor.xhtml"  style="margin-right: 15px;" rendered="#{loginMb.verProveedor}"/>
-                <p:menuitem value="Sucursales" icon="fa fa-cutlery" url="sucursal.xhtml"  style="margin-right: 15px;" rendered="#{loginMb.verSucursales}"/>
-                <p:submenu label="#{loginMb.datosUsuarioLogueado.nombres}" style="float: right;">
->>>>>>> feature_melvin
-                    <p:menuitem action="#{loginMb.logOut()}" value="Cerrar sesion"/>
-=======
+                <p:menuitem value="Consultas" icon="fa fa-book" url="Consultas.xhtml" style="margin-right: 15px;" rendered="#{loginMb.consultaConductorSinLoguear}"/>
+                <p:menuitem value="Esquelas" icon="fa fa-archive" url="esquelas.xhtml"  style="margin-right: 15px;" rendered="#{loginMb.colocarEsquelas}"/>
+                <p:menuitem value="Caja" icon="fa fa-cart-plus" url="Caja.xhtml" style="margin-right: 15px;" rendered="#{loginMb.pagoCaja}"/>
                 <p:submenu label="#{loginMb.usuario.idPersona.n1Nombre} #{loginMb.usuario.idPersona.a1Apellido}" style="float: right;">
-                    <p:menuitem action="#{esquelaMb.logOut()}" value="Cerrar sesion"/>
->>>>>>> feature_rogelio
+                    <p:menuitem action="#{loginMb.logOut()}" value="Iniciar sesion" rendered="#{loginMb.contrario}"/>
+                    <p:menuitem action="#{loginMb.logOut()}" value="Cerrar sesion" rendered="#{loginMb.usuarioIsLogueado}"/>
                 </p:submenu>
             </p:menubar>
         </h:form>
@@ -70,19 +48,13 @@ and open the template in the editor.
         <h:form id="form">
             <p:panelGrid columns="2">
                 <p:outputLabel value="Busqueda por Licencia" />
-                <p:inputText value="#{esquelaMb.licencia}" label="#{loginMb.pagoCaja}"/>
+                <p:inputText value="#{esquelaMb.licencia}" rendered="#{loginMb.pagoCaja}"/>
             </p:panelGrid>
-<<<<<<< HEAD
-            <p:commandButton value="Consultar por Licencia" action="#{esquelaMb.listadoEsquelaNit()}" update="table" label="#{loginMb.pagoCaja}"/>
-            <p:commandButton value="Consultar por DUI" action="#{esquelaMb.listadoEsquelaDui()}" update="table" label="#{loginMb.pagoCaja}"/>
-            <p:commandButton value="Consultar por Placa" action="#{esquelaMb.listadoEsquelaPlaca()}" update="table" label="#{loginMb.pagoCaja}"/>
-=======
-            <p:commandButton value="Consultar por Licencia" action="#{esquelaMb.listadoEsquelaNit()}" update="table"/>
-            <p:commandButton value="Consultar por DUI" action="#{esquelaMb.listadoEsquelaDui()}" update="table"/>
-            <p:commandButton value="Consultar por Placa" action="#{esquelaMb.listadoEsquelaPlaca()}" update="table"/>
->>>>>>> feature_melvin
+            <p:commandButton value="Consultar por Licencia" action="#{esquelaMb.listadoEsquelaNit()}" update="table" rendered="#{loginMb.pagoCaja}"/>
+            <p:commandButton value="Consultar por DUI" action="#{esquelaMb.listadoEsquelaDui()}" update="table" rendered="#{loginMb.pagoCaja}"/>
+            <p:commandButton value="Consultar por Placa" action="#{esquelaMb.listadoEsquelaPlaca()}" update="table" rendered="#{loginMb.pagoCaja}"/>
 
-            <p:dataTable id="table" var="es" value="#{esquelaMb.listEsquela}" rows="15" paginator="true">
+            <p:dataTable id="table" var="es" value="#{esquelaMb.listEsquela}" rows="15" paginator="true" rendered="#{loginMb.pagoCaja}">
                 <p:column headerText="Conductor">
                     <p:outputLabel value="#{es.idConductor.idPersona.n1Nombre} #{es.idConductor.idPersona.a1Apellido}"/>
                 </p:column>
@@ -97,7 +69,7 @@ and open the template in the editor.
                 </p:column>
                 <p:column headerText="Fecha">
                     <p:outputLabel value="#{es.fechaEsquela}">
-                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
                     </p:outputLabel>
                 </p:column>
                 <p:column headerText="Observaciones">

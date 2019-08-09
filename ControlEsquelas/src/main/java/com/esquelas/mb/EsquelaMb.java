@@ -35,7 +35,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class EsquelaMb implements Serializable {
-
+    
     private EsquelasDao esquDAO;
     private GenericDao gd;
     private RelacionesGeneralesDao rgDao;
@@ -51,9 +51,11 @@ public class EsquelaMb implements Serializable {
     private Conductor conductor;
     private Integer est;
     private Usuario datosUsuario;
+    private Integer rol;
     //@ManagedProperty(value = "#{loginMb}")
     private LoginMb loginMb;
-
+    private static Usuario usuarioStatic;
+    
     @PostConstruct
     public void init() {
         esquDAO = new EsquelasDao();
@@ -65,20 +67,19 @@ public class EsquelaMb implements Serializable {
         idE = new ArrayList<>();
         idEs = new Integer[listEsquela.size()];
         loginMb = new LoginMb();
-        datosUsuario = LoginMb.getDatosUsuarioLogueado();
-//       Test();
+        //       Test();
     }
 
     //*********************************Metodos para Leer *************************
     public void Test() {
         Integer i = rgDao.Test();
         if (i != 0) {
-            System.out.println("*********************Conexion Exitosa NPI del por qué*********************");
+            System.out.println("*********************Conexion Exitosa*********************");
         } else {
             System.out.println("*********************NO HAY CONEXION :( *********************");
         }
     }
-
+    
     public void listaMultasAPagar() {
         for (Esquela e : idE) {
             e.setIdEsquela(idMulta);
@@ -86,10 +87,10 @@ public class EsquelaMb implements Serializable {
         }
         int j = idE.size();
         for (Integer i = 0; i < j; i++) {
-
+            
         }
     }
-
+    
     public void listadoEsquelaNit() {
         Conductor c = new Conductor();
         c.setLicencia(licencia);
@@ -99,7 +100,7 @@ public class EsquelaMb implements Serializable {
             e.printStackTrace();
         }
     }
-
+    
     public void listadoEsquelaDui() {
         Persona p = new Persona();
         p.setDui(licencia);
@@ -109,7 +110,7 @@ public class EsquelaMb implements Serializable {
             e.printStackTrace();
         }
     }
-
+    
     public void listadoEsquelaDuiLicencia(String dui, String licencia) {
         Persona p = new Persona();
         p.setDui(dui);
@@ -117,12 +118,12 @@ public class EsquelaMb implements Serializable {
         c.setLicencia(licencia);
         try {
             listEsquela = esquDAO.listadoEsquelasDUILicencia(p, c);
-            System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " + listEsquela.size());
+            //System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " + listEsquela.size());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
+    
     public void listadoEsquelaPlaca() {
         Vehiculo v = new Vehiculo();
         v.setNumeroPlaca(licencia);
@@ -176,14 +177,18 @@ public class EsquelaMb implements Serializable {
             esquela.setFechaPago(fecha);
             Cajero caj = new Cajero();
             Usuario usu = new Usuario();
-
-            caj.setIdCajero(rgDao.idCajero(LoginMb.getDatosUsuarioLogueado()));
-            System.out.println("************CAJ idCajero " + caj.getIdCajero());
+            usuarioStatic = LoginMb.getDatosUsuarioStatic();
+            //Integer u = usuarioStatic.getIdUsuario();
+            //System.out.println("Datos ID usuario " + usuarioStatic.getIdUsuario());            
+            Integer caja = rgDao.idCajero(usuarioStatic);
+            caj.setIdCajero(caja);
+            //System.out.println("************CAJ idCajero " + caj.getIdCajero());
             esquela.setIdCajero(caj);
+            //System.out.println("************CAJ idCajero " + caj.getIdCajero());
             esquela.setIdDepartamento(rgDao.idDepartamento(idEsquela));
             Decomiso de = new Decomiso();
             de.setIdDecomiso(rgDao.idDecomiso(idEsquela));
-            System.out.println("************DECOMISO " + de.getIdDecomiso());
+            //System.out.println("************DECOMISO " + de.getIdDecomiso());
             esquela.setIdDecomiso(de);
             Otros o = new Otros();
             o.setIdOtro(rgDao.idOtros(idEsquela));
@@ -195,22 +200,19 @@ public class EsquelaMb implements Serializable {
             if (check == null) {
                 gd.actualizarEntidad(esquela); //Envio a actualizar
             } else {
-                System.out.println("************ Pago ya actualizado " + esquela.getFechaPago());
+                //System.out.println("************ Pago ya actualizado " + esquela.getFechaPago());
             }
             listadoEsquelaNit();
-
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //licencia = esquela.getIdConductor().getLicencia();   //Posible formula para mantener la licencia en memoria
-        //en caso que al refrescar la licencia retorne a 0 o a null
-
-        //System.out.println("++++++++ Estado sin pago " + esquela.getEstado().getIdEstado());
+        
     }
-    //Ni siquiera lo volteen a ver ****************************************************
-    //Continuan los metodos de actualizar *********************************************
+    //**************************Ni siquiera lo volteen a ver **************************
+    //***************Continuan los metodos de actualizar ******************************
 
-    public void logOut(){
+    public void logOut() {
         loginMb.logOut();
     }
     
@@ -221,103 +223,109 @@ public class EsquelaMb implements Serializable {
             return "txdanger";
         }
     }
-
+    
     public List<Esquela> getListEsquela() {
         return listEsquela;
     }
-
+    
     public void setListEsquela(List<Esquela> listEsquela) {
         this.listEsquela = listEsquela;
     }
-
+    
     public Esquela getEsquela() {
         return esquela;
     }
-
+    
     public void setEsquela(Esquela esquela) {
         this.esquela = esquela;
     }
-
+    
     public Integer getIdEsquela() {
         return idEsquela;
     }
-
+    
     public void setIdEsquela(Integer idEsquela) {
         this.idEsquela = idEsquela;
     }
-
+    
     public Integer getIdConductor() {
         return idConductor;
     }
-
+    
     public void setIdConductor(Integer idConductor) {
         this.idConductor = idConductor;
     }
-
+    
     public Conductor getConductor() {
         return conductor;
     }
-
+    
     public void setConductor(Conductor conductor) {
         this.conductor = conductor;
     }
-
+    
     public String getLicencia() {
         return licencia;
     }
-
+    
     public void setLicencia(String licencia) {
         this.licencia = licencia;
     }
-
+    
     public Integer getEst() {
         return est;
     }
-
+    
     public void setEst(Integer est) {
         this.est = est;
     }
-
+    
     public List<Esquela> getIdE() {
         return idE;
     }
-
+    
     public void setIdE(List<Esquela> idE) {
         this.idE = idE;
     }
-
+    
     public Integer[] getIdEs() {
         return idEs;
     }
-
+    
     public void setIdEs(Integer[] idEs) {
         this.idEs = idEs;
     }
-
+    
     public Integer getIdMulta() {
         return idMulta;
     }
-
+    
     public void setIdMulta(Integer idMulta) {
         this.idMulta = idMulta;
     }
-
+    
     public Esquela getMulta() {
         return multa;
     }
-
+    
     public void setMulta(Esquela multa) {
         this.multa = multa;
     }
-
+    
     public Usuario getDatosUsuario() {
         return datosUsuario;
     }
-
+    
     public void setDatosUsuario(Usuario datosUsuario) {
         this.datosUsuario = datosUsuario;
     }
     
+    public Integer getRol() {
+        return rol;
+    }
     
-
+    public void setRol(Integer rol) {
+        this.rol = rol;
+    }
+    
 }
