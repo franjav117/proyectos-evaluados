@@ -5,6 +5,7 @@
  */
 package com.esquelas.dao;
 
+import com.esquelas.entities.Persona;
 import com.esquelas.entities.Usuario;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -28,6 +29,17 @@ public class LogingDao {
             e.printStackTrace();
         }
         return usuarioLogueado;
+    }
+        
+    public Persona datosPersona(Usuario per){
+        Persona p = new Persona();
+        try {
+            p = (Persona) em.createNativeQuery("SELECT * FROM persona where id_persona = "+per+"").getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return p;
     }
     
    

@@ -39,6 +39,7 @@ import javax.faces.context.FacesContext;
 public class RegistroEsquelasMb implements Serializable {
 
     private Esquela esquela;
+    private Conductor conductor;
     private List<Esquela> esquelaList; //mostrar de esquelas
 
     private List<Estado> estadoList; //1
@@ -79,27 +80,28 @@ public class RegistroEsquelasMb implements Serializable {
     @PostConstruct
     public void init() {
         esquela = new Esquela();
-        esquelaList = new ArrayList<Esquela>();
+        conductor = new Conductor();
+        esquelaList = new ArrayList<>();
 
-        estadoList = new ArrayList<Estado>();//1
-        departamentoList = new ArrayList<Departamento>();//2
-        tipoGravedadList = new ArrayList<TipoGravedad>();//3
-        DecomisoList = new ArrayList<Decomiso>();//4
-        OtrosList = new ArrayList<Otros>();//5
-        clasificacionList = new ArrayList<Clasificacion>();//6
-        ConductorList = new ArrayList<Conductor>();//7
-        AgenteTransitoList = new ArrayList<AgenteTransito>();//8
-        vehiculoList = new ArrayList<Vehiculo>();//9
+        estadoList = new ArrayList<>();//1
+        departamentoList = new ArrayList<>();//2
+        tipoGravedadList = new ArrayList<>();//3
+        DecomisoList = new ArrayList<>();//4
+        OtrosList = new ArrayList<>();//5
+        clasificacionList = new ArrayList<>();//6
+        ConductorList = new ArrayList<>();//7
+        AgenteTransitoList = new ArrayList<>();//8
+        vehiculoList = new ArrayList<>();//9
 
-        EstadoSelect = new HashMap<String, String>();//1
-        DepartamentoSelect = new HashMap<String, String>();//2    
-        TipoGravedadSelect = new HashMap<String, String>();//3       
-        DecomisoSelect = new HashMap<String, String>();//4       
-        OtrosSelect = new HashMap<String, String>();//5       
-        ClasificacionSelect = new HashMap<String, String>();//6 
-        ConductorSelect = new HashMap<String, String>();//7  
-        AgenteTransitoSelect = new HashMap<String, String>();//8       
-        VehiculoSelect = new HashMap<String, String>();//9       
+        EstadoSelect = new HashMap<>();//1
+        DepartamentoSelect = new HashMap<>();//2    
+        TipoGravedadSelect = new HashMap<>();//3       
+        DecomisoSelect = new HashMap<>();//4       
+        OtrosSelect = new HashMap<>();//5       
+        ClasificacionSelect = new HashMap<>();//6 
+        ConductorSelect = new HashMap<>();//7  
+        AgenteTransitoSelect = new HashMap<>();//8       
+        VehiculoSelect = new HashMap<>();//9       
 
         gd = new GenericDao();
         ed = new EsquelaDao();
@@ -159,8 +161,6 @@ public class RegistroEsquelasMb implements Serializable {
         idot.setIdOtro(Otrosview);
         esquela.setIdOtros(idot);
 
-        esquela.setFechaPago(null);
-
         esquela.getEstado().setIdEstado(1);
 
         esquela = (Esquela) gd.insertarEntidad(esquela);
@@ -176,6 +176,7 @@ public class RegistroEsquelasMb implements Serializable {
             Departamentoview = 0;
             Otrosview = 0;
             mostrarEsquelas();
+
         } else {
             msg = new FacesMessage("Error registrando esquela");
         }
@@ -186,6 +187,7 @@ public class RegistroEsquelasMb implements Serializable {
 
     public void consultById(Esquela ide) {
         esquela = ed.findEsquelaById(ide);
+
         //this.esquela = ide;
     }
 
@@ -287,6 +289,14 @@ public class RegistroEsquelasMb implements Serializable {
 
     public void setEsquela(Esquela esquela) {
         this.esquela = esquela;
+    }
+
+    public Conductor getConductor() {
+        return conductor;
+    }
+
+    public void setConductor(Conductor conductor) {
+        this.conductor = conductor;
     }
 
     public List<Esquela> getEsquelaList() {

@@ -12,26 +12,22 @@ and open the template in the editor.
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
         <style>
             body{
-                background-color: #86A5ED;
-            }
-            .colorFondo{
-                background-color: #86A5ED;
+                background-color: #b1bace
             }
             .txsuccess{
                 color: green;
-                background-color: #00953c;
-                background: #44B34D;
             }
+
             .txdanger{
                 color: red;
-                background-color: #c82333;
             }
+
         </style>
-        
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+
     </h:head>
     <h:body>
         <h:form>
@@ -39,31 +35,27 @@ and open the template in the editor.
                 <p:menuitem value="Consultas" icon="fa fa-book" url="Consultas.xhtml" style="margin-right: 15px;" rendered="#{loginMb.consultaConductorSinLoguear}"/>
                 <p:menuitem value="Esquelas" icon="fa fa-archive" url="esquelas.xhtml"  style="margin-right: 15px;" rendered="#{loginMb.colocarEsquelas}"/>
                 <p:menuitem value="Caja" icon="fa fa-cart-plus" url="Caja.xhtml" style="margin-right: 15px;" rendered="#{loginMb.pagoCaja}"/>
-                <p:menuitem value="Vehiculo" icon="fa fa-automobile" url="Vehiculo.xhtml" style="margin-right: 15px;" rendered="#{loginMb.colocarEsquelas}"/>
                 <p:submenu label="#{loginMb.usuario.idPersona.n1Nombre} #{loginMb.usuario.idPersona.a1Apellido}" style="float: right;">
+                    <p:menuitem action="#{loginMb.logOut()}" value="Iniciar sesion" rendered="#{loginMb.contrario}"/>
                     <p:menuitem action="#{loginMb.logOut()}" value="Cerrar sesion" rendered="#{loginMb.usuarioIsLogueado}"/>
                 </p:submenu>
             </p:menubar>
         </h:form>
-
         <h:form id="form">
             <p:panelGrid columns="2">
-                <p:outputLabel value="Busqueda por Licencia"/>
-                <p:inputText value="#{esquelaMb.licencia}"/>
+                <p:outputLabel value="Busqueda por Licencia" />
+                <p:inputText value="#{esquelaMb.licencia}" rendered="#{loginMb.pagoCaja}"/>
             </p:panelGrid>
-            <p:commandButton value="Consultar por Licencia" action="#{esquelaMb.listadoEsquelaNit()}" update="table"/>
-            <p:commandButton value="Consultar por DUI" action="#{esquelaMb.listadoEsquelaDui()}" update="table"/>
-            <p:commandButton value="Consultar por Placa" action="#{esquelaMb.listadoEsquelaPlaca()}" update="table"/>
+            <p:commandButton value="Consultar por Licencia" action="#{esquelaMb.listadoEsquelaNit()}" update="table" rendered="#{loginMb.pagoCaja}"/>
+            <p:commandButton value="Consultar por DUI" action="#{esquelaMb.listadoEsquelaDui()}" update="table" rendered="#{loginMb.pagoCaja}"/>
+            <p:commandButton value="Consultar por Placa" action="#{esquelaMb.listadoEsquelaPlaca()}" update="table" rendered="#{loginMb.pagoCaja}"/>
 
-            <p:dataTable id="table" var="es" value="#{esquelaMb.listEsquela}" rows="15" paginator="true">
+            <p:dataTable id="table" var="es" value="#{esquelaMb.listEsquela}" rows="15" paginator="true" rendered="#{loginMb.pagoCaja}">
                 <p:column headerText="Conductor">
                     <p:outputLabel value="#{es.idConductor.idPersona.n1Nombre} #{es.idConductor.idPersona.a1Apellido}"/>
                 </p:column>
                 <p:column headerText="Placa">
                     <p:outputLabel value="#{es.placa.numeroPlaca}"/>
-                </p:column>
-                <p:column headerText="Agente">
-                    <p:outputLabel value="#{es.idAgente.numPlaca}"/>
                 </p:column>
                 <p:column headerText="Falta">
                     <p:outputLabel value="#{es.codigoFalta}"/>
@@ -72,10 +64,9 @@ and open the template in the editor.
                     <p:outputLabel value="#{es.clasificacion.clasificacion}"/>
                 </p:column>
                 <p:column headerText="Fecha">
-                    <p:outputLabel value="#{es.fechaEsquela}"/>
-                </p:column>
-                <p:column headerText="Lugar">
-                    <p:outputLabel value="#{es.lugarInfraccion}"/>
+                    <p:outputLabel value="#{es.fechaEsquela}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </p:outputLabel>
                 </p:column>
                 <p:column headerText="Observaciones">
                     <p:outputLabel value="#{es.observaciones}"/>
@@ -86,9 +77,6 @@ and open the template in the editor.
                 <p:column headerText="Monto">
                     <p:outputLabel value="#{es.montoPagar}"/>
                 </p:column>
-                <p:column headerText="Departamento">
-                    <p:outputLabel value="#{es.idDepartamento.departamento}"/>
-                </p:column>
                 <p:column headerText="Decomiso">
                     <p:outputLabel value="#{es.idDecomiso.decomiso}"/>
                 </p:column>
@@ -96,15 +84,22 @@ and open the template in the editor.
                     <p:outputLabel value="#{es.idOtros.especificacion}"/>
                 </p:column>
                 <p:column headerText="Estado">
-                    <p:commandButton id="boton" value="#{es.estado.estadoMulta}" class="btn btn-success" action="#{esquelaMb.selecIdEstado(es)}" 
-                                     oncomplete="PF('dialog').show()" style="background-color: #{esquelaMb.setColor(es)}" rendered="true"/>
+                    <p:commandButton id="boton" value="#{es.estado.estadoMulta}" styleClass="#{esquelaMb.setColor(es)}" action="#{esquelaMb.selecIdEstado(es)}" oncomplete="PF('dialog').show()" label="#{loginMb.revertirPagoCaja}"/>
+                </p:column>
+                <p:column headerText="Colector">
+                    <p:outputLabel value="#{es.idCajero.idPersona.n1Nombre} #{es.idCajero.idPersona.a1Apellido}"/>
+                </p:column>
+                <p:column headerText="Fecha de pago">
+                    <p:outputLabel value="#{es.fechaPago}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </p:outputLabel>
                 </p:column>
             </p:dataTable>
 
             <p:dialog id="dialig" widgetVar="dialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" >
                 <h:form id="formd">
                     <p:outputLabel value="¿Desea cambiar ?"/>
-                    <p:commandButton value="OK" action="#{esquelaMb.cambiarEstadoPago()}" oncomplete="PF('dialog').hide()" update="form:table"/>
+                    <p:commandLink value="OK" action="#{esquelaMb.cambiarEstadoPago()}" oncomplete="PF('dialog').hide()" update="form:table"/>
                 </h:form>
             </p:dialog>
         </h:form>
