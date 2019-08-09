@@ -1,33 +1,34 @@
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Conductor.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Otros.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\UsuarioDao.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\TipoPlaca.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Clasificacion.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Usuario.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Rol.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\GenericDao.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\PersonaDao.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\TipoMatriculaDao.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\TipoGravedad.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\ConsultaDao.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\VehiculoMb.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\RelacionesGeneralesDao.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Decomiso.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\PersonaMb.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\EsquelasDao.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Esquela.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Estado.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\TemporalDao.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\ClaseLicencia.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\LoginMb.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\RegistroEsquelasMb.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\EsquelaMb.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Departamento.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Vehiculo.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\ConsultaMb.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\EsquelaDao.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\VehiculoDao.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\AgenteTransito.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Cajero.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Persona.java
-C:\Users\melvin.madridusam\Documents\GitKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\TipoMatricula.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Usuario.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Otros.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\LogingDao.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\TipoMatricula.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\EsquelaDao.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Vehiculo.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Departamento.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Persona.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\VehiculoDao.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Clasificacion.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\EsquelaMb.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\EsquelasDao.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Cajero.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\PersonaMb.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\VehiculoMb.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\ConsultaMb.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\ClaseLicencia.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Decomiso.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\TemporalDao.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Conductor.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Estado.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Esquela.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\LoginMb.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\RegistroEsquelasMb.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\TipoGravedad.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\ConsultaDao.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\PersonaDao.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\GenericDao.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\RelacionesGeneralesDao.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\UsuarioDao.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Rol.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\AgenteTransito.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\TipoPlaca.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\TipoMatriculaDao.java
