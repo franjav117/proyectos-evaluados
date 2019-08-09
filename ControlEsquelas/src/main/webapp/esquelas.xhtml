@@ -137,13 +137,12 @@
                     </center>
                 </p:panel>
             </p:dataGrid>
-
             <p:dialog header="Modificar esquelas" widgetVar="esquelaDialogMod" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="ModEsquela">
                     <p:panelGrid columns="1">
                         <h:panelGrid columns="2" columnClasses="label,value">
                             <f:facet name="header">
-                                Modificacion de la esquela <h:outputText value="#{registroEsquelasMb.esquela.idEsquela}"/>
+                                Modificacion de la esquela (<h:outputText value="#{registroEsquelasMb.esquela.idEsquela})"/>
                             </f:facet>
                             <p:panelGrid columns="2">
                                 <p:outputLabel value="Conductor"/>
@@ -204,7 +203,7 @@
                                 </p:panelGrid>
                             </h:panelGrid> 
                         </h:panelGrid>
-                        <p:commandButton value="Modificar" style="width: 825px"/>
+                        <p:commandButton value="Modificar" style="width: 825px" />
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>
