@@ -103,14 +103,12 @@
                     </div> 
                 </h:panelGrid>
                 <h:panelGrid columns="3" >
-                    <p:commandButton value="Guardar esquela" action="#{registroEsquelasMb.guardarEsquela()}" update="form1,formesq" style="width: 449px"/>
+                    <p:commandButton value="Guardar esquela" action="#{registroEsquelasMb.guardarEsquela()}"  rendered="#{loginMb.editarEsquelas}" update="form1,formesq" style="width: 449px"/>
                     <h:panelGrid></h:panelGrid>
                     <p:commandButton value="Limpiar" action="#{registroEsquelasMb.limpiar()}" update="form1,formesq" style="width: 358px" />
                 </h:panelGrid>
             </p:panel> 
-
         </h:form>
-
 
         <h:form id="formesq">
             <p:dataGrid  var="esq" value="#{registroEsquelasMb.esquelaList}" columns="4" layout="grid" paginator="true" rows="12">
@@ -121,28 +119,26 @@
                     <center>
                         <h:panelGrid columns="3" cellspacing="7" cellpadding="5" >
                             <h:outputText value="Fecha Esquela:"  style="text-align-last: start"/>
-
                             <h:outputText value="#{esq.fechaEsquela}"  style="background-color: #63759d ;color:#f0f0f0 ;text-align-last: right">
                                 <f:convertDateTime pattern="yyyy/MM/dd"/>
                             </h:outputText>
-
-                            <p:commandButton action="#{registroEsquelasMb.fullConsultById(esq)}" update="formesq" oncomplete="PF('esquelaDialogMod').show()" icon="pi pi-cog"/>
-
+                            <p:commandButton action="#{registroEsquelasMb.fullConsultById(esq)}" update="forms1" oncomplete="PF('esquelaDialogMod').show()" icon="pi pi-cog"/>
                             <h:outputText value="Estado:"  style="text-align-last: start"/>
 
                             <h:outputText value="#{esq.estado.estadoMulta}" style="background-color: #63759d ;color:#f0f0f0 ;text-align: center"/>
-
-                            <p:commandButton action="#{registroEsquelasMb.consultById(esq)}" update="formesq" oncomplete="PF('esquelaDialog').show()" title="ver detalle" style="text-align: center;" icon="pi pi-search"/>
+                            <p:commandButton action="#{registroEsquelasMb.consultById(esq)}" update="forms1" oncomplete="PF('esquelaDialog').show()" title="ver detalle" style="text-align: center;" icon="pi pi-search"/>
                         </h:panelGrid>                           
                     </center>
                 </p:panel>
             </p:dataGrid>
+        </h:form>
+        <h:form id="forms1">
             <p:dialog header="Modificar esquelas" widgetVar="esquelaDialogMod" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="ModEsquela">
                     <p:panelGrid columns="1">
                         <h:panelGrid columns="2" columnClasses="label,value">
                             <f:facet name="header">
-                                Modificacion de la esquela (<h:outputText value="#{registroEsquelasMb.esquela.idEsquela})"/>
+                                Modificacion de la esquela <h:outputText value="(#{registroEsquelasMb.esquela.idEsquela})"/>
                             </f:facet>
                             <p:panelGrid columns="2">
                                 <p:outputLabel value="Conductor"/>
@@ -168,7 +164,9 @@
                                     <f:selectItems value="#{registroEsquelasMb.tipoGravedadSelect}"/>
                                 </p:selectOneMenu>
                                 <p:outputLabel value="Estado"/>
-                                <p:outputLabel value="Pendiente"/>
+                                <p:selectOneMenu id="selectEst" value="#{registroEsquelasMb.estadoview}" style="width: 255px">
+                                    <f:selectItems value="#{registroEsquelasMb.estadoSelect}"/>
+                                </p:selectOneMenu>
                                 <p:outputLabel value="Decomiso"/>
                                 <p:selectOneMenu id="selectDe" value="#{registroEsquelasMb.decomisoview}" filter="true" style="width: 255px">
                                     <f:selectItem itemLabel="Tipo decomiso" itemValue="0"/>
@@ -203,7 +201,7 @@
                                 </p:panelGrid>
                             </h:panelGrid> 
                         </h:panelGrid>
-                        <p:commandButton value="Modificar" style="width: 825px" />
+                        <p:commandButton value="Modificar" action="#{registroEsquelasMb.actualizarEsquela()}" rendered="#{loginMb.editarEsquelas}" update="formesq" style="width: 825px" />
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>

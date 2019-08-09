@@ -185,6 +185,50 @@ public class RegistroEsquelasMb implements Serializable {
 
     }
 
+    public void actualizarEsquela() {
+        Conductor idcon = new Conductor();
+        Vehiculo idveh = new Vehiculo();
+        AgenteTransito idag = new AgenteTransito();
+        Clasificacion idcla = new Clasificacion();
+        TipoGravedad idgra = new TipoGravedad();
+        Estado ides = new Estado();
+        Departamento iddep = new Departamento();
+        Decomiso iddec = new Decomiso();
+        Otros idot = new Otros();
+
+        idcon.setIdConductor(Conductorview);
+        esquela.setIdConductor(idcon);
+
+        idveh.setIdVehiculo(Vehiculoview);
+        esquela.setPlaca(idveh);
+
+        idag.setIdAgente(AgenteTransitoview);
+        esquela.setIdAgente(idag);
+
+        idcla.setIdClasificacion(Clasificacionview);
+        esquela.setClasificacion(idcla);
+
+        idgra.setIdGravedad(TipoGravedadview);
+        esquela.setTipoGravedad(idgra);
+
+        ides.setIdEstado(Estadoview);
+        esquela.setEstado(ides);
+
+        iddep.setIdDepartamento(Departamentoview);
+        esquela.setIdDepartamento(iddep);
+
+        iddec.setIdDecomiso(Decomisoview);
+        esquela.setIdDecomiso(iddec);
+
+        idot.setIdOtro(Otrosview);
+        esquela.setIdOtros(idot);
+        
+        String Mensaje = gd.actualizarEntidad(esquela);
+        FacesMessage msg = new FacesMessage(Mensaje);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        mostrarEsquelas();
+    }
+
     public void consultById(Esquela ide) {
         esquela = ed.findEsquelaById(ide);
 
