@@ -192,6 +192,31 @@ public class RegistroEsquelasMb implements Serializable {
 
         //this.esquela = ide;
     }
+    
+    public void limpiar() {
+        esquela = new Esquela();
+        Conductorview = 0;
+        AgenteTransitoview = 0;
+        Clasificacionview = 0;
+        TipoGravedadview = 0;
+        Decomisoview = 0;
+        Vehiculoview = 0;
+        Departamentoview = 0;
+        Otrosview = 0;
+    }
+    
+    public void fullConsultById(Esquela esq) {
+        esquela = ed.findEsquelaById(esq);
+        Conductorview = esq.getIdConductor().getIdConductor();
+        AgenteTransitoview = esq.getIdAgente().getIdAgente();
+        Clasificacionview = esq.getClasificacion().getIdClasificacion();
+        TipoGravedadview = esq.getTipoGravedad().getIdGravedad();
+        Decomisoview = esq.getIdDecomiso().getIdDecomiso();
+        Vehiculoview = esq.getPlaca().getIdVehiculo();
+        Departamentoview = esq.getIdDepartamento().getIdDepartamento();
+        Otrosview = esq.getIdOtros().getIdOtro();
+
+    }
 
     public void obtenerEstado() {//1
         estadoList = rgd.obtenerEstado();
