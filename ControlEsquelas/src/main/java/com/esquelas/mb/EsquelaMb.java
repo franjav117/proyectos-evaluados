@@ -303,6 +303,22 @@ public class EsquelaMb implements Serializable {
     public void setIdMulta(Integer idMulta) {
         this.idMulta = idMulta;
     }
+
+    public Esquela getMulta() {
+        return multa;
+    }
+
+    public void setMulta(Esquela multa) {
+        this.multa = multa;
+    }
+
+    public Usuario getDatosUsuario() {
+        return datosUsuario;
+    }
+
+    public void setDatosUsuario(Usuario datosUsuario) {
+        this.datosUsuario = datosUsuario;
+    }
     
     public Esquela getMulta() {
         return multa;
