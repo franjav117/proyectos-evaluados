@@ -33,9 +33,10 @@ and open the template in the editor.
         <h:form>
             <p:menubar>
                 <p:menuitem value="Consultas" icon="fa fa-book" url="Consultas.xhtml" style="margin-right: 15px;" rendered="#{loginMb.consultaConductorSinLoguear}"/>
-                <p:menuitem value="Esqulas" icon="fa fa-archive" url="esquelas.xhtml"  style="margin-right: 15px;" rendered="#{loginMb.colocarEsquelas}"/>
+                <p:menuitem value="Esquelas" icon="fa fa-archive" url="esquelas.xhtml"  style="margin-right: 15px;" rendered="#{loginMb.colocarEsquelas}"/>
                 <p:menuitem value="Caja" icon="fa fa-cart-plus" url="Caja.xhtml" style="margin-right: 15px;" rendered="#{loginMb.pagoCaja}"/>
                 <p:submenu label="#{loginMb.usuario.idPersona.n1Nombre} #{loginMb.usuario.idPersona.a1Apellido}" style="float: right;">
+                    <p:menuitem action="#{loginMb.logOut()}" value="Iniciar sesion" rendered="#{loginMb.contrario}"/>
                     <p:menuitem action="#{loginMb.logOut()}" value="Cerrar sesion" rendered="#{loginMb.usuarioIsLogueado}"/>
                 </p:submenu>
             </p:menubar>
@@ -43,13 +44,13 @@ and open the template in the editor.
         <h:form id="form">
             <p:panelGrid columns="2">
                 <p:outputLabel value="Busqueda por Licencia" />
-                <p:inputText value="#{esquelaMb.licencia}" label="#{loginMb.pagoCaja}"/>
+                <p:inputText value="#{esquelaMb.licencia}" rendered="#{loginMb.pagoCaja}"/>
             </p:panelGrid>
-            <p:commandButton value="Consultar por Licencia" action="#{esquelaMb.listadoEsquelaNit()}" update="table" label="#{loginMb.pagoCaja}"/>
-            <p:commandButton value="Consultar por DUI" action="#{esquelaMb.listadoEsquelaDui()}" update="table" label="#{loginMb.pagoCaja}"/>
-            <p:commandButton value="Consultar por Placa" action="#{esquelaMb.listadoEsquelaPlaca()}" update="table" label="#{loginMb.pagoCaja}"/>
+            <p:commandButton value="Consultar por Licencia" action="#{esquelaMb.listadoEsquelaNit()}" update="table" rendered="#{loginMb.pagoCaja}"/>
+            <p:commandButton value="Consultar por DUI" action="#{esquelaMb.listadoEsquelaDui()}" update="table" rendered="#{loginMb.pagoCaja}"/>
+            <p:commandButton value="Consultar por Placa" action="#{esquelaMb.listadoEsquelaPlaca()}" update="table" rendered="#{loginMb.pagoCaja}"/>
 
-            <p:dataTable id="table" var="es" value="#{esquelaMb.listEsquela}" rows="15" paginator="true">
+            <p:dataTable id="table" var="es" value="#{esquelaMb.listEsquela}" rows="15" paginator="true" rendered="#{loginMb.pagoCaja}">
                 <p:column headerText="Conductor">
                     <p:outputLabel value="#{es.idConductor.idPersona.n1Nombre} #{es.idConductor.idPersona.a1Apellido}"/>
                 </p:column>

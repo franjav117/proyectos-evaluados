@@ -12,9 +12,10 @@
         <h:form>
             <p:menubar>
                 <p:menuitem value="Consultas" icon="fa fa-book" url="Consultas.xhtml" style="margin-right: 15px;" rendered="#{loginMb.consultaConductorSinLoguear}"/>
-                <p:menuitem value="Esqulas" icon="fa fa-archive" url="esquelas.xhtml"  style="margin-right: 15px;" rendered="#{loginMb.colocarEsquelas}"/>
+                <p:menuitem value="Esquelas" icon="fa fa-archive" url="esquelas.xhtml"  style="margin-right: 15px;" rendered="#{loginMb.colocarEsquelas}"/>
                 <p:menuitem value="Caja" icon="fa fa-cart-plus" url="Caja.xhtml" style="margin-right: 15px;" rendered="#{loginMb.pagoCaja}"/>
                 <p:submenu label="#{loginMb.usuario.idPersona.n1Nombre} #{loginMb.usuario.idPersona.a1Apellido}" style="float: right;">
+                    <p:menuitem action="#{loginMb.logOut()}" value="Iniciar sesion" rendered="#{loginMb.contrario}"/>
                     <p:menuitem action="#{loginMb.logOut()}" value="Cerrar sesion" rendered="#{loginMb.usuarioIsLogueado}"/>
                 </p:submenu>
             </p:menubar>
@@ -22,7 +23,7 @@
 
         <h:form id="form1">
             <p:growl/>
-            <p:panelGrid columns="4">
+            <p:panelGrid columns="4" rendered="#{loginMb.colocarEsquelas}">
 
                 <p:outputLabel value="Conductor"/>
                 <p:selectOneMenu id="selectCond" value="#{registroEsquelasMb.conductorview}" filter="true" required="true" requiredMessage="No dejar el campo vacio">
@@ -91,12 +92,12 @@
                 </p:selectOneMenu>
 
             </p:panelGrid>
-            <p:commandButton value="Guardar esquela" action="#{registroEsquelasMb.guardarEsquela()}" update="form1,formesq"/>
+            <p:commandButton value="Guardar esquela" action="#{registroEsquelasMb.guardarEsquela()}" update="form1,formesq" rendered="#{loginMb.colocarEsquelas}"/>
         </h:form>
         
         
         <h:form id="formesq">
-            <p:dataGrid  var="esq" value="#{registroEsquelasMb.esquelaList}" columns="4" layout="grid" paginator="true" rows="12">
+            <p:dataGrid  var="esq" value="#{registroEsquelasMb.esquelaList}" columns="4" layout="grid" paginator="true" rows="12" rendered="#{loginMb.colocarEsquelas}">
                 <f:facet name="header">
                     Registro de esquelas
                 </f:facet>
@@ -114,13 +115,13 @@
                             <h:outputText value="Tipo:"/>
                             <h:outputText value="#{esq.tipoGravedad.gravedad}"/>
                             <h:outputText value="Detalles:"/>
-                            <p:commandButton action="#{registroEsquelasMb.consultById(esq)}" update="formesq" oncomplete="PF('esquelaDialog').show()" title="ver detalle" value="Mostrar" style="text-align: center;"/>                                
+                            <p:commandButton action="#{registroEsquelasMb.consultById(esq)}" update="formesq" oncomplete="PF('esquelaDialog').show()" title="ver detalle" value="Mostrar" style="text-align: center;" rendered="#{loginMb.colocarEsquelas}"/>                                
                         </p:panelGrid>                           
                     </center>
                 </p:panel>
             </p:dataGrid>
 
-            <p:dialog header="Detalle esquelas" widgetVar="esquelaDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+            <p:dialog header="Detalle esquelas" widgetVar="esquelaDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" rendered="#{loginMb.colocarEsquelas}">
                 <p:outputPanel id="detallesEsquela" style="text-align:center;">
                     <p:panelGrid columns="2" columnClasses="label,value">
                         <f:facet name="header">
