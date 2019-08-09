@@ -21,6 +21,7 @@ import com.esquelas.entities.TipoGravedad;
 import com.esquelas.entities.Vehiculo;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -186,6 +187,11 @@ public class RegistroEsquelasMb implements Serializable {
     }
 
     public void actualizarEsquela() {
+        
+        ed = new EsquelaDao();
+        rgd = new RelacionesGeneralesDao();
+        rgd1 = new TemporalDao();
+        
         Conductor idcon = new Conductor();
         Vehiculo idveh = new Vehiculo();
         AgenteTransito idag = new AgenteTransito();
@@ -223,9 +229,13 @@ public class RegistroEsquelasMb implements Serializable {
         idot.setIdOtro(Otrosview);
         esquela.setIdOtros(idot);
         
+        Date fechaPago = new Date();
+        esquela.setFechaPago(fechaPago);
+        
         String Mensaje = gd.actualizarEntidad(esquela);
         FacesMessage msg = new FacesMessage(Mensaje);
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        
         mostrarEsquelas();
     }
 
@@ -257,7 +267,6 @@ public class RegistroEsquelasMb implements Serializable {
         Vehiculoview = esq.getPlaca().getIdVehiculo();
         Departamentoview = esq.getIdDepartamento().getIdDepartamento();
         Otrosview = esq.getIdOtros().getIdOtro();
-
     }
 
     public void obtenerEstado() {//1
@@ -325,6 +334,8 @@ public class RegistroEsquelasMb implements Serializable {
 
     public void mostrarEsquelas() {//cargar tabla
         esquelaList = ed.consultarEsquela();
+        
+        
     }
 
     public Esquela getEsquela() {
