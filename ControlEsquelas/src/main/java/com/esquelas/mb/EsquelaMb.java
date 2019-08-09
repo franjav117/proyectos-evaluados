@@ -216,9 +216,9 @@ public class EsquelaMb implements Serializable {
     
     public String setColor(Esquela es) {
         if (es.getEstado().getEstadoMulta().equalsIgnoreCase("Pagado")) {
-            return "txSuccess";
+            return "#44B34D";
         } else {
-            return "txdanger";
+            return "#C51A44";
         }
     }
 
