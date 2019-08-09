@@ -320,22 +320,6 @@ public class EsquelaMb implements Serializable {
         this.datosUsuario = datosUsuario;
     }
     
-    public Esquela getMulta() {
-        return multa;
-    }
-    
-    public void setMulta(Esquela multa) {
-        this.multa = multa;
-    }
-    
-    public Usuario getDatosUsuario() {
-        return datosUsuario;
-    }
-    
-    public void setDatosUsuario(Usuario datosUsuario) {
-        this.datosUsuario = datosUsuario;
-    }
-    
     public Integer getRol() {
         return rol;
     }
