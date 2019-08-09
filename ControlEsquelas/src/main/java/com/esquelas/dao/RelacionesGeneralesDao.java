@@ -256,10 +256,13 @@ public class RelacionesGeneralesDao {
     
     public Integer idCajero(Usuario u){
      Integer obj = 0;
+     Integer i = u.getIdPersona().getIdPersona();
+     //System.out.println("Usuario datos DAO ="+ u.getUsuario() +" + "+ u.getIdPersona().getIdPersona()+" ");
+   //  Integer query = u.getIdPersona().getIdPersona();
         try {
-            obj = (Integer) em.createNativeQuery("Select id_cajero from cajero where id_persona ="+ u.getIdPersona().getIdPersona()+" ").getSingleResult();
-            System.out.println("*******DAO Id Persona "+u.getIdPersona().getIdPersona());
-            System.out.println("*******DAO Id Cajero OBJ "+obj);
+            obj = (Integer) em.createNativeQuery("Select id_cajero from cajero where id_persona ="+ i+" ").getSingleResult();
+            //System.out.println("Select id_cajero from cajero where id_persona ="+ i+" ");
+            //System.out.println("*******DAO Id Cajero OBJ "+obj);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -284,8 +287,8 @@ public class RelacionesGeneralesDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("DAO id Decomiso "+esq);
-        System.out.println("DAO id Decomiso "+obj);
+        //System.out.println("DAO id Decomiso "+esq);
+        //System.out.println("DAO id Decomiso "+obj);
         return obj;
     }
     
