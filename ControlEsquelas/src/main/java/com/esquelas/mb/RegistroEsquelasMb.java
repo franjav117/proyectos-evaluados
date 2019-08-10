@@ -187,11 +187,11 @@ public class RegistroEsquelasMb implements Serializable {
     }
 
     public void actualizarEsquela() {
-        
+
         ed = new EsquelaDao();
         rgd = new RelacionesGeneralesDao();
         rgd1 = new TemporalDao();
-        
+
         Conductor idcon = new Conductor();
         Vehiculo idveh = new Vehiculo();
         AgenteTransito idag = new AgenteTransito();
@@ -228,14 +228,14 @@ public class RegistroEsquelasMb implements Serializable {
 
         idot.setIdOtro(Otrosview);
         esquela.setIdOtros(idot);
-        
+
         Date fechaPago = new Date();
         esquela.setFechaPago(fechaPago);
-        
+
         String Mensaje = gd.actualizarEntidad(esquela);
         FacesMessage msg = new FacesMessage(Mensaje);
         FacesContext.getCurrentInstance().addMessage(null, msg);
-        
+
         mostrarEsquelas();
     }
 
@@ -334,8 +334,7 @@ public class RegistroEsquelasMb implements Serializable {
 
     public void mostrarEsquelas() {//cargar tabla
         esquelaList = ed.consultarEsquela();
-        
-        
+
     }
 
     public Esquela getEsquela() {
@@ -609,4 +608,5 @@ public class RegistroEsquelasMb implements Serializable {
     public void setRgd1(TemporalDao rgd1) {
         this.rgd1 = rgd1;
     }
+
 }

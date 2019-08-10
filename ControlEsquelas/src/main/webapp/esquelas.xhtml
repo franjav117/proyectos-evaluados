@@ -6,9 +6,21 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+        <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script>
+            $(document).ready(function () {
+                $("#btn").click(function () {
+                    $("#tabla").hide();
+                });
+                $("#btn2").click(function () {
+                    $("#tabla").show();
+                });
+            });
+        </script>
     </h:head>
 
     <h:body>
+
         <h:form>
             <p:menubar>
                 <p:menuitem value="Consultas" icon="fa fa-book" url="Consultas.xhtml" style="margin-right: 15px;" rendered="#{loginMb.consultaConductorSinLoguear}"/>
@@ -106,33 +118,39 @@
                     <p:commandButton value="Guardar esquela" action="#{registroEsquelasMb.guardarEsquela()}" rendered="#{loginMb.editarEsquelas}" update="form1,formesq" style="width: 449px"/>
                     <h:panelGrid></h:panelGrid>
                     <p:commandButton value="Limpiar" action="#{registroEsquelasMb.limpiar()}" update="form1,formesq" style="width: 358px" />
+
                 </h:panelGrid>
             </p:panel> 
+
         </h:form>
 
-        <h:form id="formesq">
-            <p:dataGrid  var="esq" value="#{registroEsquelasMb.esquelaList}" columns="4" layout="grid" paginator="true" rows="12">
-                <f:facet name="header">
-                    Registro de esquelas
-                </f:facet>
-                <p:panel id="data" header="Licencia: #{esq.idConductor.licencia}" style="text-align: center;">
-                    <center>
-                        <h:panelGrid columns="3" cellspacing="7" cellpadding="5" >
-                            <h:outputText value="Fecha Esquela:"  style="text-align-last: start"/>
-                            <h:outputText value="#{esq.fechaEsquela}"  style="background-color: #63759d ;color:#f0f0f0 ;text-align-last: right">
-                                <f:convertDateTime pattern="yyyy/MM/dd"/>
-                            </h:outputText>
-                            <p:commandButton action="#{registroEsquelasMb.fullConsultById(esq)}" update="forms1" oncomplete="PF('esquelaDialogMod').show()" icon="pi pi-cog"/>
-                            <h:outputText value="Estado:"  style="text-align-last: start"/>
+        <button id="btn" type="button" class="btn btn-primary" >Ocultar</button>
+        <button id="btn2" type="button" class="btn btn-primary" >Mostrar</button>
 
-                            <h:outputText value="#{esq.estado.estadoMulta}" style="background-color: #63759d ;color:#f0f0f0 ;text-align: center"/>
-                            <p:commandButton action="#{registroEsquelasMb.consultById(esq)}" update="forms1" oncomplete="PF('esquelaDialog').show()" title="ver detalle" style="text-align: center;" icon="pi pi-search"/>
-                        </h:panelGrid>                           
-                    </center>
-                </p:panel>
-            </p:dataGrid>
-        </h:form>
-        
+        <div id="tabla"  style="display: none;">
+            <h:form id="formesq">
+                <p:dataGrid  var="esq" value="#{registroEsquelasMb.esquelaList}" columns="4" layout="grid" paginator="true" rows="12" id="dtgrid">
+                    <f:facet name="header">
+                        Registro de esquelas
+                    </f:facet>
+                    <p:panel id="data" header="Licencia: #{esq.idConductor.licencia}" style="text-align: center;">
+                        <center>
+                            <h:panelGrid columns="3" cellspacing="7" cellpadding="5" >
+                                <h:outputText value="Fecha Esquela:"  style="text-align-last: start"/>
+                                <h:outputText value="#{esq.fechaEsquela}"  style="background-color: #63759d ;color:#f0f0f0 ;text-align-last: right">
+                                    <f:convertDateTime pattern="yyyy/MM/dd"/>
+                                </h:outputText>
+                                <p:commandButton action="#{registroEsquelasMb.fullConsultById(esq)}" update="forms1" oncomplete="PF('esquelaDialogMod').show()" icon="pi pi-cog"/>
+                                <h:outputText value="Estado:"  style="text-align-last: start"/>
+
+                                <h:outputText value="#{esq.estado.estadoMulta}" style="background-color: #63759d ;color:#f0f0f0 ;text-align: center"/>
+                                <p:commandButton action="#{registroEsquelasMb.consultById(esq)}" update="forms1" oncomplete="PF('esquelaDialog').show()" title="ver detalle" style="text-align: center;" icon="pi pi-search"/>
+                            </h:panelGrid>                           
+                        </center>
+                    </p:panel>
+                </p:dataGrid>
+            </h:form>
+        </div>
         <h:form id="forms1">
             <p:dialog header="Modificar esquelas" widgetVar="esquelaDialogMod" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="ModEsquela">
