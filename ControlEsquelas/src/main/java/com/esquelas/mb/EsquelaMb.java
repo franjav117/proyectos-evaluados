@@ -224,7 +224,7 @@ public class EsquelaMb implements Serializable {
         if (es.getEstado().getEstadoMulta().equalsIgnoreCase("Pagado")) {
             return "txSuccess";
         } else {
-            return "txdanger";
+            return "txDanger";
         }
     }
     
