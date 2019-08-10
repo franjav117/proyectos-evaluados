@@ -98,6 +98,7 @@ public class Cajero implements Serializable {
         this.codCaja = codCaja;
     }
 
+
     @XmlTransient
     public List<Esquela> getEsquelaList() {
         return esquelaList;

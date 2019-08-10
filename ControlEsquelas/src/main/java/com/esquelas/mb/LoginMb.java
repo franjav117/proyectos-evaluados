@@ -1,5 +1,6 @@
 package com.esquelas.mb;
 
+
 import com.esquelas.dao.LogingDao;
 import com.esquelas.entities.Persona;
 import com.esquelas.entities.Usuario;
@@ -8,6 +9,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import com.esquelas.entities.Usuario;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  *

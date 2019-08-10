@@ -32,79 +32,95 @@
 
         <h:form id="form1">
             <p:growl/>
-            <p:panelGrid columns="4" rendered="#{loginMb.colocarEsquelas}">
+            <p:panel header="REGISTRO DE ESQUELAS">
+                <h:panelGrid columns="6">
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Conductor"/>
+                        <p:selectOneMenu id="selectCond" value="#{registroEsquelasMb.conductorview}" filter="true" required="true" requiredMessage="No dejar el campo vacio" style="width: 255px">
+                            <f:selectItem itemLabel="Seleccionar Conductor" itemValue="0"/>
+                            <f:selectItems value="#{registroEsquelasMb.conductorSelect}"/>
+                        </p:selectOneMenu>
 
-                <p:outputLabel value="Conductor"/>
-                <p:selectOneMenu id="selectCond" value="#{registroEsquelasMb.conductorview}" filter="true" required="true" requiredMessage="No dejar el campo vacio">
-                    <f:selectItem itemLabel="Seleccionar Conductor" itemValue="0"/>
-                    <f:selectItems value="#{registroEsquelasMb.conductorSelect}"/>
-                </p:selectOneMenu>
+                        <p:outputLabel value="Agente"/>
+                        <p:selectOneMenu id="selectAge" value="#{registroEsquelasMb.agenteTransitoview}" filter="true" required="true" requiredMessage="No dejar el campo vacio" style="width: 255px">
+                            <f:selectItem itemLabel="Seleccionar agente" itemValue="0"/>
+                            <f:selectItems value="#{registroEsquelasMb.agenteTransitoSelect}"/>
+                        </p:selectOneMenu>
 
-                <p:outputLabel value="Placa"/>
-                <p:selectOneMenu id="selectPla" value="#{registroEsquelasMb.vehiculoview}" filter="true" required="true" requiredMessage="No dejar el campo vacio">
-                    <f:selectItem itemLabel="Seleccionar Placa" itemValue="0"/>
-                    <f:selectItems value="#{registroEsquelasMb.vehiculoSelect}"/>
-                </p:selectOneMenu>
+                        <p:outputLabel value="Clasificacion"/>
+                        <p:selectOneMenu id="selectCla" value="#{registroEsquelasMb.clasificacionview}" filter="true" required="true" requiredMessage="No dejar el campo vacio" style="width: 255px">
+                            <f:selectItem itemLabel="Seleccionar Clasificacion" itemValue="0"/>
+                            <f:selectItems value="#{registroEsquelasMb.clasificacionSelect}"/>
+                        </p:selectOneMenu>
 
-                <p:outputLabel value="Agente"/>
-                <p:selectOneMenu id="selectAge" value="#{registroEsquelasMb.agenteTransitoview}" filter="true" required="true" requiredMessage="No dejar el campo vacio">
-                    <f:selectItem itemLabel="Seleccionar agente" itemValue="0"/>
-                    <f:selectItems value="#{registroEsquelasMb.agenteTransitoSelect}"/>
-                </p:selectOneMenu>
+                        <p:outputLabel value="lugar de la infraccion"/>
+                        <p:inputText value="#{registroEsquelasMb.esquela.lugarInfraccion}" required="true" requiredMessage="No dejar el campo vacio" style="width: 255px"/>
 
-                <p:outputLabel value="Codigo de falta"/>
-                <p:inputText value="#{registroEsquelasMb.esquela.codigoFalta}" required="true" requiredMessage="No dejar el campo vacio"/>
+                        <p:outputLabel value="Gravedad"/>
+                        <p:selectOneMenu id="selectgrav" value="#{registroEsquelasMb.tipoGravedadview}" filter="true" required="true" requiredMessage="No dejar el campo vacio" style="width: 255px">
+                            <f:selectItem itemLabel="Selecctionar Gravedad" itemValue="0"/>
+                            <f:selectItems value="#{registroEsquelasMb.tipoGravedadSelect}"/>
+                        </p:selectOneMenu>
 
-                <p:outputLabel value="Clasificacion"/>
-                <p:selectOneMenu id="selectCla" value="#{registroEsquelasMb.clasificacionview}" filter="true" required="true" requiredMessage="No dejar el campo vacio">
-                    <f:selectItem itemLabel="Seleccionar Clasificacion" itemValue="0"/>
-                    <f:selectItems value="#{registroEsquelasMb.clasificacionSelect}"/>
-                </p:selectOneMenu>
+                        <p:outputLabel value="Estado"/>
+                        <p:outputLabel value="Pendiente"/>
 
-                <p:outputLabel value="Fecha de la esquela"/>
-                <p:calendar value="#{registroEsquelasMb.esquela.fechaEsquela}" pattern="yyyy-MM-dd  /  HH:mm" navigator="true" required="true" requiredMessage="No dejar el campo vacio"/>
+                        <p:outputLabel value="Decomiso"/>
+                        <p:selectOneMenu id="selectDec" value="#{registroEsquelasMb.decomisoview}" filter="true" required="true" requiredMessage="No dejar el campo vacio" style="width: 255px">
+                            <f:selectItem itemLabel="Tipo decomiso" itemValue="0"/>
+                            <f:selectItems value="#{registroEsquelasMb.decomisoSelect}"/>
+                        </p:selectOneMenu>
 
-                <p:outputLabel value="lugar de la infraccion"/>
-                <p:inputText value="#{registroEsquelasMb.esquela.lugarInfraccion}" required="true" requiredMessage="No dejar el campo vacio"/>
+                    </p:panelGrid>
+                    <h:panelGrid></h:panelGrid>
+                    <p:panelGrid columns="2">
 
-                <p:outputLabel value="Observaciones"/>
-                <p:inputText value="#{registroEsquelasMb.esquela.observaciones}" required="true" requiredMessage="No dejar el campo vacio"/>
+                        <p:outputLabel value="Placa"/>
+                        <p:selectOneMenu id="selectPla" value="#{registroEsquelasMb.vehiculoview}" filter="true" required="true" requiredMessage="No dejar el campo vacio" style="width: 173px">
+                            <f:selectItem itemLabel="Seleccionar Placa" itemValue="0"/>
+                            <f:selectItems value="#{registroEsquelasMb.vehiculoSelect}"/>
+                        </p:selectOneMenu>
 
-                <p:outputLabel value="Gravedad"/>
-                <p:selectOneMenu id="selectgrav" value="#{registroEsquelasMb.tipoGravedadview}" filter="true" required="true" requiredMessage="No dejar el campo vacio">
-                    <f:selectItem itemLabel="Selecctionar Gravedad" itemValue="0"/>
-                    <f:selectItems value="#{registroEsquelasMb.tipoGravedadSelect}"/>
-                </p:selectOneMenu>
+                        <p:outputLabel value="Codigo de falta"/>
+                        <p:inputText value="#{registroEsquelasMb.esquela.codigoFalta}" required="true" requiredMessage="No dejar el campo vacio" style="width: 173px"/>
 
-                <p:outputLabel value="Monto a pagar"/>
-                <p:inputText value="#{registroEsquelasMb.esquela.montoPagar}" required="true" requiredMessage="No dejar el campo vacio"/>
+                        <p:outputLabel value="Fecha de la esquela"/>
+                        <p:calendar value="#{registroEsquelasMb.esquela.fechaEsquela}" pattern="yyyy-MM-dd  //  HH:mm" navigator="true" required="true" requiredMessage="No dejar el campo vacio" style="width: 173px;"/>
 
-                <p:outputLabel value="Estado"/>
-                <p:outputLabel value="Pendiente"/>
-                
-                <p:outputLabel value="Departamento"/>
-                <p:selectOneMenu id="selectDep" value="#{registroEsquelasMb.departamentoview}" filter="true" required="true" requiredMessage="No dejar el campo vacio">
-                    <f:selectItem itemLabel="Seleccionar Dep" itemValue="0"/>
-                    <f:selectItems value="#{registroEsquelasMb.departamentoSelect}"/>
-                </p:selectOneMenu>
+                        <p:outputLabel value="Observaciones"/>
+                        <p:inputText value="#{registroEsquelasMb.esquela.observaciones}" required="true" requiredMessage="No dejar el campo vacio" style="width: 173px"/>
 
-                <p:outputLabel value="Decomiso"/>
-                <p:selectOneMenu id="selectDec" value="#{registroEsquelasMb.decomisoview}" filter="true" required="true" requiredMessage="No dejar el campo vacio">
-                    <f:selectItem itemLabel="Tipo decomiso" itemValue="0"/>
-                    <f:selectItems value="#{registroEsquelasMb.decomisoSelect}"/>
-                </p:selectOneMenu>
+                        <p:outputLabel value="Monto a pagar"/>
+                        <p:inputText value="#{registroEsquelasMb.esquela.montoPagar}" required="true" requiredMessage="No dejar el campo vacio" style="width: 173px"/>
 
-                <p:outputLabel value="Otros"/>
-                <p:selectOneMenu id="selectotr" value="#{registroEsquelasMb.otrosview}" filter="true" required="true" requiredMessage="No dejar el campo vacio">
-                    <f:selectItem itemLabel="Seleccionar Otro" itemValue="0"/>
-                    <f:selectItems value="#{registroEsquelasMb.otrosSelect}"/>
-                </p:selectOneMenu>
+                        <p:outputLabel value="Departamento"/>
+                        <p:selectOneMenu id="selectDep" value="#{registroEsquelasMb.departamentoview}" filter="true" required="true" requiredMessage="No dejar el campo vacio" style="width: 173px">
+                            <f:selectItem itemLabel="Seleccionar Dep" itemValue="0"/>
+                            <f:selectItems value="#{registroEsquelasMb.departamentoSelect}"/>
+                        </p:selectOneMenu>
 
-            </p:panelGrid>
-            <p:commandButton value="Guardar esquela" action="#{registroEsquelasMb.guardarEsquela()}" update="form1,formesq" rendered="#{loginMb.colocarEsquelas}"/>
+                        <p:outputLabel value="Otros"/>
+                        <p:selectOneMenu id="selectotr" value="#{registroEsquelasMb.otrosview}" filter="true" required="true" requiredMessage="No dejar el campo vacio" style="width: 173px">
+                            <f:selectItem itemLabel="Seleccionar Otro" itemValue="0"/>
+                            <f:selectItems value="#{registroEsquelasMb.otrosSelect}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <h:panelGrid/>
+                    <h:panelGrid/>
+                    <div class="ui-g" style="background-color: #3b465e ;text-transform: fullwidth;font-weight: bold;" >
+                        <img src="..\icon\cuaderno.png" width="340px" height="340px" style="margin-bottom: 20px;"/>
+                    </div> 
+                </h:panelGrid>
+                <h:panelGrid columns="3" >
+                    <p:commandButton value="Guardar esquela" action="#{registroEsquelasMb.guardarEsquela()}" update="form1,formesq" style="width: 449px"/>
+                    <h:panelGrid></h:panelGrid>
+                    <p:commandButton value="Limpiar" action="#{registroEsquelasMb.limpiar()}" update="form1,formesq" style="width: 358px" />
+                </h:panelGrid>
+            </p:panel> 
+
         </h:form>
-        
-        
+
+
         <h:form id="formesq">
             <p:dataGrid  var="esq" value="#{registroEsquelasMb.esquelaList}" columns="4" layout="grid" paginator="true" rows="12" rendered="#{loginMb.colocarEsquelas}">
                 <f:facet name="header">
@@ -112,23 +128,94 @@
                 </f:facet>
                 <p:panel id="data" header="Licencia: #{esq.idConductor.licencia}" style="text-align: center;">
                     <center>
-                        <p:panelGrid columns="2">
-                            <h:outputText value="Fecha Esquela:"/>
-                            <h:outputText value="#{esq.fechaEsquela}">
+                        <h:panelGrid columns="3" cellspacing="7" cellpadding="5" >
+                            <h:outputText value="Fecha Esquela:"  style="text-align-last: start"/>
+
+                            <h:outputText value="#{esq.fechaEsquela}"  style="background-color: #63759d ;color:#f0f0f0 ;text-align-last: right">
                                 <f:convertDateTime pattern="yyyy/MM/dd"/>
                             </h:outputText>
-                            <h:outputText value="Estado:"/>
-                            <h:outputText value="#{esq.estado.estadoMulta}"/>
-                            <h:outputText value="Clasificacion:"/>
-                            <h:outputText value="#{esq.clasificacion.clasificacion}"/>
-                            <h:outputText value="Tipo:"/>
-                            <h:outputText value="#{esq.tipoGravedad.gravedad}"/>
-                            <h:outputText value="Detalles:"/>
-                            <p:commandButton action="#{registroEsquelasMb.consultById(esq)}" update="formesq" oncomplete="PF('esquelaDialog').show()" title="ver detalle" value="Mostrar" style="text-align: center;" rendered="#{loginMb.colocarEsquelas}"/>                                
-                        </p:panelGrid>                           
+
+                            <p:commandButton action="#{registroEsquelasMb.fullConsultById(esq)}" update="formesq" oncomplete="PF('esquelaDialogMod').show()" icon="pi pi-cog"/>
+
+                            <h:outputText value="Estado:"  style="text-align-last: start"/>
+
+                            <h:outputText value="#{esq.estado.estadoMulta}" style="background-color: #63759d ;color:#f0f0f0 ;text-align: center"/>
+
+                            <p:commandButton action="#{registroEsquelasMb.consultById(esq)}" update="formesq" oncomplete="PF('esquelaDialog').show()" title="ver detalle" style="text-align: center;" icon="pi pi-search"/>
+                        </h:panelGrid>                           
                     </center>
                 </p:panel>
             </p:dataGrid>
+            <p:dialog header="Modificar esquelas" widgetVar="esquelaDialogMod" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="ModEsquela">
+                    <p:panelGrid columns="1">
+                        <h:panelGrid columns="2" columnClasses="label,value">
+                            <f:facet name="header">
+                                Modificacion de la esquela (<h:outputText value="#{registroEsquelasMb.esquela.idEsquela})"/>
+                            </f:facet>
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="Conductor"/>
+                                <p:selectOneMenu id="selectCond" value="#{registroEsquelasMb.conductorview}" filter="true" style="width: 255px">
+                                    <f:selectItem itemLabel="Seleccionar Conductor" itemValue="0"/>
+                                    <f:selectItems value="#{registroEsquelasMb.conductorSelect}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Agente"/>
+                                <p:selectOneMenu id="selectAge" value="#{registroEsquelasMb.agenteTransitoview}" filter="true" style="width: 255px">
+                                    <f:selectItem itemLabel="Seleccionar agente" itemValue="0"/>
+                                    <f:selectItems value="#{registroEsquelasMb.agenteTransitoSelect}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Clasificacion"/>
+                                <p:selectOneMenu id="selectCla" value="#{registroEsquelasMb.clasificacionview}" filter="true" style="width: 255px">
+                                    <f:selectItem itemLabel="Seleccionar Clasificacion" itemValue="0"/>
+                                    <f:selectItems value="#{registroEsquelasMb.clasificacionSelect}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="lugar de la infraccion"/>
+                                <p:inputTextarea value="#{registroEsquelasMb.esquela.lugarInfraccion}" style="width: 255px"/>
+                                <p:outputLabel value="Gravedad"/>
+                                <p:selectOneMenu id="selectgra" value="#{registroEsquelasMb.tipoGravedadview}" filter="true" style="width: 255px">
+                                    <f:selectItem itemLabel="Selecctionar Gravedad" itemValue="0"/>
+                                    <f:selectItems value="#{registroEsquelasMb.tipoGravedadSelect}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Estado"/>
+                                <p:outputLabel value="Pendiente"/>
+                                <p:outputLabel value="Decomiso"/>
+                                <p:selectOneMenu id="selectDe" value="#{registroEsquelasMb.decomisoview}" filter="true" style="width: 255px">
+                                    <f:selectItem itemLabel="Tipo decomiso" itemValue="0"/>
+                                    <f:selectItems value="#{registroEsquelasMb.decomisoSelect}"/>
+                                </p:selectOneMenu>
+                            </p:panelGrid>
+                            <h:panelGrid columns="1">
+                                <p:panelGrid columns="2">
+                                    <p:outputLabel value="Placa"/>
+                                    <p:selectOneMenu id="selectPla" value="#{registroEsquelasMb.vehiculoview}" filter="true" style="width: 173px">
+                                        <f:selectItem itemLabel="Seleccionar Placa" itemValue="0"/>
+                                        <f:selectItems value="#{registroEsquelasMb.vehiculoSelect}"/>
+                                    </p:selectOneMenu>
+                                    <p:outputLabel value="Codigo de falta"/>
+                                    <p:inputText value="#{registroEsquelasMb.esquela.codigoFalta}" style="width: 173px"/>
+                                    <p:outputLabel value="Fecha de la esquela"/>
+                                    <p:calendar value="#{registroEsquelasMb.esquela.fechaEsquela}" pattern="yyyy-MM-dd  //  HH:mm" navigator="true" style="width: 173px;"/>
+                                    <p:outputLabel value="Observaciones"/>
+                                    <p:inputTextarea value="#{registroEsquelasMb.esquela.observaciones}" style="width: 173px"/>
+                                    <p:outputLabel value="Monto a pagar"/>
+                                    <p:inputText value="#{registroEsquelasMb.esquela.montoPagar}" style="width: 173px"/>
+                                    <p:outputLabel value="Departamento"/>
+                                    <p:selectOneMenu id="selectDep" value="#{registroEsquelasMb.departamentoview}" filter="true" style="width: 173px">
+                                        <f:selectItem itemLabel="Seleccionar Dep" itemValue="0"/>
+                                        <f:selectItems value="#{registroEsquelasMb.departamentoSelect}"/>
+                                    </p:selectOneMenu>
+                                    <p:outputLabel value="Otros"/>
+                                    <p:selectOneMenu id="selectotr" value="#{registroEsquelasMb.otrosview}" filter="true" style="width: 173px">
+                                        <f:selectItem itemLabel="Seleccionar Otro" itemValue="0"/>
+                                        <f:selectItems value="#{registroEsquelasMb.otrosSelect}"/>
+                                    </p:selectOneMenu>
+                                </p:panelGrid>
+                            </h:panelGrid> 
+                        </h:panelGrid>
+                        <p:commandButton value="Modificar" style="width: 825px" />
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
 
             <p:dialog header="Detalle esquelas" widgetVar="esquelaDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" rendered="#{loginMb.colocarEsquelas}">
                 <p:outputPanel id="detallesEsquela" style="text-align:center;">

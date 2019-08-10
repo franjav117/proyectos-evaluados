@@ -6,6 +6,18 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+        <style>
+            body{
+                background-color: #b1bace;
+            }
+
+            .txsuccess{
+                color: green;
+            }
+            .txdanger{
+                color: red;
+            }
+        </style>
     </h:head>
     <h:body>
         <h:form>
@@ -20,8 +32,8 @@
             </p:menubar>
         </h:form>
         <h:form id="form">
-            <p:panelGrid columns="2">
-                <p:panelGrid columns="2">
+            <h:panelGrid columns="2">
+                <h:panelGrid columns="2">
                     <p:outputLabel value="Busqueda por Licencia"/>
                     <p:inputText value="#{consultaMb.licencia}" />
                 </h:panelGrid>
@@ -35,27 +47,22 @@
 
         </h:form>
         <h:form id="esquela">
-            <p:dataTable id="table" var="es" value="#{consultaMb.listEsId}" rows="6" paginator="true">
-                <p:column headerText="Id">
-                    <p:outputLabel value="#{es.idEsquela}"/>
-                </p:column>
+            <p:dataTable id="table" var="es" value="#{consultaMb.listEsId}" rows="6" paginator="true" rendered="true" >
+
                 <p:column headerText="Conductor">
                     <p:outputLabel value="#{es.idConductor.idPersona.n1Nombre} #{es.idConductor.idPersona.a1Apellido}"/>
                 </p:column>
-                <p:column headerText="Placa">
-                    <p:outputLabel value="#{es.placa.numeroPlaca}"/>
-                </p:column>
-                <p:column headerText="Agente">
-                    <p:outputLabel value="#{es.idAgente.numPlaca}"/>
-                </p:column>
+
                 <p:column headerText="Falta">
                     <p:outputLabel value="#{es.codigoFalta}"/>
                 </p:column>
                 <p:column headerText="Clasificacion">
                     <p:outputLabel value="#{es.clasificacion.clasificacion}"/>
                 </p:column>
-                <p:column headerText="Fecha">
-                    <p:outputLabel value="#{es.fechaEsquela}"/>
+                <p:column headerText="Fecha" >
+                    <p:outputLabel value="#{es.fechaEsquela}">
+                        <f:convertDateTime pattern="yyyy/MM/dd"/>
+                    </p:outputLabel>
                 </p:column>
                 <p:column headerText="Lugar">
                     <p:outputLabel value="#{es.lugarInfraccion}"/>
@@ -67,11 +74,9 @@
                     <p:outputLabel value="#{es.tipoGravedad.gravedad}"/>
                 </p:column>
                 <p:column headerText="Monto">
-                    <p:outputLabel value="#{es.montoPagar}"/>
+                    <p:outputLabel value="$#{es.montoPagar}"/>
                 </p:column>
-                <p:column headerText="Estado">
-                    <p:outputLabel value="#{es.estado.estadoMulta}"/>
-                </p:column>
+
                 <p:column headerText="Departamento">
                     <p:outputLabel value="#{es.idDepartamento.departamento}"/>
                 </p:column>
@@ -81,7 +86,11 @@
                 <p:column headerText="Otros">
                     <p:outputLabel value="#{es.idOtros.especificacion}"/>
                 </p:column>
+                <p:column headerText="Estado" >
+                    <p:outputLabel id="estadoCol" value="#{es.estado.estadoMulta}" styleClass="#{consultaMb.setColor(es)}" />
+                </p:column>
             </p:dataTable>
         </h:form>
     </h:body>
 </html>
+
