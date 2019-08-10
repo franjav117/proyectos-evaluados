@@ -65,7 +65,9 @@ public class Vehiculo implements Serializable {
     @Size(max = 50)
     @Column(name = "pais")
     private String pais;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "clase_vehiculo")
     private String claseVehiculo;
     @Basic(optional = false)
@@ -99,9 +101,10 @@ public class Vehiculo implements Serializable {
         this.idVehiculo = idVehiculo;
     }
 
-    public Vehiculo(Integer idVehiculo, String numeroPlaca, String marca, String modelo) {
+    public Vehiculo(Integer idVehiculo, String numeroPlaca, String claseVehiculo, String marca, String modelo) {
         this.idVehiculo = idVehiculo;
         this.numeroPlaca = numeroPlaca;
+        this.claseVehiculo = claseVehiculo;
         this.marca = marca;
         this.modelo = modelo;
     }

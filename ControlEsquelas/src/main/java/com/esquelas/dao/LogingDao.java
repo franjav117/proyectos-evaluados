@@ -30,7 +30,7 @@ public class LogingDao {
         }
         return usuarioLogueado;
     }
-        
+    
     public Persona datosPersona(Usuario per){
         Persona p = new Persona();
         try {

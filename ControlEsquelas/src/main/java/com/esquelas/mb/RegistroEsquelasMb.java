@@ -81,27 +81,27 @@ public class RegistroEsquelasMb implements Serializable {
     public void init() {
         esquela = new Esquela();
         conductor = new Conductor();
-        esquelaList = new ArrayList<>();
+        esquelaList = new ArrayList<Esquela>();
 
-        estadoList = new ArrayList<>();//1
-        departamentoList = new ArrayList<>();//2
-        tipoGravedadList = new ArrayList<>();//3
-        DecomisoList = new ArrayList<>();//4
-        OtrosList = new ArrayList<>();//5
-        clasificacionList = new ArrayList<>();//6
-        ConductorList = new ArrayList<>();//7
-        AgenteTransitoList = new ArrayList<>();//8
-        vehiculoList = new ArrayList<>();//9
+        estadoList = new ArrayList<Estado>();//1
+        departamentoList = new ArrayList<Departamento>();//2
+        tipoGravedadList = new ArrayList<TipoGravedad>();//3
+        DecomisoList = new ArrayList<Decomiso>();//4
+        OtrosList = new ArrayList<Otros>();//5
+        clasificacionList = new ArrayList<Clasificacion>();//6
+        ConductorList = new ArrayList<Conductor>();//7
+        AgenteTransitoList = new ArrayList<AgenteTransito>();//8
+        vehiculoList = new ArrayList<Vehiculo>();//9
 
-        EstadoSelect = new HashMap<>();//1
-        DepartamentoSelect = new HashMap<>();//2    
-        TipoGravedadSelect = new HashMap<>();//3       
-        DecomisoSelect = new HashMap<>();//4       
-        OtrosSelect = new HashMap<>();//5       
-        ClasificacionSelect = new HashMap<>();//6 
-        ConductorSelect = new HashMap<>();//7  
-        AgenteTransitoSelect = new HashMap<>();//8       
-        VehiculoSelect = new HashMap<>();//9       
+        EstadoSelect = new HashMap<String, String>();//1
+        DepartamentoSelect = new HashMap<String, String>();//2    
+        TipoGravedadSelect = new HashMap<String, String>();//3       
+        DecomisoSelect = new HashMap<String, String>();//4       
+        OtrosSelect = new HashMap<String, String>();//5       
+        ClasificacionSelect = new HashMap<String, String>();//6 
+        ConductorSelect = new HashMap<String, String>();//7  
+        AgenteTransitoSelect = new HashMap<String, String>();//8       
+        VehiculoSelect = new HashMap<String, String>();//9       
 
         gd = new GenericDao();
         ed = new EsquelaDao();
@@ -160,21 +160,22 @@ public class RegistroEsquelasMb implements Serializable {
 
         idot.setIdOtro(Otrosview);
         esquela.setIdOtros(idot);
-
+        
         esquela.getEstado().setIdEstado(1);
 
         esquela = (Esquela) gd.insertarEntidad(esquela);
         if (null != esquela) {
             msg = new FacesMessage("Esquela registrada " + esquela.getIdEsquela());
             esquela = new Esquela();
-            Conductorview = 0;
-            AgenteTransitoview = 0;
-            Clasificacionview = 0;
-            TipoGravedadview = 0;
-            Decomisoview = 0;
-            Vehiculoview = 0;
-            Departamentoview = 0;
-            Otrosview = 0;
+            EstadoSelect = new HashMap<String, String>();//1
+            DepartamentoSelect = new HashMap<String, String>();//2    
+            TipoGravedadSelect = new HashMap<String, String>();//3       
+            DecomisoSelect = new HashMap<String, String>();//4       
+            OtrosSelect = new HashMap<String, String>();//5       
+            ClasificacionSelect = new HashMap<String, String>();//6 
+            ConductorSelect = new HashMap<String, String>();//7  
+            AgenteTransitoSelect = new HashMap<String, String>();//8       
+            VehiculoSelect = new HashMap<String, String>();//9  
             mostrarEsquelas();
 
         } else {
@@ -187,33 +188,9 @@ public class RegistroEsquelasMb implements Serializable {
 
     public void consultById(Esquela ide) {
         esquela = ed.findEsquelaById(ide);
+        
 
         //this.esquela = ide;
-    }
-
-    public void limpiar() {
-        esquela = new Esquela();
-        Conductorview = 0;
-        AgenteTransitoview = 0;
-        Clasificacionview = 0;
-        TipoGravedadview = 0;
-        Decomisoview = 0;
-        Vehiculoview = 0;
-        Departamentoview = 0;
-        Otrosview = 0;
-    }
-
-    public void fullConsultById(Esquela esq) {
-        esquela = ed.findEsquelaById(esq);
-        Conductorview = esq.getIdConductor().getIdConductor();
-        AgenteTransitoview = esq.getIdAgente().getIdAgente();
-        Clasificacionview = esq.getClasificacion().getIdClasificacion();
-        TipoGravedadview = esq.getTipoGravedad().getIdGravedad();
-        Decomisoview = esq.getIdDecomiso().getIdDecomiso();
-        Vehiculoview = esq.getPlaca().getIdVehiculo();
-        Departamentoview = esq.getIdDepartamento().getIdDepartamento();
-        Otrosview = esq.getIdOtros().getIdOtro();
-
     }
 
     public void obtenerEstado() {//1
