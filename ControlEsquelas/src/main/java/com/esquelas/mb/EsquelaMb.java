@@ -95,6 +95,7 @@ public class EsquelaMb implements Serializable {
         Conductor c = new Conductor();
         c.setLicencia(licencia);
         try {
+            listEsquela = new ArrayList<>();
             listEsquela = esquDAO.listadoEsquelasNit(c);
         } catch (Exception e) {
             e.printStackTrace();
@@ -105,6 +106,7 @@ public class EsquelaMb implements Serializable {
         Persona p = new Persona();
         p.setDui(licencia);
         try {
+            listEsquela = new ArrayList<>();
             listEsquela = esquDAO.listadoEsquelasDUI(p);
         } catch (Exception e) {
             e.printStackTrace();
@@ -117,6 +119,7 @@ public class EsquelaMb implements Serializable {
         Conductor c = new Conductor();
         c.setLicencia(licencia);
         try {
+            listEsquela = new ArrayList<>();
             listEsquela = esquDAO.listadoEsquelasDUILicencia(p, c);
             //System.out.println("Metodo listadoEsquelaNit funciona # esquelas para este usuario es: " + listEsquela.size());
         } catch (Exception e) {
@@ -128,6 +131,7 @@ public class EsquelaMb implements Serializable {
         Vehiculo v = new Vehiculo();
         v.setNumeroPlaca(licencia);
         try {
+            listEsquela = new ArrayList<>();
             listEsquela = esquDAO.listadoEsquelasPlaca(v);
         } catch (Exception e) {
             e.printStackTrace();
@@ -220,7 +224,7 @@ public class EsquelaMb implements Serializable {
         if (es.getEstado().getEstadoMulta().equalsIgnoreCase("Pagado")) {
             return "txSuccess";
         } else {
-            return "txdanger";
+            return "txDanger";
         }
     }
     
