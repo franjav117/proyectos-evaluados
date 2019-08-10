@@ -21,7 +21,6 @@ import com.esquelas.entities.TipoMatricula;
 import com.esquelas.entities.TipoPlaca;
 import com.esquelas.entities.Usuario;
 import com.esquelas.entities.Vehiculo;
-import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
