@@ -7,6 +7,7 @@ C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\Contr
 C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\EsquelasDao.java
 C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Esquela.java
 C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\LoginMb.java
+C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\ReporteFactura.java
 C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\PersonaDao.java
 C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Conductor.java
 C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\GenericDao.java
@@ -18,6 +19,7 @@ C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\Contr
 C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\RegistroEsquelasMb.java
 C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Clasificacion.java
 C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Decomiso.java
+C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\util\Factura.java
 C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Otros.java
 C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\ConsultaMb.java
 C:\Users\rogelio.mejiausam\Documents\RepositorioKraken\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\TipoPlaca.java
