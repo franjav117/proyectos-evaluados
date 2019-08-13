@@ -253,7 +253,7 @@ public class RelacionesGeneralesDao {
         return obj;
     }
     
-    public Integer idCajero(Usuario u){
+    public Integer idCajero(Usuario u){     //Solo en este DAO está dando clavo para extraer el idCajero
      Integer obj = 0;
      Integer i = u.getIdPersona().getIdPersona();
      //System.out.println("Usuario datos DAO ="+ u.getUsuario() +" + "+ u.getIdPersona().getIdPersona()+" ");
