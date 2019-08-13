@@ -236,5 +236,5 @@ public class VehiculoMb implements Serializable {
     public void setExtrView(boolean extrView) {
         this.extrView = extrView;
     }
-
+// mergas
 }
