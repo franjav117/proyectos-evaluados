@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="33483524-31e1-4470-b7a9-10929131f29c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="c6c84f0b-d3d1-4e64-8985-33cbf5f80749"/>
+	<queryString language="SQL">
+		<![CDATA[select * from esquela]]>
+	</queryString>
+	<field name="id_esquela" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_conductor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="placa" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_agente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigo_falta" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="clasificacion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_esquela" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lugar_infraccion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="observaciones" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipo_gravedad" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monto_pagar" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_pago" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_cajero" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_departamento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_decomiso" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_otros" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="id_esquela">
+		<groupExpression><![CDATA[$F{id_esquela}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="90" splitType="Stretch">
+			<rectangle>
+				<reportElement x="4" y="5" width="124" height="79" uuid="34b8e95c-2613-4fa9-aa2e-3def68a1160a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="141" y="19" width="311" height="18" uuid="e1bfd790-552e-4b35-91d5-f74acf43b882"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Comprobante de pago de Esquelas]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="227" y="37" width="215" height="20" uuid="f708f923-f221-4541-bf4f-a2c2382537f7"/>
+				<textFieldExpression><![CDATA[$F{id_conductor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="158" y="37" width="69" height="20" uuid="e9ca6ae8-2c54-4fef-8f56-c8ba6327802a"/>
+				<text><![CDATA[Licencia :]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="2" width="54" height="33" uuid="7de3d765-c048-47d6-ae46-58689862bf39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[N° 
+Esquela]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="57" y="2" width="100" height="33" uuid="4221898a-515c-4201-b083-f8366f9dd32e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha
+Impuesta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="2" width="47" height="33" uuid="7a33fc89-9c43-4219-b7ce-b173f320174f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Codigo
+Falta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="2" width="100" height="33" uuid="2a83cccb-7ae2-4d07-970e-ad5b66629ee4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Observaciones]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="2" width="72" height="33" uuid="db84c736-c037-4349-a3aa-fd693d20cf35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nivel]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="55" splitType="Stretch">
+			<textField>
+				<reportElement x="3" y="0" width="54" height="23" uuid="5921d37d-f76a-4777-92c7-eabec4ecaefc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{id_esquela}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="58" y="3" width="100" height="20" uuid="e9c4c8aa-a0e4-4655-87ab-2ee15b88182d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fecha_esquela}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="157" y="3" width="48" height="20" uuid="03908919-90a8-495b-96e2-4f0ffaf8382f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{codigo_falta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="205" y="0" width="100" height="23" uuid="d2f74a22-1575-423b-97d2-0066ad6207d5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="305" y="3" width="72" height="20" uuid="2a47a554-d2ba-46dd-bb1e-9a1c080e1e31"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tipo_gravedad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
