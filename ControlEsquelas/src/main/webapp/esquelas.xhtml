@@ -5,8 +5,8 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
-        <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <title>Registro de esquelas</title>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <script>
             $(document).ready(function () {
                 $("#btn").click(function () {
@@ -18,9 +18,7 @@
             });
         </script>
     </h:head>
-
-    <h:body>
-
+    <h:body class="bg-dark">
         <h:form>
             <p:menubar>
                 <p:menuitem value="Consultas" icon="fa fa-book" url="Consultas.xhtml" style="margin-right: 15px;" rendered="#{loginMb.consultaConductorSinLoguear}"/>
@@ -113,8 +111,9 @@
                             </p:panelGrid>
                             <h:panelGrid/>
                             <h:panelGrid/>
+                            
                             <div class="ui-g" style="background-color: #3b465e ;text-transform: fullwidth;font-weight: bold;" >
-                                <img src="..\icon\cuaderno.png" width="340px" height="340px" style="margin-bottom: 20px;"/>
+                                <img src="icon/cuaderno.png" width="340px" height="340px" style="margin-bottom: 20px;"/>
                             </div> 
                         </h:panelGrid>
                         <h:panelGrid columns="3" >
