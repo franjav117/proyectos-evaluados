@@ -24,15 +24,15 @@ and open the template in the editor.
             }
         </style>
     </h:head>
-    <h:body>
-        <h:form style="float: right;">
-            <p:outputLabel>Usuario: </p:outputLabel>
+    <h:body style="background-image: url('img/f2.jpg');background-size: cover;">
+        <h:form style="float: right;" id="login">
+            <p:outputLabel style="background-color: silver; border-radius: 3px">Usuario: </p:outputLabel>
             <p:inputText value="#{loginMb.user}"/>
-                &#160;
-                <p:outputLabel>Contraseña: </p:outputLabel>
-                <p:password value="#{loginMb.password}"/>
-                &#160;
-                <p:commandButton value="Ingresar" action="#{loginMb.loguearUsuario()}"/>
+            &#160;
+            <p:outputLabel style="background-color: silver; border-radius: 3px">Contraseña: </p:outputLabel>
+            <p:password value="#{loginMb.password}"/>
+            &#160;
+            <p:commandButton value="Ingresar" action="#{loginMb.loguearUsuario()}"/>
         </h:form>
         <h:form id="letras">
             <div class="row">
@@ -117,3 +117,5 @@ and open the template in the editor.
         </h:form>
     </h:body>
 </html>
+
+
