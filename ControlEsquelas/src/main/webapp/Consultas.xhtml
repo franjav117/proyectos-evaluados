@@ -23,14 +23,14 @@
             <p:panelGrid columns="2">
                 <p:panelGrid columns="2">
                     <p:outputLabel value="Busqueda por Licencia"/>
-                    <p:inputText value="#{consultaMb.licencia}"/>
+                    <p:inputText value="#{consultaMb.licencia}" />
                 </p:panelGrid>
                 <p:panelGrid columns="2">
                     <p:outputLabel value="Busqueda por Placa"/>
-                    <p:inputText value="#{consultaMb.vehiculo.numeroPlaca}"/>    
+                    <p:inputText value="#{consultaMb.vehiculo.numeroPlaca}" />    
                 </p:panelGrid>
-                <p:commandButton value="Consultar por Licencia" action="#{consultaMb.consultarXEsquela()}" update="esquela:table"/>
-                <p:commandButton value="Consultar por Placa" action="#{consultaMb.consultarXPlaca()}" update="esquela:table"/>
+                <p:commandButton value="Consultar por Licencia" action="#{consultaMb.consultarXEsquela()}" update="esquela:table" style="margin-top: 15px; margin-bottom: 5px; border-radius: 10px;"/>
+                <p:commandButton value="Consultar por Placa" action="#{consultaMb.consultarXPlaca()}" update="esquela:table" style="margin-top: 15px; margin-bottom: 5px; border-radius: 10px;"/>
             </p:panelGrid>
 
         </h:form>
