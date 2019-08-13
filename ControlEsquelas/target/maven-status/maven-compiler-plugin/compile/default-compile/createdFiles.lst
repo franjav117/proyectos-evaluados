@@ -37,14 +37,11 @@ com\esquelas\mb\EsquelaMb.class
 com\esquelas\entities\Vehiculo.class
 com\esquelas\entities\TipoPlaca_.class
 com\esquelas\dao\LogingDao.class
-com\esquelas\dao\TipoMatriculaDao.class
 com\esquelas\dao\ConsultaDao.class
 com\esquelas\entities\Otros_.class
 com\esquelas\dao\EsquelaDao.class
 com\esquelas\dao\RelacionesGeneralesDao.class
-com\esquelas\dao\VehiculoDao.class
 com\esquelas\entities\Estado_.class
-com\esquelas\mb\VehiculoMb.class
 com\esquelas\entities\Usuario_.class
 com\esquelas\entities\Clasificacion_.class
 com\esquelas\entities\Conductor_.class

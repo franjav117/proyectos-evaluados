@@ -7,22 +7,115 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Start Page</title>
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <style>
+            .opacidad{
+                opacity: .85;
+            }
+            .txsuccess{
+                color: green;
+            }
+            .txdanger{
+                color: red;
+            }
+        </style>
     </h:head>
-    <h:body>
-        <h:form style="float: right;">
-            <p:outputLabel>Usuario: </p:outputLabel>
+    <h:body style="background-image: url('img/f2.jpg');background-size: cover;">
+        <h:form style="float: right;" id="login">
+            <p:outputLabel style="background-color: silver; border-radius: 3px">Usuario: </p:outputLabel>
             <p:inputText value="#{loginMb.user}"/>
-                &#160;
-                <p:outputLabel>Contraseña: </p:outputLabel>
-                <p:password value="#{loginMb.password}"/>
-                &#160;
-                <p:commandButton value="Ingresar" action="#{loginMb.loguearUsuario()}"/>
+            &#160;
+            <p:outputLabel style="background-color: silver; border-radius: 3px">Contraseña: </p:outputLabel>
+            <p:password value="#{loginMb.password}"/>
+            &#160;
+            <p:commandButton value="Ingresar" action="#{loginMb.loguearUsuario()}"/>
+        </h:form>
+        <h:form id="letras">
+            <div class="row">
+                <div class="col-10" style="background-color: silver; border-radius: 15px" >
+                    <h2>Bienvenido a su sistema de pago de esquelas</h2>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>  
+        </h:form>
+        <center>
+            <h:form id="fconsulta" >
+                <p:outputLabel style="background-color: #3399ff ; border-radius: 5px;" value="Busqueda por:"/>
+                <h:panelGrid columns="3" style="background: #ffffff; border-radius: 5px; width: 375px; height: 175px;" class="opacidad" >
+                    <p:outputLabel value="Licencia"/>
+                    <p:inputText value="#{consultaMb.licencia}" autocomplete="true"/>
+                    <p:commandButton icon="pi pi-search" action="#{consultaMb.consultarXEsquela()}"  style="border-radius: 10px;"
+                                     oncomplete="PF('consulta').show()" update=":esquela:mostrar"/>
+                    <p:outputLabel value="Placa"/>
+                    <p:inputText value="#{consultaMb.vehiculo.numeroPlaca}" autocomplete="true"/>    
+                    <p:commandButton icon="pi pi-search" action="#{consultaMb.consultarXPlaca()}" style="border-radius: 10px;"
+                                     oncomplete="PF('consulta').show()" update=":esquela:mostrar"/>
+                </h:panelGrid>
+            </h:form>
+        </center>
+        <h:form id="esquela">
+            <p:dialog id="mostrar"  header="Consulta de Esquelas" modal="true" widgetVar="consulta" showEffect="face" hideEffect="fade"
+                      resizable="false" style="width: 450px; border-radius: 15px;">
+                <p:dataTable id="table" var="es" value="#{consultaMb.listEsId}" rows="6" paginator="true" rendered="true" >
+                    <p:column headerText="Conductor">
+                        <p:outputLabel value="#{es.idConductor.idPersona.n1Nombre} #{es.idConductor.idPersona.a1Apellido}"/>
+                    </p:column>
+                    <p:column headerText="Falta">
+                        <p:outputLabel value="#{es.codigoFalta}"/>
+                    </p:column>
+                    <p:column headerText="Clasificacion">
+                        <p:outputLabel value="#{es.clasificacion.clasificacion}"/>
+                    </p:column>
+                    <p:column headerText="Fecha" >
+                        <p:outputLabel value="#{es.fechaEsquela}">
+                            <f:convertDateTime pattern="yyyy/MM/dd"/>
+                        </p:outputLabel>
+                    </p:column>
+                    <p:column headerText="Lugar">
+                        <p:outputLabel value="#{es.lugarInfraccion}"/>
+                    </p:column>
+                    <p:column headerText="Observaciones">
+                        <p:outputLabel value="#{es.observaciones}"/>
+                    </p:column>
+                    <p:column headerText="Gravedad">
+                        <p:outputLabel value="#{es.tipoGravedad.gravedad}"/>
+                    </p:column>
+                    <p:column headerText="Monto">
+                        <p:outputLabel value="$#{es.montoPagar}"/>
+                    </p:column>
+
+                    <p:column headerText="Departamento">
+                        <p:outputLabel value="#{es.idDepartamento.departamento}"/>
+                    </p:column>
+                    <p:column headerText="Decomiso">
+                        <p:outputLabel value="#{es.idDecomiso.decomiso}"/>
+                    </p:column>
+                    <p:column headerText="Otros">
+                        <p:outputLabel value="#{es.idOtros.especificacion}"/>
+                    </p:column>
+                    <p:column headerText="Estado" >
+                        <p:outputLabel id="estadoCol" value="#{es.estado.estadoMulta}" style="#{consultaMb.setColor(es)}"/>
+                    </p:column>
+                </p:dataTable>
+            </p:dialog>
         </h:form>
     </h:body>
 </html>
+
+

@@ -18,14 +18,14 @@ and open the template in the editor.
             body{
                 background-color: #b1bace
             }
-            .txsuccess{
-               color: green;
+            .txSuccess{
+                background: #00953c;
             }
-            
-            .txdanger{
-                color: red;
+
+            .txDanger{
+                background: #dd2c00;
             }
-            
+
         </style>
         
         
@@ -46,13 +46,13 @@ and open the template in the editor.
         <h:form id="form">
             <p:panelGrid columns="2">
                 <p:outputLabel value="Busqueda por Licencia" />
-                <p:inputText value="#{esquelaMb.licencia}" label="#{loginMb.pagoCaja}"/>
+                <p:inputText value="#{esquelaMb.licencia}" rendered="#{loginMb.pagoCaja}"/>
             </p:panelGrid>
             <p:commandButton value="Consultar por Licencia" action="#{esquelaMb.listadoEsquelaNit()}" update="table" label="#{loginMb.pagoCaja}"/>
             <p:commandButton value="Consultar por DUI" action="#{esquelaMb.listadoEsquelaDui()}" update="table" label="#{loginMb.pagoCaja}"/>
             <p:commandButton value="Consultar por Placa" action="#{esquelaMb.listadoEsquelaPlaca()}" update="table" label="#{loginMb.pagoCaja}"/>
 
-            <p:dataTable id="table" var="es" value="#{esquelaMb.listEsquela}" rows="15" paginator="true">
+            <p:dataTable id="table" var="es" value="#{esquelaMb.listEsquela}" rows="15" paginator="true" rendered="#{loginMb.pagoCaja}">
                 <p:column headerText="Conductor">
                     <p:outputLabel value="#{es.idConductor.idPersona.n1Nombre} #{es.idConductor.idPersona.a1Apellido}"/>
                 </p:column>
@@ -67,7 +67,7 @@ and open the template in the editor.
                 </p:column>
                 <p:column headerText="Fecha">
                     <p:outputLabel value="#{es.fechaEsquela}">
-                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
                     </p:outputLabel>
                 </p:column>
                 <p:column headerText="Observaciones">
