@@ -94,6 +94,10 @@ and open the template in the editor.
                         <f:convertDateTime pattern="dd/MM/yyyy"/>
                     </p:outputLabel>
                 </p:column>
+                     <p:column headerText="Estado">
+<p:commandButton id="boton" value="#{es.estado.estadoMulta}" action="#{esquelaMb.selecIdEstado(es)}" oncomplete="PF('dialog').show()"/>
+                </p:column>
+                
             </p:dataTable>
 
             <p:dialog id="dialig" widgetVar="dialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" >

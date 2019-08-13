@@ -21,6 +21,7 @@ import com.esquelas.entities.TipoGravedad;
 import com.esquelas.entities.Vehiculo;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -186,11 +187,88 @@ public class RegistroEsquelasMb implements Serializable {
 
     }
 
+    public void actualizarEsquela() {
+
+        ed = new EsquelaDao();
+        rgd = new RelacionesGeneralesDao();
+        rgd1 = new TemporalDao();
+
+        Conductor idcon = new Conductor();
+        Vehiculo idveh = new Vehiculo();
+        AgenteTransito idag = new AgenteTransito();
+        Clasificacion idcla = new Clasificacion();
+        TipoGravedad idgra = new TipoGravedad();
+        Estado ides = new Estado();
+        Departamento iddep = new Departamento();
+        Decomiso iddec = new Decomiso();
+        Otros idot = new Otros();
+
+        idcon.setIdConductor(Conductorview);
+        esquela.setIdConductor(idcon);
+
+        idveh.setIdVehiculo(Vehiculoview);
+        esquela.setPlaca(idveh);
+
+        idag.setIdAgente(AgenteTransitoview);
+        esquela.setIdAgente(idag);
+
+        idcla.setIdClasificacion(Clasificacionview);
+        esquela.setClasificacion(idcla);
+
+        idgra.setIdGravedad(TipoGravedadview);
+        esquela.setTipoGravedad(idgra);
+
+        ides.setIdEstado(Estadoview);
+        esquela.setEstado(ides);
+
+        iddep.setIdDepartamento(Departamentoview);
+        esquela.setIdDepartamento(iddep);
+
+        iddec.setIdDecomiso(Decomisoview);
+        esquela.setIdDecomiso(iddec);
+
+        idot.setIdOtro(Otrosview);
+        esquela.setIdOtros(idot);
+
+        Date fechaPago = new Date();
+        esquela.setFechaPago(fechaPago);
+
+        String Mensaje = gd.actualizarEntidad(esquela);
+        FacesMessage msg = new FacesMessage(Mensaje);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+
+        mostrarEsquelas();
+    }
+
     public void consultById(Esquela ide) {
         esquela = ed.findEsquelaById(ide);
         
 
         //this.esquela = ide;
+    }
+
+    public void limpiar() {
+        esquela = new Esquela();
+        Conductorview = 0;
+        AgenteTransitoview = 0;
+        Clasificacionview = 0;
+        TipoGravedadview = 0;
+        Decomisoview = 0;
+        Vehiculoview = 0;
+        Departamentoview = 0;
+        Otrosview = 0;
+    }
+
+    public void fullConsultById(Esquela esq) {
+        esquela = ed.findEsquelaById(esq);
+        Conductorview = esq.getIdConductor().getIdConductor();
+        AgenteTransitoview = esq.getIdAgente().getIdAgente();
+        Clasificacionview = esq.getClasificacion().getIdClasificacion();
+        TipoGravedadview = esq.getTipoGravedad().getIdGravedad();
+        Decomisoview = esq.getIdDecomiso().getIdDecomiso();
+        Vehiculoview = esq.getPlaca().getIdVehiculo();
+        Departamentoview = esq.getIdDepartamento().getIdDepartamento();
+        Otrosview = esq.getIdOtros().getIdOtro();
     }
 
     public void obtenerEstado() {//1
@@ -258,6 +336,7 @@ public class RegistroEsquelasMb implements Serializable {
 
     public void mostrarEsquelas() {//cargar tabla
         esquelaList = ed.consultarEsquela();
+
     }
 
     public Esquela getEsquela() {
@@ -531,4 +610,5 @@ public class RegistroEsquelasMb implements Serializable {
     public void setRgd1(TemporalDao rgd1) {
         this.rgd1 = rgd1;
     }
+
 }
