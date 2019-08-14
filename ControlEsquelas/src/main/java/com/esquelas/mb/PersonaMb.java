@@ -443,4 +443,5 @@ public class PersonaMb implements Serializable{
     public void setListAgente(List<AgenteTransito> listAgente) {
         this.listAgente = listAgente;
     }
+    //
 }

@@ -6,12 +6,13 @@ C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-eva
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Vehiculo.java
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Departamento.java
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Persona.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\VehiculoDao.java
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Clasificacion.java
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\EsquelaMb.java
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\EsquelasDao.java
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Cajero.java
-C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\util\Factura.java
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\PersonaMb.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\VehiculoMb.java
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\mb\ConsultaMb.java
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\ClaseLicencia.java
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Decomiso.java
@@ -31,3 +32,5 @@ C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-eva
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\Rol.java
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\AgenteTransito.java
 C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\entities\TipoPlaca.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\util\Factura.java
+C:\Users\francisco.amayausam\Documents\Grupo 3\proyectos evaluados\proyectos-evaluados\ControlEsquelas\src\main\java\com\esquelas\dao\TipoMatriculaDao.java

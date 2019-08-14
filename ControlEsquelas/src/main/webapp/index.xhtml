@@ -11,7 +11,7 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Start Page</title>
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <style>
             .opacidad{
                 opacity: .85;
@@ -110,7 +110,7 @@ and open the template in the editor.
                         <p:outputLabel value="#{es.idOtros.especificacion}"/>
                     </p:column>
                     <p:column headerText="Estado" >
-                        <p:outputLabel id="estadoCol" value="#{es.estado.estadoMulta}" style="#{consultaMb.setColor(es)}"/>
+                        <p:outputLabel id="estadoCol" value="#{es.estado.estadoMulta}" styleClass="#{consultaMb.setColor(es)}"/>
                     </p:column>
                 </p:dataTable>
             </p:dialog>

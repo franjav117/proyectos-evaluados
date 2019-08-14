@@ -83,8 +83,8 @@ public class VehiculoMb implements Serializable {
         TipoMatricula idTipo = new TipoMatricula();
         idTipo.setIdTipoMatricula(idTipoMaView);
         vehiculo.setTipoPlaca(idTipo);
-        vehiculo.setMarca(marca);
-        vehiculo.setModelo(modelo);
+        //vehiculo.setMarca(marca);
+        //vehiculo.setModelo(modelo);
         vehiculo = (Vehiculo) gd.insertarEntidad(vehiculo);
         //Vehiculo idExtra = new Vehiculo();
         //idExtra.setExtrangera(extrView);
@@ -101,7 +101,7 @@ public class VehiculoMb implements Serializable {
         FacesMessage msg;
         if (null != vehiculo) {
             msg = new FacesMessage("Producto Guardado Satisfactoriamente");
-            
+            vehiculo = new Vehiculo();
         } else {
             msg = new FacesMessage("Error guardando producto");
         }
@@ -236,5 +236,5 @@ public class VehiculoMb implements Serializable {
     public void setExtrView(boolean extrView) {
         this.extrView = extrView;
     }
-// mergas
+
 }

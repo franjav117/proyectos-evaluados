@@ -111,7 +111,7 @@
                             </p:panelGrid>
                             <h:panelGrid/>
                             <h:panelGrid/>
-                            
+
                             <div class="ui-g" style="background-color: #3b465e ;text-transform: fullwidth;font-weight: bold;" >
                                 <img src="icon/cuaderno.png" width="340px" height="340px" style="margin-bottom: 20px;"/>
                             </div> 
@@ -149,11 +149,11 @@
                                 <h:outputText value="#{esq.fechaEsquela}"  style="background-color: #63759d ;color:#f0f0f0 ;text-align-last: right">
                                     <f:convertDateTime pattern="yyyy/MM/dd"/>
                                 </h:outputText>
-                                <p:commandButton action="#{registroEsquelasMb.fullConsultById(esq)}" update="forms1" oncomplete="PF('esquelaDialogMod').show()" icon="pi pi-cog"/>
+                                <p:commandButton action="#{registroEsquelasMb.fullConsultById(esq)}" update="forms1,formesq" oncomplete="PF('esquelaDialogMod').show()" icon="pi pi-cog"/>
                                 <h:outputText value="Estado:"  style="text-align-last: start"/>
 
                                 <h:outputText value="#{esq.estado.estadoMulta}" style="background-color: #63759d ;color:#f0f0f0 ;text-align: center"/>
-                                <p:commandButton action="#{registroEsquelasMb.consultById(esq)}" update="forms1" oncomplete="PF('esquelaDialog').show()" title="ver detalle" style="text-align: center;" icon="pi pi-search"/>
+                                <p:commandButton action="#{registroEsquelasMb.consultById(esq)}" update="forms1,formesq" oncomplete="PF('esquelaDialog').show()" title="ver detalle" style="text-align: center;" icon="pi pi-search"/>
                             </h:panelGrid>                           
                         </center>
                     </p:panel>
@@ -229,12 +229,12 @@
                                 </p:panelGrid>
                             </h:panelGrid> 
                         </h:panelGrid>
-                        <p:commandButton value="Modificar" action="#{registroEsquelasMb.actualizarEsquela()}"  update="formesq,forms1" style="width: 825px" />
+                        <p:commandButton value="Modificar" action="#{registroEsquelasMb.actualizarEsquela()}"  update="formesq,forms1" style="width: 825px" rendered="#{loginMb.editarEsquelas}"/>
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>
 
-            <p:dialog header="Detalle esquelas" widgetVar="esquelaDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" rendered="#{loginMb.colocarEsquelas}">
+            <p:dialog header="Detalle esquelas" widgetVar="esquelaDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="detallesEsquela" style="text-align:center;">
                     <p:panelGrid columns="2" columnClasses="label,value">
                         <f:facet name="header">

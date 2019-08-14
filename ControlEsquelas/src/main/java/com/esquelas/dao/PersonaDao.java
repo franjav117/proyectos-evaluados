@@ -181,5 +181,5 @@ public class PersonaDao {
             e.printStackTrace();
         }
         return listPlaca;
-    }
+    }//
 }

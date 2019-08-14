@@ -3,7 +3,6 @@ com\esquelas\entities\AgenteTransito.class
 com\esquelas\mb\LoginMb.class
 com\esquelas\entities\Esquela.class
 com\esquelas\entities\Persona.class
-com\esquelas\mb\util\Factura.class
 com\esquelas\dao\UsuarioDao.class
 com\esquelas\dao\GenericDao.class
 com\esquelas\mb\ConsultaMb.class

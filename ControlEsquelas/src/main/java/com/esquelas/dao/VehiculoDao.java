@@ -74,5 +74,5 @@ public class VehiculoDao {
         return vehiculo;
     }
     
-    //comentario 2
+    
 }

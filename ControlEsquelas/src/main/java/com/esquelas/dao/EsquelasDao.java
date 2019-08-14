@@ -71,4 +71,20 @@ public class EsquelasDao {
         }
         return listEsquelaNit;
     }
+    
+    public List<Esquela> listadoEsquelaId(Esquela id){
+        listEsquelaNit = new ArrayList<>();
+       Integer i;
+        try {
+            i = 1;
+            //i = id.getIdEsquela();
+            listEsquelaNit = em.createNamedQuery("Esquela.findByIdEsquela", Esquela.class).setParameter("idEsquela", i).getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return listEsquelaNit;
+    }
+    
+    
 }

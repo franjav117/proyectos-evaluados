@@ -43,6 +43,7 @@ public class ConsultaMb implements Serializable {
         consultarEsquelas();    
     }
 
+//**************************************************************Realiza consultas por Licencia o Nit********************************************    
     public void consultarXEsquela() {
         try {
             listEsId = new ArrayList<>();
@@ -51,9 +52,12 @@ public class ConsultaMb implements Serializable {
             cond.setLicencia(licencia);
             listEsId = cdao.listadoEsquelasNit(cond);
         } catch (Exception e) {
+            e.printStackTrace();
         }
+        
     }
     
+//**************************************************************Busqueda por Placa de Vehiculo********************************************    
     public void consultarXPlaca(){
         try {
             listEsId = new ArrayList<>();
@@ -62,6 +66,7 @@ public class ConsultaMb implements Serializable {
         }
     }
 
+    //**************************************************************Llena todas las Esquelas********************************************
     public void consultarEsquelas() {
         listEsquela = new ArrayList<>();
         listEsquela = cdao.consultaEsquelas();
