@@ -6,16 +6,15 @@ import com.esquelas.entities.TipoPlaca;
 import com.esquelas.entities.Usuario;
 import java.util.ArrayList;
 import java.util.List;
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-@Stateless
 public class UsuarioDao {
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("esquelasPU");
     private EntityManager em = emf.createEntityManager();
+
     private List<Usuario> listUsuario;
     private List<Rol> listRol;
     private Usuario usuario;
@@ -41,6 +40,17 @@ public class UsuarioDao {
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
+        }
+        return listUsuario;
+    }
+
+    public List<Usuario> consultUsuarioByUsuario(Usuario usuario) {
+        try {
+            listUsuario = new ArrayList<>();
+            listUsuario = em.createNamedQuery("Usuario.findByUsuario").setParameter("usuario", usuario.getUsuario()).getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
         return listUsuario;
     }
@@ -98,16 +108,6 @@ public class UsuarioDao {
         return em.find(Usuario.class, usuario.getIdUsuario());
     }
 
-    public List<TipoPlaca> consultPlaca() {
-        try {
-            listPlaca = new ArrayList<>();
-            listPlaca = em.createNamedQuery("TipoPlaca.findAll").getResultList();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return listPlaca;
-    }
-
     //--------------select * from with criteria------------------//
     public List<Usuario> finAllUsuario() {
         try {
@@ -120,5 +120,5 @@ public class UsuarioDao {
             em.getTransaction().rollback();
         }
         return listUsuario;
-    }//
+    }
 }

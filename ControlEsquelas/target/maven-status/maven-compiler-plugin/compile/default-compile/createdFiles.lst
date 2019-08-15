@@ -1,9 +1,9 @@
-com\esquelas\mb\PersonaMb.class
 com\esquelas\entities\AgenteTransito.class
 com\esquelas\mb\LoginMb.class
 com\esquelas\entities\Esquela.class
 com\esquelas\entities\Persona.class
 com\esquelas\dao\UsuarioDao.class
+com\esquelas\entities\EsquelaReporte.class
 com\esquelas\dao\GenericDao.class
 com\esquelas\mb\ConsultaMb.class
 com\esquelas\entities\ReporteFactura.class
@@ -13,6 +13,7 @@ com\esquelas\dao\EsquelasDao.class
 com\esquelas\entities\Persona_.class
 com\esquelas\entities\Rol.class
 com\esquelas\entities\TipoGravedad.class
+com\esquelas\util\Factura.class
 com\esquelas\entities\Clasificacion.class
 com\esquelas\entities\Cajero_.class
 com\esquelas\dao\TemporalDao.class
@@ -38,11 +39,15 @@ com\esquelas\mb\EsquelaMb.class
 com\esquelas\entities\Vehiculo.class
 com\esquelas\entities\TipoPlaca_.class
 com\esquelas\dao\LogingDao.class
+com\esquelas\dao\TipoMatriculaDao.class
 com\esquelas\dao\ConsultaDao.class
 com\esquelas\entities\Otros_.class
 com\esquelas\dao\EsquelaDao.class
 com\esquelas\dao\RelacionesGeneralesDao.class
+com\esquelas\mb\PersonaMB.class
+com\esquelas\dao\VehiculoDao.class
 com\esquelas\entities\Estado_.class
+com\esquelas\mb\VehiculoMb.class
 com\esquelas\entities\Usuario_.class
 com\esquelas\entities\Clasificacion_.class
 com\esquelas\entities\Conductor_.class

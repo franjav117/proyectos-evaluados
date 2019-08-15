@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>People</title>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script>
+            $(document).ready(function () {
+                $("#btnPrueba").change(function () {
+                    var seleccion = $("#btnPrueba").val();
+                    console.log(seleccion);
+                    if (seleccion == 1) {
+                        $("#div1").show();
+                        $("#div2").hide();
+                        $("#div3").hide();
+                        $("#div4").hide();
+                    } else if (seleccion == 2) {
+                        $("#div1").hide();
+                        $("#div2").show();
+                        $("#div3").hide();
+                        $("#div4").hide();
+                    } else if (seleccion == 3) {
+                        $("#div1").hide();
+                        $("#div2").hide();
+                        $("#div3").show();
+                        $("#div4").hide();
+                    } else if (seleccion == 4) {
+                        $("#div1").hide();
+                        $("#div2").hide();
+                        $("#div3").hide();
+                        $("#div4").show();
+                    } else {
+                        $("#div1").hide();
+                        $("#div2").hide();
+                        $("#div3").hide();
+                        $("#div4").hide();
+                    }
+                });
+                $("#prueba").click(function () {
+                    $("#divDataPersona").show();
+                    $("#divDataCajero").hide();
+                    $("#divDataConductores").hide();
+                    $("#divDataAgente").hide();
+                });
+                $("#prueba2").click(function () {
+                    $("#divDataPersona").hide();
+                    $("#divDataCajero").show();
+                    $("#divDataConductores").hide();
+                    $("#divDataAgente").hide();
+                });
+                $("#prueba3").click(function () {
+                    $("#divDataPersona").hide();
+                    $("#divDataCajero").hide();
+                    $("#divDataConductores").show();
+                    $("#divDataAgente").hide();
+                });
+                $("#prueba4").click(function () {
+                    $("#divDataPersona").hide();
+                    $("#divDataCajero").hide();
+                    $("#divDataConductores").hide();
+                    $("#divDataAgente").show();
+                });
+            });
+        </script>
+        <style>
+            body{
+                background-color: red;
+            }
+            .txsuccess{
+                color: green;
+            }
+        </style>
+    </h:head>
+    <h:body styleClass="bg-dark">
+        <h:form>
+            <p:menubar>
+                <p:submenu label="Funciones">
+                    <p:menuitem value="Inserción de Personas" url="persona.xhtml"/>
+                    <p:menuitem value="Inserción de Usuarios" url="usuario.xhtml"/>
+                </p:submenu>
+            </p:menubar>
+        </h:form>
+        <center  style="color: #0062cc">
+            <br/>
+            <div id="div2">
+                <div style="background: #b3b7bb; width: 1300px; height: 610px; margin-top: 30px; border-radius: 25px; color: black;">
+                    <br/>
+                    <p:fieldset legend="Registro de Personas" style="width: 1200px;">
+                        <h:form id="formPersona" style="text-align:center;text-transform: fullwidth;font-weight: bold">
+                            <p:growl id="growlPersona"/>
+                            <div class="ui-g">
+                                <div class="ui-g-4">
+                                    <p:panelGrid columns="2">
+                                        <p:outputLabel value="Primer nombre:"/>
+                                        <p:inputText value="#{personaMB.persona.n1Nombre}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Segundo nombre:"/>
+                                        <p:inputText value="#{personaMB.persona.n2Nombre}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Tercer nombre:"/>
+                                        <p:inputText value="#{personaMB.persona.n3Nombre}" placeholder="No es obligatorio" styleClass="form-control"/>
+                                        <p:outputLabel value="Primer apellido:"/>
+                                        <p:inputText value="#{personaMB.persona.a1Apellido}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Segundo apellido:"/>
+                                        <p:inputText value="#{personaMB.persona.a2Apellido}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Tercer apellido:"/>
+                                        <p:inputText value="#{personaMB.persona.a3Apellido}" placeholder="No es obligatorio" styleClass="form-control"/>
+                                        <p:outputLabel value="Direccion:"/>
+                                        <p:inputText value="#{personaMB.persona.direccion}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                    </p:panelGrid>
+                                </div>
+                                <div class="ui-g-4" style="margin-left: 20px;">
+                                    <p:panelGrid columns="2">
+                                        <p:outputLabel value="Ingrese su NickName:"/>
+                                        <p:inputText value="#{personaMB.usuario.usuario}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Ingrese las contraseña:"/>
+                                        <p:password id="clave1" value="#{personaMB.usuario.pass}" placeholder="Ingrese su contraseña" 
+                                                    match="clave2" validatorMessage="Las claves no coinciden" feedback="true" promptLabel="Ingrese una contraseña" 
+                                                    strongLabel="Seguro" weakLabel="Debíl" goodLabel="Bien" styleClass="form-control" required="true" requiredMessage="Ingrese la contraseña!"/>
+                                        <p:outputLabel value="Repita la contraseña:"/>
+                                        <p:password id="clave2" styleClass="form-control" required="true" placeholder="Confirmar contraseña" requiredMessage="Confirma la contraseña!"/>
+                                        <p:outputLabel value="Rol del Usuario:"/>
+                                        <p:selectOneMenu value="#{personaMB.idRol}" style="text-align-last: center; width: 200px; border-color: #e83e8c;" required="true" requiredMessage="Selecciona el Rol!">
+                                            <f:selectItem itemValue="" itemLabel="-Seleciona un Rol-"/>
+                                            <f:selectItems value="#{personaMB.selectMenuRol}"/>
+                                        </p:selectOneMenu>
+                                        <p:outputLabel value="DUI de la persona:"/>
+                                        <p:inputMask mask="99999999-9" value="#{personaMB.persona.dui}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Edad:"/>
+                                        <p:inputMask mask="99" value="#{personaMB.persona.edad}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Fecha nacimiento:"/>
+                                        <p:calendar navigator="true" pattern="yyyy-MM-dd" value="#{personaMB.persona.fechaNacimiento}" required="true" requiredMessage="No deje el campo vacio!"/>
+                                    </p:panelGrid>
+                                </div>
+                                <div class="ui-g-4" style="background-color:#28a745; height: 260px; width: 260px;margin-left: 40px;">
+                                    <img src="resources\images\person.png" style="width: 260px; height: 260px; margin-left: -7px; margin-top: -7px"/>
+                                </div>
+                            </div>
+                            <p:commandButton value="Registrar Unicamente la Persona" action="#{personaMB.crearPerfil()}" update="formPersona" styleClass="btn btn-primary" style="background-color: red; border-color: red;">
+                                <p:confirm header="Confirmación" message="¿Esta seguro de no darle un rol en la sociedad?" icon="pi pi-exclamation-triangle"/>
+                            </p:commandButton>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <center>
+                                    <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" update="formPersona, dataPersona, dataCajero"/>
+                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" update="formPersona, dataPersona, dataCajero"/>
+                                </center>
+                            </p:confirmDialog>
+                        </h:form>
+                    </p:fieldset>
+                </div>
+            </div>
+        </center>
+        <br/>
+    </h:body>
+</html>

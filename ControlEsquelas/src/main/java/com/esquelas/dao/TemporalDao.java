@@ -22,7 +22,7 @@ import javax.persistence.Persistence;
 @Stateless
 public class TemporalDao {
 
-    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
+    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("esquelasPU");
     private final EntityManager em = emf.createEntityManager();
 
     private List<Vehiculo> vehiculoList;

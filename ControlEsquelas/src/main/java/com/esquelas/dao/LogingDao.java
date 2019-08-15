@@ -18,7 +18,7 @@ import javax.persistence.Persistence;
  */
 @Stateless
 public class LogingDao {
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("esquelasPU");
     private EntityManager em = emf.createEntityManager();
     
     public Usuario usuarioLogin(String user, String pass){

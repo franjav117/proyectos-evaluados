@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Usuarios</title>
+        <link href="css\bootstrap.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body styleClass="bg-dark">
+        <h:form>
+            <p:menubar>
+                <p:submenu label="Funciones">
+                    <p:menuitem value="Inserción de Personas" url="persona.xhtml"/>
+                    <p:menuitem value="Inserción de Usuarios" url="usuario.xhtml"/>
+                </p:submenu>
+            </p:menubar>
+        </h:form>
+        <center style="color: #0062cc">
+            <div style="background: #b3b7bb; width: 900px; height: 470px; margin-top: 30px; border-radius: 25px; color: black;">
+                <br/>
+                <p:fieldset legend="Registro de Usuario" style="width: 800px;">
+                    <h:form id="formUsuario" style="text-align:center;text-transform: fullwidth;font-weight: bold">
+                        <p:growl id="growlUsuario"/>
+                        <div class="ui-g">
+                            <div class="ui-g-6">
+                                <p:panelGrid columns="2">
+                                    <p:outputLabel value="Ingrese su NickName:"/>
+                                    <p:inputText value="#{personaMB.usuario.usuario}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                    <p:outputLabel value="Selecione la Persona:"/>
+                                    <p:selectOneMenu value="#{personaMB.idPersona}" style="text-align-last: center; width: 200px; border-color: #e83e8c;" filter="true" filterPlaceholder="Busca por DUI"  required="true" requiredMessage="Selecciona la Persona!">
+                                        <f:selectItem  itemValue="" itemLabel="-Seleciona Persona-"/>
+                                        <f:selectItems value="#{personaMB.selectMenuPersona}"/>
+                                    </p:selectOneMenu>
+                                    <p:outputLabel value="Ingrese las contraseña:"/>
+                                    <p:password id="clave1" value="#{personaMB.usuario.pass}" placeholder="Ingrese su contraseña" 
+                                                match="clave2" validatorMessage="Las claves no coinciden" feedback="true" promptLabel="Ingrese una contraseña" 
+                                                strongLabel="Seguro" weakLabel="Debíl" goodLabel="Bien" styleClass="form-control" required="true" requiredMessage="Ingrese la contraseña!"/>
+                                    <p:outputLabel value="Repita la contraseña:"/>
+                                    <p:password id="clave2" styleClass="form-control" required="true" placeholder="Confirmar contraseña" requiredMessage="Confirma la contraseña!"/>
+                                    <p:outputLabel value="Rol del Usuario:"/>
+                                    <p:selectOneMenu value="#{personaMB.idRol}" style="text-align-last: center; width: 200px; border-color: #e83e8c;" required="true" requiredMessage="Selecciona el Rol!">
+                                        <f:selectItem itemValue="" itemLabel="-Seleciona un Rol-"/>
+                                        <f:selectItems value="#{personaMB.selectMenuRol}"/>
+                                    </p:selectOneMenu>
+                                </p:panelGrid>
+                            </div>
+                            <div class="ui-g-6">
+                                <center>
+                                    <p:panelGrid columns="1" style="text-align-last: center;"> 
+                                        <div style="width: 240px; height: 240px;margin-top: -2px;background-color: orange; border-radius: 100%;text-align-last: center;">
+                                            <img src="resources\images\addUsers.png" style="width: 190px; height: 190px; margin-top: 4px;"/>
+                                        </div>
+                                        <p:commandButton value="Registrar Usuario" action="#{personaMB.insertUsuario()}" update="formUsuario, dataUsuario:usuarioData, dataUsuario:usuarioData" styleClass="btn btn-primary">
+                                            <p:confirm header="Confirmación" message="¿Esta seguro de Registrar este Usuario?" icon="pi pi-exclamation-triangle"/>
+                                        </p:commandButton>
+                                    </p:panelGrid>
+                                </center>
+                            </div>
+                        </div>
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <center>
+                                <img src="resources\images\userSelect.png" style="width: 190px; height: 190px; margin-top: 4px;"/>
+                                <p:panelGrid columns="2">
+                                    <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" update="formUsuario,dataUsuario:usuarioData"/>
+                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" update="formUsuario,dataUsuario:usuarioData"/>
+                                </p:panelGrid>
+                            </center>
+                        </p:confirmDialog>
+                    </h:form>
+                </p:fieldset>
+            </div>
+        </center>
+        <br/>
+        <br/>
+        <h:form id="dataUsuario">
+            <p:dataGrid id="usuarioData" columns="4" layout="grid" var="usu" value="#{personaMB.listUsuarios}" rows="10" paginator="true" rowsPerPageTemplate="6, 12, 16" class="alert-secondary">
+                <f:facet name="header">
+                    Personas Registradas
+                </f:facet>
+                <p:panel header="DUI: #{usu.idPersona.dui}" style="text-align:center">
+                    <div class="row">
+                        <div class="col-8" style="margin-bottom: 2px">
+                            <h:panelGrid columns="2" style="width:100%">
+                                <h:outputText value="Primer nombre:"/>
+                                <h:outputText value="#{usu.idPersona.n1Nombre}" style="font-weight: bold"/>
+                                <h:outputText value="Primer apellido:" />
+                                <h:outputText value="#{usu.idPersona.a1Apellido}" style="font-weight: bold"/>
+                                <h:outputText value="Usuario:"/>
+                                <h:outputText value="#{usu.usuario}" style="font-weight: bold"/>
+                                <h:outputText value="Rol:"/>
+                                <h:outputText value="#{usu.idRol.rol}" style="font-weight: bold"/>
+                            </h:panelGrid>
+                        </div>
+                        <div class="col-4">
+                            <p:commandButton value="Edit" action="#{personaMB.selectUsuario(usu)}" update="edicion:edit, formUsuario:growlUsuario" oncomplete="PF('editarDialog').show()" style="width: 75px;"/>
+                            <p:commandButton value="Delete" action="#{personaMB.deleteUsuario(usu)}" update="formUsuario, dataUsuario" style="width: 75px;">
+                                <p:confirm header="Confirmación" message="¿Esta seguro?" icon="pi pi-exclamation-triangle"/>
+                            </p:commandButton>
+                            <p:commandButton value="Info" action="#{personaMB.selectUsuario(usu)}" update="edicion:usuarioDetail, formUsuario:growlUsuario" oncomplete="PF('usuarioDialog').show()" style="width: 75px;"/>
+                        </div>
+                    </div>
+                </p:panel>
+            </p:dataGrid>
+        </h:form>
+        <h:form id="edicion">
+            <p:dialog id="edit" header="Edición de Usuario" widgetVar="editarDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                <div class="ui-g">
+                    <div class="ui-g-6">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Ingrese su NickName:"/>
+                            <p:inputText value="#{personaMB.usuario.usuario}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                            <p:outputLabel value="Selecione la Persona:"/>
+                            <p:selectOneMenu value="#{personaMB.idPersona}" style="text-align-last: center; width: 200px; border-color: #e83e8c;" filter="true" filterPlaceholder="Busca por DUI"  required="true" requiredMessage="Selecciona la Persona!">
+                                <f:selectItem  itemValue="" itemLabel="-Seleciona Persona-"/>
+                                <f:selectItems value="#{personaMB.selectMenuPersona}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Ingrese las contraseña:"/>
+                            <p:password id="clave1" value="#{personaMB.usuario.pass}" placeholder="Ingrese su contraseña" 
+                                        match="clave2" validatorMessage="Las claves no coinciden" feedback="true" promptLabel="Ingrese una contraseña" 
+                                        strongLabel="Seguro" weakLabel="Debíl" goodLabel="Bien" styleClass="form-control" required="true" requiredMessage="Ingrese la contraseña!"/>
+                            <p:outputLabel value="Repita la contraseña:"/>
+                            <p:password id="clave2" styleClass="form-control" required="true" placeholder="Confirmar contraseña" requiredMessage="Confirma la contraseña!"/>
+                            <p:outputLabel value="Rol del Usuario:"/>
+                            <p:selectOneMenu value="#{personaMB.idRol}" style="text-align-last: center; width: 200px; border-color: #e83e8c;" required="true" requiredMessage="Selecciona el Rol!">
+                                <f:selectItem itemValue="" itemLabel="-Seleciona un Rol-"/>
+                                <f:selectItems value="#{personaMB.selectMenuRol}"/>
+                            </p:selectOneMenu>
+                        </p:panelGrid>
+                    </div>
+                    <div class="ui-g-6">
+                        <center>
+                            <p:panelGrid columns="1" style="text-align-last: center;"> 
+                                <div style="width: 250px; height: 190px; margin-top: 4px; background-color: orange;">
+                                    <img src="resources\images\editUser.png" style="width: 190px; height: 190px;"/>
+                                </div>
+                                <p:commandButton value="Modificar Usuario" action="#{personaMB.updateUsuario()}" update="formUsuario, formUsuario:growlUsuario, dataUsuario:usuarioData" styleClass="btn btn-primary">
+                                    <p:confirm header="Confirmación" message="¿Esta seguro de modificar el Usuario?" icon="pi pi-exclamation-triangle"/>
+                                </p:commandButton>
+                            </p:panelGrid>
+                        </center>
+                    </div>
+                </div>
+            </p:dialog>
+            <p:dialog id="usuarioDetail" header="Información del Usuario" widgetVar="usuarioDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <center>
+                    <div class="ui-g">
+                        <div class="ui-g-6">
+                            <p:panelGrid columns="2" columnClasses="label,value">
+                                <h:outputText value="ID Usuario:"/>
+                                <h:outputText value="#{personaMB.usuario.idUsuario}" styleClass="form-control"/>
+                                <h:outputText value="DUI:"/>
+                                <h:outputText value="#{personaMB.usuario.idPersona.dui}" styleClass="form-control"/>
+                                <h:outputText value="NickName:"/>
+                                <h:outputText value="#{personaMB.usuario.usuario}" styleClass="form-control"/>
+                                <h:outputText value="Primer nombre:"/>
+                                <h:outputText value="#{personaMB.usuario.idPersona.n1Nombre}" styleClass="form-control"/>
+                                <h:outputText value="Segundo nombre:"/>
+                                <h:outputText value="#{personaMB.usuario.idPersona.n2Nombre}" styleClass="form-control"/>
+                                <h:outputText value="Tercer nombre:"/>
+                                <h:outputText value="#{personaMB.usuario.idPersona.n3Nombre}" styleClass="form-control"/>
+                                <h:outputText value="Primer apellido:"/>
+                                <h:outputText value="#{personaMB.usuario.idPersona.a1Apellido}" styleClass="form-control"/>
+                                <h:outputText value="Segundo apellido:"/>
+                                <h:outputText value="#{personaMB.usuario.idPersona.a2Apellido}" styleClass="form-control"/>
+                                <h:outputText value="Tercer apellido:"/>
+                                <h:outputText value="#{personaMB.usuario.idPersona.a3Apellido}" styleClass="form-control"/>
+                            </p:panelGrid>
+                        </div>
+                        <div class="ui-g-6">
+                            <center>
+                                <div style="width: 250px; height: 190px; margin-top: 4px; background-color: orange;">
+                                    <img src="resources\images\userSelect.png" style="width: 190px; height: 190px;"/>
+                                </div>
+                                <br/>
+                                <p:panelGrid columns="2" style="text-align-last: center;"> 
+                                    <h:outputText value="Rol del Usuario:"/>
+                                    <h:outputText value="#{personaMB.usuario.idRol.rol}" styleClass="form-control"/>
+                                    <h:outputText value="Contraseña:"/>
+                                    <h:outputText value="#{personaMB.usuario.pass}" styleClass="form-control"/>
+                                    <h:outputText value="Direccion:"/>
+                                    <h:outputText value="#{personaMB.usuario.idPersona.direccion}" styleClass="form-control"/>
+                                    <h:outputText value="Edad:"/>
+                                    <h:outputText value="#{personaMB.usuario.idPersona.edad}" styleClass="form-control"/>
+                                    <h:outputText value="Fecha nacimiento:"/>
+                                    <h:outputText value="#{personaMB.usuario.idPersona.fechaNacimiento}" styleClass="form-control">
+                                        <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                    </h:outputText> 
+                                </p:panelGrid>
+                            </center>
+                        </div>
+                    </div>
+                </center>
+            </p:dialog>
+        </h:form>
+    </h:body>
+</html>

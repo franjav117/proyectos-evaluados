@@ -36,7 +36,7 @@ import javax.persistence.Persistence;
 @Stateless
 public class RelacionesGeneralesDao {
 
-    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
+    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("esquelasPU");
     //esquelasPU com.esquelas_ControlEsquelas_war_1.0_AlphaPU
     private final EntityManager em = emf.createEntityManager();
 

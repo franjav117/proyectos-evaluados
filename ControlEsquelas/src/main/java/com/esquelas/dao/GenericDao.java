@@ -16,7 +16,7 @@ import javax.persistence.Persistence;
  */
 @Stateless
 public class GenericDao {
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("esquelasPU");
     private EntityManager em = emf.createEntityManager();
     
      public Object insertarEntidad(Object obj) {

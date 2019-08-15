@@ -1,0 +1,893 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>People</title>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script>
+            $(document).ready(function () {
+                $("#btnPrueba").change(function () {
+                    var seleccion = $("#btnPrueba").val();
+                    console.log(seleccion);
+                    if (seleccion == 1) {
+                        $("#div1").show();
+                        $("#div2").hide();
+                        $("#div3").hide();
+                        $("#div4").hide();
+                    } else if (seleccion == 2) {
+                        $("#div1").hide();
+                        $("#div2").show();
+                        $("#div3").hide();
+                        $("#div4").hide();
+                    } else if (seleccion == 3) {
+                        $("#div1").hide();
+                        $("#div2").hide();
+                        $("#div3").show();
+                        $("#div4").hide();
+                    } else if (seleccion == 4) {
+                        $("#div1").hide();
+                        $("#div2").hide();
+                        $("#div3").hide();
+                        $("#div4").show();
+                    } else {
+                        $("#div1").hide();
+                        $("#div2").hide();
+                        $("#div3").hide();
+                        $("#div4").hide();
+                    }
+                });
+                $("#prueba").click(function () {
+                    $("#divDataPersona").show();
+                    $("#divDataCajero").hide();
+                    $("#divDataConductores").hide();
+                    $("#divDataAgente").hide();
+                });
+                $("#prueba2").click(function () {
+                    $("#divDataPersona").hide();
+                    $("#divDataCajero").show();
+                    $("#divDataConductores").hide();
+                    $("#divDataAgente").hide();
+                });
+                $("#prueba3").click(function () {
+                    $("#divDataPersona").hide();
+                    $("#divDataCajero").hide();
+                    $("#divDataConductores").show();
+                    $("#divDataAgente").hide();
+                });
+                $("#prueba4").click(function () {
+                    $("#divDataPersona").hide();
+                    $("#divDataCajero").hide();
+                    $("#divDataConductores").hide();
+                    $("#divDataAgente").show();
+                });
+            });
+        </script>
+        <style>
+            body{
+                background-color: red;
+            }
+            .txsuccess{
+                color: green;
+            }
+        </style>
+    </h:head>
+    <h:body styleClass="bg-dark">
+        <h:form>
+            <p:menubar>
+                <p:submenu label="Funciones">
+                    <p:menuitem value="Inserción de Personas" url="persona.xhtml"/>
+                    <p:menuitem value="Inserción de Usuarios" url="usuario.xhtml"/>
+                </p:submenu>
+            </p:menubar>
+        </h:form>
+        <center  style="color: #0062cc">
+            <br/>
+            <p:panelGrid columns="2" class="alert-secondary" style="margin-bottom: -20px;">
+                <h:outputText value="Seleccione que desea Registrar:"/>
+                <select id="btnPrueba" style="width: 180px; text-align-last: center;" >
+                    <option value="2">Persona</option>                    
+                    <option value="1">Cajero</option>
+                    <option value="3">Agente de transito</option>
+                    <option value="4">Conductor</option>
+                </select>
+            </p:panelGrid>
+            <div id="div1" style="display: none;">
+                <div style="background: #b3b7bb; width: 1300px; height: 580px; margin-top: 30px; border-radius: 25px; color: black;">
+                    <br/>
+                    <p:fieldset legend="Registro de Cajero" style="width: 1200px;">
+                        <h:form id="formCajero" style="text-align:center;text-transform: fullwidth;font-weight: bold">
+                            <div class="ui-g">
+                                <div class="ui-g-4">
+                                    <p:panelGrid columns="2">
+                                        <p:outputLabel value="Primer nombre:"/>
+                                        <p:inputText value="#{personaMB.persona.n1Nombre}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Segundo nombre:"/>
+                                        <p:inputText value="#{personaMB.persona.n2Nombre}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Tercer nombre:"/>
+                                        <p:inputText value="#{personaMB.persona.n3Nombre}" placeholder="No es obligatorio" styleClass="form-control"/>
+                                        <p:outputLabel value="Primer apellido:"/>
+                                        <p:inputText value="#{personaMB.persona.a1Apellido}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Segundo apellido:"/>
+                                        <p:inputText value="#{personaMB.persona.a2Apellido}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Tercer apellido:"/>
+                                        <p:inputText value="#{personaMB.persona.a3Apellido}" placeholder="No es obligatorio" styleClass="form-control"/>
+                                    </p:panelGrid>
+                                </div>
+                                <div class="ui-g-4">
+                                    <p:panelGrid columns="2">
+                                        <p:outputLabel value="Direccion:"/>
+                                        <p:inputText value="#{personaMB.persona.direccion}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="DUI de la persona:"/>
+                                        <p:inputMask mask="99999999-9" value="#{personaMB.persona.dui}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Edad:"/>
+                                        <p:inputMask mask="99" value="#{personaMB.persona.edad}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Fecha nacimiento:"/>
+                                        <p:calendar navigator="true" pattern="yyyy-MM-dd" value="#{personaMB.persona.fechaNacimiento}" required="true" requiredMessage="No deje el campo vacio!"/> 
+                                        <p:outputLabel value="Rol en la sociedad:"/>
+                                        <p:outputLabel value="Cajero" style="text-align: center;"/>
+                                        <p:outputLabel value="Centro de Atención:"/>
+                                        <p:inputText value="#{personaMB.cajero.cac}"  styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                    </p:panelGrid>
+                                </div>
+                                <div class="ui-g-4" style="background-color: #ffc107;">
+                                    <img src="resources\images\atmWoman.png" width="300px" height="300px" style="margin-bottom: 15px;"/>
+                                    <p:panelGrid columns="2">
+                                        <p:outputLabel value="Codigo de caja: " style="text-align:center;"/>
+                                        <p:inputMask mask="#999-aa" value="#{personaMB.cajero.codCaja}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                    </p:panelGrid>
+                                </div>
+                            </div>
+                            <p:commandButton action="#{personaMB.insertPersonaCajero()}" update="formPersona,formCajero,dataCajero, dataPersona" value="Registrar como Cajero" style="background-color: red; border-color: red; width: 200px; height: 50px;">
+                                <p:confirm header="Confirmación" message="¿Esta seguro de rergistrar como cajero?" icon="pi pi-exclamation-triangle"/>
+                            </p:commandButton>
+                        </h:form>
+                    </p:fieldset>
+                </div>
+            </div>
+            <div id="div2">
+                <div style="background: #b3b7bb; width: 1300px; height: 470px; margin-top: 30px; border-radius: 25px; color: black;">
+                    <br/>
+                    <p:fieldset legend="Registro de Personas" style="width: 1200px;">
+                        <h:form id="formPersona" style="text-align:center;text-transform: fullwidth;font-weight: bold">
+                            <p:growl id="growlPersona"/>
+                            <div class="ui-g">
+                                <div class="ui-g-4">
+                                    <p:panelGrid columns="2">
+                                        <p:outputLabel value="Primer nombre:"/>
+                                        <p:inputText value="#{personaMB.persona.n1Nombre}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Segundo nombre:"/>
+                                        <p:inputText value="#{personaMB.persona.n2Nombre}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Tercer nombre:"/>
+                                        <p:inputText value="#{personaMB.persona.n3Nombre}" placeholder="No es obligatorio" styleClass="form-control"/>
+                                        <p:outputLabel value="Primer apellido:"/>
+                                        <p:inputText value="#{personaMB.persona.a1Apellido}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Segundo apellido:"/>
+                                        <p:inputText value="#{personaMB.persona.a2Apellido}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                    </p:panelGrid>
+                                </div>
+                                <div class="ui-g-4" style="margin-left: 20px;">
+                                    <p:panelGrid columns="2">
+                                        <p:outputLabel value="Tercer apellido:"/>
+                                        <p:inputText value="#{personaMB.persona.a3Apellido}" placeholder="No es obligatorio" styleClass="form-control"/>
+                                        <p:outputLabel value="Direccion:"/>
+                                        <p:inputText value="#{personaMB.persona.direccion}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="DUI de la persona:"/>
+                                        <p:inputMask mask="99999999-9" value="#{personaMB.persona.dui}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Edad:"/>
+                                        <p:inputMask mask="99" value="#{personaMB.persona.edad}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Fecha nacimiento:"/>
+                                        <p:calendar navigator="true" pattern="yyyy-MM-dd" value="#{personaMB.persona.fechaNacimiento}" required="true" requiredMessage="No deje el campo vacio!"/>
+                                    </p:panelGrid>
+                                </div>
+                                <div class="ui-g-4" style="background-color:#28a745; height: 260px; width: 260px;margin-left: 40px;">
+                                    <img src="resources\images\person.png" style="width: 260px; height: 260px; margin-left: -7px; margin-top: -7px"/>
+                                </div>
+                            </div>
+                            <p:commandButton value="Registrar Unicamente la Persona" action="#{personaMB.insertPersona()}" update="formPersona, dataPersona, dataCajero" styleClass="btn btn-primary" style="background-color: red; border-color: red;">
+                                <p:confirm header="Confirmación" message="¿Esta seguro de no darle un rol en la sociedad?" icon="pi pi-exclamation-triangle"/>
+                            </p:commandButton>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <center>
+                                    <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" update="formPersona, dataPersona, dataCajero"/>
+                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" update="formPersona, dataPersona, dataCajero"/>
+                                </center>
+                            </p:confirmDialog>
+                        </h:form>
+                    </p:fieldset>
+                </div>
+            </div>
+            <div id="div3" style="display: none;">
+                <div style="background: #b3b7bb; width: 1400px; height: 570px; margin-top: 30px; border-radius: 25px; color: black;">
+                    <br/>
+                    <p:fieldset legend="Registro de Agente" style="width: 1300px;">
+                        <h:form id="formAgente" style="text-align:center;text-transform: fullwidth;font-weight: bold">
+                            <div class="ui-g">
+                                <div class="ui-g-4">
+                                    <p:panelGrid columns="2">
+                                        <p:outputLabel value="Primer nombre:"/>
+                                        <p:inputText value="#{personaMB.persona.n1Nombre}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Segundo nombre:"/>
+                                        <p:inputText value="#{personaMB.persona.n2Nombre}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Tercer nombre:"/>
+                                        <p:inputText value="#{personaMB.persona.n3Nombre}" placeholder="No es obligatorio" styleClass="form-control"/>
+                                        <p:outputLabel value="Primer apellido:"/>
+                                        <p:inputText value="#{personaMB.persona.a1Apellido}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Segundo apellido:"/>
+                                        <p:inputText value="#{personaMB.persona.a2Apellido}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Tercer apellido:"/>
+                                        <p:inputText value="#{personaMB.persona.a3Apellido}" placeholder="No es obligatorio" styleClass="form-control"/>
+                                        <p:outputLabel value="Direccion:"/>
+                                        <p:inputText value="#{personaMB.persona.direccion}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                    </p:panelGrid>
+                                </div>
+                                <div class="ui-g-4">
+                                    <p:panelGrid columns="2">
+                                        <p:outputLabel value="DUI de la persona:"/>
+                                        <p:inputMask mask="99999999-9" value="#{personaMB.persona.dui}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Edad:"/>
+                                        <p:inputMask mask="99" value="#{personaMB.persona.edad}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Fecha nacimiento:"/>
+                                        <p:calendar navigator="true" pattern="yyyy-MM-dd" value="#{personaMB.persona.fechaNacimiento}" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Rol en la sociedad:"/>
+                                        <h:outputText value="Agente de Transito" styleClass="form-control"/>
+                                        <p:outputLabel value="Tipo de Placa:"/>
+                                        <p:selectOneMenu value="#{personaMB.idTipoPlaca}" style="text-align-last: center; width: 200px; border-color: #e83e8c;" required="true" requiredMessage="Selecciona el tipo!">
+                                            <f:selectItem itemValue="" itemLabel="-Seleciona el tipo-"/>
+                                            <f:selectItems value="#{personaMB.selectMenuTipo}"/>
+                                        </p:selectOneMenu>
+                                        <p:outputLabel value="Puesto Policial:"/>
+                                        <p:inputText value="#{personaMB.agente.puestoPolicial}" class="form-control"/>
+                                    </p:panelGrid>
+                                </div>
+                                <div class="ui-g-4" style="background-color: #007bff;">
+                                    <center>
+                                        <img src="resources\images\policeTrafic.png" width="260px" height="260px"/>
+                                        <br/>
+                                        <br/>
+                                        <p:panelGrid columns="2">
+                                            <p:outputLabel value="Numero Placa:"/>
+                                            <p:spinner value="#{personaMB.agente.numPlaca}" min="0" max="999999999" required="true" requiredMessage="No olvide su Placa Oficial!"/>
+                                        </p:panelGrid>
+                                    </center>
+                                </div>
+                            </div>
+                            <p:commandButton value="Registrar Agente" action="#{personaMB.insertAgente()}" update="formPersona, formAgente, dataPersona" styleClass="btn btn-primary" style="background-color: red; border-color: red;" >
+                                <p:confirm header="Confirmación" message="¿Esta seguro de Registrar al agente?" icon="pi pi-exclamation-triangle"/>
+                            </p:commandButton>
+                        </h:form>
+                    </p:fieldset>
+                </div>
+            </div>
+            <div id="div4" style="display: none;" >
+                <div style="background: #b3b7bb; width: 1300px; height: 580px; margin-top: 30px; border-radius: 25px; color: black;">
+                    <br/>
+                    <p:fieldset legend="Registro de Conductores" style="width: 1200px;">
+                        <h:form id="formConductor" style="text-align:center;text-transform: fullwidth;font-weight: bold">
+                            <div class="ui-g">
+                                <div class="ui-g-4">
+                                    <p:panelGrid columns="2">
+                                        <p:outputLabel value="Primer nombre:"/>
+                                        <p:inputText value="#{personaMB.persona.n1Nombre}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Segundo nombre:"/>
+                                        <p:inputText value="#{personaMB.persona.n2Nombre}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Tercer nombre:"/>
+                                        <p:inputText value="#{personaMB.persona.n3Nombre}" placeholder="No es obligatorio" styleClass="form-control"/>
+                                        <p:outputLabel value="Primer apellido:"/>
+                                        <p:inputText value="#{personaMB.persona.a1Apellido}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Segundo apellido:"/>
+                                        <p:inputText value="#{personaMB.persona.a2Apellido}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Tercer apellido:"/>
+                                        <p:inputText value="#{personaMB.persona.a3Apellido}" placeholder="No es obligatorio" styleClass="form-control"/>
+                                        <p:outputLabel value="Direccion:"/>
+                                        <p:inputText value="#{personaMB.persona.direccion}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                    </p:panelGrid>
+                                </div>
+                                <div class="ui-g-4">
+                                    <p:panelGrid columns="2">
+                                        <p:outputLabel value="DUI de la persona:"/>
+                                        <p:inputMask mask="99999999-9" value="#{personaMB.persona.dui}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Edad:"/>
+                                        <p:inputMask mask="99" value="#{personaMB.persona.edad}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Fecha nacimiento:"/>
+                                        <p:calendar navigator="true" pattern="yyyy-MM-dd" value="#{personaMB.persona.fechaNacimiento}" required="true" requiredMessage="No deje el campo vacio!"/>
+                                        <p:outputLabel value="Rol en la sociedad:"/>
+                                        <h:outputText value="Conductor" styleClass="form-control"/>
+                                        <p:outputLabel value="Vigencia de la Licencia:"/>
+                                        <p:calendar navigator="true" pattern="yyyy-MM-dd" value="#{personaMB.conductor.vigencia}"/>
+                                        <p:outputLabel value="Tipo de Licencia:"/>
+                                        <p:selectOneMenu value="#{personaMB.idClaseLicencia}" style="text-align-last: center; width: 200px; border-color: #e83e8c" required="true" requiredMessage="Selecciona el tipo!">
+                                            <f:selectItem itemValue="" itemLabel="-Seleciona el tipo-"/>
+                                            <f:selectItems value="#{personaMB.selectMenuLicencia}"/>
+                                        </p:selectOneMenu>
+                                    </p:panelGrid>
+                                </div>
+                                <div class="ui-g-4" style="background-color:#17a2b8; ">
+                                    <img src="resources\images\personDriver.png" width="260px" height="260px" style="margin-bottom: 15px; border-radius: 100%;"/>
+                                    <p:panelGrid columns="2">
+                                        <p:outputLabel value="Licencia de Condución:"/>
+                                        <p:inputMask mask="9999-999999-999-9" value="#{personaMB.conductor.licencia}" required="true" requiredMessage="No olvides la licencia!" styleClass="form-control"/>
+                                    </p:panelGrid>
+                                </div>
+                            </div>
+                            <p:commandButton value="Registrar Conductor" action="#{personaMB.insertConductor()}" update="formPersona,formConductor, dataPersona, dataConductores" styleClass="btn btn-primary"  style="background-color: red; border-color: red; width: 200px; height: 50px;">
+                                <p:confirm header="Confirmación" message="¿Esta seguro de su registro?" icon="pi pi-exclamation-triangle"/>
+                            </p:commandButton>
+                        </h:form>
+                    </p:fieldset>
+                </div>
+            </div>
+            <br/>
+            <div >
+                <h:panelGrid columns="2">
+                    <h:form>
+                        <p:commandLink action="#{personaMB.esquelasToPdf()}" update="formPersona:growlPersona" ajax="false">
+                            <center>
+                                <h:graphicImage name="images\report.png" title="Exportar esquelas a pdf" width="100px" height="100px" style="margin-left: 350px; background-color: #b3b7bb"/>
+                            </center>
+                        </p:commandLink>
+                    </h:form>
+                    <p:toolbar style="background-color: #b3b7bb; border-color: #b3b7bb;width: 900px;">
+                        <f:facet name="left">
+                            <button id="prueba" class="btn btn-danger">Consultar Personas</button>
+                            <button id="prueba2" class="btn btn-danger">Consultar Cajeros</button>
+                            <button id="prueba3" class="btn btn-danger">Consultar Conductores</button>
+                            <button id="prueba4" class="btn btn-danger">Consultar Agentes</button>
+                            <span class="ui-separator">
+                                <span class="ui-icon pi pi-ellipsis-v" />
+                            </span>
+                        </f:facet>
+                    </p:toolbar>
+                </h:panelGrid>
+            </div>
+        </center>
+        <br/>
+        <br/>
+        <div id="divDataPersona" style="background-color: #e83e8c;">
+            <h:form id="dataPersona">
+                <p:dataGrid columns="4" layout="grid" var="per" value="#{personaMB.listPersonas}" rows="10" paginator="true" rowsPerPageTemplate="6,12,16" class="alert-secondary">
+                    <f:facet name="header">
+                        Personas Registradas
+                    </f:facet>
+                    <p:panel header="DUI: #{per.dui}" style="text-align:center">
+                        <div class="row">
+                            <div class="col-8">
+                                <h:panelGrid columns="2" style="width:100%">
+                                    <h:outputText value="Id:"/>
+                                    <h:outputText value="#{per.idPersona}" style="font-weight: bold"/>
+                                    <h:outputText value="Primer nombre:"/>
+                                    <h:outputText value="#{per.n1Nombre}" style="font-weight: bold"/>
+                                    <h:outputText value="Primer apellido:" />
+                                    <h:outputText value="#{per.a1Apellido}" style="font-weight: bold"/>
+                                    <h:outputText value="Edad:"/>
+                                    <h:outputText value="#{per.edad}" style="font-weight: bold"/>
+                                </h:panelGrid>
+                            </div>
+                            <div class="col-4">
+                                <p:commandButton value="Edit" action="#{personaMB.selectPersona(per)}" update="edicion:edit, formPersona:growlPersona" oncomplete="PF('editarDialog').show()" style="width: 75px; "/>
+                                <p:commandButton value="Delete" action="#{personaMB.deletePersona(per)}" update="formPersona, dataPersona" style="width: 75px;">
+                                    <p:confirm header="Confirmación" message="¿Esta seguro?" icon="pi pi-exclamation-triangle"/>
+                                </p:commandButton>
+                                <p:commandButton value="Info" action="#{personaMB.selectPersona(per)}" update="edicion:perDetail, formPersona:growlPersona" oncomplete="PF('perDialog').show()" style="width: 75px;"/>
+                            </div>
+                        </div>
+                    </p:panel>
+                </p:dataGrid>
+            </h:form>
+        </div>
+        <div id="divDataCajero" style="display: none;">
+            <h:form id="dataCajero">
+                <p:dataGrid columns="4" layout="grid" var="ca" value="#{personaMB.listCajeros}" rows="10" paginator="true" rowsPerPageTemplate="6,12,16" class="alert-secondary">
+                    <f:facet name="header" class="txsuccess">
+                        Cajeros Registrados
+                    </f:facet>
+                    <p:panel header="Cod Caja: #{ca.codCaja}" style="text-align:center">
+                        <div class="row">
+                            <div class="col-8">
+                                <h:panelGrid columns="2" style="width:100%">
+                                    <h:outputText value="ID Cajero:"/>
+                                    <h:outputText value="#{ca.idCajero}" style="font-weight: bold"/>
+                                    <h:outputText value="DUI:"/>
+                                    <h:outputText value="#{ca.idPersona.dui}" style="font-weight: bold"/>
+                                    <h:outputText value="Primer nombre:"/>
+                                    <h:outputText value="#{ca.idPersona.n1Nombre}" style="font-weight: bold"/>
+                                    <h:outputText value="Primer apellido:" />
+                                    <h:outputText value="#{ca.idPersona.a1Apellido}" style="font-weight: bold"/>
+                                    <h:outputText value="Edad:"/>
+                                    <h:outputText value="#{ca.idPersona.edad}" style="font-weight: bold"/>
+                                    <h:outputText value="Centro de Atención:"/>
+                                    <h:outputText value="#{ca.cac}" style="font-weight: bold"/>
+                                </h:panelGrid>
+                            </div>
+                            <div class="col-4">
+                                <p:commandButton value="Edit" action="#{personaMB.selectCajero(ca)}" update="edicion2:cajEditar, formPersona:growlPersona" oncomplete="PF('cajEditDialog').show()" style="width: 75px; "/>
+                                <p:commandButton value="Delete" action="#{personaMB.deleteCajero(ca)}" update="formPersona, dataPersona, dataCajero" style="width: 75px;">
+                                    <p:confirm header="Confirmación" message="¿Esta seguro?" icon="pi pi-exclamation-triangle"/>
+                                </p:commandButton>
+                                <p:commandButton value="Info" action="#{personaMB.selectCajero(ca)}" update="edicion2:cajDetail, formPersona:growlPersona" oncomplete="PF('cajDialog').show()" style="width: 75px;"/>
+                            </div>
+                        </div>
+                    </p:panel>
+                </p:dataGrid>
+            </h:form>
+        </div>
+        <div id="divDataConductores" style="display: none;">
+            <h:form id="dataConductores">
+                <p:dataGrid columns="4" layout="grid" var="co" value="#{personaMB.listConductors}" rows="10" paginator="true" rowsPerPageTemplate="6,12,16" class="alert-secondary">
+                    <f:facet name="header">
+                        Conductores Registrados
+                    </f:facet>
+                    <p:panel header="Licencia: #{co.licencia}" style="text-align:center">
+                        <div class="row">
+                            <div class="col-8">
+                                <h:panelGrid columns="2" style="width:100%">
+                                    <h:outputText value="ID Conductor:"/>
+                                    <h:outputText value="#{co.idConductor}" style="font-weight: bold"/>
+                                    <h:outputText value="DUI:"/>
+                                    <h:outputText value="#{co.idPersona.dui}" style="font-weight: bold"/>
+                                    <h:outputText value="Primer nombre:"/>
+                                    <h:outputText value="#{co.idPersona.n1Nombre}" style="font-weight: bold"/>
+                                    <h:outputText value="Primer apellido:" />
+                                    <h:outputText value="#{co.idPersona.a1Apellido}" style="font-weight: bold"/>
+                                    <h:outputText value="Edad:"/>
+                                    <h:outputText value="#{co.idPersona.edad}" style="font-weight: bold"/>
+                                </h:panelGrid>
+                            </div>
+                            <div class="col-4">
+                                <p:commandButton value="Edit" action="#{personaMB.selectConductor(co)}" update="edicion3:conEdit, formPersona:growlPersona" oncomplete="PF('conEditDialog').show()" style="width: 75px; "/>
+                                <p:commandButton value="Delete" action="#{personaMB.deleteConductor(co)}" update="formPersona, dataPersona, dataConductores" style="width: 75px;">
+                                    <p:confirm header="Confirmación" message="¿Esta seguro?" icon="pi pi-exclamation-triangle"/>
+                                </p:commandButton>
+                                <p:commandButton value="Info" action="#{personaMB.selectConductor(co)}" update="edicion3:conDetail, formPersona:growlPersona" oncomplete="PF('conDialog').show()" style="width: 75px;"/>
+                            </div>
+                        </div>
+                    </p:panel>
+                </p:dataGrid>
+            </h:form>
+        </div>
+        <div id="divDataAgente" style="display: none;">
+            <h:form id="dataAgente">
+                <p:dataGrid columns="4" layout="grid" var="age" value="#{personaMB.listAgente}" rows="10" paginator="true" rowsPerPageTemplate="6,12,16" class="alert-secondary">
+                    <f:facet name="header">
+                        Agentes de Transito Registrados
+                    </f:facet>
+                    <p:panel header="Num Placa: #{age.numPlaca}" style="text-align:center">
+                        <div class="row">
+                            <div class="col-8">
+                                <h:panelGrid columns="2" style="width:100%">
+                                    <h:outputText value="ID Agente:"/>
+                                    <h:outputText value="#{age.idAgente}" style="font-weight: bold"/>
+                                    <h:outputText value="DUI:"/>
+                                    <h:outputText value="#{age.idPersona.dui}" style="font-weight: bold"/>
+                                    <h:outputText value="Primer nombre:"/>
+                                    <h:outputText value="#{age.idPersona.n1Nombre}" style="font-weight: bold"/>
+                                    <h:outputText value="Primer apellido:" />
+                                    <h:outputText value="#{age.idPersona.a1Apellido}" style="font-weight: bold"/>
+                                    <h:outputText value="Edad:"/>
+                                    <h:outputText value="#{age.idPersona.edad}" style="font-weight: bold"/>
+                                    <h:outputText value="Puesto Policial:"/>
+                                    <h:outputText value="#{age.puestoPolicial}" style="font-weight: bold"/>
+                                </h:panelGrid>
+                            </div>
+                            <div class="col-4">
+                                <p:commandButton value="Edit" action="#{personaMB.selectAgente(age)}" update="edicion4:ageEdit, formPersona:growlPersona" oncomplete="PF('ageEditDialog').show()" style="width: 75px; "/>
+                                <p:commandButton value="Delete" action="#{personaMB.deleteAgente(age)}" update="formPersona:growlPersona, dataPersona, dataAgente" style="width: 75px;">
+                                    <p:confirm header="Confirmación" message="¿Esta seguro?" icon="pi pi-exclamation-triangle"/>
+                                </p:commandButton>
+                                <p:commandButton value="Info" action="#{personaMB.selectAgente(age)}" update="edicion4:ageDetail, formPersona:growlPersona" oncomplete="PF('ageDialog').show()" style="width: 75px;"/>
+                            </div>
+                        </div>
+                    </p:panel>
+                </p:dataGrid>
+            </h:form>
+        </div>
+        <h:form id="edicion">
+            <p:dialog header="Edición de persona" widgetVar="editarDialog" modal="true" showEffect="fade" hideEffect="fade" id="edit" style="text-align:center;" resizable="false">
+                <center>
+                    <div class="row">
+                        <div class="col-4">
+                            <p:panelGrid columns="2" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <p:outputLabel value="Primer nombre:"/>
+                                <p:inputText value="#{personaMB.persona.n1Nombre}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Segundo nombre:"/>
+                                <p:inputText value="#{personaMB.persona.n2Nombre}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Tercer nombre:"/>
+                                <p:inputText value="#{personaMB.persona.n3Nombre}" placeholder="No es obligatorio" styleClass="form-control"/>
+                                <p:outputLabel value="Primer apellido:"/>
+                                <p:inputText value="#{personaMB.persona.a1Apellido}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Segundo apellido:"/>
+                                <p:inputText value="#{personaMB.persona.a2Apellido}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+
+                            </p:panelGrid>
+                        </div>
+                        <div class="col-4">
+                            <p:panelGrid columns="2" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <p:outputLabel value="Tercer apellido:"/>
+                                <p:inputText value="#{personaMB.persona.a3Apellido}" placeholder="No es obligatorio" styleClass="form-control"/>
+                                <p:outputLabel value="Direccion:"/>
+                                <p:inputText value="#{personaMB.persona.direccion}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!" style="height: 70px;"/>
+                                <p:outputLabel value="Edad:"/>
+                                <p:inputMask mask="99" value="#{personaMB.persona.edad}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Fecha nacimiento:"/>
+                                <p:calendar navigator="true" pattern="yyyy-MM-dd" value="#{personaMB.persona.fechaNacimiento}" required="true" requiredMessage="No deje el campo vacio!"/> 
+                                <p:outputLabel value="Rol en la sociedad:"/>
+                                <p:outputLabel value="Cuidadano Común" style="text-align: center;"/>
+                            </p:panelGrid>
+                        </div>
+                        <div class="col-4" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                            <p:panelGrid columns="1" columnClasses="label,value">
+                                <img src="resources\images\person.png" width="200px" height="200px" style="margin-bottom: 15px;"/>
+                                <p:outputLabel value="DUI de la persona:"/>
+                                <p:inputMask mask="99999999-9" value="#{personaMB.persona.dui}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:commandButton value="Modificar Persona" action="#{personaMB.updatePersona()}" update="formPersona:growlPersona, dataPersona" oncomplete="PF('editarDialog').hide()" styleClass="btn btn-primary">
+                                    <p:confirm header="Confirmación" message="¿Esta seguro?" icon="pi pi-exclamation-triangle"/>
+                                </p:commandButton>
+                            </p:panelGrid>
+                        </div>
+                    </div>
+                </center>
+            </p:dialog>
+            <p:dialog header="Información de la Persona"  id="perDetail" widgetVar="perDialog" modal="true" showEffect="fade"  width="1300px" hideEffect="fade" resizable="false">
+                <center>
+                    <div class="row">
+                        <div class="col-4">
+                            <p:panelGrid columns="2" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <h:outputText value="ID Persona:"/>
+                                <h:outputText value="#{personaMB.persona.idPersona}" styleClass="form-control"/>
+                                <h:outputText value="Primer nombre:"/>
+                                <h:outputText value="#{personaMB.persona.n1Nombre}" styleClass="form-control"/>
+                                <h:outputText value="Segundo nombre:"/>
+                                <h:outputText value="#{personaMB.persona.n2Nombre}" styleClass="form-control"/>
+                                <h:outputText value="Tercer nombre:"/>
+                                <h:outputText value="#{personaMB.persona.n3Nombre}" styleClass="form-control"/>
+                                <h:outputText value="Primer apellido:"/>
+                                <h:outputText value="#{personaMB.persona.a1Apellido}" styleClass="form-control"/>
+                                <h:outputText value="Segundo apellido:"/>
+                                <h:outputText value="#{personaMB.persona.a2Apellido}" styleClass="form-control" />
+                            </p:panelGrid>
+                        </div>
+                        <div class="col-5">
+                            <p:panelGrid columns="2" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <h:outputText value="Tercer apellido:"/>
+                                <h:outputText value="#{personaMB.persona.a3Apellido}" styleClass="form-control" />
+                                <h:outputText value="Direccion:"/>
+                                <h:outputText value="#{personaMB.persona.direccion}" styleClass="form-control" style="height: 70px;"/>
+                                <h:outputText value="Edad:"/>
+                                <h:outputText value="#{personaMB.persona.edad}" styleClass="form-control"/>
+                                <h:outputText value="Fecha nacimiento:"/>
+                                <h:outputText value="#{personaMB.persona.fechaNacimiento}" styleClass="form-control">
+                                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                </h:outputText> 
+                                <h:outputText value="Rol en la sociedad:"/>
+                                <h:outputText value="Cuidadano Común" style="text-align: center;" styleClass="form-control"/>
+                            </p:panelGrid>
+                        </div>
+                        <div class="col-3">
+                            <p:panelGrid columns="1" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <img src="resources\images\person.png" width="200px" height="200px" style="margin-bottom: 15px;"/>
+                                <h:outputText value="DUI de la persona:"/>
+                                <h:outputText  value="#{personaMB.persona.dui}" styleClass="form-control"/>
+                            </p:panelGrid>
+                        </div>
+                    </div>
+                </center>
+            </p:dialog>
+        </h:form>
+        <h:form id="edicion2">
+            <p:dialog id="cajDetail" header="Información del Cajero" widgetVar="cajDialog" modal="true" showEffect="fade" hideEffect="fade" width="1100" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                <center>
+                    <div class="row">
+                        <div class="col-4">
+                            <p:panelGrid columns="2" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <h:outputText value="Primer nombre:"/>
+                                <h:outputText value="#{personaMB.persona.n1Nombre}" styleClass="form-control"/>
+                                <h:outputText value="Segundo nombre:"/>
+                                <h:outputText value="#{personaMB.persona.n2Nombre}" styleClass="form-control"/>
+                                <h:outputText value="Tercer nombre:"/>
+                                <h:outputText value="#{personaMB.persona.n3Nombre}" styleClass="form-control"/>
+                                <h:outputText value="Primer apellido:"/>
+                                <h:outputText value="#{personaMB.persona.a1Apellido}" styleClass="form-control"/>
+                                <h:outputText value="Segundo apellido:"/>
+                                <h:outputText value="#{personaMB.persona.a2Apellido}" styleClass="form-control" />
+                                <h:outputText value="Tercer apellido:"/>
+                                <h:outputText value="#{personaMB.persona.a3Apellido}" styleClass="form-control" />
+                            </p:panelGrid>
+                        </div>
+                        <div class="col-5">
+                            <p:panelGrid columns="2" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <h:outputText value="Direccion:"/>
+                                <h:outputText value="#{personaMB.persona.direccion}" styleClass="form-control" style="height: 70px;"/>
+                                <h:outputText value="DUI de la persona:"/>
+                                <h:outputText value="#{personaMB.persona.dui}" styleClass="form-control"/>
+                                <h:outputText value="Edad:"/>
+                                <h:outputText value="#{personaMB.persona.edad}" styleClass="form-control"/>
+                                <h:outputText value="Fecha nacimiento:"/>
+                                <h:outputText value="#{personaMB.persona.fechaNacimiento}" styleClass="form-control">
+                                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                </h:outputText> 
+                                <h:outputText value="Rol en la sociedad:"/>
+                                <h:outputText value="Cajero" style="text-align: center;" styleClass="form-control"/>
+                                <h:outputText value="Centro de Atención:"/>
+                                <h:outputText value="#{personaMB.cajero.cac}"  styleClass="form-control" />
+                            </p:panelGrid>
+                        </div>
+                        <div class="col-3">
+                            <p:panelGrid columns="1" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <img src="resources\images\atmWoman.png" width="200px" height="200px" style="margin-bottom: 15px;"/>
+                                <h:outputText value="Codigo de caja: " style="text-align-last:center; text-transform: fullwidth;font-weight: bold"/>
+                                <h:outputText value="#{personaMB.cajero.codCaja}" styleClass="form-control"/>
+                            </p:panelGrid>
+                        </div>
+                    </div>
+                </center>
+            </p:dialog>
+            <p:dialog id="cajEditar" header="Edición del Cajero" widgetVar="cajEditDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                <center>
+                    <div class="row">
+                        <div class="col-4">
+                            <p:panelGrid columns="2" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <p:outputLabel value="Primer nombre:"/>
+                                <p:inputText value="#{personaMB.persona.n1Nombre}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Segundo nombre:"/>
+                                <p:inputText value="#{personaMB.persona.n2Nombre}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Tercer nombre:"/>
+                                <p:inputText value="#{personaMB.persona.n3Nombre}" placeholder="No es obligatorio" styleClass="form-control"/>
+                                <p:outputLabel value="Primer apellido:"/>
+                                <p:inputText value="#{personaMB.persona.a1Apellido}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Segundo apellido:"/>
+                                <p:inputText value="#{personaMB.persona.a2Apellido}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Tercer apellido:"/>
+                                <p:inputText value="#{personaMB.persona.a3Apellido}" placeholder="No es obligatorio" styleClass="form-control"/>
+                            </p:panelGrid>
+                        </div>
+                        <div class="col-4">
+                            <p:panelGrid columns="2" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <p:outputLabel value="Direccion:"/>
+                                <p:inputText value="#{personaMB.persona.direccion}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!" style="height: 70px;"/>
+                                <p:outputLabel value="DUI de la persona:"/>
+                                <p:inputMask mask="99999999-9" value="#{personaMB.persona.dui}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Edad:"/>
+                                <p:inputMask mask="99" value="#{personaMB.persona.edad}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Fecha nacimiento:"/>
+                                <p:calendar navigator="true" pattern="yyyy-MM-dd" value="#{personaMB.persona.fechaNacimiento}" required="true" requiredMessage="No deje el campo vacio!"/> 
+                                <p:outputLabel value="Rol en la sociedad:"/>
+                                <p:outputLabel value="Cajero" style="text-align: center;"/>
+                                <p:outputLabel value="Centro de Atención:"/>
+                                <p:inputText value="#{personaMB.cajero.cac}"  styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                            </p:panelGrid>
+                        </div>
+                        <div class="col-4" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                            <p:panelGrid columns="1" columnClasses="label,value">
+                                <img src="resources\images\atmWoman.png" width="200px" height="200px" style="margin-bottom: 15px;"/>
+                                <p:outputLabel value="Codigo de caja: " style="text-align:center;"/>
+                                <p:inputMask mask="#999-aa" value="#{personaMB.cajero.codCaja}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:commandButton value="Modificar Cajero" action="#{personaMB.updatePersonaCajero()}" update="formPersona:growlPersona, dataPersona, dataCajero" oncomplete="PF('cajEditDialog').hide()" styleClass="btn btn-primary">
+                                    <p:confirm header="Confirmación" message="¿Esta seguro?" icon="pi pi-exclamation-triangle"/>
+                                </p:commandButton>
+                            </p:panelGrid>
+                        </div>
+                    </div>
+                </center>
+            </p:dialog>
+        </h:form>
+        <h:form id="edicion3">
+            <p:dialog id="conDetail" header="Información del Conductor" widgetVar="conDialog" modal="true" showEffect="fade" hideEffect="fade" width="1300" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                <center>
+                    <div class="row">
+                        <div class="col-4">
+                            <p:panelGrid columns="2" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <h:outputText value="Id Conductor:"/>
+                                <h:outputText value="#{personaMB.conductor.idConductor}" styleClass="form-control"/>
+                                <h:outputText value="Primer nombre:"/>
+                                <h:outputText value="#{personaMB.persona.n1Nombre}" styleClass="form-control"/>
+                                <h:outputText value="Segundo nombre:"/>
+                                <h:outputText value="#{personaMB.persona.n2Nombre}" styleClass="form-control"/>
+                                <h:outputText value="Tercer nombre:"/>
+                                <h:outputText value="#{personaMB.persona.n3Nombre}" styleClass="form-control"/>
+                                <h:outputText value="Primer apellido:"/>
+                                <h:outputText value="#{personaMB.persona.a1Apellido}" styleClass="form-control"/>
+                                <h:outputText value="Segundo apellido:"/>
+                                <h:outputText value="#{personaMB.persona.a2Apellido}" styleClass="form-control"/>
+                                <h:outputText value="Tercer apellido:"/>
+                                <h:outputText value="#{personaMB.persona.a3Apellido}" styleClass="form-control"/>
+                            </p:panelGrid>
+                        </div>
+                        <div class="col-5">
+                            <p:panelGrid columns="2" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <h:outputText value="Direccion:"/>
+                                <h:outputText value="#{personaMB.persona.direccion}" styleClass="form-control" style="height: 70px;"/>
+                                <h:outputText value="DUI de la persona:"/>
+                                <h:outputText value="#{personaMB.persona.dui}" styleClass="form-control"/>
+                                <h:outputText value="Edad:"/>
+                                <h:outputText value="#{personaMB.persona.edad}" styleClass="form-control"/>
+                                <h:outputText value="Fecha nacimiento:"/>
+                                <h:outputText value="#{personaMB.persona.fechaNacimiento}" styleClass="form-control">
+                                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                </h:outputText>
+                                <h:outputText value="Rol en la sociedad:"/>
+                                <h:outputText value="Conductor" styleClass="form-control"/>
+                                <h:outputText value="Vigencia de la Licencia:"/>
+                                <h:outputText value="#{personaMB.conductor.vigencia}" styleClass="form-control">
+                                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                </h:outputText>
+                                <h:outputText value="Tipo de Licencia:"/>
+                                <h:outputText value="#{personaMB.conductor.licenciaTipo.licencia}" styleClass="form-control"/>
+                            </p:panelGrid>
+                        </div>
+                        <div class="col-3">
+                            <p:panelGrid columns="1" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <img src="resources\images\personDriver.png" width="260px" height="260px" style="margin-bottom: 15px; border-radius: 100%;"/>
+                                <h:outputText value="Licencia de Condución:"/>
+                                <h:outputText value="#{personaMB.conductor.licencia}" styleClass="form-control"/>
+                            </p:panelGrid>
+                        </div>
+                    </div>
+                </center>
+            </p:dialog>
+            <p:dialog id="conEdit" header="Edición del Conductor" widgetVar="conEditDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                <center>
+                    <div class="row">
+                        <div class="col-5">
+                            <p:panelGrid columns="2" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <p:outputLabel value="Primer nombre:"/>
+                                <p:inputText value="#{personaMB.persona.n1Nombre}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Segundo nombre:"/>
+                                <p:inputText value="#{personaMB.persona.n2Nombre}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Tercer nombre:"/>
+                                <p:inputText value="#{personaMB.persona.n3Nombre}" placeholder="No es obligatorio" styleClass="form-control"/>
+                                <p:outputLabel value="Primer apellido:"/>
+                                <p:inputText value="#{personaMB.persona.a1Apellido}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Segundo apellido:"/>
+                                <p:inputText value="#{personaMB.persona.a2Apellido}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Tercer apellido:"/>
+                                <p:inputText value="#{personaMB.persona.a3Apellido}" placeholder="No es obligatorio" styleClass="form-control"/>
+                                <p:outputLabel value="Direccion:"/>
+                                <p:inputText value="#{personaMB.persona.direccion}" styleClass="form-control" required="true" style="height: 70px;" requiredMessage="No deje el campo vacio!"/>
+                            </p:panelGrid>
+                        </div>
+                        <div class="col-4">
+                            <p:panelGrid columns="2" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <p:outputLabel value="DUI de la persona:"/>
+                                <p:inputMask mask="99999999-9" value="#{personaMB.persona.dui}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Edad:"/>
+                                <p:inputMask mask="99" value="#{personaMB.persona.edad}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Fecha nacimiento:"/>
+                                <p:calendar navigator="true" pattern="yyyy-MM-dd" value="#{personaMB.persona.fechaNacimiento}" required="true" requiredMessage="No deje el campo vacio!" style="border-color: #e83e8c;"/>
+                                <p:outputLabel value="Rol en la sociedad:"/>
+                                <h:outputText value="Conductor" styleClass="form-control"/>
+                                <p:outputLabel value="Vigencia de la Licencia:"/>
+                                <p:calendar navigator="true" pattern="yyyy-MM-dd" value="#{personaMB.conductor.vigencia}"/>
+                                <p:outputLabel value="Tipo de Licencia:"/>
+                                <p:selectOneMenu value="#{personaMB.idClaseLicencia}" style="text-align-last: center; width: 200px; border-color: #e83e8c" required="true" requiredMessage="Selecciona el tipo!">
+                                    <f:selectItem itemValue="" itemLabel="-Seleciona el tipo-"/>
+                                    <f:selectItems value="#{personaMB.selectMenuLicencia}"/>
+                                </p:selectOneMenu>
+                            </p:panelGrid>
+                        </div>
+                        <div class="col-3" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                            <p:panelGrid columns="1" columnClasses="label,value">
+                                <img src="resources\images\personDriver.png" width="200px" height="200px" style="margin-bottom: 15px;"/>
+                                <p:outputLabel value="Licencia de Condución:"/>
+                                <p:inputMask mask="9999-999999-999-9" value="#{personaMB.conductor.licencia}" required="true" requiredMessage="No olvides la licencia!" styleClass="form-control"/>
+                                <p:commandButton value="Modificar Conductor" action="#{personaMB.updateConductor()}" update="formPersona:growlPersona, dataPersona, dataConductores" oncomplete="PF('conEditDialog').hide()" styleClass="btn btn-primary">
+                                    <p:confirm header="Confirmación" message="¿Esta seguro?" icon="pi pi-exclamation-triangle"/>
+                                </p:commandButton>
+                            </p:panelGrid>
+                        </div>
+                    </div>
+                </center>
+            </p:dialog>
+        </h:form>
+        <h:form id="edicion4">
+            <p:dialog id="ageDetail" header="Información del Agente de Transito" widgetVar="ageDialog" modal="true" showEffect="fade" hideEffect="fade" width="1300" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                <center>
+                    <div class="row">
+                        <div class="col-4">
+                            <p:panelGrid columns="2" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <h:outputText value="ID Agente:"/>
+                                <h:outputText value="#{personaMB.agente.idAgente}" styleClass="form-control"/>
+                                <h:outputText value="Primer nombre:"/>
+                                <h:outputText value="#{personaMB.persona.n1Nombre}" styleClass="form-control"/>
+                                <h:outputText value="Segundo nombre:"/>
+                                <h:outputText value="#{personaMB.persona.n2Nombre}" styleClass="form-control"/>
+                                <h:outputText value="Tercer nombre:"/>
+                                <h:outputText value="#{personaMB.persona.n3Nombre}" styleClass="form-control"/>
+                                <h:outputText value="Primer apellido:"/>
+                                <h:outputText value="#{personaMB.persona.a1Apellido}" styleClass="form-control"/>
+                                <h:outputText value="Segundo apellido:"/>
+                                <h:outputText value="#{personaMB.persona.a2Apellido}" styleClass="form-control"/>
+                                <h:outputText value="Tercer apellido:"/>
+                                <h:outputText value="#{personaMB.persona.a3Apellido}" styleClass="form-control"/>
+                            </p:panelGrid>
+                        </div>
+                        <div class="col-5">
+                            <p:panelGrid columns="2" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <h:outputText value="Direccion:"/>
+                                <h:outputText value="#{personaMB.persona.direccion}" styleClass="form-control" style="height: 70px;"/>
+                                <h:outputText value="DUI de la persona:"/>
+                                <h:outputText value="#{personaMB.persona.dui}" styleClass="form-control"/>
+                                <h:outputText value="Edad:"/>
+                                <h:outputText value="#{personaMB.persona.edad}" styleClass="form-control"/>
+                                <h:outputText value="Fecha nacimiento:"/>
+                                <h:outputText value="#{personaMB.persona.fechaNacimiento}" styleClass="form-control">
+                                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                </h:outputText>
+                                <h:outputText value="Rol en la sociedad:"/>
+                                <h:outputText value="Agente de Transito" styleClass="form-control"/>
+                                <h:outputText value="Tipo de Placa:"/>
+                                <h:outputText value="#{personaMB.agente.tipoPlaca.tipoPlaca}" styleClass="form-control">
+                                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                </h:outputText>
+                                <h:outputText value="Puesto Policial:"/>
+                                <h:outputText value="#{personaMB.agente.puestoPolicial}" class="form-control"/>
+                            </p:panelGrid>
+                        </div>
+                        <div class="col-3">
+                            <p:panelGrid columns="1" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <img src="resources\images\policeTrafic.png" width="260px" height="260px" style="margin-bottom: 15px; border-radius: 100%;"/>
+                                <h:outputText value="Numero Placa:"/>
+                                <h:outputText value="#{personaMB.agente.numPlaca}" class="form-control"/> 
+                            </p:panelGrid>
+                        </div>
+                    </div>
+                </center>
+            </p:dialog>
+            <p:dialog id="ageEdit" header="Edición de Agente de Transito" widgetVar="ageEditDialog" modal="true" showEffect="fade" width="1300px" hideEffect="fade" resizable="true" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                <center>
+                    <div class="row">
+                        <div class="col-5">
+                            <p:panelGrid columns="2" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                                <p:outputLabel value="Primer nombre:"/>
+                                <p:inputText value="#{personaMB.persona.n1Nombre}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Segundo nombre:"/>
+                                <p:inputText value="#{personaMB.persona.n2Nombre}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Tercer nombre:"/>
+                                <p:inputText value="#{personaMB.persona.n3Nombre}" placeholder="No es obligatorio" styleClass="form-control"/>
+                                <p:outputLabel value="Primer apellido:"/>
+                                <p:inputText value="#{personaMB.persona.a1Apellido}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Segundo apellido:"/>
+                                <p:inputText value="#{personaMB.persona.a2Apellido}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Tercer apellido:"/>
+                                <p:inputText value="#{personaMB.persona.a3Apellido}" placeholder="No es obligatorio" styleClass="form-control"/>
+                                <p:outputLabel value="Direccion:"/>
+                                <p:inputText value="#{personaMB.persona.direccion}" styleClass="form-control" required="true" style="height: 70px;" requiredMessage="No deje el campo vacio!"/>
+                            </p:panelGrid>
+                        </div>
+                        <div class="col-4">
+                            <p:panelGrid columns="2" columnClasses="label,value" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+
+                                <p:outputLabel value="DUI de la persona:"/>
+                                <p:inputMask mask="99999999-9" value="#{personaMB.persona.dui}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Edad:"/>
+                                <p:inputMask mask="99" value="#{personaMB.persona.edad}" styleClass="form-control" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Fecha nacimiento:"/>
+                                <p:calendar navigator="true" pattern="yyyy-MM-dd" value="#{personaMB.persona.fechaNacimiento}" required="true" requiredMessage="No deje el campo vacio!"/>
+                                <p:outputLabel value="Rol en la sociedad:"/>
+                                <h:outputText value="Agente de Transito" styleClass="form-control"/>
+                                <p:outputLabel value="Tipo de Placa:"/>
+                                <p:selectOneMenu value="#{personaMB.idTipoPlaca}" style="text-align-last: center; width: 200px; border-color: #e83e8c;" required="true" requiredMessage="Selecciona el tipo!">
+                                    <f:selectItem itemValue="" itemLabel="-Seleciona el tipo-"/>
+                                    <f:selectItems value="#{personaMB.selectMenuTipo}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Puesto Policial:"/>
+                                <p:inputText value="#{personaMB.agente.puestoPolicial}" class="form-control"/>
+                                <p:outputLabel value="Numero Placa:"/>
+                                <p:spinner value="#{personaMB.agente.numPlaca}" min="0" max="999999999" required="true" requiredMessage="No olvide la Placa del Agente!" /> 
+                            </p:panelGrid>
+                        </div>
+                        <div class="col-3" style="text-align-last:center; text-transform: fullwidth;font-weight: bold">
+                            <p:panelGrid columns="1" columnClasses="label,value">
+                                <img src="resources\images\policeTrafic.png" width="260px" height="260px" style="margin-bottom: 15px; border-radius: 100%;"/>
+                                <p:commandButton value="Modificar Agente" action="#{personaMB.updateAgente()}" update="formPersona:growlPersona, dataPersona, dataAgente" oncomplete="PF('ageEditDialog').hide()" styleClass="btn btn-primary">
+                                    <p:confirm header="Confirmación" message="¿Esta seguro?" icon="pi pi-exclamation-triangle"/>
+                                </p:commandButton>
+                            </p:panelGrid>
+                        </div>
+                    </div>
+                </center>
+            </p:dialog>
+        </h:form>
+    </h:body>
+</html>

@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteEsquelas" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3f8b9cdc-ce05-4f5f-a27e-9619daf3cb1a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="c_Licencia" class="java.lang.String"/>
+	<field name="c_clase_licencia" class="java.lang.String"/>
+	<field name="c_nombre1" class="java.lang.String"/>
+	<field name="c_nombre2" class="java.lang.String"/>
+	<field name="c_nombre3" class="java.lang.String"/>
+	<field name="c_apellido1" class="java.lang.String"/>
+	<field name="c_apellido2" class="java.lang.String"/>
+	<field name="c_apellido3" class="java.lang.String"/>
+	<field name="c_dui" class="java.lang.String"/>
+	<field name="v_tipomatricula" class="java.lang.String"/>
+	<field name="v_placa" class="java.lang.String"/>
+	<field name="v_ruta" class="java.lang.String"/>
+	<field name="v_extranjera" class="java.lang.Boolean"/>
+	<field name="v_pais" class="java.lang.String"/>
+	<field name="v_clase" class="java.lang.String"/>
+	<field name="v_marca" class="java.lang.String"/>
+	<field name="v_modelo" class="java.lang.String"/>
+	<field name="v_color" class="java.lang.String"/>
+	<field name="e_codigo" class="java.lang.String"/>
+	<field name="e_clasificacion" class="java.lang.String"/>
+	<field name="e_fecha" class="java.util.Date"/>
+	<field name="e_lugar" class="java.lang.String"/>
+	<field name="e_observaciones" class="java.lang.String"/>
+	<field name="e_gravedad" class="java.lang.String"/>
+	<field name="e_estado" class="java.lang.String"/>
+	<field name="e_fecha_pago" class="java.util.Date"/>
+	<field name="e_pagar" class="java.lang.Double"/>
+	<field name="a_tipo_placa" class="java.lang.String"/>
+	<field name="a_num_plca" class="java.lang.Integer"/>
+	<field name="a_puesto" class="java.lang.String"/>
+	<field name="c_codigo" class="java.lang.String"/>
+	<field name="e_departamento" class="java.lang.String"/>
+	<field name="e_decomiso" class="java.lang.String"/>
+	<field name="e_otros" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="533" splitType="Stretch">
+			<line>
+				<reportElement x="144" y="334" width="504" height="1" forecolor="#006699" backcolor="#006699" uuid="1abb358e-2d94-4897-8c8d-243e2579deda"/>
+			</line>
+			<textField>
+				<reportElement x="704" y="67" width="28" height="20" uuid="ad539388-c4eb-4998-a1dc-963a12c023c3"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c_dui}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="692" y="67" width="12" height="20" uuid="ca6c4cdc-9940-48db-b1d6-dda94d58cf71"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="680" y="67" width="12" height="20" uuid="75a7e64b-75b9-434b-9573-29ab2cb5ffe6"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="4" forecolor="#006699" backcolor="#006699" uuid="4bf90963-b0e5-450c-8c0f-15a318cb4f94"/>
+			</rectangle>
+			<image>
+				<reportElement x="38" y="4" width="104" height="98" uuid="499f281b-ce33-416a-82c8-137a737c900a"/>
+				<imageExpression><![CDATA["escudoElSalvador.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="186" y="11" width="414" height="18" uuid="e5e2cbb4-2b7d-4804-b60c-128452f50ae8"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOTA: LLENAR CON LETRA DE MOLDE Y LEGIBLE. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="302" y="29" width="178" height="38" uuid="03075d52-3327-48e5-bfa1-2091a544d187"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[REPUBLICA DE EL SALVADOR, C.A.
+VICEMINISTRO DE TRANSPORTE
+DIRECCION GENERAL DE TRANSITO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="302" y="67" width="178" height="20" uuid="242f85e4-2545-4162-9793-88c1932debb6"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESQUELA DE INFRACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="87" width="133" height="15" uuid="65f5e2a8-b1be-4d00-9b6b-03967aceb15c"/>
+				<text><![CDATA[MANDAMIENTO - RECIBO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="114" width="120" height="16" uuid="c1221dae-a0e8-4f0b-b880-47f34c190499"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Licencia conductor:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="611" y="69" width="69" height="18" uuid="3aed3846-e152-453a-8fc8-46921617e3f3"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id Esquela:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="100" width="802" height="14" forecolor="#FFFFFF" backcolor="#006699" uuid="66dfc604-ba26-4e9e-9ff1-54c995c30aca"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEL CONDUCTOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="114" width="121" height="16" uuid="47de9e41-9340-4baf-8f4d-2aeb22081558"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clase Licencia:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="479" y="114" width="116" height="16" uuid="e220f1a8-b565-4651-9ae0-f861d14e3e8c"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Segundo Nombre:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="7" y="130" width="144" height="16" forecolor="#000000" backcolor="#CCCCCC" uuid="a6ff67a5-f540-4815-bf64-6365aa99dda5"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c_Licencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="170" y="130" width="105" height="16" backcolor="#CCCCCC" uuid="f7ba6928-275b-47ac-935d-05db8e11ee88"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c_clase_licencia}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="318" y="114" width="110" height="16" uuid="d64b9b57-41c9-44bd-9862-061245c5bbba"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Primer Nombre:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="318" y="130" width="110" height="16" backcolor="#CCCCCC" uuid="84b89760-9dc7-4c0d-9b3f-033edcdec687"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c_nombre1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="648" y="114" width="116" height="16" uuid="3f1fe306-3e8e-44e8-ba6e-f999c6ae38c8"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tercer Nombre:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="479" y="130" width="116" height="16" backcolor="#CCCCCC" uuid="b0a8e82a-f12e-4cfe-b734-d7d700bd39c0"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c_nombre2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="648" y="130" width="116" height="16" backcolor="#CCCCCC" uuid="a9029d0c-c0f9-4e9d-bba3-b016a154a41a"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c_nombre3}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="648" y="146" width="116" height="16" uuid="fb430377-2607-4afa-8990-49937127e580"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tercer Apellido:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="318" y="146" width="110" height="16" uuid="10938471-0999-4074-b106-feabebe81afc"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Primer Apellido:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="479" y="146" width="116" height="16" uuid="5e849a20-3d88-4a91-88db-f25ccbc8e673"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Segundo Apellido:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="318" y="162" width="110" height="16" backcolor="#CCCCCC" uuid="b6b189fa-f23b-4483-ba59-9cde06a7c0d4"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c_apellido1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="479" y="162" width="116" height="16" backcolor="#CCCCCC" uuid="0aa2aaab-7e89-41e7-9649-867bb78bcd15"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c_apellido2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="648" y="162" width="116" height="16" backcolor="#CCCCCC" uuid="102708f0-32b5-4aba-8fca-1a8328ae8249"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c_apellido3}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="184" width="802" height="14" forecolor="#FFFFFF" backcolor="#006699" uuid="748907b1-fcb0-40be-81f6-3ddbb904f793"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEL VEHICULO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="196" width="110" height="16" uuid="5b8eac2c-2913-4302-bbf2-f38a3b449997"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Matricula:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="412" y="212" width="110" height="16" backcolor="#CCCCCC" uuid="31409d0f-9a32-4441-8b47-825d9e6107a4"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_clase}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="24" y="212" width="110" height="16" backcolor="#CCCCCC" uuid="2b4be713-a7f5-4264-9c4a-3174853a40bc"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_tipomatricula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="142" y="214" width="110" height="16" backcolor="#CCCCCC" uuid="ed7e80f0-90cb-4969-bf09-920bde328f02"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_placa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="141" y="198" width="110" height="16" uuid="461e300f-1b5e-430a-8e5d-b29b8e6a0b8c"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N◦. de Placa:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="281" y="198" width="110" height="16" uuid="2d2c6499-e3bb-4d90-a043-5deae11f04a8"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo Ruta:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="281" y="214" width="110" height="16" backcolor="#CCCCCC" uuid="212d594a-5893-48f1-b5fd-a71df79bc8b9"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ruta}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="412" y="198" width="110" height="16" uuid="1021954d-59fd-4d1f-901e-b39a3e0edcc9"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clase Vehiculo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="538" y="198" width="110" height="16" uuid="1823b67d-23c7-48e0-b734-648c7e81b6a8"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marca Vehiuclo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="669" y="198" width="110" height="16" uuid="15aa7b70-1b54-4377-aed9-0f197e886015"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Color Vehiculo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="669" y="212" width="110" height="16" backcolor="#CCCCCC" uuid="9e0951e1-e92a-4552-9e1a-a4566f7558a4"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_color}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="538" y="212" width="110" height="16" backcolor="#CCCCCC" uuid="9a6bdf45-ef9e-438f-b9e3-1ca95258a3cb"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_marca}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="24" y="234" width="110" height="16" uuid="1c5e2c31-1ade-49a4-9b59-99ba7dc350b0"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Modelo Vehiculo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="24" y="250" width="110" height="16" backcolor="#CCCCCC" uuid="86d6a8b6-880d-4579-8788-7f6d6d561ddb"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_modelo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="144" y="244" width="108" height="16" uuid="89d0963f-3f12-4f48-a948-46c2a02dd795"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[¿Es Pais Extranjero? :]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="281" y="244" width="110" height="16" forecolor="#FFFFFF" backcolor="#006699" uuid="677da1bb-9174-43a2-a58a-d0bf6030ce9d"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_extranjera}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="412" y="244" width="200" height="16" uuid="704a334d-4b19-4890-b0fe-ad5844251134"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sí fuese extranjero, Identificar:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="628" y="244" width="110" height="16" forecolor="#FFFFFF" backcolor="#006699" uuid="8389d15a-a28c-4811-b17e-f6173ccd308a"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_pais}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="269" width="802" height="14" forecolor="#FFFFFF" backcolor="#006699" uuid="85b1f97f-b5bf-488f-b60e-43c8864a8fb9"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DE LA FALTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="283" width="110" height="16" uuid="55876bea-4ab7-4edc-b7ee-ba9dbb86b025"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo Falta:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="24" y="299" width="110" height="16" backcolor="#CCCCCC" uuid="7237ca49-7528-4d5c-92ae-d7585ab311da"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{e_codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="144" y="299" width="110" height="16" backcolor="#CCCCCC" uuid="1a444658-45c8-431c-bac5-997d43721cbe"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{e_clasificacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="144" y="283" width="110" height="16" uuid="e69459c3-b834-4cc9-9cdc-c1a882cf4bd6"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clasificación:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="283" width="142" height="16" uuid="85bae3c1-7a61-4f24-ba02-9e66067abfec"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha y Hora de la Multa:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="275" y="299" width="131" height="16" backcolor="#CCCCCC" uuid="862be126-cefd-441b-9b26-03ea67a671c8"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{e_fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="431" y="290" width="136" height="16" uuid="187ceb9e-0a98-45e6-ac04-dbcbde52a97e"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lugar de la infracción:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="584" y="290" width="198" height="16" backcolor="#CCCCCC" uuid="09a9bdee-2192-4cee-95b4-2e6ead5a5423"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{e_lugar}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="144" y="319" width="158" height="16" uuid="5175ea8e-d80c-4872-b394-8de76e6ce110"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Obersvaciones de la falta:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="322" y="319" width="326" height="14" backcolor="#CCCCCC" uuid="5cabb917-f1a9-40d8-944d-1d8bfb6f1cde"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{e_observaciones}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="337" width="802" height="14" forecolor="#FFFFFF" backcolor="#006699" uuid="43467694-5072-406c-815a-fc26a0b18eb1"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DE LA AUTORIDAD]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="151" y="351" width="110" height="16" backcolor="#CCCCCC" uuid="0f6b7bc5-eb0f-4b9d-847d-e7b0efab404b"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{a_tipo_placa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="437" y="351" width="110" height="16" backcolor="#CCCCCC" uuid="380d1f1e-09ef-4b64-b9e1-5f3f7a35fa67"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{a_num_plca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="669" y="351" width="131" height="16" backcolor="#CCCCCC" uuid="37d4bd71-9fd3-4fa1-bd99-418a5cf5b01b"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{a_puesto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="24" y="351" width="110" height="16" uuid="388f4f2a-1f17-451a-b339-c093d1888b29"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Placa Policiaca:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="351" width="141" height="16" uuid="839a22bd-1d7e-4bdd-90ee-084429dfb66f"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Numero de placa Policiaca:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="559" y="351" width="110" height="16" uuid="111ed182-4b4e-4e20-9ead-c8d878dd2039"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Puesto Policial:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="162" width="120" height="16" uuid="70cee7ee-94cd-458b-bea6-5e33b2a52b01"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DUI del Conductor:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="151" y="162" width="110" height="16" backcolor="#CCCCCC" uuid="206a152b-35c8-4c9e-bb19-a259d8beceac"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c_dui}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="154" width="300" height="1" forecolor="#006699" backcolor="#006699" uuid="450a5717-b5e7-44bd-9565-73b99c404937"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="367" width="802" height="14" forecolor="#FFFFFF" backcolor="#006699" uuid="a9fda267-e708-4788-8d20-9624aadf6332"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANEXOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="7" y="386" width="197" height="12" forecolor="#FFFFFF" backcolor="#006699" uuid="1129682e-55f3-475a-b8f1-74ce87d7eb73"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DECOMISO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="7" y="398" width="197" height="31" forecolor="#006699" uuid="4d5614b9-1222-4207-bbff-1f994833e8f2"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="216" y="386" width="264" height="12" forecolor="#FFFFFF" backcolor="#006699" uuid="dcfc9c90-adc2-4bf4-94be-3e052c49ce54"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PAGO DE LA MULTA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="216" y="398" width="263" height="111" forecolor="#006699" uuid="89badcc8-d2f0-456a-b115-b7cb8f231650"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="506" y="386" width="207" height="12" forecolor="#FFFFFF" backcolor="#006699" uuid="f3582940-86da-4793-be58-9cc99b53d3b5"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEPARTAMENTO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="506" y="398" width="206" height="31" forecolor="#006699" uuid="b93466c9-5036-4947-9b60-e7ecce3e13d4"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="7" y="442" width="197" height="12" forecolor="#FFFFFF" backcolor="#006699" uuid="bb64d6b3-9752-4d2a-8072-04cc7f09797c"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OTROS]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="7" y="454" width="197" height="42" forecolor="#006699" uuid="8dc9e643-884a-4f67-844b-fea570e9b238"/>
+			</rectangle>
+			<image>
+				<reportElement x="680" y="432" width="120" height="101" uuid="b8bcd7ad-3799-49fd-ae02-ece903b9e571"/>
+				<imageExpression><![CDATA["policiaNacionalLogo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="506" y="442" width="141" height="12" forecolor="#FFFFFF" backcolor="#006699" uuid="9de51773-bcb2-4fc7-a8b2-420b28690764"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FIRMA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="506" y="454" width="141" height="65" forecolor="#006699" uuid="7a285593-4d25-4bca-ac94-1ffc14ad7b9e"/>
+			</rectangle>
+			<textField>
+				<reportElement mode="Opaque" x="60" y="406" width="110" height="16" backcolor="#CCCCCC" uuid="6ca0d026-67cd-4e8b-aecf-60d64382aeea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{e_decomiso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="60" y="465" width="110" height="16" backcolor="#CCCCCC" uuid="3def6cc0-36e2-49fd-9220-5aa26da7e9fe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{e_otros}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="297" y="406" width="95" height="16" backcolor="#CCCCCC" uuid="baba859f-bf2b-450f-b0a2-40f05e230981"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{e_gravedad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="232" y="406" width="63" height="16" uuid="ddf51fe9-350e-4c73-be0d-e7a2a49679a4"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gravedad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="429" width="63" height="16" uuid="4689b961-1d94-4759-9ef2-c1ed9c36f291"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha pago:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="567" y="406" width="100" height="16" backcolor="#CCCCCC" uuid="e0993788-a0d3-45bc-856a-6411002a4794"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{e_departamento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="297" y="429" width="100" height="16" backcolor="#CCCCCC" uuid="fe91a7f9-9467-46c0-b349-6435acf6e604"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{e_fecha_pago}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="232" y="480" width="129" height="16" uuid="1d84910f-8037-4322-8e01-b4bf7fafd6b3"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad Monetaria:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="406" y="476" width="31" height="20" forecolor="#FFFFFF" backcolor="#006699" uuid="a11d7177-a65f-4ef2-bb5f-242c4ce56a33"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{e_pagar}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="391" y="476" width="15" height="20" forecolor="#FFFFFF" backcolor="#006699" uuid="a05c5284-c53b-4377-936e-d0aed3eebab1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<line>
+				<reportElement x="528" y="508" width="100" height="1" forecolor="#006699" backcolor="#006699" uuid="2dda019c-1833-4e62-bbb1-864858847c63"/>
+			</line>
+			<staticText>
+				<reportElement x="232" y="454" width="63" height="16" uuid="36e0b64a-e9f3-46b4-a905-06e5aeb2b3fd"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="297" y="454" width="100" height="16" backcolor="#CCCCCC" uuid="af750290-e314-4682-af60-b769d3a34ee5"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{e_estado}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="604" y="11" width="134" height="76" uuid="ae092b61-074f-4226-8e0b-33c50634ca08"/>
+				<imageExpression><![CDATA["codigoBarras.png"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="141" y="4" width="526" height="14" forecolor="#000000" backcolor="#CCCCCC" uuid="f3cb01d5-5c63-489f-8347-7858de448460"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[© Copyright 2019. Presidencia de la República de El Salvador.]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="101" y="2" width="33" height="20" forecolor="#FFFFFF" backcolor="#006699" uuid="12420551-bd39-493c-a00c-8cbc42432272"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="7" y="2" width="94" height="20" backcolor="#CCCCCC" uuid="cc077d6f-5ffd-4bf7-9446-b10e749e2fa3"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número de pagina:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>
