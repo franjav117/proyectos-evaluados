@@ -384,7 +384,6 @@ public class PersonaDao {
         try {
             listEsquelas = new ArrayList<>();
             listEsquelas = em.createNamedQuery("Esquela.findAll").getResultList();
-            System.out.println("Tamaño de lista de esquelas: " + listEsquelas.size());
         } catch (Exception e) {
             e.printStackTrace();
             return null;

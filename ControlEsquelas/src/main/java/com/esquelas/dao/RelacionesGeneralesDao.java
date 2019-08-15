@@ -6,7 +6,6 @@
 package com.esquelas.dao;
 
 import com.esquelas.entities.AgenteTransito;
-import com.esquelas.entities.Cajero;
 import com.esquelas.entities.ClaseLicencia;
 import com.esquelas.entities.Clasificacion;
 import com.esquelas.entities.Conductor;
@@ -20,7 +19,6 @@ import com.esquelas.entities.TipoGravedad;
 import com.esquelas.entities.TipoMatricula;
 import com.esquelas.entities.TipoPlaca;
 import com.esquelas.entities.Usuario;
-import com.esquelas.entities.Vehiculo;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
