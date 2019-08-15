@@ -63,6 +63,7 @@ public class ConsultaMb implements Serializable {
             listEsId = new ArrayList<>();
             listEsId = cdao.listadoEsquelasPlaca(vehiculo);
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

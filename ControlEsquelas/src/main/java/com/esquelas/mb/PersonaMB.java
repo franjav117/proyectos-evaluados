@@ -687,6 +687,7 @@ public class PersonaMB implements Serializable {
             e.printStackTrace();
         }
     }
+
     //---------metodos para reporte de esquelas------------//
     public void loadEsquelasList() {
         try {
@@ -696,7 +697,6 @@ public class PersonaMB implements Serializable {
             listEsquela = new ArrayList<>();
             listReporte = new ArrayList<>();
             listEsquela = ejbPersona.consultEsquelas();
-            System.out.println("Tamaño de la lista de esquelas en ManagedBean: " + listEsquela.size());
             EsquelaReporte report;
             if (null != listEsquela) {
                 for (Esquela r : listEsquela) {
@@ -736,7 +736,6 @@ public class PersonaMB implements Serializable {
                     report.setE_departamento(r.getIdDepartamento().getDepartamento());
                     report.setE_otros(r.getIdOtros().getEspecificacion());
                     report.setE_decomiso(r.getIdDecomiso().getDecomiso());
-                    System.out.println("MIRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA: " + report.getC_Licencia());
                     listReporte.add(report);
                 }
             }

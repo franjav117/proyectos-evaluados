@@ -8,7 +8,6 @@ package com.esquelas.dao;
 import com.esquelas.entities.Vehiculo;
 import java.util.ArrayList;
 import java.util.List;
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
