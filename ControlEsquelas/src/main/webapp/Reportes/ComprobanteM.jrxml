@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b6354797-3cd0-4051-81cb-9e3128d99efb">
 	<property name="ireport.zoom" value="1.2100000000000002"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="35"/>
 	<field name="idEsquela" class="java.lang.String"/>
 	<field name="idConductor" class="java.lang.String"/>
 	<field name="placa" class="java.lang.String"/>
@@ -24,10 +24,6 @@
 	</background>
 	<title>
 		<band height="86" splitType="Stretch">
-			<image>
-				<reportElement x="93" y="0" width="77" height="77" uuid="3baefe39-9aad-4257-91db-2f8f8230e7cb"/>
-				<imageExpression><![CDATA["C:\\Users\\melvin.madridusam\\Downloads\\escudoElSalvador.jpg"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="225" y="17" width="311" height="18" uuid="01224320-8a81-4f3e-b260-189fc40f3eb5"/>
 				<textElement textAlignment="Center"/>
@@ -38,7 +34,7 @@
 				<text><![CDATA[Licencia :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="317" y="35" width="170" height="20" uuid="df857a4d-32c6-4d52-8475-4621daecf2df"/>
+				<reportElement x="318" y="35" width="170" height="20" uuid="df857a4d-32c6-4d52-8475-4621daecf2df"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{idConductor}]]></textFieldExpression>
 			</textField>
@@ -124,6 +120,7 @@ Esquela]]></text>
 			</textField>
 			<textField>
 				<reportElement x="512" y="0" width="88" height="20" uuid="373e0cfc-0cb6-4aba-84be-05932477f8ac"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{fechaPago}]]></textFieldExpression>
 			</textField>
 			<textField>
