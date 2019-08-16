@@ -33,7 +33,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
  */
 @ManagedBean
 @ViewScoped
-public class Factura {  //Controlador para manejar los Reportes
+public class Factura {  //Controlador para manejar los Reportes ya filtra todos
 
     private List<Esquela> listEsquela;
     private List<ReporteFactura> listReporte;
