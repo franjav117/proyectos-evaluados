@@ -15,19 +15,17 @@ and open the template in the editor.
 
         <style>
             body{
-                background-color: #b1bace
+                background-color: #86A5ED
             }
-            .txSuccess{
-                background: #00953c;
+            .txsuccess{
+                color: green;
             }
 
-            .txDanger{
-                background: #dd2c00;
+            .txdanger{
+                color: red;
             }
 
         </style>
-
-
     </h:head>
     <h:body>
         <h:form>
@@ -85,7 +83,9 @@ and open the template in the editor.
                     <p:outputLabel value="#{es.idOtros.especificacion}"/>
                 </p:column>
                 <p:column headerText="Estado">
+                    <center>
                     <p:commandButton id="boton" value="#{es.estado.estadoMulta}" styleClass="#{esquelaMb.setColor(es)}" action="#{esquelaMb.selecIdEstado(es)}" oncomplete="PF('dialog').show()" label="#{loginMb.revertirPagoCaja}"/>
+                    </center>
                 </p:column>
                 <p:column headerText="Colector">
                     <p:outputLabel value="#{es.idCajero.idPersona.n1Nombre} #{es.idCajero.idPersona.a1Apellido}"/>
@@ -94,6 +94,13 @@ and open the template in the editor.
                     <p:outputLabel value="#{es.fechaPago}">
                         <f:convertDateTime pattern="dd/MM/yyyy"/>
                     </p:outputLabel>
+                </p:column>
+                <p:column headerText="Factura">
+                    <p:commandLink id="factura"  action="#{factura.reporteToPdf()}" ajax="false">
+                        <center>
+                        <img src="img/pdf1.png" alt="" height="50px" width="50px"/>
+                        </center>
+                    </p:commandLink>
                 </p:column>
             </p:dataTable>
 

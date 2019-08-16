@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b6354797-3cd0-4051-81cb-9e3128d99efb">
+	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="idEsquela" class="java.lang.String"/>
+	<field name="idConductor" class="java.lang.String"/>
+	<field name="placa" class="java.lang.String"/>
+	<field name="codigoFalta" class="java.lang.String"/>
+	<field name="clasificacion" class="java.lang.String"/>
+	<field name="fechaEsquela" class="java.lang.String"/>
+	<field name="lugarInfraccion" class="java.lang.String"/>
+	<field name="observaciones" class="java.lang.String"/>
+	<field name="tipoGravedad" class="java.lang.String"/>
+	<field name="montoPagar" class="java.lang.String"/>
+	<field name="estado" class="java.lang.String"/>
+	<field name="fechaPago" class="java.lang.String"/>
+	<field name="idCajero" class="java.lang.String"/>
+	<field name="departamento" class="java.lang.String"/>
+	<field name="decomiso" class="java.lang.String"/>
+	<field name="otros" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="86" splitType="Stretch">
+			<image>
+				<reportElement x="93" y="0" width="77" height="77" uuid="3baefe39-9aad-4257-91db-2f8f8230e7cb"/>
+				<imageExpression><![CDATA["C:\\Users\\melvin.madridusam\\Downloads\\escudoElSalvador.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="225" y="17" width="311" height="18" uuid="01224320-8a81-4f3e-b260-189fc40f3eb5"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Comprobante de pago de Esquelas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="35" width="69" height="20" uuid="69acd2a3-d136-418f-9079-e89dadc21ecc"/>
+				<text><![CDATA[Licencia :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="317" y="35" width="170" height="20" uuid="df857a4d-32c6-4d52-8475-4621daecf2df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{idConductor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="387" y="2" width="60" height="33" backcolor="#3399FF" uuid="082181ac-889f-4671-9f73-93c5cffe23b1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Gravedad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="600" y="2" width="62" height="33" backcolor="#3399FF" uuid="9959481d-c1d8-455a-990b-3de8ef492d80"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[placa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="278" y="2" width="109" height="33" backcolor="#3399FF" uuid="b95fb760-7459-4e64-86f9-5a30c2fe2431"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Observaciones]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="147" y="2" width="84" height="33" forecolor="#000000" backcolor="#3399FF" uuid="e06a9324-5880-4aad-b199-61e1a87aa4c9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha
+Impuesta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="231" y="2" width="47" height="33" backcolor="#3399FF" uuid="0cdc6848-a2fe-4d9b-b9b0-2db68c29977c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Codigo
+Falta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="512" y="2" width="88" height="33" backcolor="#3399FF" uuid="1cb28b57-301e-4bca-ba4a-e9cbd21787b9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha 
+de Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="93" y="2" width="54" height="33" backcolor="#3399FF" uuid="b83787ee-b115-4726-aafc-966e19a48c90"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[N° 
+Esquela]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="447" y="2" width="65" height="33" backcolor="#3399FF" uuid="f9aadaba-b97c-49d5-bdf1-c614726909fd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Monto]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="10" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="71" splitType="Stretch">
+			<textField>
+				<reportElement x="93" y="0" width="54" height="20" uuid="d5f0ba32-37a8-4994-8369-509ed42d883e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{idEsquela}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="147" y="0" width="84" height="20" uuid="e5675d13-6bb4-4beb-9c60-2a9828b36762"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fechaEsquela}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="231" y="0" width="47" height="20" uuid="72fe2d42-ee21-499b-9905-5f76edfe89cb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{codigoFalta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="278" y="0" width="109" height="20" uuid="12118b2c-722b-40cc-8c02-9691e9383fc4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="447" y="0" width="65" height="20" uuid="200e6480-8358-4e7d-8cea-de7f4d811d8a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{montoPagar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="512" y="0" width="88" height="20" uuid="373e0cfc-0cb6-4aba-84be-05932477f8ac"/>
+				<textFieldExpression><![CDATA[$F{fechaPago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="600" y="0" width="62" height="20" uuid="f17956d4-b2e1-4c74-9e49-b27852fcf320"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{placa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="0" width="60" height="20" uuid="97fa2e01-67be-4466-b3af-b9f74cefa875"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tipoGravedad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="22" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="93" y="0" width="100" height="13" uuid="17383334-3c9e-43a6-8e40-a9236e0eff27"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="18" splitType="Stretch"/>
+	</summary>
+</jasperReport>

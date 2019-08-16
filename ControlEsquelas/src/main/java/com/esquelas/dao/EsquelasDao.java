@@ -22,69 +22,82 @@ import javax.persistence.Persistence;
  */
 @Stateless
 public class EsquelasDao {
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("esquelasPU");
+
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.esquelas_ControlEsquelas_war_1.0_AlphaPU");
     private EntityManager em = emf.createEntityManager();
     private List<Esquela> listEsquelaNit;
-    
-    public List<Esquela> listadoEsquelasNit(Conductor c){
+
+    public List<Esquela> listadoEsquelasNit(Conductor c) {
         listEsquelaNit = new ArrayList<>();
         String lic = c.getLicencia();
         try {
             Integer i;
-            i = (Integer) em.createNativeQuery("Select id_conductor from conductor where licencia = '"+lic+"'").getSingleResult();
+            i = (Integer) em.createNativeQuery("Select id_conductor from conductor where licencia = '" + lic + "'").getSingleResult();
             listEsquelaNit = em.createNamedQuery("Esquela.findByConductor", Esquela.class).setParameter("idConductor", i).getResultList();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         return listEsquelaNit;
     }
-    
-    public List<Esquela> listadoEsquelasDUI(Persona p){
+
+    public List<Esquela> listadoEsquelasDUI(Persona p) {
         listEsquelaNit = new ArrayList<>();
-        try{
-        listEsquelaNit = em.createNamedQuery("Esquela.findByDUI", Esquela.class).setParameter("dui", p.getDui()).getResultList();
+        try {
+            listEsquelaNit = em.createNamedQuery("Esquela.findByDUI", Esquela.class).setParameter("dui", p.getDui()).getResultList();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return listEsquelaNit;
     }
-    
-    public List<Esquela> listadoEsquelasDUILicencia(Persona p, Conductor c){
+
+    public List<Esquela> listadoEsquelasDUILicencia(Persona p, Conductor c) {
         listEsquelaNit = new ArrayList<>();
-        try{
-        listEsquelaNit = em.createNamedQuery("Esquela.findByDUILicencia", Esquela.class).setParameter("dui", p.getDui()).setParameter("licencia", c.getLicencia()).getResultList();
+        try {
+            listEsquelaNit = em.createNamedQuery("Esquela.findByDUILicencia", Esquela.class).setParameter("dui", p.getDui()).setParameter("licencia", c.getLicencia()).getResultList();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return listEsquelaNit;
     }
-    
-    public List<Esquela> listadoEsquelasPlaca(Vehiculo v){
+
+    public List<Esquela> listadoEsquelasPlaca(Vehiculo v) {
         listEsquelaNit = new ArrayList<>();
-        try{
+        try {
             Integer i;
-            i = (Integer) em.createNativeQuery("SELECT id_vehiculo FROM vehiculo where numero_placa = '"+v.getNumeroPlaca()+"'").getSingleResult();
+            i = (Integer) em.createNativeQuery("SELECT id_vehiculo FROM vehiculo where numero_placa = '" + v.getNumeroPlaca() + "'").getSingleResult();
             listEsquelaNit = em.createNamedQuery("Esquela.findByPlaca", Esquela.class).setParameter("placa", i).getResultList();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return listEsquelaNit;
     }
-    
-    public List<Esquela> listadoEsquelaId(Esquela id){
+
+    public List<Esquela> listadoEsquelaId(Esquela id) {
         listEsquelaNit = new ArrayList<>();
-       Integer i;
+        
         try {
-            i = 1;
+        
             //i = id.getIdEsquela();
-            listEsquelaNit = em.createNamedQuery("Esquela.findByIdEsquela", Esquela.class).setParameter("idEsquela", i).getResultList();
+            listEsquelaNit = em.createNamedQuery("Esquela.findByIdEsquela", Esquela.class).setParameter("idEsquela", id).getResultList();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
+        return listEsquelaNit;
+    }
+      public List<Esquela> all() {
+        listEsquelaNit = new ArrayList<>();
+        try {
+            //i = id.getIdEsquela();
+            listEsquelaNit = em.createNamedQuery("Esquela.findAll", Esquela.class).getResultList();
+            System.out.println("lista en dao "+listEsquelaNit);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return listEsquelaNit;
     }
     
-    
+
 }
