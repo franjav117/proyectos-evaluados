@@ -11,9 +11,15 @@
     <h:body styleClass="bg-dark">
         <h:form>
             <p:menubar>
-                <p:submenu label="Funciones">
-                    <p:menuitem value="Inserción de Personas" url="persona.xhtml"/>
-                    <p:menuitem value="Inserción de Usuarios" url="usuario.xhtml"/>
+                <p:menuitem value="Consultas" icon="fa fa-book" url="Consultas.xhtml" style="margin-right: 15px;" rendered="#{loginMb.consultaConductorSinLoguear}"/>
+                <p:menuitem value="Inserción de Personas" icon="fa fa-fw fa-female" url="persona.xhtml" rendered="#{loginMb.consultaConductorSinLoguear}"/>
+                <p:menuitem value="Inserción de Usuarios" icon="pi pi-users" url="usuario.xhtml" rendered="#{loginMb.consultaConductorSinLoguear}"/>
+                <p:menuitem value="Esquelas" icon="fa fa-archive" url="esquelas.xhtml"  style="margin-right: 15px;" rendered="#{loginMb.colocarEsquelas}"/>
+                <p:menuitem value="Caja" icon="fa fa-cart-plus" url="Caja.xhtml" style="margin-right: 15px;" rendered="#{loginMb.pagoCaja}"/>
+                <p:menuitem value="Vehiculo" icon="fa fa-automobile" url="Vehiculo.xhtml" style="margin-right: 15px;" rendered="#{loginMb.colocarEsquelas}"/>
+                <p:submenu label="#{loginMb.usuario.idPersona.n1Nombre} #{loginMb.usuario.idPersona.a1Apellido}" style="float: right;">
+                    <p:menuitem action="#{loginMb.logOut()}" value="Iniciar sesion" rendered="#{loginMb.contrario}"/>
+                    <p:menuitem action="#{loginMb.logOut()}" value="Cerrar sesion" rendered="#{loginMb.usuarioIsLogueado}"/>
                 </p:submenu>
             </p:menubar>
         </h:form>

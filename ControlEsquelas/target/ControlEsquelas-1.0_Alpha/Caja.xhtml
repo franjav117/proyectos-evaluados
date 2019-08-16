@@ -31,6 +31,8 @@ and open the template in the editor.
         <h:form>
             <p:menubar>
                 <p:menuitem value="Consultas" icon="fa fa-book" url="Consultas.xhtml" style="margin-right: 15px;" rendered="#{loginMb.consultaConductorSinLoguear}"/>
+                <p:menuitem value="Inserción de Personas" icon="fa fa-fw fa-female" url="persona.xhtml" rendered="#{loginMb.consultaConductorSinLoguear}"/>
+                <p:menuitem value="Inserción de Usuarios" icon="pi pi-users" url="usuario.xhtml" rendered="#{loginMb.consultaConductorSinLoguear}"/>
                 <p:menuitem value="Esquelas" icon="fa fa-archive" url="esquelas.xhtml"  style="margin-right: 15px;" rendered="#{loginMb.colocarEsquelas}"/>
                 <p:menuitem value="Caja" icon="fa fa-cart-plus" url="Caja.xhtml" style="margin-right: 15px;" rendered="#{loginMb.pagoCaja}"/>
                 <p:menuitem value="Vehiculo" icon="fa fa-automobile" url="Vehiculo.xhtml" style="margin-right: 15px;" rendered="#{loginMb.colocarEsquelas}"/>
