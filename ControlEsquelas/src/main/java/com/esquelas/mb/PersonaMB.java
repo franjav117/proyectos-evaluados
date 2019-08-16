@@ -153,7 +153,7 @@ public class PersonaMB implements Serializable {
                     idRol = 0;
                     usuario = new Usuario();
                     persona = new Persona();
-                    return "persona.xhtml";
+                    return "login.xhtml?faces-redirect=true";
                 } else {
                     msg = new FacesMessage("Error ya hay alguien con ese Usuario!");
                     FacesContext.getCurrentInstance().addMessage(null, msg);
