@@ -25,19 +25,10 @@ and open the template in the editor.
         </style>
     </h:head>
     <h:body style="background-image: url('img/f2.jpg');background-size: cover;">
-        <h:form style="float: right;" id="login">
-            <p:outputLabel style="background-color: silver; border-radius: 3px">Usuario: </p:outputLabel>
-            <p:inputText value="#{loginMb.user}"/>
-            &#160;
-            <p:outputLabel style="background-color: silver; border-radius: 3px">Contraseña: </p:outputLabel>
-            <p:password value="#{loginMb.password}"/>
-            &#160;
-            <p:commandButton value="Ingresar" action="#{loginMb.loguearUsuario()}"/>
-        </h:form>
         <h:form id="letras">
             <div class="row">
                 <div class="col-10" style="background-color: silver; border-radius: 15px" >
-                    <h2>Bienvenido a su sistema de pago de esquelas</h2>
+                    <h2>Sistema de consultas de esquelas</h2>
                 </div>
             </div>
             <br/>
@@ -67,6 +58,12 @@ and open the template in the editor.
                     <p:commandButton icon="pi pi-search" action="#{consultaMb.consultarXPlaca()}" style="border-radius: 10px;"
                                      oncomplete="PF('consulta').show()" update=":esquela:mostrar"/>
                 </h:panelGrid>
+                <div class="text-center p-t-136">
+                    <a class="txt2" href="login.xhtml">
+                        Iniciar Sessión
+                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                    </a>
+                </div>
             </h:form>
         </center>
         <h:form id="esquela">
