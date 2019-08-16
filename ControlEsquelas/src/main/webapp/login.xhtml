@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/> 
+        <link rel="icon" type="image/png" href="resources/resourcesLogin/images/icons/favicon.ico"/>
+        <link rel="stylesheet" type="text/css" href="resources/resourcesLogin/vendor/bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="resources/resourcesLogin/fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="resources/resourcesLogin/vendor/animate/animate.css"/>
+        <link rel="stylesheet" type="text/css" href="resources/resourcesLogin/vendor/css-hamburgers/hamburgers.min.css"/>
+        <link rel="stylesheet" type="text/css" href="resources/resourcesLogin/vendor/select2/select2.min.css"/>
+        <link rel="stylesheet" type="text/css" href="resources/resourcesLogin/css/util.css"/>
+        <link rel="stylesheet" type="text/css" href="resources/resourcesLogin/css/main.css"/>
+        <title>Login Person</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:menubar>
+                <p:submenu label="Funciones">
+                    <p:menuitem value="Inserción de Personas" url="persona.xhtml"/>
+                    <p:menuitem value="Inserción de Usuarios" url="usuario.xhtml"/>
+                </p:submenu>
+            </p:menubar>
+        </h:form>
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100">
+                    <h2 class="login100-form-title">Control de Esquelas Vehicular</h2>
+                    <div class="login100-pic js-tilt" data-tilt="" style="transform: perspective(300px) rotateX(0deg) rotateY(0deg); will-change: transform;">
+                        <img src="resources/resourcesLogin/images/img-01.png" alt="IMG"/>
+                    </div>
+
+                    <form class="login100-form validate-form">
+                        <span class="login100-form-title">
+                            Inicia Sesión
+                        </span>
+                        <h:form id="formLogin">
+                            <p:growl id="growlLogin"/>
+                            <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                                <h:inputText class="input100" label="Usuario" value="#{loginMb.user}"/>
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                                <input class="input100" type="password" name="pass" placeholder="Password" value="#{loginMb.password}"/>
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                </span>
+                            </div>
+
+                            <div class="container-login100-form-btn">
+                                <h:commandButton action="#{loginMb.loguearUsuario()}" value="Login" onclick="updateCommands(formLogin)" class="login100-form-btn"/>
+                            </div>
+                        </h:form>
+                        <div class="text-center p-t-12">
+                            <span class="txt1">
+                                Forgot
+                            </span>
+                            <a class="txt2" href="#">
+                                Username / Password?
+                            </a>
+                        </div>
+
+                        <div class="text-center p-t-136">
+                            <a class="txt2" href="#">
+                                Create your Account
+                                <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="resources/resourcesLogin/vendor/jquery/jquery-3.2.1.min.js"></script>
+        <script src="resources/resourcesLogin/vendor/bootstrap/js/popper.js"></script>
+        <script src="resources/resourcesLogin/vendor/select2/select2.min.js"></script>
+        <script src="resources/resourcesLogin/vendor/tilt/tilt.jquery.min.js"></script>
+        <script src="resources/resourcesLogin/vendor/tilt/tilt.jquery.min.js"></script>
+        <script >
+            $('.js-tilt').tilt({
+                scale: 1.1
+            });
+        </script>
+        <script>
+            $(document).ready(function(){
+                $("btnLoggin").click(function (){
+                   #{loginMb.loguearUsuario()}
+                });
+            });
+        </script>
+        <script src="resources/resourcesLogin/js/main.js"></script>
+    </h:body>
+</html>
