@@ -7,10 +7,13 @@ import com.esquelas.entities.AgenteTransito;
 import com.esquelas.entities.Cajero;
 import com.esquelas.entities.ClaseLicencia;
 import com.esquelas.entities.Conductor;
+import com.esquelas.entities.Course;
 import com.esquelas.entities.Esquela;
 import com.esquelas.entities.EsquelaReporte;
 import com.esquelas.entities.Persona;
 import com.esquelas.entities.Rol;
+import com.esquelas.entities.Student;
+import com.esquelas.entities.StudentReportInput;
 import com.esquelas.entities.TipoPlaca;
 import com.esquelas.entities.Usuario;
 import java.io.IOException;
@@ -32,6 +35,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.data.JRMapArrayDataSource;
 
 @ViewScoped
 @ManagedBean
@@ -742,6 +746,60 @@ public class PersonaMB implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    List<Student> students = new ArrayList<>();
+    List<Course> student1Courses = new ArrayList<>();
+    List<Course> student2Courses2 = new ArrayList<>();
+    StudentReportInput studentReportInput = new StudentReportInput();
+    Student student1 = new Student();
+    Course course2Student2 = new Course();
+    Student student2 = new Student();
+
+    public void assemble() throws JRException, IOException {
+        studentReportInput.setReportTitle("Student Report");
+        studentReportInput.setInstituteName("My Institute");
+
+        //Add Student1
+        student1.setName("Mark");
+        student1.setEmail("mark1234@gmail.com");
+
+        Course course1Student1 = new Course();
+        course1Student1.setName("History");
+        course1Student1.setLocation("L1");
+        student1Courses.add(course1Student1);
+        course1Student1.setName("Scient");
+        course1Student1.setLocation("L3");
+        student1Courses.add(course1Student1);
+
+        student1.setCourseList(student1Courses);
+        students.add(student1);
+
+        //Add Student2
+        student2.setName("Uti");
+        student2.setEmail("xd@gmail.com");
+
+        course2Student2.setName("History");
+        course2Student2.setLocation("L1");
+        student1Courses.add(course1Student1);
+        course2Student2.setName("Scient");
+        course2Student2.setLocation("L3");
+        student2Courses2.add(course1Student1);
+
+        student2.setCourseList(student2Courses2);
+        students.add(student2);
+
+        System.out.println(students.get(1).getName());
+
+        JRBeanCollectionDataSource studentDataSource = new JRBeanCollectionDataSource(students, false);
+        studentReportInput.setStudentDataSource(studentDataSource);
+        List<StudentReportInput> list = new ArrayList<>();
+        JRMapArrayDataSource dataSource = new JRMapArrayDataSource(new Object[]{studentReportInput.getDataSources()});
+        String reportPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("reportesWilliam/studentRepor.jasper");
+        jp = JasperFillManager.fillReport(reportPath,
+                studentReportInput.getParameters(), dataSource);
+        nombreReport = "reporte de esquelas.pdf";
+        msg = new FacesMessage("Reporte Generado con exito!");
+        this.toPdf();
     }
 
     public void toPdf() throws IOException, JRException {
