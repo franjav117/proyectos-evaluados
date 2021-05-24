@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteEsquelas" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3f8b9cdc-ce05-4f5f-a27e-9619daf3cb1a">
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteEsquelas" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="NoPages" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3f8b9cdc-ce05-4f5f-a27e-9619daf3cb1a">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -98,7 +99,7 @@ DIRECCION GENERAL DE TRANSITO]]></text>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[ESQUELA DE INFRACIÃ“N]]></text>
+				<text><![CDATA[ESQUELA DE INFRACIÓN]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="330" y="87" width="133" height="15" uuid="65f5e2a8-b1be-4d00-9b6b-03967aceb15c"/>
@@ -270,7 +271,7 @@ DIRECCION GENERAL DE TRANSITO]]></text>
 				<textElement textAlignment="Center">
 					<font size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nâ—¦. de Placa:]]></text>
+				<text><![CDATA[N?. de Placa:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="281" y="198" width="110" height="16" uuid="2d2c6499-e3bb-4d90-a043-5deae11f04a8"/>
@@ -340,7 +341,7 @@ DIRECCION GENERAL DE TRANSITO]]></text>
 				<textElement textAlignment="Center">
 					<font size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Â¿Es Pais Extranjero? :]]></text>
+				<text><![CDATA[¿Es Pais Extranjero? :]]></text>
 			</staticText>
 			<textField>
 				<reportElement mode="Opaque" x="281" y="244" width="110" height="16" forecolor="#FFFFFF" backcolor="#006699" uuid="677da1bb-9174-43a2-a58a-d0bf6030ce9d"/>
@@ -354,7 +355,7 @@ DIRECCION GENERAL DE TRANSITO]]></text>
 				<textElement textAlignment="Center">
 					<font size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[SÃ­ fuese extranjero, Identificar:]]></text>
+				<text><![CDATA[Sí fuese extranjero, Identificar:]]></text>
 			</staticText>
 			<textField>
 				<reportElement mode="Opaque" x="628" y="244" width="110" height="16" forecolor="#FFFFFF" backcolor="#006699" uuid="8389d15a-a28c-4811-b17e-f6173ccd308a"/>
@@ -396,7 +397,7 @@ DIRECCION GENERAL DE TRANSITO]]></text>
 				<textElement textAlignment="Center">
 					<font size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[ClasificaciÃ³n:]]></text>
+				<text><![CDATA[Clasificación:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="270" y="283" width="142" height="16" uuid="85bae3c1-7a61-4f24-ba02-9e66067abfec"/>
@@ -417,7 +418,7 @@ DIRECCION GENERAL DE TRANSITO]]></text>
 				<textElement textAlignment="Center">
 					<font size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Lugar de la infracciÃ³n:]]></text>
+				<text><![CDATA[Lugar de la infracción:]]></text>
 			</staticText>
 			<textField>
 				<reportElement mode="Opaque" x="584" y="290" width="198" height="16" backcolor="#CCCCCC" uuid="09a9bdee-2192-4cee-95b4-2e6ead5a5423"/>
@@ -667,7 +668,7 @@ DIRECCION GENERAL DE TRANSITO]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Â© Copyright 2019. Presidencia de la RepÃºblica de El Salvador.]]></text>
+				<text><![CDATA[© Copyright 2019. Presidencia de la República de El Salvador.]]></text>
 			</staticText>
 			<textField>
 				<reportElement mode="Opaque" x="101" y="2" width="33" height="20" forecolor="#FFFFFF" backcolor="#006699" uuid="12420551-bd39-493c-a00c-8cbc42432272"/>
@@ -681,7 +682,7 @@ DIRECCION GENERAL DE TRANSITO]]></text>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[NÃºmero de pagina:]]></text>
+				<text><![CDATA[Número de pagina:]]></text>
 			</staticText>
 		</band>
 	</pageFooter>

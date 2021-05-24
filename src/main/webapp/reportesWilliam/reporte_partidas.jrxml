@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="eee1d706-39ab-4786-bc11-156e6f397caf">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="estadistico" whenResourceMissingType="Empty" uuid="3d391250-ec47-4d2d-b347-c26ec1c6b724">
+		<field name="tTipoRegistro" class="java.lang.String"/>
+		<field name="totalMasculino" class="java.lang.Integer"/>
+		<field name="totalFemenino" class="java.lang.String"/>
+		<field name="totalIndeterminado" class="java.lang.Integer"/>
+	</subDataset>
+	<field name="tipoRegistro" class="java.lang.String"/>
+	<field name="alcaldia" class="java.lang.String"/>
+	<field name="fechaInicia" class="java.util.Date"/>
+	<field name="fechaFinaliza" class="java.util.Date"/>
+	<field name="estadistico" class="java.util.List"/>
+	<field name="detalles" class="java.util.List"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="33" y="2" width="100" height="20" uuid="a63fc554-e5c2-49db-b456-12fcde50b9ff"/>
+				<text><![CDATA[tipoRegistro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="145" y="2" width="100" height="20" uuid="88d35197-df9d-4f95-a9a8-0228925b827f"/>
+				<text><![CDATA[alcaldia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="261" y="2" width="100" height="20" uuid="b03083e3-df73-4d6e-9f1e-b40bdcc1331b"/>
+				<text><![CDATA[fechaInicia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="391" y="2" width="100" height="20" uuid="0d1848d2-0463-494c-bf76-b9ae5e54de83"/>
+				<text><![CDATA[fechaFinaliza]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="226" splitType="Stretch">
+			<textField>
+				<reportElement x="33" y="27" width="100" height="20" uuid="1f60032c-cb2f-450a-8b91-64c2253f0e25"/>
+				<textFieldExpression><![CDATA[$F{tipoRegistro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="145" y="29" width="100" height="20" uuid="2d3f1f2f-2977-4d1c-8e6d-617dc5cf13de"/>
+				<textFieldExpression><![CDATA[$F{alcaldia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="261" y="32" width="100" height="20" uuid="e217c67f-d17a-4208-9330-1d5d68e25397"/>
+				<textFieldExpression><![CDATA[$F{fechaInicia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="391" y="37" width="100" height="20" uuid="79cfca0d-90a1-4ce0-971f-0d8255c7abdd"/>
+				<textFieldExpression><![CDATA[$F{fechaFinaliza}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="20" y="124" width="500" height="30" uuid="e6a2fb04-a643-4fb2-923c-6d476bcbf35d"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="estadistico" uuid="3d32a1fa-6f4e-4a18-913b-13dc3b5d6598">
+						<dataSourceExpression><![CDATA[$F{estadistico}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="500">
+						<textField>
+							<reportElement x="0" y="0" width="25" height="30" uuid="411d8555-f95d-46dd-97d8-2375297c538a"/>
+							<textFieldExpression><![CDATA[$F{tTipoRegistro}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="25" y="0" width="25" height="30" uuid="540943df-6639-4032-ae8b-a5d01e8aa1d9"/>
+							<textFieldExpression><![CDATA[$F{totalMasculino}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="50" y="0" width="25" height="30" uuid="3ad29054-993a-4e9a-8562-5ba926b9b606"/>
+							<textFieldExpression><![CDATA[$F{totalFemenino}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="75" y="0" width="25" height="30" uuid="85dc54f2-14b3-4773-87b4-3fb1d6e3de35"/>
+							<textFieldExpression><![CDATA[$F{totalIndeterminado}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

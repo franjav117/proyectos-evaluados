@@ -180,7 +180,7 @@ public class PersonaDao {
     public List<Cajero> consultCajeros() {
         try {
             listCajero = new ArrayList<>();
-            listCajero = em.createNamedQuery("Cajero.findAll").getResultList();
+            listCajero = em.createNamedQuery("Cajero.findAll", Cajero.class).getResultList();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
